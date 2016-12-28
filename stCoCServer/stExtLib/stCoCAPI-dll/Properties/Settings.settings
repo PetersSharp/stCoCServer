@@ -1,0 +1,75 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="stCoCAPI.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DBTableList" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;</Value>
+    </Setting>
+    <Setting Name="DBWhereDate" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">AND year = {0} AND season = {1}</Value>
+    </Setting>
+    <Setting Name="DBSelectClanInfo" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT * FROM clan</Value>
+    </Setting>
+    <Setting Name="DBSelectMember" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT *  FROM clanmembers WHERE status = {0}</Value>
+    </Setting>
+    <Setting Name="DBSelectMemberTag" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">AND tag = '{0}'</Value>
+    </Setting>
+    <Setting Name="DBSelectDonation" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT * FROM clanmembers WHERE status &gt; 0</Value>
+    </Setting>
+    <Setting Name="DBSelectDonationRatio" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">AND send &gt; 0 AND receive &gt; 0</Value>
+    </Setting>
+    <Setting Name="DBSelectDonationTotal" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT sum(send) tsend, sum(receive) treceive FROM clanmembers WHERE 1 = 1</Value>
+    </Setting>
+    <Setting Name="DBSelectMemberListOrder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ORDER BY trophies DESC</Value>
+    </Setting>
+    <Setting Name="DBSelectDonationSendOrder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ORDER BY send DESC LIMIT 5</Value>
+    </Setting>
+    <Setting Name="DBSelectDonationReceiveOrder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ORDER BY receive DESC LIMIT 5</Value>
+    </Setting>
+    <Setting Name="DBSelectDonationRatioOrder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ORDER BY ratio DESC LIMIT 5</Value>
+    </Setting>
+    <Setting Name="DBSelectLeaque" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT {0} FROM league WHERE id = {1}</Value>
+    </Setting>
+    <Setting Name="CoCMediaURL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://api-assets.clashofclans.com</Value>
+    </Setting>
+    <Setting Name="DBSysUpdateNotPublicWar" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">UPDATE ClanInfo SET warpub = 0 WHERE tag = '{0}'</Value>
+    </Setting>
+    <Setting Name="DBSysUpdateMembers" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT * FROM ClanMember WHERE COCSEASON(year,season) = 1</Value>
+    </Setting>
+    <Setting Name="DBSysUpdateClanInfo" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT * FROM ClanInfo</Value>
+    </Setting>
+    <Setting Name="DBSysUpdateSelect" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT * FROM {0}</Value>
+    </Setting>
+    <Setting Name="CoCLocalMediaURL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/{0}/{1}/{2}/{3}/{4}</Value>
+    </Setting>
+    <Setting Name="DBSelectWarClan" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT * FROM clanwar ORDER BY dtend DESC</Value>
+    </Setting>
+    <Setting Name="DBSelectWarLast" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">LIMIT 3</Value>
+    </Setting>
+    <Setting Name="NotifyRssClanLink" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/assets/html/ClanInfo.html</Value>
+    </Setting>
+    <Setting Name="NotifyRssMemberLink" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/assets/html/ClanList.html</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

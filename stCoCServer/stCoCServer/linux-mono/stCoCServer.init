@@ -1,0 +1,71 @@
+#!/bin/bash
+#
+
+. /etc/init.d/functions
+
+APP_NAME="stCoCServer"
+APP_PATH="/usr/local/stCoCServer"
+APP_LOG="/var/log"
+
+    if [ ! -f ${APP_PATH}/${APP_NAME}.exe ]
+    then
+        echo "Binary ${APP_NAME}.exe in path ${APP_PATH} not found.."
+        exit
+    fi
+    if [ ! -f ${APP_PATH}/${APP_NAME}.exe ]
+    then
+        echo "Configuration ${APP_NAME}.ini in path ${APP_PATH}/data not found...."
+        exit
+    fi
+
+start() {
+        echo "Starting ${APP_NAME}"
+        if [ -f ${APP_LOG}/${APP_NAME}.log ]
+        then
+            mv -f ${APP_LOG}/${APP_NAME}.log ${APP_LOG}/${APP_NAME}.old
+        fi
+        nohup mono ${APP_PATH}/${APP_NAME}.exe > ${APP_LOG}/${APP_NAME}.log 2>&1&
+        RETVAL=$?
+        echo
+        if [ $RETVAL -eq 0 ]
+        then
+            echo `ps axf | grep stCoCServer | grep -v grep | grep -v init | awk '{ print $1 }'` > /var/run/${APP_NAME}.pid
+        fi
+        exit $RETVAL
+}
+
+stop() {
+        echo "Stopping ${APP_NAME}"
+        killproc -p /var/run/${APP_NAME}.pid ${APP_NAME}.exe
+        RETVAL=$?
+        echo
+        [ $RETVAL -eq 0 ] && rm -f /var/run/${APP_NAME}.pid
+        exit $RETVAL
+}
+
+case "$1" in
+  start)
+        start
+        RETVAL=$?
+    ;;
+  stop)
+        stop
+        RETVAL=$?
+    ;;
+  restart)
+        stop
+        start
+        RETVAL=$?
+    ;;
+  test)
+        echo -e "`ps axf | grep stCoCServer | grep -v grep | grep -v init`"
+        tail --lines=10 ${APP_LOG}/${APP_NAME}.log
+        RETVAL=0
+    ;;
+  *)
+    echo "Usage: /etc/init.d/${APP_NAME} {start|stop|restart}"
+    exit 1
+    ;;
+esac
+
+exit ${RETVAL}

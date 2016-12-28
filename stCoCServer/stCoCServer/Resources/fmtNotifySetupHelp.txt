@@ -1,0 +1,1 @@
+   use: !notify <password> <start|stop|period> <period seconds> - Enable or Disable clan notifycation   

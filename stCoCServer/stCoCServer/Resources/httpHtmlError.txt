@@ -1,0 +1,63 @@
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="generator" content="{0}"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="robots" content="noindex,nofollow"/>
+	<title>{1} - {2}</title>
+	<link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+	<link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+	<link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="/assets/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+	<style>
+		body {{
+		  min-height: 75rem;
+		}}
+		.http-error {{
+		  margin: 0 auto;
+		  text-align: center;
+		}}
+		.http-error .error-code {{
+		  bottom: 60%;
+		  color: #4686CC;
+		  font-size: 96px;
+		  line-height: 100px;
+		  font-weight: bold;
+		}}
+		.http-error .error-desc {{
+		  font-size: 12px;
+		  color: #647788;
+		}}
+		.http-error .m-b-10 {{
+		  margin-bottom: 10px!important;
+		}}
+		.http-error .m-b-20 {{
+		  margin-bottom: 20px!important;
+		}}
+		.http-error .m-t-20 {{
+		  margin-top: 20px!important;
+		}}
+	</style>
+</head>
+<body>
+<div class="http-error">
+    <div class="error-code m-b-10 m-t-20">{1}<i class="fa fa-warning"></i></div>
+    <h2 class="font-bold">Oops {1}! {2}</h2>
+    <div class="error-desc">
+        {3}
+        Sorry, but the page you are looking for was either not found or does not exist.<br/>
+        Try refreshing the page or click the button below to go back to the Homepage.
+        <div><br/>
+            <a href="{5}" class="btn btn-primary"><span class="glyphicon glyphicon-home"></span> Go back to Clan</a>
+        </div>
+    </div>    <div class="navbar navbar-default bg-faded navbar-fixed-bottom">
+	<div class="container">
+            <p class="navbar-text pull-left"><span data-localize="srvgen"><b>{4}</b></span>&nbsp;</p>
+            <p class="navbar-text pull-right">{0}</p>
+	</div>
+   </div>
+</div>
+</body>
+</html>

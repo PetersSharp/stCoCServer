@@ -1,0 +1,15 @@
+﻿<#@ include file="..\stUtil.tt" #>
+<#@ output extension=".cs" encoding="utf-8" #>
+
+using System.Reflection;
+
+[assembly: AssemblyDescription("this is part of CoCServer (https://github.com/PetersSharp)")]
+[assembly: AssemblyVersion("<#= this.stVersion #>")]
+[assembly: AssemblyFileVersion("<#= this.stVersion #>")]
+
+<#
+	this.setVersionAssembly(this.stVersion);
+#>
+<#+
+	string stVersion = "1.0.1." + ((int)(DateTime.Now - new DateTime(2016, 1, 1)).Days).ToString();
+#>

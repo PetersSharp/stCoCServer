@@ -1,0 +1,1 @@
+<p class="highlight sysuserexit"><span class="text-primary irctime">{0}</span><span class="text-danger ircval">KICKED: {1} from user '{2}'{3}</span></p>

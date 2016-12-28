@@ -1,0 +1,232 @@
+﻿
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="generator" content="stCoCServer v.1.0.1.351"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="robots" content="noindex,nofollow"/>
+	<meta name="keywords" content="War,Wariors,Donation,CoC,Clash,Clan,Clans,RU"/>
+	
+	<title data-localize="infotitle">Clan information</title>
+
+	<link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+	<link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+	<link href="/assets/css/concat.min.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" charset="utf8" src="/assets/js/concat.min.js"></script>
+
+    	<!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    	<!--
+		// Генератор: Microsoft.VisualStudio.TextTemplating.VSHost.TextTemplatingService
+		// Темплейт: stCoCServer v.1.0.1.351
+		// Время генерации: 12/17/2016 23:06:12
+		// Language to DataTables: https://datatables.net/plug-ins/i18n/
+    	-->
+	<style>
+		body {
+		  min-height: 75rem;
+		}
+	</style>
+
+	<script type='text/javascript' charset='utf8'>	$(document).ready(function() {		$.fn.CoCLanguage('cocclan');		$('#datecontainer').CoCDatePicker(EnumUpdate.urlClan,'updateEmpty');		$('#claninfo').CoCInfo();		$('#cocnotifybox').CoCnotify();	});</script>
+
+</head>
+<body>
+
+    <div class="pos-f-t">
+      <div class="collapse" id="navbar-header">
+        <div class="container-fluid bg-light p-a-1" style="background-color:rgb(241, 241, 241);">
+	  <a class="navbar-brand coclink" href="/assets/html/ClanInfo.html"><span data-localize="navclan">Clan</span> "RU"</a>
+
+                    <ul class="nav navbar-nav">
+            <li><a class="coclink" href="/assets/html/ClanList.html"><span data-localize="navmember">Members</span></a></li>
+            <li><a class="coclink" href="/assets/html/ClanDonation.html"><span data-localize="navdonation">Donation</span></a></li>
+            <li><a class="coclink" href="/assets/html/ClanWar.html"><span data-localize="navclanwars">CW history</span></a></li>
+            <li><a class="coclink" href="/irclog/"><span data-localize="navirc">IRC Archive</span></a></li>
+	  </ul>
+
+
+	  <div class="datehead">
+	    <div id="datecontainer" class="input-group date">
+	       <input type="text" class="form-control datecontrol dateinput" value="" readonly="true" style="background-color:rgb(241, 241, 241);color:#000000;cursor:pointer;border:none;width:100px;float:right;"/>
+	       <span class="input-group-addon datecontrol">
+		 <i class="glyphicon glyphicon-calendar"></i>
+	       </span>
+	    </div>
+	  </div>
+
+          
+
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-faded navbar-static-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-header" style="margin:10px;">
+          &#9776;
+        </button>
+	<span class="lead" data-localize="infotitle">Clan information</span>
+      </div>
+    </div>
+
+    <div class="container-fluid" id="error-box" style="display:none">
+      <div class="row">
+        <div class="col-md-12">
+	    <div class="alert alert-danger fade in gid">
+		<a href="#" class="close" data-dismiss="alert">&times;</a>
+		<strong style="padding-left:50px;" data-localize="errortxt">Error!</strong><span id="error-message"></span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+
+
+	<!-- Modal -->
+	<div id="cocnotifymset" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title" style="color: rgb(212, 132, 12);" data-localize="notifysetuptitle">CoC view event setup</h4>
+	      </div>
+	      <div class="modal-body">
+		<div class="row">
+		  <div class="col-xs-12" id="ssevent"></div>
+		</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" id="notifyclear" data-localize="notifysetupclear">Clear window</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal" data-localize="notifysetupclose">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- end Modal -->
+
+	<center>
+	<table width="70%" id="claninfo" class="claninfo">
+	   <thead>
+		<tr>
+		  <th class="cocclanhead" colspan="3"><span id="cocclanflag"></span>клан <span id="cocclanname">RU</span><span id="cocclanlevel">6</span></th>
+		</tr>
+	   </thead>
+	   <tbody>
+		<tr><td class="cocclanleft">
+		  <div class="cocclantextid"><span data-localize="clanid">Clan ID</span>:<span class="cocclantextval cocfont-braun" id="cocclantag"></span></div>
+		  <div class="cocclantextid"><span data-localize="clanmem">Members</span>:<span class="cocclantextval cocfont-braun" id="cocclanmembers">0/0</span></div>
+		  <div class="cocclantextid"><span data-localize="clanwarweek">Clan wars</span>:<span class="cocclantextval cocfont-braun" id="cocclanwarfreq">&gt; 0/7</span></div>
+		  <div class="cocclantextid"><span data-localize="clanwarwin">War wons</span>:<span class="cocclantextval cocfont-braun" id="cocclanwarwin">0</span></div>
+		  <div class="cocclantextid"><span data-localize="clanwarstr">Wars win series</span>:<span class="cocclantextval cocfont-braun" id="cocclanwarstr">0</span></div>
+		  <div class="cocclantextid"><span data-localize="clanwaris">Public wars</span>:<span class="cocclantextval cocfont-braun" id="cocclanwarpub">?</span></div>
+		</td><td class="cocclancenter">
+		  <div class="cocclancenterimg" id="cocclanimg">
+		     <span class="cocclancentertxt cocfont-braun" id="cocclanleveladd">1</span>
+		  </div>
+		  <div class="cocclantextscore cocfont-braun" id="cocclanscore">0</div>
+		  <div class="cocclantextid cocclantextidcenter" style="margin: 6px 0px;">Вход в клан:<span class="cocclantextval cocfont-braun" id="cocclanin">?</span></div>
+		  <div class="cocclantextid cocclantextidcenter" style="margin: -7px 0px;">Иметь трофеев:<span class="cocclantextval cocfont-braun" id="cocclantrophies">0</span></div>
+		</td><td class="cocclanright">
+		  <div class="cocclantextnote" id="cocclandesc">Description..</div>
+		  <div class="cocclantextid"><span data-localize="clanctryid">Code country</span>:<span class="cocclantextval cocfont-braun" id="cocclanlocctry">..</span></div>
+		  <div class="cocclantextid"><span data-localize="clanctryname">Country</span>:<span class="cocclantextval cocfont-braun" id="cocclanlocname">..</span></div>
+		</td></tr>
+	   </tbody>
+	</table>
+		<div id="cocclanmap"></div>
+		<div class="cocnotify" style="max-height:200px;">
+		    <div>
+			    <span class="cocnotifyinfo notifytext" id="cocnotifyinfo"></span>
+			    <span class="cocnotifysetup" data-toggle="modal" data-target="#cocnotifymset">+</span>
+		    </div>
+		    <div id="cocnotifybox"></div>
+		</div>
+		<div id="statCarousel" class="carousel slide" data-ride="carousel">
+		  <ol class="carousel-indicators">
+		    <li data-target="#statCarousel" data-slide-to="0" class="active"></li>
+		    <li data-target="#statCarousel" data-slide-to="1"></li>
+		    <li data-target="#statCarousel" data-slide-to="2"></li>
+		    <li data-target="#statCarousel" data-slide-to="3"></li>
+		    <li data-target="#statCarousel" data-slide-to="4"></li>
+		    <li data-target="#statCarousel" data-slide-to="5"></li>
+		    <li data-target="#statCarousel" data-slide-to="6"></li>
+		    <li data-target="#statCarousel" data-slide-to="7"></li>
+		    <li data-target="#statCarousel" data-slide-to="8"></li>
+		    <li data-target="#statCarousel" data-slide-to="9"></li>
+		    <li data-target="#statCarousel" data-slide-to="10"></li>
+		    <li data-target="#statCarousel" data-slide-to="11"></li>
+		  </ol>
+
+		  <div class="carousel-inner" role="listbox">
+		    <div class="item active">
+		      <img src="/assets/images/rrd/MemberChangeDonationSend-Day.png" alt="Member Donation - Day">
+		    </div>
+		    <div class="item">
+		      <img src="/assets/images/rrd/MemberChangeDonationSend-Week.png" alt="Member Donation - Week">
+		    </div>
+		    <div class="item">
+		      <img src="/assets/images/rrd/MemberChangeDonationSend-Month.png" alt="Member Donation - Month">
+		    </div>
+		    <div class="item">
+		      <img src="/assets/images/rrd/MemberChangeDonationSend-Year.png" alt="Member Donation - Year">
+		    </div>
+
+		    <div class="item">
+		      <img src="/assets/images/rrd/ClanChangePoints-Day.png" alt="Clan Points - Day">
+		    </div>
+		    <div class="item">
+		      <img src="/assets/images/rrd/ClanChangePoints-Week.png" alt="Clan Points - Week">
+		    </div>
+		    <div class="item">
+		      <img src="/assets/images/rrd/ClanChangePoints-Month.png" alt="Clan Points - Month">
+		    </div>
+		    <div class="item">
+		      <img src="/assets/images/rrd/ClanChangePoints-Year.png" alt="Clan Points - Year">
+		    </div>
+
+		    <div class="item">
+		      <img src="/assets/images/rrd/ClanChangeWarWin-Week.png" alt="Clan War Win - Week">
+		    </div>
+		    <div class="item">
+		      <img src="/assets/images/rrd/ClanChangeWarWin-Month.png" alt="Clan War Win - Month">
+		    </div>
+		    <div class="item">
+		      <img src="/assets/images/rrd/ClanChangeWarWin-Year.png" alt="Clan War Win - Year">
+		    </div>
+
+		  <a class="left stcarousel-control" href="#statCarousel" role="button" data-slide="prev">
+		    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		    <span class="sr-only">Previous</span>
+		  </a>
+		  <a class="right stcarousel-control" href="#statCarousel" role="button" data-slide="next">
+		    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		    <span class="sr-only">Next</span>
+		  </a>
+		</div>
+                <div style="width:70%;height:70px;"></div>
+	</center>
+
+
+        </div>
+      </div>
+    </div>
+	
+    <div class="navbar navbar-default bg-faded navbar-fixed-bottom">
+	<div class="container">
+		<p class="navbar-text pull-left"><span data-localize="notifyname">Notify</span>:&nbsp;<a href="/notify/rss/" target="_blank">RSS</a>&nbsp;|&nbsp;<a href="/notify/json/" target="_blank">JSON</a></p>
+		<p class="navbar-text pull-left"><span data-localize="srvgen">Generated</span>:&nbsp;<a href="#" target="_blank"><span id="srvgen">stCoCServer v.1.0.1.351</span></a></p>
+		<p class="navbar-text pull-right">
+			<span class="glyphicon glyphicon-calendar"></span>&nbsp;
+			<span data-localize="srvdate">Date</span>: <span id="srvdate">2016.12.17</span>
+		</p>
+	</div>
+   </div>
+
+</body>
+</html>
+

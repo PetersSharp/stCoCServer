@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PublishUrlHistory>C:\Documents and Settings\Dom\Мои документы\Visual Studio 2010\Projects\__ST\IRCBoot\Build\stCoCServer\|C:\Documents and Settings\Dom\Мои документы\Visual Studio 2010\Projects\__ST\IRCBoot\stCoCServer\Build\stCoCServer\|C:\Documents and Settings\Dom\Мои документы\Visual Studio 2010\Projects\__ST\IRCBoot\stCoCServer\Build\|publish\</PublishUrlHistory>
+    <InstallUrlHistory>http://cocserver.pick-nik.ru/install/stCoCServer/|http://cocserver.pick-nik.ru/support/stCoCServer/</InstallUrlHistory>
+    <SupportUrlHistory>http://cocserver.pick-nik.ru/support/|http://cocserver.pick-nik.ru/</SupportUrlHistory>
+    <UpdateUrlHistory>http://cocserver.pick-nik.ru/update/</UpdateUrlHistory>
+    <BootstrapperUrlHistory />
+    <ErrorReportUrlHistory>http://cocserver.pick-nik.ru/support/setuperror/</ErrorReportUrlHistory>
+    <FallbackCulture>ru-RU</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
+</Project>

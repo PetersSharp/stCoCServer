@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cmdMissingArgument" xml:space="preserve">
+    <value>неподходящее количество аргументов для команды</value>
+  </data>
+  <data name="PrnRunIrcHelp" xml:space="preserve">
+    <value>Напишите @help для того чтобы спросить меня..</value>
+  </data>
+  <data name="fmtClanDonation" xml:space="preserve">
+    <value>ТОП {0} лучших пожертвований {1} в клане</value>
+  </data>
+  <data name="fmtFetchTitle" xml:space="preserve">
+    <value>{0}, URL '{1}' называется: {2}</value>
+  </data>
+  <data name="cmdFetchTitleError" xml:space="preserve">
+    <value>{0} ошибка выборки названия сайта: {1}</value>
+  </data>
+  <data name="cmdUrlShortOK" xml:space="preserve">
+    <value>{0}, URL '{1}' сокращен: {2}</value>
+  </data>
+  <data name="cmdUrlShortError" xml:space="preserve">
+    <value>URL {0} ошибка: {1}</value>
+  </data>
+  <data name="cmdUserPrivateOnly" xml:space="preserve">
+    <value>Команды управления системой могут отправлять только личные сообщения</value>
+  </data>
+  <data name="cmdSetUserModeOk" xml:space="preserve">
+    <value>{0} задать режим пользователя для канала {1}: '{2}'</value>
+  </data>
+  <data name="cmdSetTopicOk" xml:space="preserve">
+    <value>{0} задать тему для канала {1}: '{2}'</value>
+  </data>
+  <data name="cmdEmptyBody" xml:space="preserve">
+    <value>команда пуста</value>
+  </data>
+  <data name="cmdUserNotAllowed" xml:space="preserve">
+    <value>неверная авторизация, отменено!</value>
+  </data>
+  <data name="PrnConnected" xml:space="preserve">
+    <value>Подключение: {0} / канал: {1}</value>
+  </data>
+  <data name="prnYes" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="prnNo" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="cmdQueryWrong" xml:space="preserve">
+    <value>запрос неправильно</value>
+  </data>
+  <data name="cmdQueryEmpty" xml:space="preserve">
+    <value>запрос не информация для вас</value>
+  </data>
+  <data name="cnfEmpty" xml:space="preserve">
+    <value>Конфигурация пуста</value>
+  </data>
+  <data name="cmdNoSQL" xml:space="preserve">
+    <value>Статистика базы временно недоступна</value>
+  </data>
+  <data name="cmdNotConnect" xml:space="preserve">
+    <value>[CMD анализатор]: IRC клиент не подключен..</value>
+  </data>
+  <data name="PrnRun" xml:space="preserve">
+    <value>{0} выполняется...  [{1}]</value>
+  </data>
+  <data name="PrnExit" xml:space="preserve">
+    <value>Выход завершен удачно</value>
+  </data>
+  <data name="fmtTime" xml:space="preserve">
+    <value>{0} {1} время: {2}</value>
+  </data>
+  <data name="fmtUpTime" xml:space="preserve">
+    <value>{0} {1} время ОнЛайн: {2}</value>
+  </data>
+  <data name="fmtSpeak" xml:space="preserve">
+    <value>{0} {1} говорит: {2}</value>
+  </data>
+  <data name="PrnOK" xml:space="preserve">
+    <value>Ок</value>
+  </data>
+  <data name="fmtMembersTotal" xml:space="preserve">
+    <value>Всего участников: {0}/50</value>
+  </data>
+  <data name="httpDateLogTitle" xml:space="preserve">
+    <value>IRC архив для ведения журнала: {0} - {1} - {2}</value>
+  </data>
+  <data name="httpLogNotFound" xml:space="preserve">
+    <value>IRC журнал не найден для даты {0}-{1}-{2}</value>
+  </data>
+  <data name="ircLogArchive" xml:space="preserve">
+    <value>IRC канал '{0}' Архив журнала</value>
+  </data>
+  <data name="fmtClanWar" xml:space="preserve">
+    <value>Статистика {0} клановых войн</value>
+  </data>
+  <data name="cmdIrcQueryEmpty" xml:space="preserve">
+    <value>пустой запрос IRC команды</value>
+  </data>
+  <data name="fmtConfErrorException" xml:space="preserve">
+    <value>Ошибка конфигурации: {0}!</value>
+  </data>
+  <data name="fmtConfMissException" xml:space="preserve">
+    <value>Отсутствует настройки: {0}</value>
+  </data>
+  <data name="ircBootDisabled" xml:space="preserve">
+    <value>IRC Бот отключен в конфигурации!</value>
+  </data>
+  <data name="httpServerDisabled" xml:space="preserve">
+    <value>HTTP сервер отключен в конфигурации!</value>
+  </data>
+  <data name="serviceCoCApiStarted" xml:space="preserve">
+    <value>Сервис: началось обновление CoC базы..</value>
+  </data>
+  <data name="serviceIrcLogStarted" xml:space="preserve">
+    <value>Сервис: IRC журнал открыт..</value>
+  </data>
+  <data name="serviceTemplateStarted" xml:space="preserve">
+    <value>Сервис: HTTP Шаблонизатор запущен..</value>
+  </data>
+  <data name="serviceHttpStarted" xml:space="preserve">
+    <value>Сервис: HTTP сервер запущен..</value>
+  </data>
+  <data name="serviceIrcBotStarted" xml:space="preserve">
+    <value>Сервис: IRC бот запущен..</value>
+  </data>
+  <data name="serviceGeoStarted" xml:space="preserve">
+    <value>Сервис: IP GEO фильтр запущен..</value>
+  </data>
+  <data name="GeoFilterDisabled" xml:space="preserve">
+    <value>IP-GEO фильтр отключен в конфигурации</value>
+  </data>
+  <data name="serviceSysLogStarted" xml:space="preserve">
+    <value>Сервис: SysLog запущен..</value>
+  </data>
+  <data name="serviceSysLogStartFailed" xml:space="preserve">
+    <value>Сервис: не удалось запустить SysLog: {0}</value>
+  </data>
+  <data name="serviceSysLogSendFailed" xml:space="preserve">
+    <value>Сервис: SysLog отправка не удалась: {0}</value>
+  </data>
+  <data name="PrnJob" xml:space="preserve">
+    <value>{0} ождает следующее событие.. [{1}]</value>
+  </data>
+  <data name="fmtNotifyUrlError" xml:space="preserve">
+    <value>Неправильный URL АДРЕС, используйте: &lt;b&gt;/notify/sse/&lt;/b&gt;, &lt;b&gt;/notify/rss/&lt;/b&gt;, &lt;b&gt;/notify/json/&lt;/b&gt;</value>
+  </data>
+  <data name="cmdPluginDisabled" xml:space="preserve">
+    <value>Этот плагин отключен в конфигурации</value>
+  </data>
+  <data name="prnLangCulture" xml:space="preserve">
+    <value>текущий языка интерфейса: {0}</value>
+  </data>
+  <data name="PrnError" xml:space="preserve">
+    <value>ОШИБКА</value>
+  </data>
+  <data name="SysLogDisabled" xml:space="preserve">
+    <value>SysLog отключен в конфигурации!</value>
+  </data>
+  <data name="cmdQueryError" xml:space="preserve">
+    <value>Запроса вернул ошибку</value>
+  </data>
+  <data name="prnLangCultureError" xml:space="preserve">
+    <value>ошибка установки языка, '{0}': {1}</value>
+  </data>
+</root>

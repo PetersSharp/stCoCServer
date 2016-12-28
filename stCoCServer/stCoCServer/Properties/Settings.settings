@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="stCoCServer.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="setVersion" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{0}{1} (st) IRC-Bot v.{2} (http://clanru.pick-nik.ru/wiki:ircbot)</Value>
+    </Setting>
+    <Setting Name="setHttpContentDisposition" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">inline; filename="{0}"</Value>
+    </Setting>
+    <Setting Name="setHttpJSONBadRequest" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{{"error":{0},"msg":"Bad request, reason: {1}","data":[{2}]}}</Value>
+    </Setting>
+    <Setting Name="setPrnTemplate" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{0}(st) IRC-Bot {1}:{0}{2}{3}</Value>
+    </Setting>
+    <Setting Name="setCoCHttpClient" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">CoC Client</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

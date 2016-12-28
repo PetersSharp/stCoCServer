@@ -1,0 +1,1 @@
+   use: @say <message> - Send message from bot   

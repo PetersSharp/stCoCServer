@@ -1,0 +1,1 @@
+<p class="highlight sysuserjoined"><span class="text-primary irctime">{0}</span><span class="text-success ircval">{1} Joined..</span></p>

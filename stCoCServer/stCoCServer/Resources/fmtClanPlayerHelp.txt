@@ -1,0 +1,1 @@
+   use: @clan player <id> - Clan member information   

@@ -1,0 +1,68 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="stGeo.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="stGeoKey" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string /&gt;
+  &lt;string&gt;5jVVtbLUJnjEIyII17ZlKzwkEi2gwqMB&lt;/string&gt;
+  &lt;string /&gt;
+  &lt;string /&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="stGeoHelpURL" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string /&gt;
+  &lt;string&gt;https://developer.mapquest.com/plan_purchase/steps/business_edition/business_edition_free/register&lt;/string&gt;
+  &lt;string&gt;https://tech.yandex.ru/maps/&lt;/string&gt;
+  &lt;string&gt;https://developers.google.com/maps/documentation/static-maps/get-api-key&lt;/string&gt;
+  &lt;string /&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="stGeoURL" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string /&gt;
+  &lt;string&gt;https://www.mapquestapi.com/staticmap/v4/getplacemap&lt;/string&gt;
+  &lt;string&gt;https://static-maps.yandex.ru/1.x/&lt;/string&gt;
+  &lt;string&gt;https://maps.googleapis.com/maps/api/staticmap&lt;/string&gt;
+  &lt;string /&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="stGeoKeyRequire" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;false&lt;/string&gt;
+  &lt;string&gt;true&lt;/string&gt;
+  &lt;string&gt;false&lt;/string&gt;
+  &lt;string&gt;true&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="stFileMaxMindASN" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">GeoIPASNum2.csv</Value>
+    </Setting>
+    <Setting Name="stFileMaxMindCountry" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">GeoIPCountryWhois.csv</Value>
+    </Setting>
+    <Setting Name="stFileGeoData" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">stGeoData.bin</Value>
+    </Setting>
+    <Setting Name="stMaxMindASNPrefix" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">AS</Value>
+    </Setting>
+    <Setting Name="stZipFileMaxMindASN" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">GeoIPASNum2.zip</Value>
+    </Setting>
+    <Setting Name="stZipFileMaxMindCountry" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">GeoIPCountryCSV.zip</Value>
+    </Setting>
+    <Setting Name="stMaxMindDownloadCountryURL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://geolite.maxmind.com/download/geoip/database/</Value>
+    </Setting>
+    <Setting Name="stMaxMindDownloadASNURL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://download.maxmind.com/download/geoip/database/asnum/</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

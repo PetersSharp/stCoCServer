@@ -1,0 +1,1 @@
+<p class="highlight sysexchnik"><span class="text-primary irctime">{0}</span><span class="text-danger ircnik">Change Nick:</span><span class="text-danger ircval">{1}</span>-&lt;<span class="text-warning ircval">{2}</span></p>
