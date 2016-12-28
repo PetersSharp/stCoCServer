@@ -1,0 +1,73 @@
+﻿<#@ include file="..\..\..\stUtil.tt" #>
+<#@ output extension=".html" encoding="utf-8" #>
+<#
+	this.headerMenu = this.GetFromProjectFile(
+	 new string [] {
+		"data",
+		"assets",
+		"html",
+		"tmplMenuClan.ttinclude"
+	 }
+	);
+	this.headerGenrate = this.footerVersion = this.GetProgName();
+	string fv = this.getVersionAssembly();
+	if (!string.IsNullOrWhiteSpace(fv)) {
+		this.footerVersion = this.footerVersion + " v." + fv;
+		this.headerGenrate = this.footerVersion;
+	}
+#>
+<#@ include file="tmplHeader.ttinclude" #>
+
+	<table id="clanwar" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th class="cocth">.</th>
+                <th class="cocth" data-localize="th2w">War end</th>
+                <th class="cocth" data-localize="th3w">War result</th>
+                <th class="cocth" data-localize="th4w">Clan attacks</th>
+                <th class="cocth" data-localize="th5w">Clan destruct</th>
+                <th class="cocth" data-localize="th6w">Clan experience</th>
+                <th class="cocth" data-localize="th7w">Clan stars</th>
+                <th class="cocth"></th>
+                <th class="cocth" data-localize="th8w">CW War</th>
+                <th class="cocth"></th>
+                <th class="cocth" data-localize="th9w">Opponent attacks</th>
+                <th class="cocth" data-localize="th10w">Opponent destruct</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th class="cocth">.</th>
+                <th class="cocth" data-localize="th2w">War end</th>
+                <th class="cocth" data-localize="th3w">War result</th>
+                <th class="cocth" data-localize="th4w">Clan attacks</th>
+                <th class="cocth" data-localize="th5w">Clan destruct</th>
+                <th class="cocth" data-localize="th6w">Clan experience</th>
+                <th class="cocth" data-localize="th7w">Clan stars</th>
+                <th class="cocth"></th>
+                <th class="cocth" data-localize="th8w">CW War</th>
+                <th class="cocth"></th>
+                <th class="cocth" data-localize="th9w">Opponent attacks</th>
+                <th class="cocth" data-localize="th10w">Opponent destruct</th>
+            </tr>
+        </tfoot>
+	</table>
+
+<#@ include file="tmplFooter.ttinclude" #>
+<#+
+	string headerMenu = "";
+	string headerCheckBox = "";
+	string titleId = "wartitle";
+	string titleText = "Clan War history";
+	string footerDate = DateTime.Now.ToString("yyyy/MM/dd");
+	string footerVersion = "";
+	string headerGenrate = "";
+	string srcJavaScript = 
+	"<script type='text/javascript' charset='utf8'>" +
+	"	$(document).ready(function() {" +
+	"		$.fn.CoCLanguage('cocclan');" +
+	"		$('#datecontainer').css('display','none');" +
+	"		$('#clanwar').CoCWar();" +
+	"	});" +
+	"</script>";
+#>

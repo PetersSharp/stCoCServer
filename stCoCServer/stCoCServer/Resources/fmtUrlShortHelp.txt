@@ -1,0 +1,1 @@
+   use: @short <url> <rlu|tinyurl> - Shorter URL string   

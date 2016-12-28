@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="PrnError" xml:space="preserve">
+    <value>ERROR</value>
+  </data>
+  <data name="PrnOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="fmtSpeak" xml:space="preserve">
+    <value>{0}{1} speak: {2}</value>
+  </data>
+  <data name="fmtTime" xml:space="preserve">
+    <value>{0}{1} Time: {2}</value>
+  </data>
+  <data name="fmtUpTime" xml:space="preserve">
+    <value>{0}{1} UpTime: {2}</value>
+  </data>
+  <data name="PrnExit" xml:space="preserve">
+    <value>Exited gracefully..</value>
+  </data>
+  <data name="PrnRun" xml:space="preserve">
+    <value>{0}  is running..  [{1}]</value>
+  </data>
+  <data name="cmdNotConnect" xml:space="preserve">
+    <value>[CMD Parser]: irc client not connected..</value>
+  </data>
+  <data name="cmdNoSQL" xml:space="preserve">
+    <value>statistic base temporary down..</value>
+  </data>
+  <data name="cnfEmpty" xml:space="preserve">
+    <value>Configuration empty or null</value>
+  </data>
+  <data name="cmdQueryError" xml:space="preserve">
+    <value>error return query request</value>
+  </data>
+  <data name="cmdQueryEmpty" xml:space="preserve">
+    <value>no iformation for you request</value>
+  </data>
+  <data name="cmdQueryWrong" xml:space="preserve">
+    <value>you request is wrong</value>
+  </data>
+  <data name="prnNo" xml:space="preserve">
+    <value>NO</value>
+  </data>
+  <data name="prnYes" xml:space="preserve">
+    <value>YES</value>
+  </data>
+  <data name="PrnConnected" xml:space="preserve">
+    <value>Connected: {0} / Channel: {1}</value>
+  </data>
+  <data name="cmdUserNotAllowed" xml:space="preserve">
+    <value>wrong authorize string, abort</value>
+  </data>
+  <data name="cmdEmptyBody" xml:space="preserve">
+    <value>no command body set</value>
+  </data>
+  <data name="cmdSetTopicOk" xml:space="preserve">
+    <value>{0} set topic to channel {1}: "{2}"</value>
+  </data>
+  <data name="cmdSetUserModeOk" xml:space="preserve">
+    <value>{0} set user mode for channel {1}: "{2}"</value>
+  </data>
+  <data name="cmdUserPrivateOnly" xml:space="preserve">
+    <value>system management command send only in private message!</value>
+  </data>
+  <data name="cmdMissingArgument" xml:space="preserve">
+    <value>incomptible argument count to command</value>
+  </data>
+  <data name="PrnRunIrcHelp" xml:space="preserve">
+    <value>type @help for ask me..</value>
+  </data>
+  <data name="cmdUrlShortError" xml:space="preserve">
+    <value>URL '{0}' error: {1}</value>
+  </data>
+  <data name="cmdUrlShortOK" xml:space="preserve">
+    <value>{0}, yor URL '{1}' is shorted: {2}</value>
+  </data>
+  <data name="cmdFetchTitleError" xml:space="preserve">
+    <value>{0} error fetching website title: {1}</value>
+  </data>
+  <data name="fmtFetchTitle" xml:space="preserve">
+    <value>{0},  URL '{1}' is: {2}</value>
+  </data>
+  <data name="fmtClanDonation" xml:space="preserve">
+    <value>TOP {0} best warrior donation {1} in Clan members</value>
+  </data>
+  <data name="fmtMembersTotal" xml:space="preserve">
+    <value> Total members: {0}/50 </value>
+  </data>
+  <data name="httpDateLogTitle" xml:space="preserve">
+    <value>IRC archive logging for: {0}-{1}-{2}</value>
+  </data>
+  <data name="httpLogNotFound" xml:space="preserve">
+    <value>IRC Log not found for date {0}-{1}-{2}</value>
+  </data>
+  <data name="ircLogArchive" xml:space="preserve">
+    <value>IRC channel '{0}' Log Archive</value>
+  </data>
+  <data name="fmtClanWar" xml:space="preserve">
+    <value>Show {0} Clan Wars statistic</value>
+  </data>
+  <data name="cmdIrcQueryEmpty" xml:space="preserve">
+    <value>empty IRC CoC command query</value>
+  </data>
+  <data name="fmtConfErrorException" xml:space="preserve">
+    <value>Configuration error: {0}</value>
+  </data>
+  <data name="fmtConfMissException" xml:space="preserve">
+    <value>Configuration missing: {0}</value>
+  </data>
+  <data name="ircBootDisabled" xml:space="preserve">
+    <value>IRC Bot disabled in configuration</value>
+  </data>
+  <data name="httpServerDisabled" xml:space="preserve">
+    <value>HTTP server disabled in configuration</value>
+  </data>
+  <data name="serviceCoCApiStarted" xml:space="preserve">
+    <value>service: CoC Update started..</value>
+  </data>
+  <data name="serviceIrcLogStarted" xml:space="preserve">
+    <value>service: IRC Logging started..</value>
+  </data>
+  <data name="serviceTemplateStarted" xml:space="preserve">
+    <value>service: HTTP Template started..</value>
+  </data>
+  <data name="serviceHttpStarted" xml:space="preserve">
+    <value>service: HTTP Server started..</value>
+  </data>
+  <data name="serviceIrcBotStarted" xml:space="preserve">
+    <value>service: IRC Bot started..</value>
+  </data>
+  <data name="serviceGeoStarted" xml:space="preserve">
+    <value>service: IP GEO Filter started..</value>
+  </data>
+  <data name="GeoFilterDisabled" xml:space="preserve">
+    <value>IP GEO Filter disabled in configuration</value>
+  </data>
+  <data name="serviceSysLogStarted" xml:space="preserve">
+    <value>service: SysLog started..</value>
+  </data>
+  <data name="serviceSysLogStartFailed" xml:space="preserve">
+    <value>service: SysLog start failed: {0}</value>
+  </data>
+  <data name="SysLogDisabled" xml:space="preserve">
+    <value>SysLog disabled in configuration</value>
+  </data>
+  <data name="serviceSysLogSendFailed" xml:space="preserve">
+    <value>service: SysLog send failed: {0}</value>
+  </data>
+  <data name="PrnJob" xml:space="preserve">
+    <value>{0} wait job event.. [{1}]</value>
+  </data>
+  <data name="fmtNotifyUrlError" xml:space="preserve">
+    <value>Incorrect  URL, use: &lt;b&gt;/notify/sse/&lt;/b&gt;, &lt;b&gt;/notify/rss/&lt;/b&gt;, &lt;b&gt;/notify/json/&lt;/b&gt;</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="httpHtmlError" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\httpHtmlError.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="ircChannelMessage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ircChannelMessage.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="ircNoticeMessage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ircNoticeMessage.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="ircPrivateMessage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ircPrivateMessage.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="ircServerMessage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ircServerMessage.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="ircUserChangeNick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ircUserChangeNick.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="ircUserExit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ircUserExit.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="ircUserJoined" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ircUserJoined.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="ircUserKicked" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ircUserKicked.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="fmtAnswerList" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fmtAnswerList.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="fmtClanDonationHelp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fmtClanDonationHelp.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="fmtClanHelp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fmtClanHelp.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="fmtClanInfoHelp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fmtClanInfoHelp.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="fmtClanListHelp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fmtClanListHelp.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="fmtClanPlayerHelp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fmtClanPlayerHelp.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="fmtSetCommandHelp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fmtSetCommandHelp.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="fmtSpeakHelp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fmtSpeakHelp.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="fmtTimeHelp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fmtTimeHelp.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="fmtUpTimeHelp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fmtUpTimeHelp.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="fmtUrlShortHelp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fmtUrlShortHelp.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="fmtWarLastHelp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fmtWarLastHelp.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="fmtWarLogHelp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fmtWarLogHelp.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="cmdPluginDisabled" xml:space="preserve">
+    <value>this Plugin Disabled from configuration</value>
+  </data>
+  <data name="prnLangCulture" xml:space="preserve">
+    <value>using current language: {0}</value>
+  </data>
+  <data name="prnLangCultureError" xml:space="preserve">
+    <value>error set  language, '{0}': {1}</value>
+  </data>
+  <data name="PrnIrcPluginContextUrlTitleStart" xml:space="preserve">
+    <value>IRC plugin URL Title enabled..</value>
+  </data>
+  <data name="PrnIrcPluginLoopClanNotifyStart" xml:space="preserve">
+    <value>IRC plugin Notify started.. respawn message time: {0}</value>
+  </data>
+  <data name="cmdClanNotifyError" xml:space="preserve">
+    <value>[Plugin Clan Notify]: {0}</value>
+  </data>
+  <data name="fmtNotifySetupAction" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fmtNotifySetupAction.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="fmtNotifySetupHelp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fmtNotifySetupHelp.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="fmtNotifySetupPeriod" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fmtNotifySetupPeriod.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="fmtLangSetupError" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fmtLangSetupError.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="fmtLangSetupHelp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fmtLangSetupHelp.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="fmtLangSetupOk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fmtLangSetupOk.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+</root>

@@ -1,0 +1,19 @@
+	<form class="navbar-form pull-left">
+	<div class="checkbox navbar-btn" style="padding:8px;">
+		<label class="navbar-link" for="filterChanMsg">
+			<input type="checkbox" checked class="autosubmit" id="filterChanMsg" value="true" data-class="chanmsg"/> <span data-localize="schannel">show Channel</span>
+        </label>&nbsp;&nbsp;
+		<label class="navbar-link" for="filterNoteMsg">
+			<input type="checkbox" checked class="autosubmit" id="filterNoteMsg" value="true" data-class="notemsg"/> <span data-localize="snotice">show Notice</span>
+        </label>&nbsp;&nbsp;
+		<label class="navbar-link" for="filterUsrJoined">
+			<input type="checkbox" checked class="autosubmit" id="filterUsrJoined" value="true" data-class="sysuserjoined"/> <span data-localize="sjoin">show User joined</span>
+        </label>&nbsp;&nbsp;
+		<label class="navbar-link" for="filterUsrExit">
+			<input type="checkbox" checked class="autosubmit" id="filterUsrExit" value="true" data-class="sysuserexit"/> <span data-localize="sexit">show User exit</span>
+        </label>&nbsp;&nbsp;
+		<label class="navbar-link" for="filterServerMsg">
+			<input type="checkbox" class="autosubmit" id="filterServerMsg" value="true" data-class="servermsg"/> <span data-localize="sserver">show Server</span>
+        </label>&nbsp;&nbsp;
+	</div>
+	</form>

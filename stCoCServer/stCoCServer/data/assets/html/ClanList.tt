@@ -1,0 +1,81 @@
+﻿<#@ include file="..\..\..\stUtil.tt" #>
+<#@ output extension=".html" encoding="utf-8" #>
+<#
+	this.headerMenu = this.GetFromProjectFile(
+	 new string [] {
+		"data",
+		"assets",
+		"html",
+		"tmplMenuClan.ttinclude"
+	 }
+	);
+	this.headerCheckBox = this.GetFromProjectFile(
+	 new string [] {
+		"data",
+		"assets",
+		"html",
+		"tmplMenuCheckBox.ttinclude"
+	 }
+	);
+	this.headerGenrate = this.footerVersion = this.GetProgName();
+	string fv = this.getVersionAssembly();
+	if (!string.IsNullOrWhiteSpace(fv)) {
+		this.footerVersion = this.footerVersion + " v." + fv;
+		this.headerGenrate = this.footerVersion;
+	}
+#>
+<#@ include file="tmplHeader.ttinclude" #>
+
+	<table id="clanlist" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th class="cocth">.</th>
+                <th class="cocth" data-localize="th2">nik</th>
+                <th class="cocth" data-localize="th3">role</th>
+                <th class="cocth" data-localize="th4">trophies</th>
+                <th class="cocth" data-localize="th5">warriors+</th>
+                <th class="cocth" data-localize="th6">warriors-</th>
+                <th class="cocth" data-localize="th7">ratio</th>
+                <th class="cocth" data-localize="th8">level</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+              <th class="cocth">.</th>
+                <th class="cocth" data-localize="th2">nik</th>
+                <th class="cocth" data-localize="th3">role</th>
+                <th class="cocth" data-localize="th4">trophies</th>
+                <th class="cocth" data-localize="th5">warriors+</th>
+                <th class="cocth" data-localize="th6">warriors-</th>
+                <th class="cocth" data-localize="th7">ratio</th>
+                <th class="cocth" data-localize="th8">level</th>
+            </tr>
+        </tfoot>
+	</table>
+
+<#@ include file="tmplFooter.ttinclude" #>
+<#+
+	string headerMenu = "";
+	string headerCheckBox = "";
+	string titleId = "clantitle";
+	string titleText = "Clan member list";
+	string footerDate = DateTime.Now.ToString("yyyy/MM/dd");
+	string footerVersion = "";
+	string headerGenrate = "";
+	string srcJavaScript = 
+	"<script type='text/javascript' charset='utf8'>" +
+	"	$(document).ready(function() {" +
+	"		$.fn.CoCLanguage('cocclan');" +
+	"		$('#datecontainer').CoCDatePicker(EnumUpdate.urlClan,'reloadDataTable');" +
+	"		$('#clanlist').CoCList();" +
+	"		$('#filterMembers').change(function() {" +
+	"			if($(this).is(':checked')) {" +
+	"				isUserFilter(true);" +
+	"			} else {" +
+	"				isUserFilter(false);" +
+	"			}" +
+	"			reloadDataTable();" +
+	"		});" +
+	"	});" +
+	"</script>";
+#>

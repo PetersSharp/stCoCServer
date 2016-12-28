@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F0B2EE9E-E059-4A6E-83A7-254515BD35FE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>stRrdGraph</RootNamespace>
+    <AssemblyName>stRrdGraph</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\stVersion\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Core\ArcDef.cs" />
+    <Compile Include="Core\Archive.cs" />
+    <Compile Include="Core\ArcState.cs" />
+    <Compile Include="Core\Datasource.cs" />
+    <Compile Include="Core\DsDef.cs" />
+    <Compile Include="Core\FetchData.cs" />
+    <Compile Include="Core\FetchPoint.cs" />
+    <Compile Include="Core\FetchRequest.cs" />
+    <Compile Include="Core\Header.cs" />
+    <Compile Include="Core\IRrdUpdatable.cs" />
+    <Compile Include="Core\Robin.cs" />
+    <Compile Include="Core\RpnCalculator.cs" />
+    <Compile Include="Core\RrdDb.cs" />
+    <Compile Include="Core\RrdDef.cs" />
+    <Compile Include="Core\RrdDouble.cs" />
+    <Compile Include="Core\RrdDoubleArray.cs" />
+    <Compile Include="Core\RrdException.cs" />
+    <Compile Include="Core\RrdFile.cs" />
+    <Compile Include="Core\RrdInt.cs" />
+    <Compile Include="Core\RrdLong.cs" />
+    <Compile Include="Core\RrdPrimative.cs" />
+    <Compile Include="Core\RrdString.cs" />
+    <Compile Include="Core\Sample.cs" />
+    <Compile Include="Core\Util.cs" />
+    <Compile Include="Graph\Area.cs" />
+    <Compile Include="Graph\Cdef.cs" />
+    <Compile Include="Graph\ChartGraphics.cs" />
+    <Compile Include="Graph\ChartPanel.cs" />
+    <Compile Include="Graph\Comment.cs" />
+    <Compile Include="Graph\CubicSplineInterpolator.cs" />
+    <Compile Include="Graph\CustomArea.cs" />
+    <Compile Include="Graph\CustomLine.cs" />
+    <Compile Include="Graph\Def.cs" />
+    <Compile Include="Graph\FetchSource.cs" />
+    <Compile Include="Graph\Gprint.cs" />
+    <Compile Include="Graph\Grapher.cs" />
+    <Compile Include="Graph\GridRange.cs" />
+    <Compile Include="Graph\IPlottable.cs" />
+    <Compile Include="Graph\Legend.cs" />
+    <Compile Include="Graph\LegendMaker.cs" />
+    <Compile Include="Graph\Line.cs" />
+    <Compile Include="Graph\LineInterpolator.cs" />
+    <Compile Include="Graph\Pdef.cs" />
+    <Compile Include="Graph\PlotDef.cs" />
+    <Compile Include="Graph\RpnCalculator.cs" />
+    <Compile Include="Graph\RrdGraph.cs" />
+    <Compile Include="Graph\RrdGraphDef.cs" />
+    <Compile Include="Graph\Source.cs" />
+    <Compile Include="Graph\Stack.cs" />
+    <Compile Include="Graph\TimeAxisLabel.cs" />
+    <Compile Include="Graph\TimeAxisUnit.cs" />
+    <Compile Include="Graph\TimeGrid.cs" />
+    <Compile Include="Graph\TimeMarker.cs" />
+    <Compile Include="Graph\Title.cs" />
+    <Compile Include="Graph\ValueAxisUnit.cs" />
+    <Compile Include="Graph\ValueExtractor.cs" />
+    <Compile Include="Graph\ValueFormatter.cs" />
+    <Compile Include="Graph\ValueGrid.cs" />
+    <Compile Include="Graph\ValueMarker.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\stCore-dll\stCore.csproj">
+      <Project>{0569D275-72F8-4A31-B04C-653725F58B72}</Project>
+      <Name>stCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

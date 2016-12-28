@@ -1,0 +1,1 @@
+   use: !<command> <password> <value> - Set system command, valid: mode, topic   

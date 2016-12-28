@@ -1,0 +1,1 @@
+<p class="highlight privmsg"><span class="text-primary irctime">{0}</span><span class="text-warning ircfrom">{1}:</span><span class="text-muted ircmsg">{2}</span></p>

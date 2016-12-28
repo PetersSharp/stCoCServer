@@ -1,0 +1,7 @@
+	<form class="navbar-form pull-right">
+	  <div class="checkbox navbar-btn" style="padding:8px;">
+		<label class="navbar-link" for="filterMembers">
+		   <input type="checkbox" checked="true" class="autosubmit" id="filterMembers" value="true"/> <span data-localize="actualuser">show current members</span>
+	        </label>&nbsp;&nbsp;
+          </div>
+	</form>

@@ -1,0 +1,142 @@
+﻿
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="generator" content="stCoCServer v.1.0.1.362"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="robots" content="noindex,nofollow"/>
+	<meta name="keywords" content="War,Wariors,Donation,CoC,Clash,Clan,Clans,RU"/>
+	
+	<title data-localize="clantitle">Clan member list</title>
+
+	<link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+	<link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+	<link href="/assets/css/concat.min.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" charset="utf8" src="/assets/js/concat.min.js"></script>
+
+    	<!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    	<!--
+		// Генератор: Microsoft.VisualStudio.TextTemplating.VSHost.TextTemplatingService
+		// Темплейт: stCoCServer v.1.0.1.362
+		// Время генерации: 12/28/2016 20:09:54
+		// Language to DataTables: https://datatables.net/plug-ins/i18n/
+    	-->
+	<style>
+		body {
+		  min-height: 75rem;
+		}
+	</style>
+
+	<script type='text/javascript' charset='utf8'>	$(document).ready(function() {		$.fn.CoCLanguage('cocclan');		$('#datecontainer').CoCDatePicker(EnumUpdate.urlClan,'reloadDataTable');		$('#clanlist').CoCList();		$('#filterMembers').change(function() {			if($(this).is(':checked')) {				isUserFilter(true);			} else {				isUserFilter(false);			}			reloadDataTable();		});	});</script>
+
+</head>
+<body>
+
+    <div class="pos-f-t">
+      <div class="collapse" id="navbar-header">
+        <div class="container-fluid bg-light p-a-1" style="background-color:rgb(241, 241, 241);">
+	  <a class="navbar-brand coclink" href="/assets/html/ClanInfo.html"><span data-localize="navclan">Clan</span> "RU"</a>
+
+                    <ul class="nav navbar-nav">
+            <li><a class="coclink" href="/assets/html/ClanList.html"><span data-localize="navmember">Members</span></a></li>
+            <li><a class="coclink" href="/assets/html/ClanDonation.html"><span data-localize="navdonation">Donation</span></a></li>
+            <li><a class="coclink" href="/assets/html/ClanWar.html"><span data-localize="navclanwars">CW history</span></a></li>
+            <li><a class="coclink" href="/irclog/"><span data-localize="navirc">IRC Archive</span></a></li>
+	  </ul>
+
+
+	  <div class="datehead">
+	    <div id="datecontainer" class="input-group date">
+	       <input type="text" class="form-control datecontrol dateinput" value="" readonly="true" style="background-color:rgb(241, 241, 241);color:#000000;cursor:pointer;border:none;width:100px;float:right;"/>
+	       <span class="input-group-addon datecontrol">
+		 <i class="glyphicon glyphicon-calendar"></i>
+	       </span>
+	    </div>
+	  </div>
+
+          	<form class="navbar-form pull-right">
+	  <div class="checkbox navbar-btn" style="padding:8px;">
+		<label class="navbar-link" for="filterMembers">
+		   <input type="checkbox" checked="true" class="autosubmit" id="filterMembers" value="true"/> <span data-localize="actualuser">show current members</span>
+	        </label>&nbsp;&nbsp;
+          </div>
+	</form>
+
+
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-faded navbar-static-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-header" style="margin:10px;">
+          &#9776;
+        </button>
+	<span class="lead" data-localize="clantitle">Clan member list</span>
+      </div>
+    </div>
+
+    <div class="container-fluid" id="error-box" style="display:none">
+      <div class="row">
+        <div class="col-md-12">
+	    <div class="alert alert-danger fade in gid">
+		<a href="#" class="close" data-dismiss="alert">&times;</a>
+		<strong style="padding-left:50px;" data-localize="errortxt">Error!</strong><span id="error-message"></span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+
+
+	<table id="clanlist" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th class="cocth">.</th>
+                <th class="cocth" data-localize="th2">nik</th>
+                <th class="cocth" data-localize="th3">role</th>
+                <th class="cocth" data-localize="th4">trophies</th>
+                <th class="cocth" data-localize="th5">warriors+</th>
+                <th class="cocth" data-localize="th6">warriors-</th>
+                <th class="cocth" data-localize="th7">ratio</th>
+                <th class="cocth" data-localize="th8">level</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+              <th class="cocth">.</th>
+                <th class="cocth" data-localize="th2">nik</th>
+                <th class="cocth" data-localize="th3">role</th>
+                <th class="cocth" data-localize="th4">trophies</th>
+                <th class="cocth" data-localize="th5">warriors+</th>
+                <th class="cocth" data-localize="th6">warriors-</th>
+                <th class="cocth" data-localize="th7">ratio</th>
+                <th class="cocth" data-localize="th8">level</th>
+            </tr>
+        </tfoot>
+	</table>
+
+
+        </div>
+      </div>
+    </div>
+	
+    <div class="navbar navbar-default bg-faded navbar-fixed-bottom">
+	<div class="container">
+		<p class="navbar-text pull-left"><span data-localize="notifyname">Notify</span>:&nbsp;<a href="/notify/rss/" target="_blank">RSS</a>&nbsp;|&nbsp;<a href="/notify/json/" target="_blank">JSON</a></p>
+		<p class="navbar-text pull-left"><span data-localize="srvgen">Generated</span>:&nbsp;<a href="#" target="_blank"><span id="srvgen">stCoCServer v.1.0.1.362</span></a></p>
+		<p class="navbar-text pull-right">
+			<span class="glyphicon glyphicon-calendar"></span>&nbsp;
+			<span data-localize="srvdate">Date</span>: <span id="srvdate">2016.12.28</span>
+		</p>
+	</div>
+   </div>
+
+</body>
+</html>
+

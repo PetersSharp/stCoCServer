@@ -1,0 +1,48 @@
+﻿<#@ include file="..\..\stUtil.tt" #>
+<#@ output extension=".html" encoding="utf-8" #>
+<#
+	this.headerMenu = this.GetFromProjectFile(
+	 new string [] {
+		"data",
+		"assets",
+		"html",
+		"tmplMenuIrc.ttinclude"
+	 }
+	);
+	this.footerVersion = this.GetProgName();
+	string fv = this.getVersionAssembly();
+	if (!string.IsNullOrWhiteSpace(fv)) {
+		this.footerVersion = this.footerVersion + " v." + fv;
+	}
+#>
+<#@ include file="..\assets\html\tmplHeader.ttinclude" #>
+
+	{{INSERTHTMLDATA}}
+
+<#@ include file="..\assets\html\tmplFooter.ttinclude" #>
+<#+
+	string headerMenu = "";
+	string headerCheckBox = "";
+	string titleId = "ircnonetitle";
+	string titleText = "{{TITLE}} ::: {{DATEY}}-{{DATEM}}-{{DATED}}";
+	string footerDate = "{{DATE}}";
+	string footerVersion = "";
+	string headerGenrate = "{{GENERATOR}}";
+	string srcJavaScript = 
+	"<script type='text/javascript' charset='utf8'>" +
+	"	$(document).ready(function() {" +
+	"		$.fn.CoCLanguage('cocclan');" +
+	"		$('#datecontainer').CoCDatePicker(EnumUpdate.urlIrc,'',{{DATEY}},{{DATEM}},{{DATED}});" +
+	"		$('.servermsg').css('display','none');" +
+	"		$(\"input[id^='filter']\").change(function() {" +
+	"			var dt = $(this).data('class');" +
+	"			if($(this).is(':checked')) {" +
+	"				$('.' + dt).css('display','block');" +
+	"			} else {" +
+	"				$('.' + dt).css('display','none');" +
+	"			}" +
+	"		});" +
+	"	});" +
+	"</script>";
+
+#>

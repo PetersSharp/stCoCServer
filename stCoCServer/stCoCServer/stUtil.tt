@@ -1,0 +1,137 @@
+﻿<#@ template language="C#" hostspecific="true"#>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="EnvDte" #>
+<#@ import namespace="EnvDTE" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#+
+	private string ProgName = String.Empty;
+	private string SolutionPath = String.Empty;
+	private string ProjectPath = String.Empty;
+	private readonly string AssemblyVersion = "SharedAssemblyVersion.txt";
+	private readonly string AssemblyInfo = "SharedAssemblyInfo.cs";
+
+	public void ClearOut()
+	{
+		string rmFile = System.IO.Path.Combine(
+			this.GetProjectDirectory(),
+			"stUtil.cs"
+		);
+		if (System.IO.File.Exists(rmFile))
+		{
+		        try
+		        {
+		            System.IO.File.Delete(rmFile);
+		        }
+		        catch (System.IO.IOException) { }
+		}
+	}
+	private void GetDTEDirectory()
+	{
+		IServiceProvider serviceProvider = this.Host as IServiceProvider;
+		EnvDTE.DTE dte = serviceProvider.GetService(typeof(EnvDTE.DTE)) as EnvDTE.DTE;
+		if (dte == null)
+		{
+			throw new ArgumentNullException("DTE not found, no VS studio environment?");
+		}
+		this.ProgName = Path.GetFileNameWithoutExtension(dte.Solution.FullName);
+		this.SolutionPath = System.IO.Path.GetDirectoryName(dte.Solution.FullName);
+		this.ProjectPath  = System.IO.Path.Combine(
+			this.SolutionPath,
+			this.ProgName
+		);
+	}
+	public string GetProgName()
+	{
+		if (string.IsNullOrWhiteSpace(this.ProgName)) {
+			this.GetDTEDirectory();
+		}
+		return this.ProgName;
+	}
+	public string GetSolutionDirectory()
+	{
+		if (string.IsNullOrWhiteSpace(this.SolutionPath)) {
+			this.GetDTEDirectory();
+		}
+		return this.SolutionPath;
+	}
+	public string GetProjectDirectory()
+	{
+		if (string.IsNullOrWhiteSpace(this.SolutionPath)) {
+			this.GetDTEDirectory();
+		}
+		return this.ProjectPath;
+	}
+	public string GetFromSolutionFile(string fname)
+	{
+		if (string.IsNullOrWhiteSpace(fname)) {
+			throw new ArgumentNullException("file name");
+		}
+		return System.IO.File.ReadAllText(
+			System.IO.Path.Combine(
+				this.GetSolutionDirectory(),
+				fname
+			),
+			Encoding.UTF8
+		);
+	}
+	public string GetFromProjectFile(string [] fpath)
+	{
+		if ((fpath == null) || (fpath.Length == 0)) {
+			throw new ArgumentNullException("file path array");
+		}
+		string pathOut = this.GetProjectDirectory();
+		foreach(string ptmp in fpath)
+		{
+			pathOut = Path.Combine(pathOut,ptmp);
+		}
+		return System.IO.File.ReadAllText(
+			pathOut,
+			Encoding.UTF8
+		);
+	}
+	public void writeTemplateResult(string file)
+	{
+		System.IO.File.WriteAllText(file, this.GenerationEnvironment.ToString());
+		this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
+	}
+	public void setVersionAssembly(string strVersion)
+	{
+		if (string.IsNullOrWhiteSpace(strVersion)) {
+			throw new ArgumentNullException("string Version");
+		}
+		this.writeTemplateResult(
+			System.IO.Path.Combine(
+				this.GetSolutionDirectory(),
+				"stExtLib",
+				"stVersion",
+				this.AssemblyInfo
+			)
+		);
+		System.IO.File.WriteAllText(
+			System.IO.Path.Combine(
+				this.GetSolutionDirectory(),
+				"stExtLib",
+				"stVersion",
+				this.AssemblyVersion
+			),
+			strVersion,
+			Encoding.UTF8
+		);
+	}
+	public string getVersionAssembly()
+	{
+		return System.IO.File.ReadAllText(
+			System.IO.Path.Combine(
+				this.GetSolutionDirectory(),
+				"stExtLib",
+				"stVersion",
+				this.AssemblyVersion
+			),
+			Encoding.UTF8
+		);
+	}
+#>

@@ -1,0 +1,162 @@
+﻿<#@ include file="..\..\..\stUtil.tt" #>
+<#@ output extension=".html" encoding="utf-8" #>
+<#
+	this.headerMenu = this.GetFromProjectFile(
+	 new string [] {
+		"data",
+		"assets",
+		"html",
+		"tmplMenuClan.ttinclude"
+	 }
+	);
+	this.headerGenrate = this.footerVersion = this.GetProgName();
+	string fv = this.getVersionAssembly();
+	if (!string.IsNullOrWhiteSpace(fv)) {
+		this.footerVersion = this.footerVersion + " v." + fv;
+		this.headerGenrate = this.footerVersion;
+	}
+#>
+<#@ include file="tmplHeader.ttinclude" #>
+
+	<!-- Modal -->
+	<div id="cocnotifymset" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title" style="color: rgb(212, 132, 12);" data-localize="notifysetuptitle">CoC view event setup</h4>
+	      </div>
+	      <div class="modal-body">
+		<div class="row">
+		  <div class="col-xs-12" id="ssevent"></div>
+		</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" id="notifyclear" data-localize="notifysetupclear">Clear window</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal" data-localize="notifysetupclose">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- end Modal -->
+
+	<center>
+	<table width="70%" id="claninfo" class="claninfo">
+	   <thead>
+		<tr>
+		  <th class="cocclanhead" colspan="3"><span id="cocclanflag"></span>клан <span id="cocclanname">RU</span><span id="cocclanlevel">6</span></th>
+		</tr>
+	   </thead>
+	   <tbody>
+		<tr><td class="cocclanleft">
+		  <div class="cocclantextid"><span data-localize="clanid">Clan ID</span>:<span class="cocclantextval cocfont-braun" id="cocclantag"></span></div>
+		  <div class="cocclantextid"><span data-localize="clanmem">Members</span>:<span class="cocclantextval cocfont-braun" id="cocclanmembers">0/0</span></div>
+		  <div class="cocclantextid"><span data-localize="clanwarweek">Clan wars</span>:<span class="cocclantextval cocfont-braun" id="cocclanwarfreq">&gt; 0/7</span></div>
+		  <div class="cocclantextid"><span data-localize="clanwarwin">War wons</span>:<span class="cocclantextval cocfont-braun" id="cocclanwarwin">0</span></div>
+		  <div class="cocclantextid"><span data-localize="clanwarstr">Wars win series</span>:<span class="cocclantextval cocfont-braun" id="cocclanwarstr">0</span></div>
+		  <div class="cocclantextid"><span data-localize="clanwaris">Public wars</span>:<span class="cocclantextval cocfont-braun" id="cocclanwarpub">?</span></div>
+		</td><td class="cocclancenter">
+		  <div class="cocclancenterimg" id="cocclanimg">
+		     <span class="cocclancentertxt cocfont-braun" id="cocclanleveladd">1</span>
+		  </div>
+		  <div class="cocclantextscore cocfont-braun" id="cocclanscore">0</div>
+		  <div class="cocclantextid cocclantextidcenter" style="margin: 6px 0px;">Вход в клан:<span class="cocclantextval cocfont-braun" id="cocclanin">?</span></div>
+		  <div class="cocclantextid cocclantextidcenter" style="margin: -7px 0px;">Иметь трофеев:<span class="cocclantextval cocfont-braun" id="cocclantrophies">0</span></div>
+		</td><td class="cocclanright">
+		  <div class="cocclantextnote" id="cocclandesc">Description..</div>
+		  <div class="cocclantextid"><span data-localize="clanctryid">Code country</span>:<span class="cocclantextval cocfont-braun" id="cocclanlocctry">..</span></div>
+		  <div class="cocclantextid"><span data-localize="clanctryname">Country</span>:<span class="cocclantextval cocfont-braun" id="cocclanlocname">..</span></div>
+		</td></tr>
+	   </tbody>
+	</table>
+		<div id="cocclanmap"></div>
+		<div class="cocnotify">
+		    <div>
+			    <span class="cocnotifyinfo notifytext" id="cocnotifyinfo"></span>
+			    <span class="cocnotifysetup" data-toggle="modal" data-target="#cocnotifymset">+</span>
+		    </div>
+		    <div id="cocnotifybox"></div>
+		</div>
+		<div id="statCarousel" class="carousel slide" data-ride="carousel">
+		  <ol class="carousel-indicators">
+		    <li data-target="#statCarousel" data-slide-to="0" class="active"></li>
+		    <li data-target="#statCarousel" data-slide-to="1"></li>
+		    <li data-target="#statCarousel" data-slide-to="2"></li>
+		    <li data-target="#statCarousel" data-slide-to="3"></li>
+		    <li data-target="#statCarousel" data-slide-to="4"></li>
+		    <li data-target="#statCarousel" data-slide-to="5"></li>
+		    <li data-target="#statCarousel" data-slide-to="6"></li>
+		    <li data-target="#statCarousel" data-slide-to="7"></li>
+		    <li data-target="#statCarousel" data-slide-to="8"></li>
+		    <li data-target="#statCarousel" data-slide-to="9"></li>
+		    <li data-target="#statCarousel" data-slide-to="10"></li>
+		  </ol>
+
+		  <div class="carousel-inner" role="listbox">
+		    <div class="item active">
+		      <img src="/assets/images/rrd/MemberChangeDonationSend-Day.png" alt="Member Donation - Day">
+		    </div>
+		    <div class="item">
+		      <img src="/assets/images/rrd/MemberChangeDonationSend-Week.png" alt="Member Donation - Week">
+		    </div>
+		    <div class="item">
+		      <img src="/assets/images/rrd/MemberChangeDonationSend-Month.png" alt="Member Donation - Month">
+		    </div>
+		    <div class="item">
+		      <img src="/assets/images/rrd/MemberChangeDonationSend-Year.png" alt="Member Donation - Year">
+		    </div>
+
+		    <div class="item">
+		      <img src="/assets/images/rrd/ClanChangePoints-Day.png" alt="Clan Points - Day">
+		    </div>
+		    <div class="item">
+		      <img src="/assets/images/rrd/ClanChangePoints-Week.png" alt="Clan Points - Week">
+		    </div>
+		    <div class="item">
+		      <img src="/assets/images/rrd/ClanChangePoints-Month.png" alt="Clan Points - Month">
+		    </div>
+		    <div class="item">
+		      <img src="/assets/images/rrd/ClanChangePoints-Year.png" alt="Clan Points - Year">
+		    </div>
+
+		    <div class="item">
+		      <img src="/assets/images/rrd/ClanChangeWarWin-Week.png" alt="Clan War Win - Week">
+		    </div>
+		    <div class="item">
+		      <img src="/assets/images/rrd/ClanChangeWarWin-Month.png" alt="Clan War Win - Month">
+		    </div>
+		    <div class="item">
+		      <img src="/assets/images/rrd/ClanChangeWarWin-Year.png" alt="Clan War Win - Year">
+		    </div>
+
+		  <a class="left stcarousel-control" href="#statCarousel" role="button" data-slide="prev">
+		    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		    <span class="sr-only">Previous</span>
+		  </a>
+		  <a class="right stcarousel-control" href="#statCarousel" role="button" data-slide="next">
+		    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		    <span class="sr-only">Next</span>
+		  </a>
+		</div>
+	</center>
+
+<#@ include file="tmplFooter.ttinclude" #>
+<#+
+	string headerMenu = "";
+	string headerCheckBox = "";
+	string titleId = "infotitle";
+	string titleText = "Clan information";
+	string footerDate = DateTime.Now.ToString("yyyy/MM/dd");
+	string footerVersion = "";
+	string headerGenrate = "";
+	string srcJavaScript = 
+	"<script type='text/javascript' charset='utf8'>" +
+	"	$(document).ready(function() {" +
+	"		$.fn.CoCLanguage('cocclan');" +
+	"		$('#datecontainer').CoCDatePicker(EnumUpdate.urlClan,'updateEmpty');" +
+	"		$('#claninfo').CoCInfo();" +
+	"		$('#cocnotifybox').CoCnotify();" +
+	"	});" +
+	"</script>";
+
+#>

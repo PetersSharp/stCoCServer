@@ -1,0 +1,1 @@
+<p class="highlight notemsg"><span class="text-primary irctime">{0}</span><span class="text-warning ircfrom">{1}:</span><span class="text-danger ircmsg">{2}</span></p>

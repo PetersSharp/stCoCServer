@@ -1,0 +1,18 @@
+
+        </div>
+      </div>
+    </div>
+	
+    <div class="navbar navbar-default bg-faded navbar-fixed-bottom">
+	<div class="container">
+		<p class="navbar-text pull-left"><span data-localize="notifyname">Notify</span>:&nbsp;<a href="/notify/rss/" target="_blank">RSS</a>&nbsp;|&nbsp;<a href="/notify/json/" target="_blank">JSON</a></p>
+		<p class="navbar-text pull-left"><span data-localize="srvgen">Generated</span>:&nbsp;<a href="#" target="_blank"><span id="srvgen"><#= this.footerVersion #></span></a></p>
+		<p class="navbar-text pull-right">
+			<span class="glyphicon glyphicon-calendar"></span>&nbsp;
+			<span data-localize="srvdate">Date</span>: <span id="srvdate"><#= this.footerDate #></span>
+		</p>
+	</div>
+   </div>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F351E241-E113-4BCF-B04B-064CEE1BC269}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>stNet</RootNamespace>
+    <AssemblyName>stNet</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>stApp1.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\stVersion\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="CurlSharp\Callbacks\CurlEasyCallbacks.cs" />
+    <Compile Include="CurlSharp\Callbacks\CurlShareCallbacks.cs" />
+    <Compile Include="CurlSharp\Curl.cs" />
+    <Compile Include="CurlSharp\CurlEasy.cs" />
+    <Compile Include="CurlSharp\CurlHttpMultiPartForm.cs" />
+    <Compile Include="CurlSharp\CurlMulti.cs" />
+    <Compile Include="CurlSharp\CurlMultiInfo.cs" />
+    <Compile Include="CurlSharp\CurlShare.cs" />
+    <Compile Include="CurlSharp\CurlSlist.cs" />
+    <Compile Include="CurlSharp\CurlSslContext.cs" />
+    <Compile Include="CurlSharp\CurlVersionInfoData.cs" />
+    <Compile Include="CurlSharp\Enums\CurlClosePolicy.cs" />
+    <Compile Include="CurlSharp\Enums\CurlCode.cs" />
+    <Compile Include="CurlSharp\Enums\CurlFormCode.cs" />
+    <Compile Include="CurlSharp\Enums\CurlFormOption.cs" />
+    <Compile Include="CurlSharp\Enums\CurlFtpAuth.cs" />
+    <Compile Include="CurlSharp\Enums\CurlFtpSsl.cs" />
+    <Compile Include="CurlSharp\Enums\CurlHttpAuth.cs" />
+    <Compile Include="CurlSharp\Enums\CurlHttpVersion.cs" />
+    <Compile Include="CurlSharp\Enums\CurlInfo.cs" />
+    <Compile Include="CurlSharp\Enums\CurlInfoType.cs" />
+    <Compile Include="CurlSharp\Enums\CurlInitFlag.cs" />
+    <Compile Include="CurlSharp\Enums\CurlIoCommand.cs" />
+    <Compile Include="CurlSharp\Enums\CurlIoError.cs" />
+    <Compile Include="CurlSharp\Enums\CurlIpResolve.cs" />
+    <Compile Include="CurlSharp\Enums\CurlLockAccess.cs" />
+    <Compile Include="CurlSharp\Enums\CurlLockData.cs" />
+    <Compile Include="CurlSharp\Enums\CurlMessage.cs" />
+    <Compile Include="CurlSharp\Enums\CurlMultiCode.cs" />
+    <Compile Include="CurlSharp\Enums\CurlNetrcOption.cs" />
+    <Compile Include="CurlSharp\Enums\CurlOption.cs" />
+    <Compile Include="CurlSharp\Enums\CurlProxyType.cs" />
+    <Compile Include="CurlSharp\Enums\CurlShareCode.cs" />
+    <Compile Include="CurlSharp\Enums\CurlShareOption.cs" />
+    <Compile Include="CurlSharp\Enums\CurlSslVersion.cs" />
+    <Compile Include="CurlSharp\Enums\CurlTimeCond.cs" />
+    <Compile Include="CurlSharp\Enums\CurlVersion.cs" />
+    <Compile Include="CurlSharp\Enums\CurlVersionFeatureBitmask.cs" />
+    <Compile Include="CurlSharp\NativeMethods.cs" />
+    <Compile Include="stAccount.cs" />
+    <Compile Include="stCurlClientBinary.cs" />
+    <Compile Include="stCurlClientSet.cs" />
+    <Compile Include="stCurlClientShare.cs" />
+    <Compile Include="stIPFilterACL.cs" />
+    <Compile Include="stIPFilterData.cs" />
+    <Compile Include="stIrcEventArguments.cs" />
+    <Compile Include="stConvertIP.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="stIrcFormatText.cs" />
+    <Compile Include="stRSSData.cs" />
+    <Compile Include="stRSSReader.cs" />
+    <Compile Include="stIrcClient.cs" />
+    <Compile Include="stRSSWriter.cs" />
+    <Compile Include="stSysLogNG.cs" />
+    <Compile Include="stWebClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="stUPNP.cs" />
+    <Compile Include="stWebServer.cs" />
+    <Compile Include="stWebServerUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="curl-ca-bundle.crt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\stCore-dll\stCore.csproj">
+      <Project>{0569D275-72F8-4A31-B04C-653725F58B72}</Project>
+      <Name>stCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="libcurl.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\httpXmlError.txt" />
+    <None Include="Resources\httpHtmlError.txt" />
+    <Content Include="stApp1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CurlSharp\extcurlib\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

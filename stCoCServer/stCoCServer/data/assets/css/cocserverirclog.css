@@ -1,0 +1,31 @@
+.highlight {
+	margin: 5px 0px 5px 50px;
+}
+.ircval,
+.ircfrom,
+.ircmsg,
+.irctime {
+	padding-right: 15px;
+}
+.ircnik {
+	padding-right: 5px;
+}
+#datecontainer {
+    width: 150px;
+    float: right;
+    margin: 10px;
+}
+.datecontrol {
+    background-color: rgba(119, 119, 119, 0.17);
+    color: #111;
+    border: none;
+    font-size: medium;
+    cursor: pointer;
+}
+.dateinput {
+    font-weight: bold;
+}
+.footer {
+    padding: 10px 30px;
+    margin-top: 20px;
+}

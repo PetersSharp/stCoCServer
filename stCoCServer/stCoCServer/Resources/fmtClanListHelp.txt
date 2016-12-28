@@ -1,0 +1,1 @@
+   use: @clan list <month> <year> - Clan member list   

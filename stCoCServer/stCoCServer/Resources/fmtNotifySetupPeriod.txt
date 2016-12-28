@@ -1,0 +1,1 @@
+   notifycation period now is {0} sec.   

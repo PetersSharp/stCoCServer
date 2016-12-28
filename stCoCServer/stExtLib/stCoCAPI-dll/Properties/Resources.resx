@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CoCClanIdEmpty" xml:space="preserve">
+    <value>Clan ID is empty or not defined</value>
+  </data>
+  <data name="CoCClanTagEmpty" xml:space="preserve">
+    <value>Clan Tag empty</value>
+  </data>
+  <data name="CoCDBExceptionLength" xml:space="preserve">
+    <value>{0}: parse cmd incorrect length</value>
+  </data>
+  <data name="CoCGetUrlEmpty" xml:space="preserve">
+    <value>Get URL Json source is empty: {0}</value>
+  </data>
+  <data name="CoCGetUrlServerError" xml:space="preserve">
+    <value>CoC API server: '{0}', {1}</value>
+  </data>
+  <data name="CoCInitError" xml:space="preserve">
+    <value>Init {0} instance error: {1}</value>
+  </data>
+  <data name="CoCKeyEmpty" xml:space="preserve">
+    <value>API key empty or not found, (see https://developer.clashofclans.com/)</value>
+  </data>
+  <data name="CoCMediaDownloadInfo" xml:space="preserve">
+    <value>Update image: {0}{1}</value>
+  </data>
+  <data name="CoCNotifyAddClient" xml:space="preserve">
+    <value>Add client</value>
+  </data>
+  <data name="CoCNotifyAddDataTable" xml:space="preserve">
+    <value>Add data table</value>
+  </data>
+  <data name="CoCNotifyDataOtherError" xml:space="preserve">
+    <value>(see last error..)</value>
+  </data>
+  <data name="CoCNotifyDataRss" xml:space="preserve">
+    <value>Make RSS feed</value>
+  </data>
+  <data name="CoCNotifyDataSseSend" xml:space="preserve">
+    <value>Data send</value>
+  </data>
+  <data name="CoCNotifyDisposeError" xml:space="preserve">
+    <value>Notfy DEBUG SSE, client {0}/Dispose: {1}</value>
+  </data>
+  <data name="CoCNotifyHostDataCount" xml:space="preserve">
+    <value>Host/Data count</value>
+  </data>
+  <data name="CoCNotifyProcessDebug" xml:space="preserve">
+    <value>Notify DEBUG SSE, Last Ip: {0}, {1} - {2}</value>
+  </data>
+  <data name="CoCNotifyProcessError" xml:space="preserve">
+    <value>Notify  DEBUG SSE, {0} error: {1} - {2}</value>
+  </data>
+  <data name="CoCNotifyRssCopy" xml:space="preserve">
+    <value>(c) stCoCServer RSS feed</value>
+  </data>
+  <data name="CoCNotifyRssDesc" xml:space="preserve">
+    <value>Clan #{0} updated statistic time line (RSS feed). Create: {1}</value>
+  </data>
+  <data name="CoCNotifyRssTitle" xml:space="preserve">
+    <value>CoC notify update time line</value>
+  </data>
+  <data name="CoCNotifySendPart" xml:space="preserve">
+    <value>Send part</value>
+  </data>
+  <data name="CoCNotifySetHeader" xml:space="preserve">
+    <value>Set header</value>
+  </data>
+  <data name="CoCRequestIdEmpty" xml:space="preserve">
+    <value>Request ID is wrong or not defined</value>
+  </data>
+  <data name="CoCUrlEmpty" xml:space="preserve">
+    <value>CoC API URL create error, URL empty</value>
+  </data>
+  <data name="CurlObjEmpty" xml:space="preserve">
+    <value>Curl instance is empty</value>
+  </data>
+  <data name="CurlReturnReason" xml:space="preserve">
+    <value>Get json unknown error</value>
+  </data>
+  <data name="DataTableEmptyIn" xml:space="preserve">
+    <value>Empty input Json Data: {0} Table</value>
+  </data>
+  <data name="fmtNotifyClanChangeLevel" xml:space="preserve">
+    <value>Clan {0} change Level: {1} -&gt; {2}{3}</value>
+  </data>
+  <data name="fmtNotifyClanChangeMembers" xml:space="preserve">
+    <value>Clan {0} change Members: {1}{2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyClanChangeName" xml:space="preserve">
+    <value>Clan {2} change Name: {3}</value>
+  </data>
+  <data name="fmtNotifyClanChangePoints" xml:space="preserve">
+    <value>Clan {0} change Points: {1}{2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyClanChangeTrophies" xml:space="preserve">
+    <value>Clan {0} change Trophies: {1}{2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyClanChangeType" xml:space="preserve">
+    <value>Clan {0} change Type: {2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyClanChangeWarFrequency" xml:space="preserve">
+    <value>Clan {0} change WarFrequency: {2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyClanChangeWarPublic" xml:space="preserve">
+    <value>Clan {0} change WarPublic: {2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyClanChangeWarSeries" xml:space="preserve">
+    <value>Clan {0} change WarSeries: {1}{2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyClanChangeWarWin" xml:space="preserve">
+    <value>Clan {0} change WarWin: {1}{2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyMemberChangeDonationSend" xml:space="preserve">
+    <value>{0} - change Donation Send: {1}{2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyMemberChangeLeague" xml:space="preserve">
+    <value>{0} - change League: {2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyMemberChangeLevel" xml:space="preserve">
+    <value>{0} - change Level: {1}{2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyMemberChangeNik" xml:space="preserve">
+    <value>{2} - change Nik: {3}</value>
+  </data>
+  <data name="fmtNotifyMemberChangeRole" xml:space="preserve">
+    <value>{0} - change Role: {2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyMemberChangeTrophies" xml:space="preserve">
+    <value>{0} - change Trophies: {1}{2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyMemberExit" xml:space="preserve">
+    <value>Member {0} left clan</value>
+  </data>
+  <data name="fmtNotifyMemberNew" xml:space="preserve">
+    <value>New member {0}</value>
+  </data>
+  <data name="fmtNotifyWarClanEnd" xml:space="preserve">
+    <value>Clan war end: {0} {2}%-{3}% : {1}{4}</value>
+  </data>
+  <data name="ShedCanceledProcess" xml:space="preserve">
+    <value>Canceled update CoC DB: [{0}]</value>
+  </data>
+  <data name="ShedNextProcess" xml:space="preserve">
+    <value>Next update CoC DB:  [{0}]</value>
+  </data>
+  <data name="ShedStartProcess" xml:space="preserve">
+    <value>Start update CoC DB: [{0}]</value>
+  </data>
+  <data name="ShedStopProcess" xml:space="preserve">
+    <value>Stop update CoC DB: [{0}]</value>
+  </data>
+  <data name="ShedWaitProcess" xml:space="preserve">
+    <value>End  update CoC DB:  [{0} sec]</value>
+  </data>
+  <data name="fmtNotifyRssItemTitle" xml:space="preserve">
+    <value>{0} {1}</value>
+  </data>
+  <data name="fmtNotifyWarClanEndVs" xml:space="preserve">
+    <value> vs </value>
+  </data>
+  <data name="fmtNotifyHeaderCount" xml:space="preserve">
+    <value>Available {0} update in clan, modified time: {1}, next: {2}</value>
+  </data>
+  <data name="fmtNotifyMemberChangeDonationReceive" xml:space="preserve">
+    <value>{0} - change Donation Receive {1}{2} -&gt; {3}</value>
+  </data>
+  <data name="fmtRrdClanChangePointsMax" xml:space="preserve">
+    <value>Maximum Clan points: @0@r</value>
+  </data>
+  <data name="fmtRrdClanChangePointsMin" xml:space="preserve">
+    <value>Minimum Clan points: @0@r</value>
+  </data>
+  <data name="fmtRrdClanChangePointsTitle" xml:space="preserve">
+    <value>Clan change Points</value>
+  </data>
+  <data name="fmtRrdClanChangePointsVlabel" xml:space="preserve">
+    <value>clan points</value>
+  </data>
+  <data name="fmtRrdClanChangeWarWinTitle" xml:space="preserve">
+    <value>Clan War wins</value>
+  </data>
+  <data name="fmtRrdClanChangeWarWinVlabel" xml:space="preserve">
+    <value>war wins</value>
+  </data>
+  <data name="fmtRrdMemberChangeDonationReceiveMax" xml:space="preserve">
+    <value>Maximum receive donation: @0@r</value>
+  </data>
+  <data name="fmtRrdMemberChangeDonationReceiveMin" xml:space="preserve">
+    <value>Minimum receive donation: @0@r</value>
+  </data>
+  <data name="fmtRrdMemberChangeDonationReceiveTitle" xml:space="preserve">
+    <value>Clan Donation receive</value>
+  </data>
+  <data name="fmtRrdMemberChangeDonationReceiveVlabel" xml:space="preserve">
+    <value>receive troops</value>
+  </data>
+  <data name="fmtRrdMemberChangeDonationSendMax" xml:space="preserve">
+    <value>Maximum send donation: @0@r</value>
+  </data>
+  <data name="fmtRrdMemberChangeDonationSendMin" xml:space="preserve">
+    <value>Minimum send donation: @0@r</value>
+  </data>
+  <data name="fmtRrdMemberChangeDonationSendTitle" xml:space="preserve">
+    <value>Clan Donation send</value>
+  </data>
+  <data name="fmtRrdMemberChangeDonationSendVlabel" xml:space="preserve">
+    <value>send troops</value>
+  </data>
+  <data name="RrdPeriodNameDay" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="RrdPeriodNameMonth" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="RrdPeriodNameWeek" xml:space="preserve">
+    <value>Week</value>
+  </data>
+  <data name="RrdPeriodNameYear" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="fmtRrdClanChangeWarWinMax" xml:space="preserve">
+    <value>Maximum wars win: @0@r</value>
+  </data>
+  <data name="fmtRrdClanChangeWarWinMin" xml:space="preserve">
+    <value>Minimum wars win: @0@r</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="RrdBgClanChangePoints" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RrdBgClanChangePoints.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RrdBgClanChangeWarWin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RrdBgClanChangeWarWin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RrdBgMemberChangeDonationSend" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RrdBgMemberChangeDonationSend.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+</root>

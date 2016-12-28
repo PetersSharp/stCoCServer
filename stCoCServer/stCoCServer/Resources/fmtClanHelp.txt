@@ -1,0 +1,1 @@
+   use: @clan <info|war|warlast|warlog|stat|desc|list|donation|player> <month> <year>   

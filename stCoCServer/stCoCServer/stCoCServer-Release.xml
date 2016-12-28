@@ -1,0 +1,362 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>stCoCServer</name>
+    </assembly>
+    <members>
+        <member name="M:stCoCServer.plugins.ProcessCMD.#ctor(stCoCServer.IRCBotData.Configuration@)">
+            <summary>Process command DB Clan request/response init</summary>
+            <param name="conf">Configuration IRCBotData Class</param>
+        </member>
+        <member name="M:stCoCServer.plugins.ProcessCMD.Finalize">
+            <summary>Process command DB Clan destruct part</summary>
+        </member>
+        <member name="M:stCoCServer.plugins.ProcessCMD.ParseContext(System.Boolean,System.String,System.String,System.String)">
+            <summary>Process parse context request/response</summary>
+            <param name="isPrivate">bool IRC channel is private</param>
+            <param name="channel">string IRC channel name</param>
+            <param name="nik">string IRC nik name</param>
+            <param name="cmds">string query string</param>
+            <returns>bool, is contains key - true</returns>
+        </member>
+        <member name="M:stCoCServer.plugins.ProcessCMD.ParseCmd(System.Boolean,System.String,System.String,System.String)">
+            <summary>Process parse command request/response</summary>
+        </member>
+        <member name="T:stCoCServer.CoCAPI.CoCDB">
+            <summary>Clash of Clan main selector</summary>
+        </member>
+        <member name="M:stCoCServer.CoCAPI.CoCDB.GetLeague(stCoCServer.IRCBotData.Configuration,System.String,stCoCServer.CoCAPI.CoCDB.LeagueTypeReq)">
+            <summary>Get League string, see enum LeagueTypeReq</summary>
+        </member>
+        <member name="M:stCoCServer.CoCAPI.CoCDB.GetQueryString(stCoCServer.IRCBotData.Configuration,System.String[],stCoCServer.CoCAPI.CoCDB.ClanTypeReq@)">
+            <summary>Get Sqlite DB Query string</summary>
+        </member>
+        <member name="T:stCoCServer.CoCAPI.CoCDB.ClanTypeReq">
+            <summary>Clan type request</summary>
+        </member>
+        <member name="F:stCoCServer.CoCAPI.CoCDB.ClanTypeReq.None">
+            <summary>Empty selection</summary>
+        </member>
+        <member name="F:stCoCServer.CoCAPI.CoCDB.ClanTypeReq.Info">
+            <summary>Information About Clan</summary>
+        </member>
+        <member name="F:stCoCServer.CoCAPI.CoCDB.ClanTypeReq.War">
+            <summary>war statistic Clan</summary>
+        </member>
+        <member name="F:stCoCServer.CoCAPI.CoCDB.ClanTypeReq.Statistic">
+            <summary>score statistic Clan</summary>
+        </member>
+        <member name="F:stCoCServer.CoCAPI.CoCDB.ClanTypeReq.Description">
+            <summary>Clan Description</summary>
+        </member>
+        <member name="F:stCoCServer.CoCAPI.CoCDB.ClanTypeReq.List">
+            <summary>Clan members llist</summary>
+        </member>
+        <member name="F:stCoCServer.CoCAPI.CoCDB.ClanTypeReq.Player">
+            <summary>Clan member statistic</summary>
+        </member>
+        <member name="F:stCoCServer.CoCAPI.CoCDB.ClanTypeReq.DonationSend">
+            <summary>Clan Donation Send one month</summary>
+        </member>
+        <member name="F:stCoCServer.CoCAPI.CoCDB.ClanTypeReq.DonationRecive">
+            <summary>Clan Donation Recive one month</summary>
+        </member>
+        <member name="F:stCoCServer.CoCAPI.CoCDB.ClanTypeReq.DonationRatio">
+            <summary>Clan Donation Ratio one month</summary>
+        </member>
+        <member name="F:stCoCServer.CoCAPI.CoCDB.ClanTypeReq.DonationTotal">
+            <summary>Clan Donation Total one month</summary>
+        </member>
+        <member name="T:stCoCServer.CoCAPI.CoCDB.LeagueTypeReq">
+            <summary>League type request</summary>
+        </member>
+        <member name="F:stCoCServer.CoCAPI.CoCDB.LeagueTypeReq.Name">
+            <summary>GetLeague return Name</summary>
+        </member>
+        <member name="F:stCoCServer.CoCAPI.CoCDB.LeagueTypeReq.UrlSmall">
+            <summary>GetLeague return small image size URL</summary>
+        </member>
+        <member name="F:stCoCServer.CoCAPI.CoCDB.LeagueTypeReq.UrlMedium">
+            <summary>GetLeague return medium image size URL</summary>
+        </member>
+        <member name="F:stCoCServer.CoCAPI.CoCDB.LeagueTypeReq.UrlTiny">
+            <summary>GetLeague return mall tiny size URL</summary>
+        </member>
+        <member name="T:stCoCServer.Properties.Resources">
+            <summary>
+              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.ResourceManager">
+            <summary>
+              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.Culture">
+            <summary>
+              Перезаписывает свойство CurrentUICulture текущего потока для всех
+              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.ChannelMessage">
+            <summary>
+              Ищет локализованную строку, похожую на ChannelMessage.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.cmdEmptyBody">
+            <summary>
+              Ищет локализованную строку, похожую на no command body set.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.cmdEmptyCmd">
+            <summary>
+              Ищет локализованную строку, похожую на no user setting, run settings default...
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.cmdFetchTitleError">
+            <summary>
+              Ищет локализованную строку, похожую на {0} error fetching website title: {1}.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.cmdMissingArgument">
+            <summary>
+              Ищет локализованную строку, похожую на incomptible argument count to command.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.cmdNoSQL">
+            <summary>
+              Ищет локализованную строку, похожую на statistic base temporary down...
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.cmdNotConnect">
+            <summary>
+              Ищет локализованную строку, похожую на [CMD Parser]: irc client not connected...
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.cmdQueryEmpty">
+            <summary>
+              Ищет локализованную строку, похожую на no iformation for you request.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.cmdQueryError">
+            <summary>
+              Ищет локализованную строку, похожую на error return query request.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.cmdQueryWrong">
+            <summary>
+              Ищет локализованную строку, похожую на you request is wrong.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.cmdSetTopicOk">
+            <summary>
+              Ищет локализованную строку, похожую на {0} set topic to channel {1}: &quot;{2}&quot;.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.cmdSetUserModeOk">
+            <summary>
+              Ищет локализованную строку, похожую на {0} set user mode for channel {1}: &quot;{2}&quot;.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.cmdUrlShortError">
+            <summary>
+              Ищет локализованную строку, похожую на URL &apos;{0}&apos; error: {1}.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.cmdUrlShortOK">
+            <summary>
+              Ищет локализованную строку, похожую на {0}, yor URL &apos;{1}&apos; is shorted: {2}.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.cmdUserNotAllowed">
+            <summary>
+              Ищет локализованную строку, похожую на wrong authorize string, abort.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.cmdUserPrivateOnly">
+            <summary>
+              Ищет локализованную строку, похожую на system management command send only in private message!.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.cnfEmpty">
+            <summary>
+              Ищет локализованную строку, похожую на Configuration empty or null.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.fmtAnswerList">
+            <summary>
+              Ищет локализованную строку, похожую на  | # |    Nik    |       Tag       |  Level  | Rank  |  Trophies  | League | Role | warriors+ | warriors - | Ratio |.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.fmtClanDonation">
+            <summary>
+              Ищет локализованную строку, похожую на TOP {0} best warrior donation {1} in Clan members.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.fmtClanDonationHelp">
+            <summary>
+              Ищет локализованную строку, похожую на use: @clan donation &lt;send|recive|ratio|total&gt; &lt;month&gt; &lt;year&gt;.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.fmtClanHelp">
+            <summary>
+              Ищет локализованную строку, похожую на use: @clan &lt;info|war|stat|desc|list|donation|player&gt; &lt;month&gt; &lt;year&gt;.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.fmtClanInfoHelp">
+            <summary>
+              Ищет локализованную строку, похожую на use: @clan info - Clan generaly information.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.fmtClanListHelp">
+            <summary>
+              Ищет локализованную строку, похожую на use: @clan list &lt;month&gt; &lt;year&gt; - Clan member list.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.fmtClanPlayerHelp">
+            <summary>
+              Ищет локализованную строку, похожую на use: @clan player &lt;id&gt; - Clan member information.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.fmtFetchTitle">
+            <summary>
+              Ищет локализованную строку, похожую на {0},  URL &apos;{1}&apos; is: {2}.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.fmtMembersTotal">
+            <summary>
+              Ищет локализованную строку, похожую на  Total members: {0}/50 .
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.fmtSetCommandHelp">
+            <summary>
+              Ищет локализованную строку, похожую на use: !&lt;command&gt; &lt;password&gt; &lt;value&gt; -Set system command, valid: mode, topic.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.fmtSpeak">
+            <summary>
+              Ищет локализованную строку, похожую на {0}{1} speak: {2}.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.fmtSpeakHelp">
+            <summary>
+              Ищет локализованную строку, похожую на use: @say &lt;message&gt; - Send message from bot.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.fmtTime">
+            <summary>
+              Ищет локализованную строку, похожую на {0}{1} Time: {2}.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.fmtTimeHelp">
+            <summary>
+              Ищет локализованную строку, похожую на use: @time - show current time.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.fmtUpTime">
+            <summary>
+              Ищет локализованную строку, похожую на {0}{1} UpTime: {2}.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.fmtUpTimeHelp">
+            <summary>
+              Ищет локализованную строку, похожую на use: @uptime - show bot uptime.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.fmtUrlShortHelp">
+            <summary>
+              Ищет локализованную строку, похожую на use: @short &lt;url&gt; &lt;rlu|tinyurl&gt; - Shorter URL string.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.fmtVersion">
+            <summary>
+              Ищет локализованную строку, похожую на {0}{1} (st) IRC-Bot v.{2} (http://clanru.pick-nik.ru/wiki:ircbot).
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.httpUA">
+            <summary>
+              Ищет локализованную строку, похожую на st{0} {1}.{2}/EN {3} .NET {4} ({5}).
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.MessageOutTemplate">
+            <summary>
+              Ищет локализованную строку, похожую на [{0}]:::[{1}]:::[{2}].
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.NoticeMessage">
+            <summary>
+              Ищет локализованную строку, похожую на NoticeMessage.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.PrivateMessage">
+            <summary>
+              Ищет локализованную строку, похожую на PrivateMessage.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.PrnConnected">
+            <summary>
+              Ищет локализованную строку, похожую на Connected: {0} / Channel: {1}.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.PrnError">
+            <summary>
+              Ищет локализованную строку, похожую на ERROR.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.PrnExit">
+            <summary>
+              Ищет локализованную строку, похожую на Exited gracefully...
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.prnNo">
+            <summary>
+              Ищет локализованную строку, похожую на No.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.PrnOK">
+            <summary>
+              Ищет локализованную строку, похожую на OK.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.PrnRun">
+            <summary>
+              Ищет локализованную строку, похожую на {0}  (st) IRC-Bot is running.. {1}.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.PrnRunIrcHelp">
+            <summary>
+              Ищет локализованную строку, похожую на type @help for ask me...
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.PrnTemplate">
+            <summary>
+              Ищет локализованную строку, похожую на {0}(st) IRC-Bot {1}:{0}{2}{3}.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.prnYes">
+            <summary>
+              Ищет локализованную строку, похожую на Yes.
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.ServerMessage">
+            <summary>
+              Ищет локализованную строку, похожую на [ServerMessage]:::[{0}].
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.UserChangeNick">
+            <summary>
+              Ищет локализованную строку, похожую на [UserChangeNick]:::[{0}]:::[{1}].
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.UserExit">
+            <summary>
+              Ищет локализованную строку, похожую на [UserExit]:::[{0}].
+            </summary>
+        </member>
+        <member name="P:stCoCServer.Properties.Resources.UserJoined">
+            <summary>
+              Ищет локализованную строку, похожую на [UserJoined]:::[{0}].
+            </summary>
+        </member>
+    </members>
+</doc>

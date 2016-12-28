@@ -1,0 +1,192 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="stCoCServerConfig.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="IRCServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">irc.freenode.net</Value>
+    </Setting>
+    <Setting Name="IRCPort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">6667</Value>
+    </Setting>
+    <Setting Name="IRCPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IRCChannel" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IRCNik" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IRCSOutFileName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">irc.txt</Value>
+    </Setting>
+    <Setting Name="IRCSOutDirName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IRCServerMessage" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IRCNoticeMessage" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SQLDBPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">coc.db</Value>
+    </Setting>
+    <Setting Name="SQLDBUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source={0};Version=3;UTF8Encoding=True;DateTimeFormat=ISO8601;Cache Size=3000;</Value>
+    </Setting>
+    <Setting Name="IRCAdminPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SYSLANGConsole" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">RU</Value>
+    </Setting>
+    <Setting Name="WEBRootUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="WEBRootPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">8989</Value>
+    </Setting>
+    <Setting Name="IRCLogTimeFormat" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">HH:mm:ss</Value>
+    </Setting>
+    <Setting Name="IPFIpList" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IPFIsIpBlackList" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IPFIsGeoAsnBlackList" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IPFGeoListASN" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IPFGeoListCountry" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SYSGEOPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">geo</Value>
+    </Setting>
+    <Setting Name="SYSIRCLOGPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">log</Value>
+    </Setting>
+    <Setting Name="SYSTMPLPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">template</Value>
+    </Setting>
+    <Setting Name="IPFLocation" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;assets&lt;/string&gt;
+  &lt;string&gt;irclog&lt;/string&gt;
+  &lt;string&gt;clan&lt;/string&gt;
+  &lt;string&gt;json&lt;/string&gt;
+  &lt;string&gt;notify&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="IPFType" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;FileWebRquest&lt;/string&gt;
+  &lt;string&gt;TemplateWebRquest&lt;/string&gt;
+  &lt;string&gt;JsonWebRquest&lt;/string&gt;
+  &lt;string&gt;JsonWebRquest&lt;/string&gt;
+  &lt;string&gt;ServerSentEventWebRquest&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="CLANTag" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CLANAPIKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQLDBUpdateTime" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="LOGRemoteServerEnable" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="LOGRemoteServerPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">514</Value>
+    </Setting>
+    <Setting Name="LOGRemoteServerAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LOGDuplicateEntry" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SYSAppName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IRCFloodTimeOut" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">750</Value>
+    </Setting>
+    <Setting Name="IRCKickRespawn" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IPFIsGeoCountryBlackList" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IPFLocationEnable" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;True&lt;/string&gt;
+  &lt;string&gt;True&lt;/string&gt;
+  &lt;string&gt;True&lt;/string&gt;
+  &lt;string&gt;True&lt;/string&gt;
+  &lt;string&gt;True&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="IRCPluginSayEnable" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IRCPluginClanEnable" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IRCPluginHelpEnable" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IRCPluginModeEnable" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IRCPluginTimeEnable" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IRCPluginTopicEnable" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IRCPluginUpTimeEnable" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IRCPluginVersionEnable" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IRCPluginUrlShortEnable" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IRCPluginContextUrlTitleEnable" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IRCPluginLoopClanNotifyEnable" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IRCPluginLoopClanNotifyPeriod" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="IRCPluginLanguage" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IRCPluginNotifySetupEnable" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SQLDBFilterMemberTag" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="WEBLANGDefault" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IRCPluginLangSetupEnable" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CoCClanIdEmpty" xml:space="preserve">
+    <value>неопределен идентефикатор клана</value>
+  </data>
+  <data name="CoCClanTagEmpty" xml:space="preserve">
+    <value>неопределен тэг клана </value>
+  </data>
+  <data name="CoCDBExceptionLength" xml:space="preserve">
+    <value>{0}: ошибка разбора, команда имеет нулевую длинну</value>
+  </data>
+  <data name="CoCGetUrlEmpty" xml:space="preserve">
+    <value>Json запрос вернул пустой ответ: {0}</value>
+  </data>
+  <data name="CoCGetUrlServerError" xml:space="preserve">
+    <value>CoC API server: '{0}', {1}</value>
+  </data>
+  <data name="CoCInitError" xml:space="preserve">
+    <value>инициализация {0} - ошибка: {1}</value>
+  </data>
+  <data name="CoCKeyEmpty" xml:space="preserve">
+    <value>необходим API ключ, (смотри https://developer.clashofclans.com/)</value>
+  </data>
+  <data name="CoCMediaDownloadInfo" xml:space="preserve">
+    <value>Обновление медиа файлов: {0}{1}</value>
+  </data>
+  <data name="CoCNotifyAddClient" xml:space="preserve">
+    <value>добавлен клиент</value>
+  </data>
+  <data name="CoCNotifyAddDataTable" xml:space="preserve">
+    <value>добавлен контекст</value>
+  </data>
+  <data name="CoCNotifyDataOtherError" xml:space="preserve">
+    <value>(смотри последнюю ошибку)</value>
+  </data>
+  <data name="CoCNotifyDataRss" xml:space="preserve">
+    <value>создание RSS канала</value>
+  </data>
+  <data name="fmtNotifyClanChangeLevel" xml:space="preserve">
+    <value>Клан {0} измененил уровень: {1}{2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyClanChangeName" xml:space="preserve">
+    <value>Клан {2} измененил имя на: {3}</value>
+  </data>
+  <data name="fmtNotifyClanChangeMembers" xml:space="preserve">
+    <value>Клан {0} измененил количество участников: {1}{2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyClanChangePoints" xml:space="preserve">
+    <value>Клан {0} измененил очки: {1}{2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyClanChangeType" xml:space="preserve">
+    <value>Клан {0} измененил статус (прием): {2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyClanChangeTrophies" xml:space="preserve">
+    <value>Клан {0} измененил трофеи (прием): {1}{2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyClanChangeWarFrequency" xml:space="preserve">
+    <value>Клан {0} измененил период между войнами: {2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyClanChangeWarSeries" xml:space="preserve">
+    <value>Клан {0} измененил серию побед: {1}{2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyClanChangeWarPublic" xml:space="preserve">
+    <value>Клан {0} измененил публичный ход войны: {2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyClanChangeWarWin" xml:space="preserve">
+    <value>Клан {0} измененил выигранные войны: {1}{2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyMemberChangeDonationSend" xml:space="preserve">
+    <value>{0} измененил пожертвования: {1}{2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyMemberChangeLeague" xml:space="preserve">
+    <value>{0} измененил лигу: {2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyMemberChangeLevel" xml:space="preserve">
+    <value>{0} измененил уровень: {1}{2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyMemberChangeNik" xml:space="preserve">
+    <value>{2} измененил имя на: {3}</value>
+  </data>
+  <data name="fmtNotifyMemberChangeRole" xml:space="preserve">
+    <value>{0} измененил звание: {2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyMemberChangeTrophies" xml:space="preserve">
+    <value>{0} измененил трофеи: {1}{2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyMemberExit" xml:space="preserve">
+    <value>{0} покинул клан</value>
+  </data>
+  <data name="fmtNotifyMemberNew" xml:space="preserve">
+    <value>Новый участник {0}</value>
+  </data>
+  <data name="fmtNotifyWarClanEnd" xml:space="preserve">
+    <value>Клановая война окончена:  {0} {2}%-{3}% : {1}{4}</value>
+  </data>
+  <data name="CoCNotifyRssDesc" xml:space="preserve">
+    <value>Клан # {0} обновление статистики ОнЛайн (RSS канал). Создан: {1}</value>
+  </data>
+  <data name="CoCNotifyRssCopy" xml:space="preserve">
+    <value>(С) stCoCServer RSS канал</value>
+  </data>
+  <data name="ShedWaitProcess" xml:space="preserve">
+    <value>Время обновления CoC базы: [{0} сек]</value>
+  </data>
+  <data name="ShedStopProcess" xml:space="preserve">
+    <value>Обновление CoC базы остановлено: [{0}]</value>
+  </data>
+  <data name="ShedStartProcess" xml:space="preserve">
+    <value>Запуск обновления CoC базы: [{0}]</value>
+  </data>
+  <data name="ShedNextProcess" xml:space="preserve">
+    <value>Следующее обновление CoC базы: [{0}]</value>
+  </data>
+  <data name="ShedCanceledProcess" xml:space="preserve">
+    <value>Отменено обновление CoC базы: [{0}]</value>
+  </data>
+  <data name="DataTableEmptyIn" xml:space="preserve">
+    <value>Входные Json данные пусты, Таблица: {0}</value>
+  </data>
+  <data name="CurlReturnReason" xml:space="preserve">
+    <value>При получении Json возникла неизвестная ошибка</value>
+  </data>
+  <data name="CurlObjEmpty" xml:space="preserve">
+    <value>экземпляр Curl обьекта пуст</value>
+  </data>
+  <data name="CoCUrlEmpty" xml:space="preserve">
+    <value>Создание CoC API URL привело к ошибке, URL пуст</value>
+  </data>
+  <data name="CoCRequestIdEmpty" xml:space="preserve">
+    <value>Идентификатор запроса неправильный или не определен</value>
+  </data>
+  <data name="CoCNotifyRssTitle" xml:space="preserve">
+    <value>уведомления обновлений ОнЛайн</value>
+  </data>
+  <data name="CoCNotifyDataSseSend" xml:space="preserve">
+    <value>Информация отправлена</value>
+  </data>
+  <data name="CoCNotifySendPart" xml:space="preserve">
+    <value>Эвент отправлен</value>
+  </data>
+  <data name="CoCNotifySetHeader" xml:space="preserve">
+    <value>Заголовок установлен</value>
+  </data>
+  <data name="CoCNotifyHostDataCount" xml:space="preserve">
+    <value>Хост/Дата</value>
+  </data>
+  <data name="fmtNotifyHeaderCount" xml:space="preserve">
+    <value>Получено {0} новых обновлений клана, время запроса: {1}, следующее {2}</value>
+  </data>
+  <data name="fmtNotifyMemberChangeDonationReceive" xml:space="preserve">
+    <value>{0} измененил полученное подкрепление: {1}{2} -&gt; {3}</value>
+  </data>
+  <data name="fmtNotifyWarClanEndVs" xml:space="preserve">
+    <value> на </value>
+  </data>
+  <data name="fmtRrdClanChangePointsMax" xml:space="preserve">
+    <value>Максимальные очки клана: @0@r</value>
+  </data>
+  <data name="fmtRrdClanChangePointsMin" xml:space="preserve">
+    <value>Минимальные очки клана: @0@r</value>
+  </data>
+  <data name="fmtRrdClanChangePointsTitle" xml:space="preserve">
+    <value>Изменение Очков клана</value>
+  </data>
+  <data name="fmtRrdClanChangePointsVlabel" xml:space="preserve">
+    <value>очки клана</value>
+  </data>
+  <data name="fmtRrdClanChangeWarWinTitle" xml:space="preserve">
+    <value>Выигранные войны клана</value>
+  </data>
+  <data name="fmtRrdClanChangeWarWinVlabel" xml:space="preserve">
+    <value>выигранные войны</value>
+  </data>
+  <data name="fmtRrdMemberChangeDonationReceiveMax" xml:space="preserve">
+    <value>Максимально получено войск: @0@r</value>
+  </data>
+  <data name="fmtRrdMemberChangeDonationReceiveMin" xml:space="preserve">
+    <value>Минимально получено войск: @0@r</value>
+  </data>
+  <data name="fmtRrdMemberChangeDonationReceiveVlabel" xml:space="preserve">
+    <value>получено войск</value>
+  </data>
+  <data name="fmtRrdMemberChangeDonationReceiveTitle" xml:space="preserve">
+    <value>Получено войск в клане</value>
+  </data>
+  <data name="fmtRrdMemberChangeDonationSendTitle" xml:space="preserve">
+    <value>Пожертвовано войск в клане</value>
+  </data>
+  <data name="fmtRrdMemberChangeDonationSendVlabel" xml:space="preserve">
+    <value>пожертвовано войск</value>
+  </data>
+  <data name="fmtRrdMemberChangeDonationSendMax" xml:space="preserve">
+    <value>Максимально пожертвовано войск: @0@r</value>
+  </data>
+  <data name="fmtRrdMemberChangeDonationSendMin" xml:space="preserve">
+    <value>Минимально пожертвовано войск: @0@r</value>
+  </data>
+  <data name="RrdPeriodNameDay" xml:space="preserve">
+    <value>День</value>
+  </data>
+  <data name="RrdPeriodNameMonth" xml:space="preserve">
+    <value>Месяц</value>
+  </data>
+  <data name="RrdPeriodNameWeek" xml:space="preserve">
+    <value>Неделя</value>
+  </data>
+  <data name="RrdPeriodNameYear" xml:space="preserve">
+    <value>Год</value>
+  </data>
+  <data name="fmtRrdClanChangeWarWinMax" xml:space="preserve">
+    <value>Выигранные войны за период: @0@r</value>
+  </data>
+  <data name="fmtRrdClanChangeWarWinMin" xml:space="preserve">
+    <value>Выигранные войны на начало периода: @0@r</value>
+  </data>
+</root>

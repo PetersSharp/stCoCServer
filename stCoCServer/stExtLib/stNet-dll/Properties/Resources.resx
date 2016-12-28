@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="httpBoxButton" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="httpError" xml:space="preserve">
+    <value>server response error:</value>
+  </data>
+  <data name="httpLocalError" xml:space="preserve">
+    <value>Web client is internal error</value>
+  </data>
+  <data name="IPListEmpty" xml:space="preserve">
+    <value>IP address is empty, or not valid</value>
+  </data>
+  <data name="IPListError" xml:space="preserve">
+    <value>converting IP error: '{0}' - {1}</value>
+  </data>
+  <data name="upnpError" xml:space="preserve">
+    <value>UPNP error: {0}</value>
+  </data>
+  <data name="upnpFindServer" xml:space="preserve">
+    <value>UPNP: find {0} devices</value>
+  </data>
+  <data name="httpListenerEmptyResource" xml:space="preserve">
+    <value>HTTP Resource Locator empty</value>
+  </data>
+  <data name="httpListenerExceptionOnReq" xml:space="preserve">
+    <value>HTTP Serv on Request: </value>
+  </data>
+  <data name="httpListenerExceptionAddResource" xml:space="preserve">
+    <value>HTTP Serv add resource URI: {0}</value>
+  </data>
+  <data name="httpListenerExceptionStart" xml:space="preserve">
+    <value>HTTP Serv Start Exception: </value>
+  </data>
+  <data name="httpListenerExceptionStartHttp" xml:space="preserve">
+    <value>HTTP Serv Start Http Exception: </value>
+  </data>
+  <data name="httpListenerExceptionStop" xml:space="preserve">
+    <value>HTTP Serv Stop Exception: </value>
+  </data>
+  <data name="httpListenerInit" xml:space="preserve">
+    <value>HTTP Serv Init: </value>
+  </data>
+  <data name="httpListenerNoSupport" xml:space="preserve">
+    <value>Http Listener not supported</value>
+  </data>
+  <data name="httpListenerNull" xml:space="preserve">
+    <value>Http Listener is Null</value>
+  </data>
+  <data name="httpListenerUrlEmpty" xml:space="preserve">
+    <value>Http URI empty</value>
+  </data>
+  <data name="templateFileNotFound" xml:space="preserve">
+    <value>Template file not found: {0}</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Template file not found: {0}</value>
+  </data>
+  <data name="templateAppendObjEmpty" xml:space="preserve">
+    <value>Template append object is empty</value>
+  </data>
+  <data name="templateDirectoryEmpty" xml:space="preserve">
+    <value>Template directory is empty value</value>
+  </data>
+  <data name="templateDirectoryNotFound" xml:space="preserve">
+    <value>Template directory not found: {0}</value>
+  </data>
+  <data name="templateFileNameEmpty" xml:space="preserve">
+    <value>Template file name is empty value</value>
+  </data>
+  <data name="httpHTMLBadRequest" xml:space="preserve">
+    <value>&lt;h3&gt;({0}) URL not support&lt;/h3&gt;&lt;b&gt;Reason:&lt;/b&gt; {1}&lt;hr/&gt;&lt;b&gt;Generated:&lt;/b&gt; {2}&lt;br/&gt;</value>
+  </data>
+  <data name="httpUA" xml:space="preserve">
+    <value>st{0} {1}.{2}/EN {3} .NET {4} ({5})</value>
+  </data>
+  <data name="templateFileBusy" xml:space="preserve">
+    <value>Template file is busy: {0} ({1})</value>
+  </data>
+  <data name="templateInsertFileNotFound" xml:space="preserve">
+    <value>Template Insert file not found: {0}-{1}-{2}</value>
+  </data>
+  <data name="httpJsonResponse" xml:space="preserve">
+    <value>{{"error":{0},"msg":"Bad request, reason: {1}","data":[{2}]}}</value>
+  </data>
+  <data name="httpUtilMinifyFileNotFound" xml:space="preserve">
+    <value>{0}: File '{1}' does not exist</value>
+  </data>
+  <data name="httpUtilMinifyError" xml:space="preserve">
+    <value>Minify {0} error: {1} {2}</value>
+  </data>
+  <data name="httpMinifyConcatDisabled" xml:space="preserve">
+    <value>Concat and Minify disabled..</value>
+  </data>
+  <data name="httpMinifyCSShead" xml:space="preserve">
+    <value>Minify CSS: {0}</value>
+  </data>
+  <data name="httpMinifyJShead" xml:space="preserve">
+    <value>Minify JS: {0}</value>
+  </data>
+  <data name="httpMinifyOriginhead" xml:space="preserve">
+    <value>Minify Origin: {0}</value>
+  </data>
+  <data name="httpMinifyStreamBinary" xml:space="preserve">
+    <value>error binary reader</value>
+  </data>
+  <data name="httpMinifyStreamOrigin" xml:space="preserve">
+    <value>error Origin stream read source:</value>
+  </data>
+  <data name="httpMinifyStreamOut" xml:space="preserve">
+    <value>error Out write stream:</value>
+  </data>
+  <data name="httpMinifyStreamOutNull" xml:space="preserve">
+    <value>error Out stream writer is null:</value>
+  </data>
+  <data name="httpMinifyStreamRead" xml:space="preserve">
+    <value>error Minify read stream:</value>
+  </data>
+  <data name="httpMinifyStreamReadNull" xml:space="preserve">
+    <value>error In stream reader is null:</value>
+  </data>
+  <data name="httpCallbackNull" xml:space="preserve">
+    <value>Http request function is Null</value>
+  </data>
+  <data name="aclExceptioConvertIpEnd" xml:space="preserve">
+    <value>IP range convert end ip address</value>
+  </data>
+  <data name="aclExceptionAddress" xml:space="preserve">
+    <value>IP range address</value>
+  </data>
+  <data name="aclExceptionList" xml:space="preserve">
+    <value>IP range list</value>
+  </data>
+  <data name="aclExceptionStringCollection" xml:space="preserve">
+    <value>IP range String Collection</value>
+  </data>
+  <data name="aclExceptioSourceFormat" xml:space="preserve">
+    <value>IP range source string error format</value>
+  </data>
+  <data name="curlProcessError1" xml:space="preserve">
+    <value>curl executable not found</value>
+  </data>
+  <data name="curlProcessError2" xml:space="preserve">
+    <value>failed process start info</value>
+  </data>
+  <data name="curlProcessError3" xml:space="preserve">
+    <value>process Faulted or Canceled</value>
+  </data>
+  <data name="curlProcessError4" xml:space="preserve">
+    <value>return empty string</value>
+  </data>
+  <data name="curlProcessError5" xml:space="preserve">
+    <value>curl exec: {0}</value>
+  </data>
+  <data name="curlProcessError6" xml:space="preserve">
+    <value>failed process standard output</value>
+  </data>
+  <data name="curlProcessError7" xml:space="preserve">
+    <value>failed to quit in time</value>
+  </data>
+  <data name="curlProcessError8" xml:space="preserve">
+    <value>curl process start: {0}</value>
+  </data>
+  <data name="curlProcessError9" xml:space="preserve">
+    <value>curl tempoary path not set</value>
+  </data>
+  <data name="IRCKickMessage" xml:space="preserve">
+    <value>bad guys '{0}', don't KICK channel BOT, understand?</value>
+  </data>
+  <data name="IRCAlreadyRunException" xml:space="preserve">
+    <value>IRC already connected: {0}:{1}</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="httpXmlError" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\httpXmlError.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="httpHtmlError" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\httpHtmlError.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="httpListenerExceptionLoop" xml:space="preserve">
+    <value>HTTP Serv loop Exception: </value>
+  </data>
+  <data name="IRCDisconnectedMessage" xml:space="preserve">
+    <value>QUIT Client Disconnected: {0}</value>
+  </data>
+  <data name="httpMinifyChanged" xml:space="preserve">
+    <value>Minify detect file {0}: {1}, rebuild..</value>
+  </data>
+</root>
