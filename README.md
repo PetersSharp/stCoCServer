@@ -1,7 +1,7 @@
 # stCoCServer
 [![Release](https://img.shields.io/github/release/PetersSharp/stCoCServer.svg?style=flat)](https://github.com/PetersSharp/stCoCServer/releases/latest)
 [![Issues](https://img.shields.io/github/issues/PetersSharp/stCoCServer.svg?style=flat)](https://github.com/PetersSharp/stCoCServer/issues)
-[![License](http://img.shields.io/:license-gpl-3.0-blue.svg)](https://github.com/PetersSharp/stCoCServer/blob/master/LICENSE)
+[![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/PetersSharp/stCoCServer/blob/master/LICENSE)
 
 CoCServer - statistic server for games Clash of Clans, Web frontend,  IRC bot and more..
 
