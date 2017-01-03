@@ -3,7 +3,7 @@
 
 using System.Reflection;
 
-[assembly: AssemblyDescription("this is part of CoCServer (https://github.com/PetersSharp)")]
+[assembly: AssemblyDescription("this is part of CoCServer (https://github.com/PetersSharp/stCoCServer)")]
 [assembly: AssemblyVersion("<#= this.stVersion #>")]
 [assembly: AssemblyFileVersion("<#= this.stVersion #>")]
 

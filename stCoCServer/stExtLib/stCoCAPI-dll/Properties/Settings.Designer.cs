@@ -169,7 +169,7 @@ namespace stCoCAPI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SELECT * FROM ClanInfo")]
+        [global::System.Configuration.DefaultSettingValueAttribute("SELECT * FROM ClanInfo LIMIT 1")]
         public string DBSysUpdateClanInfo {
             get {
                 return ((string)(this["DBSysUpdateClanInfo"]));

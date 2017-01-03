@@ -3,6 +3,7 @@
 
     window.cocDateUrl = '';
     window.cocUserUrl = '';
+    window.cocGitHubUrl = '';
     window.cocLocalizeDtUrl  = '';
     window.cocLocalizeLangUrl = '/assets/js/cocServerLang';
     window.cocGlobSelector = 'send';
@@ -909,5 +910,42 @@
 		}
 	);
     };
+
+    $.fn.GetLatestRelease = function() {
+	var ele = this;
+        $.getJSON(cocGitHubUrl)
+	  .done(function (release) {
+            var asset = release.assets[0];
+            var dCount = 0;
+            for (var i = 0; i < release.assets.length; i++) {
+                dCount += release.assets[i].download_count;
+            }
+            var oneHour = 60 * 60 * 1000;
+            var oneDay = 24 * oneHour;
+            var dateDiff = new Date() - new Date(asset.updated_at);
+            var tago;
+            if (dateDiff < oneDay)
+            {
+                tago = (dateDiff / oneHour).toFixed(1) + ' ' + $.fn.LangFormatData('ghhoursago', 'hours ago');
+            }
+            else
+            {
+                tago = (dateDiff / oneDay).toFixed(1) + ' ' + $.fn.LangFormatData('ghdaysago', 'days ago');
+            }
+            ele.fadeOut('slow');
+            ele.html(
+		'<a href="' + asset.browser_download_url + '" target="_blank"> ' +
+		release.name + ' ' +
+		$.fn.LangFormatData('ghupdated', 'updated') + ' ' +
+		tago + '</a></br><li>' +
+		$.fn.LangFormatData('ghdownload', 'downloaded') + ' ' +
+		dCount.toLocaleString() + ' ' +
+		$.fn.LangFormatData('ghtimes', 'times') + ' ' +
+		'<span class="glyphicon glyphicon-refresh"></span></li>'
+	     );
+            ele.fadeIn("slow");
+	    $('#srvgentitle').html($.fn.LangFormatData('srvgentitle1', 'Update'));
+        });
+    }
 
 } (jQuery));

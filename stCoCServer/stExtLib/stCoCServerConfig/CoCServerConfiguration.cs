@@ -112,6 +112,7 @@ namespace stCoCServerConfig.CoCServerConfiguration
                 LOGRemoteServerPort = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
                 LOGRemoteServerAddress = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
                 LOGDuplicateEntry = new CoCServerConfigData.OptionItem(true, String.Empty, String.Empty),
+                LOGDebug = new CoCServerConfigData.OptionItem(false, String.Empty, String.Empty),
                 PrnQuiet = new CoCServerConfigData.OptionItem(false, "quiet", "-q"),
                 IsRun = new CoCServerConfigData.OptionItem(true, String.Empty, String.Empty)
             };
@@ -260,6 +261,7 @@ namespace stCoCServerConfig.CoCServerConfiguration
                 Opt.LOGRemoteServerEnable.bval = Properties.Settings.Default.LOGRemoteServerEnable;
             }
             Opt.LOGDuplicateEntry.bval = ((string.IsNullOrWhiteSpace(Opt.LOGDuplicateEntry.value)) ? Properties.Settings.Default.LOGDuplicateEntry : BuildConfig._GetBoolConfig(Opt.LOGDuplicateEntry.value));
+            Opt.LOGDebug.bval = ((string.IsNullOrWhiteSpace(Opt.LOGDebug.value)) ? Properties.Settings.Default.LOGDebug : BuildConfig._GetBoolConfig(Opt.LOGDebug.value));
 
             for (int i = 0; i < BuildConfig.numFilters; i++)
             {

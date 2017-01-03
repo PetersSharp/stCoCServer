@@ -51,7 +51,7 @@
       <Value Profile="(Default)">SELECT * FROM ClanMember WHERE COCSEASON(year,season) = 1</Value>
     </Setting>
     <Setting Name="DBSysUpdateClanInfo" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">SELECT * FROM ClanInfo</Value>
+      <Value Profile="(Default)">SELECT * FROM ClanInfo LIMIT 1</Value>
     </Setting>
     <Setting Name="DBSysUpdateSelect" Type="System.String" Scope="Application">
       <Value Profile="(Default)">SELECT * FROM {0}</Value>

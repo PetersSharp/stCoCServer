@@ -227,7 +227,7 @@ namespace stCoCAPI
             {
                 this._dbm.Close();
             }
-            this.TaskClear();
+            this.TaskClear(true);
         }
         public void Stop()
         {
@@ -395,7 +395,7 @@ namespace stCoCAPI
         {
             return (string)Properties.Resources.ResourceManager.GetObject(resid, ci);
         }
-        private void TaskClear()
+        private void TaskClear(bool cleanproc = false)
         {
             if (!this._TaskDisposed)
             {
@@ -428,6 +428,12 @@ namespace stCoCAPI
                     this._canceler = null;
                 }
                 this._TaskDisposed = false;
+
+                if ((cleanproc) && (this._cocProcess != null))
+                {
+                    this._cocProcess.Dispose();
+                    this._cocProcess = null;
+                }
             }
         }
     }

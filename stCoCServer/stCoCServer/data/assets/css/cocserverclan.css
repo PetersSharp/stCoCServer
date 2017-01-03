@@ -469,3 +469,12 @@ tr.cocselect td.cocmember {
     filter: alpha(opacity=50);
     opacity: .5;
 }
+#srvgen {
+    color: #337AB7;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#srvgen:hover {
+    text-decoration: underline;
+}

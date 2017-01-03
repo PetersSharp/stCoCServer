@@ -15,7 +15,7 @@
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Documents and Settings\Dom\Мои документы\Visual Studio 2010\Projects\__ST\IRCBoot\Build\stCoCServer\</PublishUrl>
+    <PublishUrl>C:\Documents and Settings\Dom\Мои документы\Visual Studio 2010\Projects\__ST\Build\stCoCServer\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -38,8 +38,8 @@
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <AutorunEnabled>true</AutorunEnabled>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>2</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -158,10 +158,6 @@
       <Link>stGeoUpdate.application</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\stGeoUpdate\bin\Release\stGeoUpdate.exe.config">
-      <Link>stGeoUpdate.exe.config</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="..\stGeoUpdate\bin\Release\stGeoUpdate.exe.manifest">
       <Link>stGeoUpdate.exe.manifest</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -174,6 +170,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ClanWar.html</LastGenOutput>
     </DesignDataWithDesignTimeCreatableTypes>
+    <Content Include="data\assets\css\socialbuttons.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\assets\fonts\social-icon.eot">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -224,9 +223,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\assets\css\jvectormap.css">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="data\assets\css\socialbuttons.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\assets\html\ClanWar.html">
@@ -1788,7 +1784,6 @@
       <Link>System.Data.SQLite.dll.config</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="app.config" />
     <Content Include="data\assets\css\concat.list.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

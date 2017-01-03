@@ -22,8 +22,6 @@ namespace stCoCServer.CoCAPI
             stCoCServerConfig.CoCServerConfigData.Configuration conf = udata as stCoCServerConfig.CoCServerConfigData.Configuration;
             HttpListenerContext context = ctx as HttpListenerContext;
 
-            stConsole.WriteHeader("FileWebRquest: " + context.Request.HttpMethod);
-
             if (
                 (udata == null) ||
                 (conf.HttpSrv == null)
@@ -34,6 +32,8 @@ namespace stCoCServer.CoCAPI
             }
 
             byte[] msg = null;
+            long   msgsize = 0;
+            string modify = String.Empty;
             string filePath = conf.Opt.SYSROOTPath.value;
 
             if (url.Contains("?"))
@@ -69,6 +69,26 @@ namespace stCoCServer.CoCAPI
             try
             {
                 msg = File.ReadAllBytes(filePath);
+                switch (context.Request.HttpMethod)
+                {
+                    case "HEAD":
+                        {
+                            FileInfo fi = new FileInfo(filePath);
+                            modify = fi.LastWriteTimeUtc.ToLongDateString();
+                            break;
+                        }
+                    case "GET":
+                        {
+                            msg = File.ReadAllBytes(filePath);
+                            msgsize = msg.Length;
+                            modify = File.GetLastWriteTimeUtc(filePath).ToLongDateString();
+                            break;
+                        }
+                    default:
+                        {
+                            throw new ArgumentOutOfRangeException(Properties.Resources.httpMethodNotSupport);
+                        }
+                }
             }
             catch (Exception e)
             {
@@ -90,7 +110,8 @@ namespace stCoCServer.CoCAPI
                                Path.GetFileName(filePath)
                             )
                 );
-                context.Response.ContentLength64 = msg.Length;
+                context.Response.AddHeader(conf.HttpSrv.httpLastModified, modify);
+                context.Response.ContentLength64 = msgsize;
                 context.Response.OutputStream.Write(msg, 0, msg.Length);
                 context.Response.OutputStream.Close();
             }

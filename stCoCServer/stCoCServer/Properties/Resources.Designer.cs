@@ -531,6 +531,15 @@ namespace stCoCServer.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на method not support.
+        /// </summary>
+        internal static string httpMethodNotSupport {
+            get {
+                return ResourceManager.GetString("httpMethodNotSupport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на HTTP server disabled in configuration.
         /// </summary>
         internal static string httpServerDisabled {

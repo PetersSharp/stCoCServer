@@ -17,7 +17,7 @@ namespace stApp
         {
             FileVersionInfo ver = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
             return string.Format(
-                "{0} v.{1}.{2}.{3}.{4} build: 2017-01-01",
+                "{0} v.{1}.{2}.{3}.{4} build: 2017-01-04",
                 ver.ProductName,
                 ver.ProductMajorPart,
                 ver.ProductMinorPart,

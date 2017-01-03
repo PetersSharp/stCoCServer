@@ -73,7 +73,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="MaxMindUtilCountryBase.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MaxMindUtilCountryBase.cs</LastGenOutput>

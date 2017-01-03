@@ -544,5 +544,14 @@ namespace stCoCServerConfig.Properties {
                 return ((bool)(this["IRCPluginLangSetupEnable"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LOGDebug {
+            get {
+                return ((bool)(this["LOGDebug"]));
+            }
+        }
     }
 }

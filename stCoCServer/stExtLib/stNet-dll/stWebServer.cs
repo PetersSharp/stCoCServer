@@ -70,6 +70,7 @@ namespace stNet
             set { this._isBootstrapHtml = value; }
         }
 
+        private const string _httpLastModified = @"Last-Modified";
         private const string _httpContentType = @"Content-Type";
         private const string _httpContentDisposition = @"Content-Disposition";
 
@@ -80,6 +81,10 @@ namespace stNet
             set {
                 this._ci = stNet.stWebServerUtil.HttpUtil.GetHttpClientLanguage(value, null);
             }
+        }
+        public string httpLastModified
+        {
+            get { return _httpLastModified; }
         }
         public string httpContentType
         {

@@ -195,6 +195,7 @@ namespace stCoCServerConfig.CoCServerConfigData
         public OptionItem LOGRemoteServerPort { get; set; }
         public OptionItem LOGRemoteServerEnable { get; set; }
         public OptionItem LOGDuplicateEntry { get; set; }
+        public OptionItem LOGDebug { get; set; }
 
         public OptionItem PrnQuiet { get; set; }
         public OptionItem IsRun { get; set; }
