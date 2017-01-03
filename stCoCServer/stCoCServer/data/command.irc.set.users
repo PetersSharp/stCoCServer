@@ -1,0 +1,5 @@
+# Script to set users root flag
+# rename command.irc.set.users to command.irc
+#
+ChanServ FLAGS #clanname username1!*@host_or_ip -V+oO
+ChanServ FLAGS #clanname username2!*@host_or_ip -V+oO

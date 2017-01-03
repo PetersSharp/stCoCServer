@@ -11,13 +11,17 @@ namespace stCoCAPI
         private const string _dbName = @"CoCAPI.db";
         private stCoCAPI.CoCAPI.CoCProcess _cocProcess = null;
         private stCoCAPI.CoCAPI.CoCNotify _cocNotifier = null;
+        private stCoCAPI.CoCAPI.CoCInformer _cocInformer = null;
         private stCoCAPI.CoCAPI.CoCRrd _cocRrd = null;
+        private stDokuWiki.AuthManager.DokuAuthManager _cocDWAuth = null;
+        private System.Collections.Specialized.StringCollection _cocFilterMemberTag = null;
 
         private CancellationTokenSource _canceler = null;
         private Task _task = null;
         private DateTime _updateLastTime = DateTime.MinValue;
         private DateTime _updateNextTime = DateTime.MinValue;
         private bool _isStop = false;
+        private bool _isInformerStatic = true;
         
         private CultureInfo _ci = null;
         public string DefaultLang
@@ -48,6 +52,13 @@ namespace stCoCAPI
             get
             {
                 return (int)this.UpdateNextTimeSpan.TotalMilliseconds;
+            }
+        }
+        public int UpdateNextSeconds
+        {
+            get
+            {
+                return (int)this.UpdateNextTimeSpan.TotalSeconds;
             }
         }
 
@@ -95,6 +106,12 @@ namespace stCoCAPI
             get { return this._rootpath; }
             set { this._rootpath = stCore.IOBaseAssembly.BaseDataDir(value); }
         }
+        private string _assetspath = "assets";
+        public string AssetsPath
+        {
+            get { return this._assetspath; }
+            set { this._assetspath = value; }
+        }
 
         private Int32 _pooltime = 0;
         public Int32 PoolTime
@@ -102,11 +119,16 @@ namespace stCoCAPI
             get { return this._pooltime; }
             set { this._pooltime = value; }
         }
+        public System.Collections.Specialized.StringCollection FilterMemberTag
+        {
+            get { return this._cocFilterMemberTag; }
+            set { this._cocFilterMemberTag = value; }
+        }
 
         /// <summary>
         /// Enable CoC Notify process
         /// </summary>
-        public bool Enable
+        public bool NotifyEnable
         {
             get { return ((this._cocNotifier == null) ? false : true); }
             set {
@@ -115,6 +137,14 @@ namespace stCoCAPI
                     this._cocNotifier = new CoCNotify(this);
                 }
             }
+        }
+        /// <summary>
+        /// Enable CoC Informer process
+        /// </summary>
+        public bool InformerStaticEnable
+        {
+            get { return this._isInformerStatic; }
+            set { this._isInformerStatic = value; }
         }
 
         public CoCAPI(string dbname = null, bool isnotify = true)
@@ -172,6 +202,7 @@ namespace stCoCAPI
                 this._dbm.RegisterFunction(typeof(SelectLeagueIcoFunction));
                 this._dbm.RegisterFunction(typeof(SelectBadgeIcoFunction));
                 this._dbm.RegisterFunction(typeof(SelectFlagIcoFunction));
+                this._dbm.RegisterFunction(typeof(ComputePasswordHashFunction));
 
                 this._cocProcess = new stCoCAPI.CoCAPI.CoCProcess(this);
                 if (this._cocProcess == null)
@@ -183,6 +214,16 @@ namespace stCoCAPI
                     );
                 }
                 this._cocProcess.CheckTable();
+
+                this._cocInformer = new stCoCAPI.CoCAPI.CoCInformer(this);
+                if (this._cocInformer == null)
+                {
+                    throw new ArgumentNullException(
+                        string.Format(
+                            Properties.Resources.CoCInitError, typeof(CoCInformer).Name, 2
+                        )
+                    );
+                }
 
                 if (isnotify)
                 {
@@ -200,7 +241,7 @@ namespace stCoCAPI
                     {
                         throw new ArgumentNullException(
                             string.Format(
-                                Properties.Resources.CoCInitError, typeof(CoCNotify).Name, 2
+                                Properties.Resources.CoCInitError, typeof(CoCNotify).Name, 4
                             )
                         );
                     }
@@ -227,7 +268,7 @@ namespace stCoCAPI
             {
                 this._dbm.Close();
             }
-            this.TaskClear();
+            this.TaskClear(true);
         }
         public void Stop()
         {
@@ -395,7 +436,7 @@ namespace stCoCAPI
         {
             return (string)Properties.Resources.ResourceManager.GetObject(resid, ci);
         }
-        private void TaskClear()
+        private void TaskClear(bool cleanproc = false)
         {
             if (!this._TaskDisposed)
             {
@@ -428,6 +469,12 @@ namespace stCoCAPI
                     this._canceler = null;
                 }
                 this._TaskDisposed = false;
+
+                if ((cleanproc) && (this._cocProcess != null))
+                {
+                    this._cocProcess.Dispose();
+                    this._cocProcess = null;
+                }
             }
         }
     }

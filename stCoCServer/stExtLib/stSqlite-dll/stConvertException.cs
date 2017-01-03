@@ -1,6 +1,10 @@
 ﻿using System;
 
+#if STCLIENTBUILD
+namespace stClient
+#else
 namespace stSqlite
+#endif
 {
     [Serializable]
     public class ConvertExtensionException : Exception

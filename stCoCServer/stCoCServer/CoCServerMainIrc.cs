@@ -4,14 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using stCore;
+using System.IO;
 
 namespace stCoCServer
 {
     partial class CoCServerMain
     {
+        private static stTimerWait reapeatIRCConnect = new stTimerWait();
+
         #region IRC Message contains
 
-        private static bool _isHandleMessage(string message)
+        private static bool _isHandleIrcMessage(string message)
         {
             if ((message[0] == '@') || (message[0] == '!'))
             {
@@ -22,12 +25,75 @@ namespace stCoCServer
 
         #endregion
 
+        #region IRC Set Channel
+
+        private static void _IrcSetChannel(string path)
+        {
+            try
+            {
+                if (
+                     (string.IsNullOrWhiteSpace(CoCServerMain.Conf.Opt.IRCChannel.value)) ||
+                     (string.IsNullOrWhiteSpace(CoCServerMain.Conf.Opt.CLANTag.value)) ||
+                     (string.IsNullOrWhiteSpace(CoCServerMain.Conf.Opt.WEBRootUri.value))
+                   )
+                {
+                    return;
+                }
+                File.WriteAllText(
+                     path,
+                     string.Format(
+                        Properties.Resources.fmtIrcSetChannel,
+                        CoCServerMain.Conf.Opt.IRCChannel.value,
+                        CoCServerMain.Conf.Opt.CLANTag.value,
+                        ((string.IsNullOrWhiteSpace(CoCServerMain.Conf.Opt.DOKUWikiRootUrl.value)) ?
+                            CoCServerMain.Conf.Opt.WEBRootUri.value :
+                            CoCServerMain.Conf.Opt.DOKUWikiRootUrl.value
+                        )
+                     )
+                );
+            }
+#if DEBUG
+            catch (Exception e)
+            {
+                if (CoCServerMain.Conf.ILog != null)
+                {
+                    CoCServerMain.Conf.ILog.LogInfo("DEBUG SET IRC CHANNEL CMD: " + e.Message);
+                }
+#else
+            catch (Exception)
+            {
+#endif
+            }
+        }
+
+        #endregion
+
+        #region All CALLBACK IRC Init
+
         private static void InitIrcCallBack()
         {
-            #region CALLBACK
-
             #region USER MATHCH
 
+            CoCServerMain.Conf.Irc.OnUserUpdate += (o, e) =>
+            {
+                if (e.UserList.Length > 0)
+                {
+                    foreach (string user in e.UserList)
+                    {
+                        if (user.Length == 0)
+                        {
+                            continue;
+                        }
+                        CoCServerMain.Conf.LogDump.Write(
+                            string.Format(
+                                Properties.Resources.ircUserList,
+                                DateTime.Now.ToString(CoCServerMain.Conf.Opt.IRCLogTimeFormat.value),
+                                user
+                            )
+                        );
+                    }
+                }
+            };
             CoCServerMain.Conf.Irc.OnUserJoined += (o, e) =>
             {
                 CoCServerMain.Conf.LogDump.Write(
@@ -35,6 +101,14 @@ namespace stCoCServer
                         Properties.Resources.ircUserJoined,
                         DateTime.Now.ToString(CoCServerMain.Conf.Opt.IRCLogTimeFormat.value),
                         e.User
+                    )
+                );
+                CoCServerMain.Conf.Irc.SendMessage(
+                    CoCServerMain.Conf.Opt.IRCChannel.value,
+                    string.Format(
+                        Properties.Resources.PrnRun,
+                        DateTime.Now,
+                        Properties.Resources.PrnRunIrcHelp
                     )
                 );
             };
@@ -96,7 +170,7 @@ namespace stCoCServer
                     return;
                 }
                 if (
-                    (CoCServerMain._isHandleMessage(e.Message)) &&
+                    (CoCServerMain._isHandleIrcMessage(e.Message)) &&
                     (CoCServerMain.Conf.IrcCmd.PluginParseCmd(false, e.Channel, e.From, e.Message))
                    ) { }
                 else
@@ -119,7 +193,7 @@ namespace stCoCServer
                     return;
                 }
                 if (
-                    (CoCServerMain._isHandleMessage(e.Message)) &&
+                    (CoCServerMain._isHandleIrcMessage(e.Message)) &&
                     (CoCServerMain.Conf.IrcCmd.PluginParseCmd(true, CoCServerMain.Conf.Opt.IRCChannel.value, e.From, e.Message))
                    ) { }
                 else
@@ -151,24 +225,26 @@ namespace stCoCServer
             };
             #endregion
 
-            #region CHANNEL/SERVER
-            CoCServerMain.Conf.Irc.OnUserJoined += (o, e) =>
-            {
-                CoCServerMain.Conf.Irc.SendMessage(
-                    CoCServerMain.Conf.Opt.IRCChannel.value,
-                    string.Format(
-                        Properties.Resources.PrnRun,
-                        DateTime.Now,
-                        Properties.Resources.PrnRunIrcHelp
-                    )
-                );
-            };
+            #region CHANNEL/SERVER SYS Event
+
             CoCServerMain.Conf.Irc.OnConnect += (o, e) =>
             {
+                Action<string> act = null;
+                if (CoCServerMain.Conf.Opt.IRCSetNewChannel.bval)
+                {
+                    act = CoCServerMain._IrcSetChannel;
+                }
                 CoCServerMain.Conf.Irc.JoinChannel(CoCServerMain.Conf.Opt.IRCChannel.value);
+                CoCServerMain.Conf.Irc.ExecCmdWatch(
+                    Path.Combine(
+                        CoCServerMain.Conf.Opt.SYSROOTPath.value,
+                        "command.irc"
+                    ),
+                    act
+                );
                 CoCServerMain.Conf.ILog.LogInfo(
                     string.Format(
-                        Properties.Resources.PrnConnected,
+                        Properties.Resources.PrnIrcConnected,
                         CoCServerMain.Conf.Opt.IRCServer.value,
                         CoCServerMain.Conf.Opt.IRCChannel.value
                     )
@@ -181,12 +257,55 @@ namespace stCoCServer
             };
             CoCServerMain.Conf.Irc.OnExceptionThrown += (o, e) =>
             {
-                CoCServerMain.PrnError(e.Exception.Message);
+                CoCServerMain.Conf.ILog.LogError(
+                    string.Format(
+                        Properties.Resources.PrnIrcException,
+                        ((string.IsNullOrWhiteSpace(e.SocketError)) ? "" : "[" + e.SocketError + "]"),
+                        ((e.Count > 0) ? "/" + e.Count.ToString() + " " : ""),
+                        e.Exception.Message
+                    )
+                );
+                if (e.Fatal)
+                {
+                    lock (reapeatIRCConnect)
+                    {
+                        reapeatIRCConnect.timer = new Timer((cbo) =>
+                        {
+                            CoCServerMain.Conf.ILog.LogInfo(
+                                string.Format(
+                                    Properties.Resources.fmtIRCReConnect,
+                                    CoCServerMain.Conf.Opt.IRCServer.value,
+                                    CoCServerMain.Conf.Opt.IRCPort.num,
+                                    CoCServerMain.Conf.Opt.IRCChannel.value
+                                )
+                            );
+                            try
+                            {
+                                CoCServerMain.Conf.Irc.Connect();
+                            }
+                            catch (Exception ex)
+                            {
+                                CoCServerMain.Conf.ILog.LogError(
+                                    string.Format(
+                                        Properties.Resources.fmtIRCError,
+                                        CoCServerMain.Conf.Opt.IRCServer.value,
+                                        ex.Message
+                                    )
+                                );
+                            }
+                            lock (cbo)
+                            {
+                                ((stTimerWait)cbo).Dispose();
+                            }
+                        }, reapeatIRCConnect, (5 * 60 * 1000), -1);
+                    }
+                }
             };
 
             #endregion
-
-            #endregion
         }
+
+
+        #endregion
     }
 }

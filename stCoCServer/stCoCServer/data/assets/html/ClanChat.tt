@@ -1,0 +1,43 @@
+﻿<#@ include file="..\..\..\stUtil.tt" #>
+<#@ output extension=".html" encoding="utf-8" #>
+<#
+	this.headerMenu = this.GetFromProjectFile(
+	 new string [] {
+		"data",
+		"assets",
+		"html",
+		"tmplMenuClan.ttinclude"
+	 }
+	);
+	this.headerGenrate = this.footerVersion = this.GetProgName();
+	string fv = this.getVersionAssembly();
+	if (!string.IsNullOrWhiteSpace(fv)) {
+		this.footerVersion = this.footerVersion + " v." + fv;
+		this.headerGenrate = this.footerVersion;
+	}
+#>
+<#@ include file="tmplHeader.ttinclude" #>
+
+	<center>
+	<div id="ircchat"></div>
+	</center>
+
+<#@ include file="tmplFooter.ttinclude" #>
+<#+
+	string headerMenu = "";
+	string headerCheckBox = "";
+	string titleId = "chattitle";
+	string titleText = "Clan Chat";
+	string footerDate = DateTime.Now.ToString("yyyy/MM/dd");
+	string footerVersion = "";
+	string headerGenrate = "";
+	string srcJavaScript = 
+	"<script type='text/javascript' charset='utf8'>" +
+	"	$(document).ready(function() {" +
+	"		$.fn.CoCInit('cocclan');" +
+	"		$('#datecontainer').CoCDatePicker(EnumUpdate.urlClan,'updateEmpty');" +
+	"		$('#ircchat').CoCIrcChat();" +
+	"	});" +
+	"</script>";
+
+#>

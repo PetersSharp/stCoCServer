@@ -1,0 +1,169 @@
+﻿<#@ include file="..\..\..\stUtil.tt" #>
+<#@ output extension=".html" encoding="utf-8" #>
+<#
+	this.headerMenu = this.GetFromProjectFile(
+	 new string [] {
+		"data",
+		"assets",
+		"html",
+		"tmplMenuClan.ttinclude"
+	 }
+	);
+	this.headerGenrate = this.footerVersion = this.GetProgName();
+	string fv = this.getVersionAssembly();
+	if (!string.IsNullOrWhiteSpace(fv)) {
+		this.footerVersion = this.footerVersion + " v." + fv;
+		this.headerGenrate = this.footerVersion;
+	}
+#>
+<#@ include file="tmplHeader.ttinclude" #>
+
+	<ul class="nav nav-tabs">
+	  <li class="active"><a data-toggle="tab" href="#infclan"><span data-localize="inftabclan">Clan informer</span></a></li>
+	  <li><a data-toggle="tab" href="#infmembers"><span data-localize="inftabmember">Members informer</span></a></li>
+	</ul>
+
+	<div class="tab-content" style="width:90%;">
+	  <div id="infclan" class="tab-pane fade in active">
+	    <h3><span data-localize="inftabclan">Clan informer</span></h3>
+		<center>
+		    <div>
+<#
+		for (int iCount = 0; iCount <= 25; iCount++)
+		{
+#>
+				<div class="informer-items-right informer-clan" data-idx="<#= iCount #>" style="background-image:url('/informer/clan/<#= iCount #>/');"></div>
+<#
+		}
+#>
+		    </div>
+		</center>
+	  </div>
+	  <div id="infmembers" class="tab-pane fade">
+	    <h3><span data-localize="inftabmember">Members informer</span></h3>
+		<center>
+		    <div>
+<#
+		for (int iCount = 0; iCount <= 15; iCount++)
+		{
+#>
+				<div class="informer-items-right informer-player" data-idx="<#= iCount #>" style="background-image:url('/informer/player/<#= iCount #>/random/');"></div>
+<#
+		}
+#>
+		    </div>
+		</center>
+	  </div>
+	</div>
+
+
+	<center>
+	    <a name="informercode"></a>
+		<div class="thumbnail" style="width:90%;display:none;">
+			<div id="show-idx" class="img-thumbnail"></div>
+			<div class="caption">
+				<p data-localize="infcopypaste">Just copy/paste the code in your forum/page signature. The image will automatically be updated every 25 min.</p>
+				<p>
+					<a href="#informercode" id="codebb" class="btn btn-default" role="button">BB <span data-localize="infcode">Code</span></a>
+					<a href="#informercode" id="codewiki" class="btn btn-default" role="button">Wiki <span data-localize="infcode">Code</span></a>
+					<a href="#informercode" id="codehtml" class="btn btn-default" role="button">HTML <span data-localize="infcode">Code</span></a>
+					<a href="#informercode" id="codeurl" class="btn btn-default" role="button">URL <span data-localize="infcode">Code</span></a>
+					<span id="show-tag" class="input-group" style="display:inline-flex;margin-left:3px;position:absolute;">
+					  <span class="input-group-addon" id="gametag" >#</span>
+					  <input id="tagplace" type="text" class="form-control" placeholder="game Tag" aria-describedby="gametag" maxlength="9" style="width:105px;">
+					</span>
+				</p>
+				<div id="code-first" class="input-group" style="width:500px;display:none;">
+					<textarea id="codeplace" class="form-control" aria-label="Code to informer signature" placeholder="Informer code here.." style="height:50px;background:#FFFFFF;" autofocus="true" readonly="true"></textarea>
+					<div class="input-group-btn">
+						<button type="button" id="infcopy" class="btn btn-primary" style="height:50px;"><span data-localize="infcopy">Copy</span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</center>
+
+<#@ include file="tmplFooter.ttinclude" #>
+<#+
+	string headerMenu = "";
+	string headerCheckBox = "";
+	string titleId = "inftitle";
+	string titleText = "Graphic Clan informer";
+	string footerDate = DateTime.Now.ToString("yyyy/MM/dd");
+	string footerVersion = "";
+	string headerGenrate = "";
+	string srcJavaScript = 
+	"<script type='text/javascript' charset='utf8'>" +
+	"	$(document).ready(function() {" +
+	"		$.fn.CoCInit('cocclan');" +
+	"		$('#datecontainer').CoCDatePicker(EnumUpdate.urlClan,'updateEmpty');" +
+	"		var idx, wikisize = '500x100', urltype, urltag = 'random', urlhost = $(location).attr('protocol') + '//' + $(location).attr('host');" +
+	"		$('.informer-clan').on('click', function() {" +
+	"		   idx = $(this).attr('data-idx');" +
+	"		   urltype = '/informer/clan/' + idx + '/';" +
+	"		   wikisize = '500x100';" +
+	"		   $('#show-idx').html('<img src=\"' + urltype + '\" />');" +
+	"		   $('#show-idx').attr('data-idx', idx);" +
+	"		   $('#show-idx').css('min-width', 500);" +
+	"		   $('#show-idx').css('min-height', 100);" +
+	"		   $('#show-tag').css('display','none');" +
+	"		   $('.thumbnail').fadeIn('slow');" +
+	"		});" +
+	"		$('.informer-player').on('click', function() {" +
+	"		   idx = $(this).attr('data-idx');" +
+	"		   urltype = '/informer/player/' + idx + '/' + urltag + '/';" +
+	"		   wikisize = '300x180';" +
+	"		   $('#show-idx').html('<img src=\"' + urltype + '\" />');" +
+	"		   $('#show-idx').attr('data-idx', idx);" +
+	"		   $('#show-idx').css('min-width', 300);" +
+	"		   $('#show-idx').css('min-height', 180);" +
+	"		   $('#show-tag').css('display', 'inline-flex');" +
+	"		   $('.thumbnail').fadeIn('slow');" +
+	"		});" +
+	"		$('#codebb').on('click', function() {" +
+	"		   idx = $('#show-idx').attr('data-idx');" +
+	"		   $('#codeplace').text(" +
+	"			'[center][url=' + urlhost + '/assets/html/ClanInfo.html]' +" +
+	"			'[img]' + urlhost + urltype + '[/img][/url][/center]'" +
+	"		   );" +
+	"		   $('#code-first').fadeIn('slow');" +
+	"		});" +
+	"		$('#codehtml').on('click', function() {" +
+	"		   idx = $('#show-idx').attr('data-idx');" +
+	"		   $('#codeplace').text(" +
+	"			'<a href=\"' + urlhost + '/assets/html/ClanInfo.html\">' +" +
+	"			'<img src=\"' + urlhost + urltype + '\"/></a>'" +
+	"		   );" +
+	"		   $('#code-first').fadeIn('slow');" +
+	"		});" +
+	"		$('#codewiki').on('click', function() {" +
+	"		   idx = $('#show-idx').attr('data-idx');" +
+	"		   $('#codeplace').text(" +
+	"			'[[' + urlhost + '/assets/html/ClanInfo.html|' +" +
+	"			'{{ ' + urlhost + urltype + 't.png?' + wikisize + '&nocache |Produced by (c)CoCServer}}]]'" +
+	"		   );" +
+	"		   $('#code-first').fadeIn('slow');" +
+	"		});" +
+	"		$('#codeurl').on('click', function() {" +
+	"		   idx = $('#show-idx').attr('data-idx');" +
+	"		   $('#codeplace').text(" +
+	"			urlhost + urltype" +
+	"		   );" +
+	"		   $('#code-first').fadeIn('slow');" +
+	"		});" +
+	"		$('#infcopy').on('click', function() {" +
+	"		   $('#codeplace').focus();" +
+	"		   $('#codeplace').select();" +
+	"		   document.execCommand('copy');" +
+	"		});" +
+	"		$('#tagplace').on('change keyup paste', function () {" +
+	"		    var tag = $(this).val();" +
+	"		    if (tag == '') { urltag = 'random'; $(this).css('background-color', '#FFFFFF'); }" +
+	"		    else if (tag.length >= 7) { urltag = tag; $(this).css('background-color', '#E9FFD4'); }" +
+	"		    else { $(this).css('background-color', '#FFCDD2'); }" +
+	"		});" +
+	"	});" +
+	"</script>";
+
+#>

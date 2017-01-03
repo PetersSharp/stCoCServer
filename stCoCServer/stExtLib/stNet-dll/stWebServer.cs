@@ -34,10 +34,12 @@ namespace stNet
     public enum WebHandleTypes : int
     {
         None,
-        FileWebRquest,
-        TemplateWebRquest,
-        JsonWebRquest,
-        ServerSentEventWebRquest
+        FileWebRequest,
+        TemplateWebRequest,
+        JsonWebRequest,
+        ServerSentEventWebRequest,
+        InformerWebRequest,
+        WikiWebRequest
     }
 
     ///<summary>
@@ -64,14 +66,24 @@ namespace stNet
         private bool _isConcat = false;
         private bool _isMinify = false;
         private bool _isBootstrapHtml = true;
-        public  bool IsBootstrapHtml
+        private bool _isFrontEnd = false;
+        public bool isBootstrapHtml
         {
             get { return this._isBootstrapHtml; }
             set { this._isBootstrapHtml = value; }
         }
+        public bool isFrontEnd
+        {
+            get { return this._isFrontEnd; }
+            set { this._isFrontEnd = value; }
+        }
 
+        private const string _httpLastModified = @"Last-Modified";
         private const string _httpContentType = @"Content-Type";
         private const string _httpContentDisposition = @"Content-Disposition";
+        private const string _httpCacheControl = @"Cache-Control";
+        private const string _httpAccelBuffering = @"X-Accel-Buffering";
+        private const string _httpAccessControlAllowOrigin = @"Access-Control-Allow-Origin";
 
         private CultureInfo _ci = null;
         public string DefaultLang
@@ -81,6 +93,10 @@ namespace stNet
                 this._ci = stNet.stWebServerUtil.HttpUtil.GetHttpClientLanguage(value, null);
             }
         }
+        public string httpLastModified
+        {
+            get { return _httpLastModified; }
+        }
         public string httpContentType
         {
             get { return _httpContentType; }
@@ -88,6 +104,18 @@ namespace stNet
         public string httpContentDisposition
         {
             get { return _httpContentDisposition; }
+        }
+        public string httpCacheControl
+        {
+            get { return _httpCacheControl; }
+        }
+        public string httpAccelBuffering
+        {
+            get { return _httpAccelBuffering; }
+        }
+        public string httpAccessControlAllowOrigin
+        {
+            get { return _httpAccessControlAllowOrigin; }
         }
 
         private bool _isDisposed = false;
@@ -557,8 +585,8 @@ namespace stNet
                         {
                             default:
                             case WebHandleTypes.None:
-                            case WebHandleTypes.TemplateWebRquest:
-                            case WebHandleTypes.FileWebRquest:
+                            case WebHandleTypes.TemplateWebRequest:
+                            case WebHandleTypes.FileWebRequest:
                                 {
                                     this.BadRequestHtml(
                                         respTxt,
@@ -567,7 +595,7 @@ namespace stNet
                                     );
                                     break;
                                 }
-                            case WebHandleTypes.JsonWebRquest:
+                            case WebHandleTypes.JsonWebRequest:
                                 {
                                     this.BadRequestJson(
                                         respTxt,
@@ -585,10 +613,14 @@ namespace stNet
                 this._iLog.LogError(Properties.Resources.httpListenerExceptionOnReq + e.Message);
             }
         }
-        public void BadRequestRaw(byte[] reason, HttpUtil.MimeType mtype, HttpListenerContext context, int err)
+        public void BadRequestRaw(byte[] raw, HttpListenerContext context, int err, HttpUtil.MimeType mtype)
         {
             context.Response.AddHeader(this.httpContentType, HttpUtil.GetMimeType("", mtype));
-            this._BadRequest(reason, context, err);
+            this._BadRequest(
+                raw,
+                context,
+                err
+            );
         }
         public void BadRequestHtml(string reason, HttpListenerContext context, int err)
         {
@@ -673,13 +705,18 @@ namespace stNet
             }
             try
             {
-                context.Response.StatusCode = err;
+                context.Response.AddHeader(this.httpCacheControl, "no-cache");
+                context.Response.AddHeader(this.httpAccelBuffering, "no");
+                context.Response.StatusCode = context.Response.StatusCode = ((this._isFrontEnd) ? (int)HttpStatusCode.OK : err);
                 context.Response.ContentLength64 = msg.Length;
                 context.Response.OutputStream.Write(msg, 0, msg.Length);
                 context.Response.OutputStream.Close();
             }
             catch (Exception)
             {
+#if DEBUG
+                stConsole.WriteHeader("_BadRequest -> Response.Abort");
+#endif
                 context.Response.Abort();
             }
         }

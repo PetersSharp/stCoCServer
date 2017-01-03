@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <struct>
+  <member><name>name</name><value><string>wiki:rules</string></value></member>
+  <member><name>lastModified</name><value><dateTime.iso8601>2016-08-14T21:05:25+0000</dateTime.iso8601></value></member>
+  <member><name>author</name><value><string>petr999</string></value></member>
+  <member><name>version</name><value><int>1471208725</int></value></member>
+</struct>
+      </value>
+    </param>
+  </params>
+</methodResponse>

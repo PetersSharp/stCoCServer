@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<methodCall>
+  <methodName>wiki.putPage</methodName>
+  <params>
+    <param>
+      <value>
+        <string>playground:test008</string>
+      </value>
+    </param>
+    <param>
+      <value>
+        <string>hey!! open you main new</string>
+      </value>
+    </param>
+    <param>
+      <value>
+        <string />
+      </value>
+    </param>
+  </params>
+</methodCall>

@@ -3,7 +3,18 @@ using System.Linq;
 using System.Reflection;
 using System.Diagnostics;
 
+#if STCLIENTBUILD
+using stBase = stClient;
+using stConvertExt = stClient.ClientConvertExtension;
+
+namespace stClient
+
+#else
+using stBase = stSqlite;
+using stConvertExt = stSqlite.SqliteConvertExtension;
+
 namespace stSqlite
+#endif
 {
     [Serializable]
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Field | AttributeTargets.Method |AttributeTargets.Property | AttributeTargets.Parameter)]
@@ -21,6 +32,12 @@ namespace stSqlite
         /// Converter <see cref="stSqlite.SqliteConvert.JsonToDataTable{T}"/> map to Columns field type
         /// </summary>
         public Type   FieldType { get; private set; }
+        /* TODO: arguments!!
+        /// <summary>
+        /// Converter <see cref="stSqlite.SqliteConvert.JsonToDataTable{T}"/> map field to Key
+        /// </summary>
+        public bool FieldKey { get; private set; }
+        */
         /// <summary>
         /// Converter <see cref="stSqlite.SqliteConvert.JsonToDataTable{T}"/> map field to Primary Key
         /// </summary>
@@ -29,6 +46,10 @@ namespace stSqlite
         /// Converter <see cref="stSqlite.SqliteConvert.JsonToDataTable{T}"/> map field to Unique Key
         /// </summary>
         public bool FieldUnique { get; private set; }
+        /// <summary>
+        /// Converter <see cref="stSqlite.SqliteConvert.JsonToDataTable{T}"/> map field to Primary AUTOINCREMENT Key
+        /// </summary>
+        public bool FieldAutoIncrement { get; private set; }
         /// <summary>
         /// Converter <see cref="stSqlite.SqliteConvert.JsonToDataTable{T}"/> map field to function filter name
         /// </summary>
@@ -45,8 +66,9 @@ namespace stSqlite
         /// <code>
         ///     TablePropertyMapAttribute(
         ///         is primary key,
+        ///         is auto increment key,
         ///         is unique,
-        ///         System type,
+        ///         System Type,
         ///         name field to DataTable,
         ///         sql type,
         ///         name filter function in data class,
@@ -57,6 +79,8 @@ namespace stSqlite
         /// <code>
         ///         public class MyMmapClass : TablePropertyMapMethod
         ///         {
+        ///             [TablePropertyMapAttribute("KeyInJsonName", typeof(System.String), true, true, "MapFilterMy")]
+        ///             public string keys { get; set; }
         ///             [TablePropertyMapAttribute("TagInJsonName", typeof(System.String), true, "MapFilterMy")]
         ///             public string tag { get; set; }
         ///             ....
@@ -88,75 +112,69 @@ namespace stSqlite
         /// <param name="name"></param>
         public TablePropertyMapAttribute(string name)
         {
-            this._TablePropertyMapAttribute(false, false, null, name, null, null, null);
+            this._TablePropertyMapAttribute(false, false, false, null, name, null, null, null);
         }
-        public TablePropertyMapAttribute(string name, string filter)
+        public TablePropertyMapAttribute(string name, string sql)
         {
-            this._TablePropertyMapAttribute(false, false, null, name, null, filter, null);
-        }
-        public TablePropertyMapAttribute(string name, string sql, string filter)
-        {
-            this._TablePropertyMapAttribute(false, false, null, name, sql, filter, null);
-        }
-        public TablePropertyMapAttribute(string name, bool ispkey)
-        {
-            this._TablePropertyMapAttribute(ispkey, false, null, name, null, null, null);
-        }
-        public TablePropertyMapAttribute(string name, bool ispkey, string filter)
-        {
-            this._TablePropertyMapAttribute(ispkey, false, null, name, null, filter, null);
-        }
-        public TablePropertyMapAttribute(string name, bool ispkey, bool isuniq)
-        {
-            this._TablePropertyMapAttribute(ispkey, isuniq, null, name, null, null, null);
-        }
-        public TablePropertyMapAttribute(string name, bool ispkey, bool isuniq, string filter)
-        {
-            this._TablePropertyMapAttribute(ispkey, isuniq, null, name, null, filter, null);
+            this._TablePropertyMapAttribute(false, false, false, null, name, sql, null, null);
         }
         public TablePropertyMapAttribute(string name, Type type)
         {
-            this._TablePropertyMapAttribute(false, false, type, name, null, null, null);
+            this._TablePropertyMapAttribute(false, false, false, type, name, null, null, null);
         }
         public TablePropertyMapAttribute(string name, Type type, string filter)
         {
-            this._TablePropertyMapAttribute(false, false, type, name, null, filter, null);
+            this._TablePropertyMapAttribute(false, false, false, type, name, null, filter, null);
         }
-        public TablePropertyMapAttribute(string name, Type type, bool ispkey)
+        //
+        public TablePropertyMapAttribute(string name, string sql, bool isuniq)
         {
-            this._TablePropertyMapAttribute(ispkey, false, type, name, null, null, null);
+            this._TablePropertyMapAttribute(false, false, isuniq, null, name, sql, null, null);
         }
-        public TablePropertyMapAttribute(string name, Type type, bool ispkey, bool isuniq)
+        public TablePropertyMapAttribute(string name, string sql, bool ispkey, bool isauto)
         {
-            this._TablePropertyMapAttribute(ispkey, isuniq, type, name, null, null, null);
+            this._TablePropertyMapAttribute(ispkey, isauto, false, null, name, sql, null, null);
         }
-        public TablePropertyMapAttribute(string name, Type type, bool ispkey, string filter)
+        //
+        public TablePropertyMapAttribute(string name, string sql, bool isuniq, string filter)
         {
-            this._TablePropertyMapAttribute(ispkey, false, type, name, null, filter, null);
+            this._TablePropertyMapAttribute(false, false, isuniq, null, name, sql, filter, null);
         }
-        public TablePropertyMapAttribute(string name, Type type, string sql, bool ispkey, string filter)
+        public TablePropertyMapAttribute(string name, string sql, bool ispkey, bool isauto, string filter)
         {
-            this._TablePropertyMapAttribute(ispkey, false, type, name, sql, filter, null);
+            this._TablePropertyMapAttribute(ispkey, isauto, false, null, name, sql, filter, null);
         }
-        public TablePropertyMapAttribute(string name, Type type, string sql, bool ispkey, bool isuniq)
+        //
+        public TablePropertyMapAttribute(string name, Type type, bool isuniq, string filter)
         {
-            this._TablePropertyMapAttribute(ispkey, isuniq, type, name, sql, null, null);
+            this._TablePropertyMapAttribute(false, false, isuniq, type, name, null, filter, null);
         }
-        public TablePropertyMapAttribute(string name, Type type, bool ispkey, bool isuniq, string filter)
+        public TablePropertyMapAttribute(string name, Type type, bool ispkey, bool isauto, string filter)
         {
-            this._TablePropertyMapAttribute(ispkey, isuniq, type, name, null, filter, null);
+            this._TablePropertyMapAttribute(ispkey, isauto, false, type, name, null, filter, null);
         }
-        public TablePropertyMapAttribute(string name, Type type, string sql, bool ispkey, bool isuniq, string filter)
+        //
+        public TablePropertyMapAttribute(string name, Type type, bool ispkey, bool isauto, bool isuniq)
         {
-            this._TablePropertyMapAttribute(ispkey, isuniq, type, name, sql, filter, null);
+            this._TablePropertyMapAttribute(ispkey, isauto, isuniq, type, name, null, null, null);
         }
-        public TablePropertyMapAttribute(string name, Type type, string sql, bool ispkey, bool isuniq, string nfilter, MethodInfo mfilter)
+        public TablePropertyMapAttribute(string name, Type type, bool ispkey, bool isauto, bool isuniq, string filter)
         {
-            this._TablePropertyMapAttribute(ispkey, isuniq, type, name, sql, nfilter, mfilter);
+            this._TablePropertyMapAttribute(ispkey, isauto, isuniq, type, name, null, filter, null);
+        }
+        public TablePropertyMapAttribute(string name, Type type, string sql, bool ispkey, bool isauto, bool isuniq, string nfilter)
+        {
+            this._TablePropertyMapAttribute(ispkey, isauto, isuniq, type, name, sql, nfilter, null);
+        }
+        // base full constructor
+        public TablePropertyMapAttribute(string name, Type type, string sql, bool ispkey, bool isauto, bool isuniq, string nfilter, MethodInfo mfilter)
+        {
+            this._TablePropertyMapAttribute(ispkey, isauto, isuniq, type, name, sql, nfilter, mfilter);
         }
         
         private void _TablePropertyMapAttribute(
             bool ispkey,
+            bool isauto,
             bool isuniq,
             Type type,
             string name,
@@ -166,6 +184,7 @@ namespace stSqlite
           )
         {
             this.FieldPrimaryKey = ispkey;
+            this.FieldAutoIncrement = isauto;
             this.FieldUnique = isuniq;
             this.FieldName = name;
             this.FieldType = ((type == null) ? null : type);
@@ -177,6 +196,7 @@ namespace stSqlite
         {
             return string.Format(
                 "\tPrimary key: {}" + ((isFormat) ? Environment.NewLine : ", ") +
+                "\tAuto invrement: {}" + ((isFormat) ? Environment.NewLine : ", ") +
                 "\tUnique: {}" + ((isFormat) ? Environment.NewLine : ", ") +
                 "\tName: {}" + ((isFormat) ? Environment.NewLine : ", ") +
                 "\tType: {}" + ((isFormat) ? Environment.NewLine : ", ") +
@@ -184,6 +204,7 @@ namespace stSqlite
                 "\tFilter name: {}" + ((isFormat) ? Environment.NewLine : ", ") +
                 "\tFilter instance: {}" + ((isFormat) ? Environment.NewLine : " "),
                 this.FieldPrimaryKey,
+                this.FieldAutoIncrement,
                 this.FieldUnique,
                 ((string.IsNullOrWhiteSpace(this.FieldName)) ? "null" : this.FieldName),
                 ((this.FieldType == null) ? "null" : this.FieldType.ToString()),
@@ -273,8 +294,9 @@ namespace stSqlite
                     return new TablePropertyMapAttribute(
                         ((prop.Name != null) ? prop.Name : name),
                         ptype,
-                        ((string.IsNullOrWhiteSpace(attr.FieldSQL)) ? SqliteConvertExtension.TablePropertyMapSqlType(ptype) : attr.FieldSQL),
+                        ((string.IsNullOrWhiteSpace(attr.FieldSQL)) ? stConvertExt.TablePropertyMapSqlType(ptype) : attr.FieldSQL),
                         attr.FieldPrimaryKey,
+                        attr.FieldAutoIncrement,
                         attr.FieldUnique,
                         attr.FieldFilterName,
                         mi

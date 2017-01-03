@@ -529,6 +529,24 @@ namespace stNet.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на exec IRC command from: .
+        /// </summary>
+        public static string IRCCommandFileExec {
+            get {
+                return ResourceManager.GetString("IRCCommandFileExec", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на exec IRC command, path not found: .
+        /// </summary>
+        public static string IRCCommandFileNotFound {
+            get {
+                return ResourceManager.GetString("IRCCommandFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на QUIT Client Disconnected: {0}.
         /// </summary>
         public static string IRCDisconnectedMessage {
@@ -543,15 +561,6 @@ namespace stNet.Properties {
         public static string IRCKickMessage {
             get {
                 return ResourceManager.GetString("IRCKickMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Template file not found: {0}.
-        /// </summary>
-        public static string String1 {
-            get {
-                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
         

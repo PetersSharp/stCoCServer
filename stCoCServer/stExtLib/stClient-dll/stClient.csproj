@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{03A559EE-B15E-4B4B-AF93-7F20EFE35CAC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>stClient</RootNamespace>
+    <AssemblyName>stClient</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;STCLIENTBUILD</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;STCLIENTBUILD</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\stCoCServer\CoCAPI\CoCClientSetupData.cs">
+      <Link>CoCClientSetupData.cs</Link>
+    </Compile>
+    <Compile Include="..\stCoCAPI-dll\CoCDBTableAPIClient.cs">
+      <Link>CoCDBTableAPIClient.cs</Link>
+    </Compile>
+    <Compile Include="..\stCoCAPI-dll\CoCEnumShared.cs">
+      <Link>CoCEnumShared.cs</Link>
+    </Compile>
+    <Compile Include="..\stNet-dll\CheckUri.cs">
+      <Link>CheckUri.cs</Link>
+    </Compile>
+    <Compile Include="..\stNet-dll\stIrcClient.cs">
+      <Link>stIrcClient.cs</Link>
+    </Compile>
+    <Compile Include="..\stNet-dll\stIrcEventArguments.cs">
+      <Link>stIrcEventArguments.cs</Link>
+    </Compile>
+    <Compile Include="..\stNet-dll\stIrcFormatText.cs">
+      <Link>stIrcFormatText.cs</Link>
+    </Compile>
+    <Compile Include="..\stSqlite-dll\stConvert.cs">
+      <Link>stConvert.cs</Link>
+    </Compile>
+    <Compile Include="..\stSqlite-dll\stConvertAttribute.cs">
+      <Link>stConvertAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\stSqlite-dll\stConvertException.cs">
+      <Link>stConvertException.cs</Link>
+    </Compile>
+    <Compile Include="..\stVersion\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\ResourceNotify.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceNotify.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SpellChecker\Dictionary\Affixes\Affix.cs" />
+    <Compile Include="SpellChecker\Dictionary\Affixes\AffixRule.cs" />
+    <Compile Include="SpellChecker\Dictionary\Affixes\AffixRulesCollection.cs" />
+    <Compile Include="SpellChecker\Dictionary\Affixes\Prefix.cs" />
+    <Compile Include="SpellChecker\Dictionary\Affixes\PrefixRule.cs" />
+    <Compile Include="SpellChecker\Dictionary\Affixes\Suffix.cs" />
+    <Compile Include="SpellChecker\Dictionary\Affixes\SuffixRule.cs" />
+    <Compile Include="SpellChecker\Dictionary\SpellDictionary.cs" />
+    <Compile Include="SpellChecker\Dictionary\SpellDictionaryManager.cs" />
+    <Compile Include="SpellChecker\Dictionary\SpellWord.cs" />
+    <Compile Include="SpellChecker\EditDistanceWeights.cs" />
+    <Compile Include="SpellChecker\SpellChecker.cs" />
+    <Compile Include="SpellChecker\SpellOptions.cs" />
+    <Compile Include="SpellChecker\SpellSuggestion.cs" />
+    <Compile Include="SpellChecker\Strings.Designer.cs" />
+    <Compile Include="SpellChecker\SuggestAlgorithms\InsertForgottenChar.cs" />
+    <Compile Include="SpellChecker\SuggestAlgorithms\RemoveExtraChar.cs" />
+    <Compile Include="SpellChecker\SuggestAlgorithms\ReplacePatterns.cs" />
+    <Compile Include="SpellChecker\SuggestAlgorithms\ReplaceWrongChars.cs" />
+    <Compile Include="SpellChecker\SuggestAlgorithms\SplitWords.cs" />
+    <Compile Include="SpellChecker\SuggestAlgorithms\SuggestAlgorithm.cs" />
+    <Compile Include="SpellChecker\SuggestAlgorithms\SwapChars.cs" />
+    <Compile Include="SpellChecker\TextTools.cs" />
+    <Compile Include="SpellChecker\Word.cs" />
+    <Compile Include="ToHTML\BBCodeToHTML.cs" />
+    <Compile Include="ToHTML\ColorToHTML.cs" />
+    <Compile Include="ToHTML\EmoticonsToHTML.cs" />
+    <Compile Include="WebGet.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\stCore-dll\stCore.csproj">
+      <Project>{0569D275-72F8-4A31-B04C-653725F58B72}</Project>
+      <Name>stCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ResourceNotify.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceNotify.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpellChecker\Strings.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

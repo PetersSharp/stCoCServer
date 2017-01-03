@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 
 . /etc/init.d/functions
@@ -6,10 +6,11 @@
 APP_NAME="stCoCServer"
 APP_PATH="/usr/local/stCoCServer"
 APP_LOG="/var/log"
+APP_OPT=""
 
     if [ ! -f ${APP_PATH}/${APP_NAME}.exe ]
     then
-        echo "Binary ${APP_NAME}.exe in path ${APP_PATH} not found.."
+        echo "Binary ${APP_NAME} in path ${APP_PATH} not found.."
         exit
     fi
     if [ ! -f ${APP_PATH}/${APP_NAME}.exe ]
@@ -18,13 +19,14 @@ APP_LOG="/var/log"
         exit
     fi
 
+
 start() {
         echo "Starting ${APP_NAME}"
         if [ -f ${APP_LOG}/${APP_NAME}.log ]
         then
             mv -f ${APP_LOG}/${APP_NAME}.log ${APP_LOG}/${APP_NAME}.old
         fi
-        nohup mono ${APP_PATH}/${APP_NAME}.exe > ${APP_LOG}/${APP_NAME}.log 2>&1&
+        nohup mono ${APP_OPT} ${APP_PATH}/${APP_NAME}.exe > ${APP_LOG}/${APP_NAME}.log 2>&1&
         RETVAL=$?
         echo
         if [ $RETVAL -eq 0 ]
@@ -57,9 +59,19 @@ case "$1" in
         start
         RETVAL=$?
     ;;
+  trace)
+        APP_OPT="--debug --trace=N:${APP_NAME}"
+        start
+        RETVAL=$?
+    ;;
+  debug)
+        APP_OPT="--debug"
+        start
+        RETVAL=$?
+    ;;
   test)
         echo -e "`ps axf | grep stCoCServer | grep -v grep | grep -v init`"
-        tail --lines=10 ${APP_LOG}/${APP_NAME}.log
+        tail --lines=15 ${APP_LOG}/${APP_NAME}.log
         RETVAL=0
     ;;
   *)

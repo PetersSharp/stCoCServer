@@ -82,16 +82,20 @@
   &lt;string&gt;clan&lt;/string&gt;
   &lt;string&gt;json&lt;/string&gt;
   &lt;string&gt;notify&lt;/string&gt;
+  &lt;string&gt;informer&lt;/string&gt;
+  &lt;string&gt;wiki&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="IPFType" Type="System.Collections.Specialized.StringCollection" Scope="Application">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;string&gt;FileWebRquest&lt;/string&gt;
-  &lt;string&gt;TemplateWebRquest&lt;/string&gt;
-  &lt;string&gt;JsonWebRquest&lt;/string&gt;
-  &lt;string&gt;JsonWebRquest&lt;/string&gt;
-  &lt;string&gt;ServerSentEventWebRquest&lt;/string&gt;
+  &lt;string&gt;FileWebRequest&lt;/string&gt;
+  &lt;string&gt;TemplateWebRequest&lt;/string&gt;
+  &lt;string&gt;JsonWebRequest&lt;/string&gt;
+  &lt;string&gt;JsonWebRequest&lt;/string&gt;
+  &lt;string&gt;ServerSentEventWebRequest&lt;/string&gt;
+  &lt;string&gt;InformerWebRequest&lt;/string&gt;
+  &lt;string&gt;WikiWebRequest&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="CLANTag" Type="System.String" Scope="Application">
@@ -135,6 +139,8 @@
   &lt;string&gt;True&lt;/string&gt;
   &lt;string&gt;True&lt;/string&gt;
   &lt;string&gt;True&lt;/string&gt;
+  &lt;string&gt;True&lt;/string&gt;
+  &lt;string&gt;True&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="IRCPluginSayEnable" Type="System.Boolean" Scope="Application">
@@ -173,7 +179,7 @@
     <Setting Name="IRCPluginLoopClanNotifyPeriod" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">10</Value>
     </Setting>
-    <Setting Name="IRCPluginLanguage" Type="System.String" Scope="Application">
+    <Setting Name="IRCLanguage" Type="System.String" Scope="Application">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="IRCPluginNotifySetupEnable" Type="System.Boolean" Scope="Application">
@@ -187,6 +193,42 @@
     </Setting>
     <Setting Name="IRCPluginLangSetupEnable" Type="System.Boolean" Scope="Application">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="LOGDebug" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="CLANInformerStaticEnable" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="WEBCacheEnable" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="WEBRequestDebugEnable" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="WEBFrontEndEnable" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="IRCSetNewChannel" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DOKUWikiRootUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DOKUWikiRootPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DOKUWikiQuestLogin" Type="System.String" Scope="User">
+      <Value Profile="(Default)">clanquest</Value>
+    </Setting>
+    <Setting Name="DOKUWikiQuestPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">clanquest</Value>
+    </Setting>
+    <Setting Name="DOKUWikiDefaultGroup" Type="System.String" Scope="User">
+      <Value Profile="(Default)">questrpc</Value>
+    </Setting>
+    <Setting Name="DOKUWikiAuthEnable" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

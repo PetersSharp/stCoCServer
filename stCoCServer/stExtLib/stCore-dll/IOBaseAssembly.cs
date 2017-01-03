@@ -32,6 +32,14 @@ namespace stCore
                     )
                     .Description;
         }
+        public static string BaseVersion(System.Reflection.Assembly asm)
+        {
+            return ((AssemblyDescriptionAttribute)
+                    asm.GetCustomAttributes(
+                        typeof(System.Reflection.AssemblyVersionAttribute), false)[0]
+                    )
+                    .Description;
+        }
         public static string BaseDataDir(string path = null)
         {
             string dataDir = String.Empty;

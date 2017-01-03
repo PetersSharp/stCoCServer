@@ -1,0 +1,229 @@
+﻿
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="generator" content="stCoCServer v.1.0.1.405"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="robots" content="noindex,nofollow"/>
+	<meta name="keywords" content="War,Wariors,Donation,CoC,Clash,Clan,Clans,Coalitions"/>
+	
+	<title data-localize="inftitle">Graphic Clan informer</title>
+
+	<link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+	<link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+	<link href="/assets/css/concat.min.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" charset="utf8" src="/assets/js/concat.min.js"></script>
+
+    	<!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    	<!--
+		// Генератор: Microsoft.VisualStudio.TextTemplating.VSHost.TextTemplatingService
+		// Темплейт: stCoCServer v.1.0.1.405
+		// Время генерации: 02/11/2017 16:49:44
+		// Language to DataTables: https://datatables.net/plug-ins/i18n/
+    	-->
+	<style>
+		body {
+		  min-height: 75rem;
+		}
+	</style>
+
+	<script type='text/javascript' charset='utf8'>	$(document).ready(function() {		$.fn.CoCInit('cocclan');		$('#datecontainer').CoCDatePicker(EnumUpdate.urlClan,'updateEmpty');		var idx, urltype, urltag = 'random', urlhost = $(location).attr('protocol') + '//' + $(location).attr('host');		$('.informer-clan').on('click', function() {		   idx = $(this).attr('data-idx');		   urltype = '/informer/clan/' + idx + '/';		   $('#show-idx').html('<img src="' + urltype + '" />');		   $('#show-idx').attr('data-idx', idx);		   $('#show-idx').css('min-width', 500);		   $('#show-idx').css('min-height', 100);		   $('#show-tag').css('display','none');		   $('.thumbnail').fadeIn('slow');		});		$('.informer-player').on('click', function() {		   idx = $(this).attr('data-idx');		   urltype = '/informer/player/' + idx + '/' + urltag + '/';		   $('#show-idx').html('<img src="' + urltype + '" />');		   $('#show-idx').attr('data-idx', idx);		   $('#show-idx').css('min-width', 300);		   $('#show-idx').css('min-height', 180);		   $('#show-tag').css('display', 'inline-flex');		   $('.thumbnail').fadeIn('slow');		});		$('#codebb').on('click', function() {		   idx = $('#show-idx').attr('data-idx');		   $('#codeplace').text(			'[center][url=' + urlhost + '/assets/html/ClanInfo.html]' +			'[img]' + urlhost + urltype + '[/img][/url][/center]'		   );		   $('#code-first').fadeIn('slow');		});		$('#codehtml').on('click', function() {		   idx = $('#show-idx').attr('data-idx');		   $('#codeplace').text(			'<a href="' + urlhost + '/assets/html/ClanInfo.html">' +			'<img src="' + urlhost + urltype + '"/></a>'		   );		   $('#code-first').fadeIn('slow');		});		$('#codewiki').on('click', function() {		   idx = $('#show-idx').attr('data-idx');		   $('#codeplace').text(			'[[' + urlhost + '/assets/html/ClanInfo.html|' +			'{{' + urlhost + urltype + '?500x100&nocache|Produced by (c)CoCServer}}]]'		   );		   $('#code-first').fadeIn('slow');		});		$('#codeurl').on('click', function() {		   idx = $('#show-idx').attr('data-idx');		   $('#codeplace').text(			urlhost + urltype		   );		   $('#code-first').fadeIn('slow');		});		$('#infcopy').on('click', function() {		   $('#codeplace').focus();		   $('#codeplace').select();		   document.execCommand('copy');		});		$('#tagplace').on('change keyup paste', function () {		    var tag = $(this).val();		    if (tag == '') { urltag = 'random'; $(this).css('background-color', '#FFFFFF'); }		    else if (tag.length == 9) { urltag = tag; $(this).css('background-color', '#E9FFD4'); }		    else { $(this).css('background-color', '#FFCDD2'); }		});	});</script>
+
+</head>
+<body>
+
+    <div class="pos-f-t">
+      <div class="collapse" id="navbar-header">
+        <div class="container-fluid bg-light p-a-1" style="background-color:rgb(241, 241, 241);">
+	  <a class="navbar-brand coclink" href="/assets/html/ClanInfo.html"><span data-localize="navclan">Clan</span> "Коалиция"</a>
+
+                    <ul class="nav navbar-nav">
+            <li><a class="coclink" href="/assets/html/ClanList.html"><span data-localize="navmember">Members</span></a></li>
+            <li><a class="coclink" href="/assets/html/ClanDonation.html"><span data-localize="navdonation">Donation</span></a></li>
+            <li><a class="coclink" href="/assets/html/ClanWar.html"><span data-localize="navclanwars">CW history</span></a></li>
+            <li><a class="coclink" href="/assets/html/ClanChat.html"><span data-localize="navirc">IRC Chat</span></a></li>
+            <li><a class="coclink" href="/irclog/"><span data-localize="navircarch">IRC Archive</span></a></li>
+	  </ul>
+
+
+	  <div class="datehead">
+	    <div id="datecontainer" class="input-group date">
+	       <input type="text" class="form-control datecontrol dateinput" value="" readonly="true" style="background-color:rgb(241, 241, 241);color:#000000;cursor:pointer;border:none;width:100px;float:right;"/>
+	       <span class="input-group-addon datecontrol">
+		 <i class="glyphicon glyphicon-calendar"></i>
+	       </span>
+	    </div>
+	  </div>
+
+          
+
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-faded navbar-static-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-header" style="margin:10px;">
+          &#9776;
+        </button>
+	<span class="lead" data-localize="inftitle">Graphic Clan informer</span>
+      </div>
+    </div>
+
+    <div class="container-fluid" id="error-box" style="display:none">
+      <div class="row">
+        <div class="col-md-12">
+	    <div class="alert alert-danger fade in gid">
+		<a href="#" class="close" data-dismiss="alert">&times;</a>
+		<strong style="padding-left:50px;" data-localize="errortxt">Error!</strong><span id="error-message"></span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+
+
+	<ul class="nav nav-tabs">
+	  <li class="active"><a data-toggle="tab" href="#infclan"><span data-localize="inftabclan">Clan informer</span></a></li>
+	  <li><a data-toggle="tab" href="#infmembers"><span data-localize="inftabmember">Members informer</span></a></li>
+	</ul>
+
+	<div class="tab-content" style="width:90%;">
+	  <div id="infclan" class="tab-pane fade in active">
+	    <h3><span data-localize="inftabclan">Clan informer</span></h3>
+		<center>
+		    <div>
+				<div class="informer-items-right informer-clan" data-idx="0" style="background-image:url('/informer/clan/0/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="1" style="background-image:url('/informer/clan/1/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="2" style="background-image:url('/informer/clan/2/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="3" style="background-image:url('/informer/clan/3/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="4" style="background-image:url('/informer/clan/4/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="5" style="background-image:url('/informer/clan/5/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="6" style="background-image:url('/informer/clan/6/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="7" style="background-image:url('/informer/clan/7/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="8" style="background-image:url('/informer/clan/8/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="9" style="background-image:url('/informer/clan/9/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="10" style="background-image:url('/informer/clan/10/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="11" style="background-image:url('/informer/clan/11/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="12" style="background-image:url('/informer/clan/12/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="13" style="background-image:url('/informer/clan/13/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="14" style="background-image:url('/informer/clan/14/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="15" style="background-image:url('/informer/clan/15/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="16" style="background-image:url('/informer/clan/16/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="17" style="background-image:url('/informer/clan/17/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="18" style="background-image:url('/informer/clan/18/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="19" style="background-image:url('/informer/clan/19/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="20" style="background-image:url('/informer/clan/20/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="21" style="background-image:url('/informer/clan/21/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="22" style="background-image:url('/informer/clan/22/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="23" style="background-image:url('/informer/clan/23/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="24" style="background-image:url('/informer/clan/24/');"></div>
+				<div class="informer-items-right informer-clan" data-idx="25" style="background-image:url('/informer/clan/25/');"></div>
+		    </div>
+		</center>
+	  </div>
+	  <div id="infmembers" class="tab-pane fade">
+	    <h3><span data-localize="inftabmember">Members informer</span></h3>
+		<center>
+		    <div>
+				<div class="informer-items-right informer-player" data-idx="0" style="background-image:url('/informer/player/0/random/');"></div>
+				<div class="informer-items-right informer-player" data-idx="1" style="background-image:url('/informer/player/1/random/');"></div>
+				<div class="informer-items-right informer-player" data-idx="2" style="background-image:url('/informer/player/2/random/');"></div>
+				<div class="informer-items-right informer-player" data-idx="3" style="background-image:url('/informer/player/3/random/');"></div>
+				<div class="informer-items-right informer-player" data-idx="4" style="background-image:url('/informer/player/4/random/');"></div>
+				<div class="informer-items-right informer-player" data-idx="5" style="background-image:url('/informer/player/5/random/');"></div>
+				<div class="informer-items-right informer-player" data-idx="6" style="background-image:url('/informer/player/6/random/');"></div>
+				<div class="informer-items-right informer-player" data-idx="7" style="background-image:url('/informer/player/7/random/');"></div>
+				<div class="informer-items-right informer-player" data-idx="8" style="background-image:url('/informer/player/8/random/');"></div>
+				<div class="informer-items-right informer-player" data-idx="9" style="background-image:url('/informer/player/9/random/');"></div>
+				<div class="informer-items-right informer-player" data-idx="10" style="background-image:url('/informer/player/10/random/');"></div>
+				<div class="informer-items-right informer-player" data-idx="11" style="background-image:url('/informer/player/11/random/');"></div>
+				<div class="informer-items-right informer-player" data-idx="12" style="background-image:url('/informer/player/12/random/');"></div>
+				<div class="informer-items-right informer-player" data-idx="13" style="background-image:url('/informer/player/13/random/');"></div>
+				<div class="informer-items-right informer-player" data-idx="14" style="background-image:url('/informer/player/14/random/');"></div>
+				<div class="informer-items-right informer-player" data-idx="15" style="background-image:url('/informer/player/15/random/');"></div>
+		    </div>
+		</center>
+	  </div>
+	</div>
+
+
+	<center>
+	    <a name="informercode"></a>
+		<div class="thumbnail" style="width:90%;display:none;">
+			<div id="show-idx" class="img-thumbnail"></div>
+			<div class="caption">
+				<p data-localize="infcopypaste">Just copy/paste the code in your forum/page signature. The image will automatically be updated every 25 min.</p>
+				<p>
+					<a href="#informercode" id="codebb" class="btn btn-default" role="button">BB <span data-localize="infcode">Code</span></a>
+					<a href="#informercode" id="codewiki" class="btn btn-default" role="button">Wiki <span data-localize="infcode">Code</span></a>
+					<a href="#informercode" id="codehtml" class="btn btn-default" role="button">HTML <span data-localize="infcode">Code</span></a>
+					<a href="#informercode" id="codeurl" class="btn btn-default" role="button">URL <span data-localize="infcode">Code</span></a>
+					<span id="show-tag" class="input-group" style="display:inline-flex;margin-left:3px;position:absolute;">
+					  <span class="input-group-addon" id="gametag" >#</span>
+					  <input id="tagplace" type="text" class="form-control" placeholder="game Tag" aria-describedby="gametag" maxlength="9" style="width:105px;">
+					</span>
+				</p>
+				<div id="code-first" class="input-group" style="width:500px;display:none;">
+					<textarea id="codeplace" class="form-control" aria-label="Code to informer signature" placeholder="Informer code here.." style="height:50px;background:#FFFFFF;" autofocus="true" readonly="true"></textarea>
+					<div class="input-group-btn">
+						<button type="button" id="infcopy" class="btn btn-primary" style="height:50px;"><span data-localize="infcopy">Copy</span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</center>
+
+        </div>
+      </div>
+    </div>
+
+    <div style="min-height:80px"></div>
+    <div class="navbar navbar-default bg-faded navbar-fixed-bottom">
+	<div class="container">
+		<p class="navbar-text pull-left">
+			<span data-localize="notifyname">Notify</span>:&nbsp;
+			<a href="/notify/rss/" target="_blank">RSS</a>&nbsp;|&nbsp;
+			<a href="/notify/json/" target="_blank">JSON</a>&nbsp;|&nbsp;
+			<a href="/assets/html/ClanInformer.html" target="_blank">INF</a>
+		</p>
+		<p class="navbar-text pull-left"><span data-localize="srvgentitle0" id="srvgentitle">Generated</span>:&nbsp;<span id="srvgen">stCoCServer v.1.0.1.405</span></p>
+		<p class="navbar-text pull-right">
+			<span class="glyphicon glyphicon-calendar"></span>&nbsp;
+			<span data-localize="srvdate">Date</span>: <span id="srvdate">2017.02.11</span>
+		</p>
+		<p class="navbar-text pull-right">
+			<span id="socialb"></span>
+		</p>
+	</div>
+   </div>
+
+</body>
+</html>
+
+<script type='text/javascript' charset='utf8'>
+	$(document).ready(function() {
+		var thishtml =  $(this);
+		cocGitHubUrl = 'https://api.github.com/repos/PetersSharp/stCoCServer/releases/latest';
+		new SocialButtons({
+			services: ['vkontakte', 'googleplus', 'odnoklassniki', 'lj', 'moimir', 'twitter'],
+			id: 'socialb',
+			counter: false,
+			buttonSize: 'small',
+			components: ['icon'],
+			url: $(location).attr('href'),
+			title: thishtml.attr('title'),
+			image: $(location).attr('href') + $.fn.CoCInformerRandomImage()
+		});
+		$('#srvgen').on('click', function() {
+			$(this).GetLatestRelease();
+		});
+	});
+</script>
+

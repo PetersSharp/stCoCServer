@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6A270155-DE22-4BC5-B049-20DFAF61ED0A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>stDokuWiki</RootNamespace>
+    <AssemblyName>stDokuWikiConnector</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>Doc\DokuWiki-API.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>Doc\DokuWiki-API.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Crypt\CryptArrayPointer.cs" />
+    <Compile Include="Crypt\CryptImpl.cs" />
+    <Compile Include="Crypt\CryptUtils.cs" />
+    <Compile Include="Data\DokuAuthUser.cs" />
+    <Compile Include="Data\RpcXmlDataAttachmentGet.cs" />
+    <Compile Include="Data\RpcXmlDataAttachmentInfo.cs" />
+    <Compile Include="Data\RpcXmlDataAttachmentList.cs" />
+    <Compile Include="Data\RpcXmlDataBool.cs" />
+    <Compile Include="Data\RpcXmlDataErrorResponse.cs" />
+    <Compile Include="Data\RpcXmlDataInt.cs" />
+    <Compile Include="Data\RpcXmlDataMediaRecentChange.cs" />
+    <Compile Include="Data\RpcXmlDataPageAclCheck.cs" />
+    <Compile Include="Data\RpcXmlDataPageGet.cs" />
+    <Compile Include="Data\RpcXmlDataPageGetVersions.cs" />
+    <Compile Include="Data\RpcXmlDataPageInfo.cs" />
+    <Compile Include="Data\RpcXmlDataPageLinks.cs" />
+    <Compile Include="Data\RpcXmlDataPageLinksBack.cs" />
+    <Compile Include="Data\RpcXmlDataPageList.cs" />
+    <Compile Include="Data\RpcXmlDataPageListAll.cs" />
+    <Compile Include="Data\RpcXmlDataPagesRecentChange.cs" />
+    <Compile Include="Data\RpcXmlDataRequest.cs" />
+    <Compile Include="Data\RpcXmlDataString.cs" />
+    <Compile Include="Data\RpcXmlData_Template_.cs" />
+    <Compile Include="DokuAuthManager.cs" />
+    <Compile Include="DokuFileEngine.cs" />
+    <Compile Include="DokuFileEngineCache.cs" />
+    <Compile Include="DokuFileEngineData.cs" />
+    <Compile Include="DokuFileEngineException\DokuFileEngineAtticIncompletteException.cs" />
+    <Compile Include="DokuFileEngineException\DokuFileEngineAuthException.cs" />
+    <Compile Include="DokuFileEngineException\DokuFileEngineErrorPageException.cs" />
+    <Compile Include="DokuFileEngineException\DokuFileEngineInternalAttic.cs" />
+    <Compile Include="DokuFileEngineException\DokuFileEngineInternalFileTypeException.cs" />
+    <Compile Include="DokuFileEngineException\DokuFileEngineHomeException.cs" />
+    <Compile Include="DokuFileEngineException\DokuFileEngineInternalCache.cs" />
+    <Compile Include="DokuFileEngineException\DokuFileEngineInternalLockFile.cs" />
+    <Compile Include="DokuFileEngineException\DokuFileEngineInternalNameSpaceError.cs" />
+    <Compile Include="DokuFileEngineException\DokuFileEngineInternalSearchEmpy.cs" />
+    <Compile Include="DokuFileEngineException\DokuFileEngineInternalSearchError.cs" />
+    <Compile Include="DokuFileEngineException\DokuFileEngineInternalSearchManyResult.cs" />
+    <Compile Include="DokuFileEngineException\DokuFileEngineInternalSearchOk.cs" />
+    <Compile Include="DokuFileEngineException\DokuFileEngineInternalStructError.cs" />
+    <Compile Include="DokuFileEngineException\DokuFileEngineMetaException.cs" />
+    <Compile Include="DokuFileEngineException\DokuFileEngineNotImplementPageException.cs" />
+    <Compile Include="DokuFileEngineException\DokuFileEnginePutException.cs" />
+    <Compile Include="DokuFileEngineException\DokuFileEngineSearchException.cs" />
+    <Compile Include="DokuFileEngineFS.cs" />
+    <Compile Include="DokuFileEngineRouteMap.cs" />
+    <Compile Include="DokuFileEngineToMd.cs" />
+    <Compile Include="DokuWikiFormat.cs" />
+    <Compile Include="Properties\ResourceWikiEngine.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceWikiEngine.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Util\DokuUtil.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\ResourceCodeError.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceCodeError.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RpcXml.cs" />
+    <Compile Include="RpcXmlEnum.cs" />
+    <Compile Include="RpcXmlException.cs" />
+    <Compile Include="RpcXmlHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\ResourceCodeError.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceCodeError.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ResourceWikiEngine.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceWikiEngine.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Doc\DokuWiki-API.xml" />
+    <Content Include="Doc\XMLTable\request-dokuwiki_getPagelist.xml" />
+    <Content Include="Doc\XMLTable\request-dokuwiki_getTime.xml" />
+    <Content Include="Doc\XMLTable\request-dokuwiki_getVersion.xml" />
+    <Content Include="Doc\XMLTable\request-dokuwiki_getXMLRPCAPIVersion.xml" />
+    <Content Include="Doc\XMLTable\request-dokuwiki_login.xml" />
+    <Content Include="Doc\XMLTable\request-wiki_aclCheck.xml" />
+    <Content Include="Doc\XMLTable\request-wiki_deleteAttachment.xml" />
+    <Content Include="Doc\XMLTable\request-wiki_getAllPages.xml" />
+    <Content Include="Doc\XMLTable\request-wiki_getAttachment.xml" />
+    <Content Include="Doc\XMLTable\request-wiki_getAttachmentInfo.xml" />
+    <Content Include="Doc\XMLTable\request-wiki_getAttachments.xml" />
+    <Content Include="Doc\XMLTable\request-wiki_getPageInfoVersion.xml" />
+    <Content Include="Doc\XMLTable\request-wiki_getPageVersion.xml" />
+    <Content Include="Doc\XMLTable\request-wiki_getPageVersions.xml" />
+    <Content Include="Doc\XMLTable\request-wiki_getRecentChanges.xml" />
+    <Content Include="Doc\XMLTable\request-wiki_getRPCVersionSupported.xml" />
+    <Content Include="Doc\XMLTable\request-wiki_putPage.xml" />
+    <Content Include="Doc\XMLTable\response-dokuwiki_getPagelist.xml" />
+    <Content Include="Doc\XMLTable\response-dokuwiki_getTime.xml" />
+    <Content Include="Doc\XMLTable\response-dokuwiki_getVersion.xml" />
+    <Content Include="Doc\XMLTable\response-dokuwiki_getXMLRPCAPIVersion.xml" />
+    <Content Include="Doc\XMLTable\response-dokuwiki_login.xml" />
+    <Content Include="Doc\XMLTable\response-fault_error.xml" />
+    <Content Include="Doc\XMLTable\response-wiki_aclCheck.xml" />
+    <Content Include="Doc\XMLTable\response-wiki_deleteAttachment.xml" />
+    <Content Include="Doc\XMLTable\response-wiki_getAllPages.xml" />
+    <Content Include="Doc\XMLTable\response-wiki_getAttachment.xml" />
+    <Content Include="Doc\XMLTable\response-wiki_getAttachmentInfo.xml" />
+    <Content Include="Doc\XMLTable\response-wiki_getAttachments.xml" />
+    <Content Include="Doc\XMLTable\response-wiki_getPageInfoVersion.xml" />
+    <Content Include="Doc\XMLTable\response-wiki_getPageVersion.xml" />
+    <Content Include="Doc\XMLTable\response-wiki_getPageVersions.xml" />
+    <Content Include="Doc\XMLTable\response-wiki_getRecentChanges.xml" />
+    <Content Include="Doc\XMLTable\response-wiki_getRPCVersionSupported.xml" />
+    <Content Include="Doc\XMLTable\response-wiki_putPage.xml" />
+    <EmbeddedResource Include="DokuWikiSyntaxUtil.xsl">
+      <CustomToolNamespace>stDokuWiki</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DokuWikiSyntaxToHtml.xsl">
+      <CustomToolNamespace>stDokuWiki</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DokuWikiSyntaxToMd.xsl">
+      <CustomToolNamespace>stDokuWiki</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Doc\README.md" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if "$(ConfigurationName)" == "Release" (
+   "$(ProjectDir)..\..\stTools\XmlDocUtil\bin\Release\XmlDocUtil.exe" "$(ProjectDir)Doc\DokuWiki-API.xml" "$(ProjectDir)Doc\README.md"
+   cd "$(ProjectDir)"
+   del /S /Q "C:\NugetPackages\stDokuWikiConnector.*.nupkg"
+   nuget pack "$(ProjectPath)" -Verbose -OutputDirectory C:\NugetPackages &gt; C:\NugetPackages\stDokuWikiConnector.nuget.txt
+)</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

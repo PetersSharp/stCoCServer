@@ -1,6 +1,12 @@
 ﻿using System;
 
+#if STCLIENTBUILD
+namespace stClient
+
+#else
+
 namespace stNet
+#endif
 {
     public class UpdateUsersEventArgs : EventArgs
     {
@@ -120,15 +126,24 @@ namespace stNet
     public class ExceptionEventArgs : EventArgs
     {
         public Exception Exception { get; internal set; }
+        public bool Fatal { get; internal set; }
+        public int Count { get; internal set; }
+        public string SocketError { get; internal set; }
 
-        public ExceptionEventArgs(Exception x)
+        public ExceptionEventArgs(Exception x, bool fatal = false, int count = 0, string error = null)
         {
             Exception = x;
+            Fatal = fatal;
+            Count = count;
+            SocketError = error;
         }
 
         public override string ToString()
         {
-            return Exception.ToString();
+            return Exception.ToString() + 
+                " Status: [" + Fatal.ToString() + 
+                "] Repeat count: [" + Count.ToString() +
+                "] Socket error: [" + SocketError + "]";
         }
     }
 

@@ -15,7 +15,7 @@
       <Value Profile="(Default)">SELECT *  FROM clanmembers WHERE status = {0}</Value>
     </Setting>
     <Setting Name="DBSelectMemberTag" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">AND tag = '{0}'</Value>
+      <Value Profile="(Default)">AND tag = '{0}' LIMIT 1</Value>
     </Setting>
     <Setting Name="DBSelectDonation" Type="System.String" Scope="Application">
       <Value Profile="(Default)">SELECT * FROM clanmembers WHERE status &gt; 0</Value>
@@ -51,7 +51,7 @@
       <Value Profile="(Default)">SELECT * FROM ClanMember WHERE COCSEASON(year,season) = 1</Value>
     </Setting>
     <Setting Name="DBSysUpdateClanInfo" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">SELECT * FROM ClanInfo</Value>
+      <Value Profile="(Default)">SELECT * FROM ClanInfo LIMIT 1</Value>
     </Setting>
     <Setting Name="DBSysUpdateSelect" Type="System.String" Scope="Application">
       <Value Profile="(Default)">SELECT * FROM {0}</Value>
@@ -60,16 +60,19 @@
       <Value Profile="(Default)">/{0}/{1}/{2}/{3}/{4}</Value>
     </Setting>
     <Setting Name="DBSelectWarClan" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">SELECT * FROM clanwar ORDER BY dtend DESC</Value>
+      <Value Profile="(Default)">SELECT * FROM clanwar </Value>
     </Setting>
     <Setting Name="DBSelectWarLast" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">LIMIT 3</Value>
+      <Value Profile="(Default)">ORDER BY dtend DESC LIMIT 3</Value>
     </Setting>
     <Setting Name="NotifyRssClanLink" Type="System.String" Scope="Application">
       <Value Profile="(Default)">/assets/html/ClanInfo.html</Value>
     </Setting>
     <Setting Name="NotifyRssMemberLink" Type="System.String" Scope="Application">
       <Value Profile="(Default)">/assets/html/ClanList.html</Value>
+    </Setting>
+    <Setting Name="DBSelectMemberRand" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ORDER BY RANDOM() LIMIT 1</Value>
     </Setting>
   </Settings>
 </SettingsFile>

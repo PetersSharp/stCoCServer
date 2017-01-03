@@ -7,7 +7,7 @@
 	<meta name="generator" content="{{GENERATOR}}"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="robots" content="noindex,nofollow"/>
-	<meta name="keywords" content="War,Wariors,Donation,CoC,Clash,Clan,Clans,RU"/>
+	<meta name="keywords" content="War,Wariors,Donation,CoC,Clash,Clan,Clans,Coalitions"/>
 	
 	<title data-localize="ircnonetitle">{{TITLE}} ::: {{DATEY}}-{{DATEM}}-{{DATED}}</title>
 
@@ -23,7 +23,7 @@
     	<!--
 		// Генератор: Microsoft.VisualStudio.TextTemplating.VSHost.TextTemplatingService
 		// Темплейт: {{GENERATOR}}
-		// Время генерации: 12/28/2016 20:09:54
+		// Время генерации: 02/11/2017 16:49:44
 		// Language to DataTables: https://datatables.net/plug-ins/i18n/
     	-->
 	<style>
@@ -40,7 +40,7 @@
     <div class="pos-f-t">
       <div class="collapse" id="navbar-header">
         <div class="container-fluid bg-light p-a-1" style="background-color:rgb(241, 241, 241);">
-	  <a class="navbar-brand coclink" href="/assets/html/ClanInfo.html"><span data-localize="navclan">Clan</span> "RU"</a>
+	  <a class="navbar-brand coclink" href="/assets/html/ClanInfo.html"><span data-localize="navclan">Clan</span> "Коалиция"</a>
 
           	<form class="navbar-form pull-left">
 	<div class="checkbox navbar-btn" style="padding:8px;">
@@ -102,22 +102,50 @@
 
 	{{INSERTHTMLDATA}}
 
-
         </div>
       </div>
     </div>
-	
+
+    <div style="min-height:80px"></div>
     <div class="navbar navbar-default bg-faded navbar-fixed-bottom">
 	<div class="container">
-		<p class="navbar-text pull-left"><span data-localize="notifyname">Notify</span>:&nbsp;<a href="/notify/rss/" target="_blank">RSS</a>&nbsp;|&nbsp;<a href="/notify/json/" target="_blank">JSON</a></p>
-		<p class="navbar-text pull-left"><span data-localize="srvgen">Generated</span>:&nbsp;<a href="#" target="_blank"><span id="srvgen">stCoCServer v.1.0.1.362</span></a></p>
+		<p class="navbar-text pull-left">
+			<span data-localize="notifyname">Notify</span>:&nbsp;
+			<a href="/notify/rss/" target="_blank">RSS</a>&nbsp;|&nbsp;
+			<a href="/notify/json/" target="_blank">JSON</a>&nbsp;|&nbsp;
+			<a href="/assets/html/ClanInformer.html" target="_blank">INF</a>
+		</p>
+		<p class="navbar-text pull-left"><span data-localize="srvgentitle0" id="srvgentitle">Generated</span>:&nbsp;<span id="srvgen">stCoCServer v.1.0.1.405</span></p>
 		<p class="navbar-text pull-right">
 			<span class="glyphicon glyphicon-calendar"></span>&nbsp;
 			<span data-localize="srvdate">Date</span>: <span id="srvdate">{{DATE}}</span>
+		</p>
+		<p class="navbar-text pull-right">
+			<span id="socialb"></span>
 		</p>
 	</div>
    </div>
 
 </body>
 </html>
+
+<script type='text/javascript' charset='utf8'>
+	$(document).ready(function() {
+		var thishtml =  $(this);
+		cocGitHubUrl = 'https://api.github.com/repos/PetersSharp/stCoCServer/releases/latest';
+		new SocialButtons({
+			services: ['vkontakte', 'googleplus', 'odnoklassniki', 'lj', 'moimir', 'twitter'],
+			id: 'socialb',
+			counter: false,
+			buttonSize: 'small',
+			components: ['icon'],
+			url: $(location).attr('href'),
+			title: thishtml.attr('title'),
+			image: $(location).attr('href') + $.fn.CoCInformerRandomImage()
+		});
+		$('#srvgen').on('click', function() {
+			$(this).GetLatestRelease();
+		});
+	});
+</script>
 

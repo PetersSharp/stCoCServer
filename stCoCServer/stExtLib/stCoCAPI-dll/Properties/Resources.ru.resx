@@ -330,4 +330,41 @@
   <data name="fmtRrdClanChangeWarWinMin" xml:space="preserve">
     <value>Выигранные войны на начало периода: @0@r</value>
   </data>
+  <data name="fmtNotifyRssItemTitle" xml:space="preserve">
+    <value>{0} {1}</value>
+  </data>
+  <data name="CoCNotifyDisposeError" xml:space="preserve">
+    <value>Уведомления - отладка, клиенты: {0}/удаленные: {1}</value>
+  </data>
+  <data name="CoCNotifyProcessDebug" xml:space="preserve">
+    <value>Уведомления - отладка, последний IP: {0}, {1} - {2}</value>
+  </data>
+  <data name="CoCNotifyProcessError" xml:space="preserve">
+    <value>Уведомления - отладка, {0} ошибка: {1} - {2}</value>
+  </data>
+  <data name="CoCInformerError" xml:space="preserve">
+    <value>[Ошибка Информера]: {0}</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="bgTemplate404Error300x180" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgTemplate404Error300x180.ru.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgTemplate404Error500x100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgTemplate404Error500x100.ru.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgTemplate404MembrsError300x180" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgTemplate404MembrsError300x180.ru.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgTemplate500Error300x180" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgTemplate500Error300x180.ru.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgTemplate500Error500x100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgTemplate500Error500x100.ru.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgTemplate500NoSupportError300x180" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgTemplate500NoSupportError300x180.ru.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgTemplate500NoSupportError500x100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgTemplate500NoSupportError500x100.ru.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

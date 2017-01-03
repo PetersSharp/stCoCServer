@@ -17,5 +17,8 @@
     <Setting Name="setCoCHttpClient" Type="System.String" Scope="Application">
       <Value Profile="(Default)">CoC Client</Value>
     </Setting>
+    <Setting Name="setJsonSetupFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">clientsetup.json</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

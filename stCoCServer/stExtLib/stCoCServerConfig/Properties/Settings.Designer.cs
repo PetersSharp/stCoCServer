@@ -255,6 +255,8 @@ namespace stCoCServerConfig.Properties {
   <string>clan</string>
   <string>json</string>
   <string>notify</string>
+  <string>informer</string>
+  <string>wiki</string>
 </ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection IPFLocation {
             get {
@@ -266,11 +268,13 @@ namespace stCoCServerConfig.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
 <ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-  <string>FileWebRquest</string>
-  <string>TemplateWebRquest</string>
-  <string>JsonWebRquest</string>
-  <string>JsonWebRquest</string>
-  <string>ServerSentEventWebRquest</string>
+  <string>FileWebRequest</string>
+  <string>TemplateWebRequest</string>
+  <string>JsonWebRequest</string>
+  <string>JsonWebRequest</string>
+  <string>ServerSentEventWebRequest</string>
+  <string>InformerWebRequest</string>
+  <string>WikiWebRequest</string>
 </ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection IPFType {
             get {
@@ -381,6 +385,8 @@ namespace stCoCServerConfig.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
 <ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>True</string>
+  <string>True</string>
   <string>True</string>
   <string>True</string>
   <string>True</string>
@@ -504,9 +510,9 @@ namespace stCoCServerConfig.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string IRCPluginLanguage {
+        public string IRCLanguage {
             get {
-                return ((string)(this["IRCPluginLanguage"]));
+                return ((string)(this["IRCLanguage"]));
             }
         }
         
@@ -542,6 +548,141 @@ namespace stCoCServerConfig.Properties {
         public bool IRCPluginLangSetupEnable {
             get {
                 return ((bool)(this["IRCPluginLangSetupEnable"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LOGDebug {
+            get {
+                return ((bool)(this["LOGDebug"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CLANInformerStaticEnable {
+            get {
+                return ((bool)(this["CLANInformerStaticEnable"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool WEBCacheEnable {
+            get {
+                return ((bool)(this["WEBCacheEnable"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool WEBRequestDebugEnable {
+            get {
+                return ((bool)(this["WEBRequestDebugEnable"]));
+            }
+            set {
+                this["WEBRequestDebugEnable"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool WEBFrontEndEnable {
+            get {
+                return ((bool)(this["WEBFrontEndEnable"]));
+            }
+            set {
+                this["WEBFrontEndEnable"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IRCSetNewChannel {
+            get {
+                return ((bool)(this["IRCSetNewChannel"]));
+            }
+            set {
+                this["IRCSetNewChannel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DOKUWikiRootUrl {
+            get {
+                return ((string)(this["DOKUWikiRootUrl"]));
+            }
+            set {
+                this["DOKUWikiRootUrl"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DOKUWikiRootPath {
+            get {
+                return ((string)(this["DOKUWikiRootPath"]));
+            }
+            set {
+                this["DOKUWikiRootPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("clanquest")]
+        public string DOKUWikiQuestLogin {
+            get {
+                return ((string)(this["DOKUWikiQuestLogin"]));
+            }
+            set {
+                this["DOKUWikiQuestLogin"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("clanquest")]
+        public string DOKUWikiQuestPassword {
+            get {
+                return ((string)(this["DOKUWikiQuestPassword"]));
+            }
+            set {
+                this["DOKUWikiQuestPassword"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("questrpc")]
+        public string DOKUWikiDefaultGroup {
+            get {
+                return ((string)(this["DOKUWikiDefaultGroup"]));
+            }
+            set {
+                this["DOKUWikiDefaultGroup"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DOKUWikiAuthEnable {
+            get {
+                return ((bool)(this["DOKUWikiAuthEnable"]));
+            }
+            set {
+                this["DOKUWikiAuthEnable"] = value;
             }
         }
     }

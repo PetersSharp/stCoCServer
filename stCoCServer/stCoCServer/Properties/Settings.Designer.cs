@@ -67,5 +67,14 @@ namespace stCoCServer.Properties {
                 return ((string)(this["setCoCHttpClient"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("clientsetup.json")]
+        public string setJsonSetupFile {
+            get {
+                return ((string)(this["setJsonSetupFile"]));
+            }
+        }
     }
 }

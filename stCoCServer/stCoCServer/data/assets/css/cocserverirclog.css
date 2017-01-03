@@ -5,10 +5,13 @@
 .ircfrom,
 .ircmsg,
 .irctime {
-	padding-right: 15px;
+    padding-right: 15px;
 }
 .ircnik {
-	padding-right: 5px;
+    padding-right: 5px;
+}
+.sysuserlist {
+    display: none;
 }
 #datecontainer {
     width: 150px;

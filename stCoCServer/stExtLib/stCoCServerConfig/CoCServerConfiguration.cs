@@ -9,7 +9,7 @@ namespace stCoCServerConfig.CoCServerConfiguration
 {
     public static class BuildConfig
     {
-        public static int numFilters = 5;
+        public static int numFilters = 7;
         private const string tagFilters = @"IPF";
         private const string nameFilters = @"IpFilter";
         private const string ircNikDefault = @"clanNik";
@@ -77,7 +77,8 @@ namespace stCoCServerConfig.CoCServerConfiguration
                 IRCServerMessage = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
                 IRCNoticeMessage = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
                 IRCKickRespawn = new CoCServerConfigData.OptionItem(true, String.Empty, String.Empty),
-                IRCPluginLanguage = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
+                IRCSetNewChannel = new CoCServerConfigData.OptionItem(false, String.Empty, String.Empty),
+                IRCLanguage = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
                 IRCPluginSayEnable = new CoCServerConfigData.OptionItem(true, String.Empty, String.Empty),
                 IRCPluginClanEnable = new CoCServerConfigData.OptionItem(true, String.Empty, String.Empty),
                 IRCPluginHelpEnable = new CoCServerConfigData.OptionItem(true, String.Empty, String.Empty),
@@ -99,6 +100,7 @@ namespace stCoCServerConfig.CoCServerConfiguration
                 SYSTMPLPath = new CoCServerConfigData.OptionItem(String.Empty, "template", "-m"),
                 CLANTag = new CoCServerConfigData.OptionItem(String.Empty, "tag", "-t"),
                 CLANAPIKey = new CoCServerConfigData.OptionItem(String.Empty, "key", "-k"),
+                CLANInformerStaticEnable = new CoCServerConfigData.OptionItem(true, String.Empty, String.Empty),
                 SQLDBPath = new CoCServerConfigData.OptionItem(String.Empty, "dbname", "-b"),
                 SQLDBUri = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
                 SQLDBUpdateTime = new CoCServerConfigData.OptionItem(String.Empty, "dbupdate", "-u"),
@@ -108,10 +110,20 @@ namespace stCoCServerConfig.CoCServerConfiguration
                 WEBRootUri = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
                 WEBRootPort = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
                 WEBLANGDefault = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
+                WEBCacheEnable = new CoCServerConfigData.OptionItem(true, String.Empty, String.Empty),
+                WEBFrontEndEnable = new CoCServerConfigData.OptionItem(false, String.Empty, String.Empty),
+                WEBRequestDebugEnable = new CoCServerConfigData.OptionItem(false, String.Empty, String.Empty),
+                DOKUWikiAuthEnable = new CoCServerConfigData.OptionItem(false, String.Empty, String.Empty),
+                DOKUWikiRootUrl = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
+                DOKUWikiRootPath = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
+                DOKUWikiQuestLogin = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
+                DOKUWikiQuestPassword = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
+                DOKUWikiDefaultGroup = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
                 LOGRemoteServerEnable = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
                 LOGRemoteServerPort = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
                 LOGRemoteServerAddress = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
                 LOGDuplicateEntry = new CoCServerConfigData.OptionItem(true, String.Empty, String.Empty),
+                LOGDebug = new CoCServerConfigData.OptionItem(false, String.Empty, String.Empty),
                 PrnQuiet = new CoCServerConfigData.OptionItem(false, "quiet", "-q"),
                 IsRun = new CoCServerConfigData.OptionItem(true, String.Empty, String.Empty)
             };
@@ -180,6 +192,7 @@ namespace stCoCServerConfig.CoCServerConfiguration
         public static void MergeOptionDefault(ref CoCServerConfigData.Option Opt)
         {
             Opt.SYSLANGConsole.value = ((string.IsNullOrWhiteSpace(Opt.SYSLANGConsole.value)) ? Properties.Settings.Default.SYSLANGConsole : Opt.SYSLANGConsole.value);
+            Opt.IRCLanguage.value = ((string.IsNullOrWhiteSpace(Opt.IRCLanguage.value)) ? Opt.SYSLANGConsole.value : Opt.IRCLanguage.value);
 
             Opt.IRCPort.num = ((string.IsNullOrWhiteSpace(Opt.IRCPort.value)) ? Properties.Settings.Default.IRCPort : BuildConfig._GetIntConfig(Opt.IRCPort.value));
             Opt.IRCServer.value = ((string.IsNullOrWhiteSpace(Opt.IRCServer.value)) ? Properties.Settings.Default.IRCServer : Opt.IRCServer.value);
@@ -192,9 +205,9 @@ namespace stCoCServerConfig.CoCServerConfiguration
             Opt.IRCServerMessage.bval = ((string.IsNullOrWhiteSpace(Opt.IRCServerMessage.value)) ? Properties.Settings.Default.IRCServerMessage : BuildConfig._GetBoolConfig(Opt.IRCServerMessage.value));
             Opt.IRCNoticeMessage.bval = ((string.IsNullOrWhiteSpace(Opt.IRCNoticeMessage.value)) ? Properties.Settings.Default.IRCNoticeMessage : BuildConfig._GetBoolConfig(Opt.IRCNoticeMessage.value));
             Opt.IRCKickRespawn.bval = ((string.IsNullOrWhiteSpace(Opt.IRCKickRespawn.value)) ? Properties.Settings.Default.IRCKickRespawn : BuildConfig._GetBoolConfig(Opt.IRCKickRespawn.value));
+            Opt.IRCSetNewChannel.bval = ((string.IsNullOrWhiteSpace(Opt.IRCSetNewChannel.value)) ? Properties.Settings.Default.IRCSetNewChannel : BuildConfig._GetBoolConfig(Opt.IRCSetNewChannel.value));
             Opt.IRCFloodTimeOut.num = ((string.IsNullOrWhiteSpace(Opt.IRCFloodTimeOut.value)) ? Properties.Settings.Default.IRCFloodTimeOut : BuildConfig._GetIntConfig(Opt.IRCFloodTimeOut.value));
 
-            Opt.IRCPluginLanguage.value = ((string.IsNullOrWhiteSpace(Opt.IRCPluginLanguage.value)) ? Opt.SYSLANGConsole.value : Opt.IRCPluginLanguage.value);
             Opt.IRCPluginSayEnable.bval = ((string.IsNullOrWhiteSpace(Opt.IRCPluginSayEnable.value)) ? Properties.Settings.Default.IRCPluginSayEnable : BuildConfig._GetBoolConfig(Opt.IRCPluginSayEnable.value));
             Opt.IRCPluginClanEnable.bval = ((string.IsNullOrWhiteSpace(Opt.IRCPluginClanEnable.value)) ? Properties.Settings.Default.IRCPluginClanEnable : BuildConfig._GetBoolConfig(Opt.IRCPluginClanEnable.value));
             Opt.IRCPluginHelpEnable.bval = ((string.IsNullOrWhiteSpace(Opt.IRCPluginHelpEnable.value)) ? Properties.Settings.Default.IRCPluginHelpEnable : BuildConfig._GetBoolConfig(Opt.IRCPluginHelpEnable.value));
@@ -236,6 +249,7 @@ namespace stCoCServerConfig.CoCServerConfiguration
             );
             Opt.CLANTag.value = ((string.IsNullOrWhiteSpace(Opt.CLANTag.value)) ? String.Empty : Opt.CLANTag.value);
             Opt.CLANAPIKey.value = ((string.IsNullOrWhiteSpace(Opt.CLANAPIKey.value)) ? String.Empty : Opt.CLANAPIKey.value);
+            Opt.CLANInformerStaticEnable.bval = ((string.IsNullOrWhiteSpace(Opt.CLANInformerStaticEnable.value)) ? Properties.Settings.Default.CLANInformerStaticEnable : BuildConfig._GetBoolConfig(Opt.CLANInformerStaticEnable.value));
 
             Opt.SQLDBPath.value = ((string.IsNullOrWhiteSpace(Opt.SQLDBPath.value)) ? Properties.Settings.Default.SQLDBPath : Opt.SQLDBPath.value);
             Opt.SQLDBUri.value = ((string.IsNullOrWhiteSpace(Opt.SQLDBUri.value)) ? Properties.Settings.Default.SQLDBUri : Opt.SQLDBUri.value);
@@ -245,6 +259,21 @@ namespace stCoCServerConfig.CoCServerConfiguration
             Opt.WEBRootUri.value = ((string.IsNullOrWhiteSpace(Opt.WEBRootUri.value)) ? Properties.Settings.Default.WEBRootUri : Opt.WEBRootUri.value);
             Opt.WEBRootPort.num = ((string.IsNullOrWhiteSpace(Opt.WEBRootPort.value)) ? Properties.Settings.Default.WEBRootPort : BuildConfig._GetIntConfig(Opt.WEBRootPort.value));
             Opt.WEBLANGDefault.value = ((string.IsNullOrWhiteSpace(Opt.WEBLANGDefault.value)) ? Opt.SYSLANGConsole.value : Opt.WEBLANGDefault.value);
+            Opt.WEBCacheEnable.bval = ((string.IsNullOrWhiteSpace(Opt.WEBCacheEnable.value)) ? Properties.Settings.Default.WEBCacheEnable : BuildConfig._GetBoolConfig(Opt.WEBCacheEnable.value));
+            Opt.WEBFrontEndEnable.bval = ((string.IsNullOrWhiteSpace(Opt.WEBFrontEndEnable.value)) ? Properties.Settings.Default.WEBFrontEndEnable : BuildConfig._GetBoolConfig(Opt.WEBFrontEndEnable.value));
+            Opt.WEBRequestDebugEnable.bval = ((string.IsNullOrWhiteSpace(Opt.WEBRequestDebugEnable.value)) ? Properties.Settings.Default.WEBRequestDebugEnable : BuildConfig._GetBoolConfig(Opt.WEBRequestDebugEnable.value));
+
+            Opt.DOKUWikiRootUrl.value = ((string.IsNullOrWhiteSpace(Opt.DOKUWikiRootUrl.value)) ? Properties.Settings.Default.DOKUWikiRootUrl : Opt.DOKUWikiRootUrl.value);
+            Opt.DOKUWikiRootPath.value = ((string.IsNullOrWhiteSpace(Opt.DOKUWikiRootPath.value)) ? Properties.Settings.Default.DOKUWikiRootPath : Opt.DOKUWikiRootPath.value);
+            Opt.DOKUWikiQuestLogin.value = ((string.IsNullOrWhiteSpace(Opt.DOKUWikiQuestLogin.value)) ? Properties.Settings.Default.DOKUWikiQuestLogin : Opt.DOKUWikiQuestLogin.value);
+            Opt.DOKUWikiQuestPassword.value = ((string.IsNullOrWhiteSpace(Opt.DOKUWikiQuestPassword.value)) ? Properties.Settings.Default.DOKUWikiQuestPassword : Opt.DOKUWikiQuestPassword.value);
+            Opt.DOKUWikiDefaultGroup.value = ((string.IsNullOrWhiteSpace(Opt.DOKUWikiDefaultGroup.value)) ? Properties.Settings.Default.DOKUWikiDefaultGroup : Opt.DOKUWikiDefaultGroup.value);
+            Opt.DOKUWikiAuthEnable.bval = ((string.IsNullOrWhiteSpace(Opt.DOKUWikiRootPath.value)) ? false :
+                ((string.IsNullOrWhiteSpace(Opt.DOKUWikiAuthEnable.value)) ?
+                    Properties.Settings.Default.DOKUWikiAuthEnable :
+                    BuildConfig._GetBoolConfig(Opt.DOKUWikiAuthEnable.value)
+                 )
+            );
 
             if (
                 (!string.IsNullOrWhiteSpace(Opt.LOGRemoteServerEnable.value)) &&
@@ -260,6 +289,7 @@ namespace stCoCServerConfig.CoCServerConfiguration
                 Opt.LOGRemoteServerEnable.bval = Properties.Settings.Default.LOGRemoteServerEnable;
             }
             Opt.LOGDuplicateEntry.bval = ((string.IsNullOrWhiteSpace(Opt.LOGDuplicateEntry.value)) ? Properties.Settings.Default.LOGDuplicateEntry : BuildConfig._GetBoolConfig(Opt.LOGDuplicateEntry.value));
+            Opt.LOGDebug.bval = ((string.IsNullOrWhiteSpace(Opt.LOGDebug.value)) ? Properties.Settings.Default.LOGDebug : BuildConfig._GetBoolConfig(Opt.LOGDebug.value));
 
             for (int i = 0; i < BuildConfig.numFilters; i++)
             {
@@ -280,7 +310,7 @@ namespace stCoCServerConfig.CoCServerConfiguration
                 Opt.IPFType[i].value = ((string.IsNullOrWhiteSpace(Opt.IPFType[i].value)) ?
                     ((Properties.Settings.Default.IPFType.Count > i) ?
                         Properties.Settings.Default.IPFType[i] :
-                        stNet.WebHandleTypes.FileWebRquest.ToString()) : 
+                        stNet.WebHandleTypes.FileWebRequest.ToString()) : 
                     Opt.IPFType[i].value
                 );
                 Opt.IPFIsIpBlackList[i].bval = BuildConfig._GetBoolConfig(Opt.IPFIsIpBlackList[i].value);

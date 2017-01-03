@@ -17,6 +17,7 @@ namespace stCore
 
         public Action<int, int, int, string, bool> ProgressBar = (x, y, z, v, w) => { }; 
         public Action<string> Line = (x) => { };
+        public Action<string> LogOk = (x) => { };
         public Action<string> LogInfo = (x) => { };
         public Action<string> LogError = (x) => { };
         public Action<string> LogNetSyslog = (x) => { };

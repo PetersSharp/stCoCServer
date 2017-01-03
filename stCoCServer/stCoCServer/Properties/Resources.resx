@@ -136,7 +136,7 @@
     <value>Exited gracefully..</value>
   </data>
   <data name="PrnRun" xml:space="preserve">
-    <value>{0}  is running..  [{1}]</value>
+    <value>{0} is running..  [{1}]</value>
   </data>
   <data name="cmdNotConnect" xml:space="preserve">
     <value>[CMD Parser]: irc client not connected..</value>
@@ -162,8 +162,8 @@
   <data name="prnYes" xml:space="preserve">
     <value>YES</value>
   </data>
-  <data name="PrnConnected" xml:space="preserve">
-    <value>Connected: {0} / Channel: {1}</value>
+  <data name="PrnIrcConnected" xml:space="preserve">
+    <value>IRC connected: {0} / channel: {1}</value>
   </data>
   <data name="cmdUserNotAllowed" xml:space="preserve">
     <value>wrong authorize string, abort</value>
@@ -372,5 +372,32 @@
   </data>
   <data name="fmtLangSetupOk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fmtLangSetupOk.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="httpMethodNotSupport" xml:space="preserve">
+    <value>requested method is not supported</value>
+  </data>
+  <data name="ircUserList" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ircUserList.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="fmtIrcSetChannel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fmtIrcSetChannel.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="PrnIrcException" xml:space="preserve">
+    <value>IRC exception: {0} {1} {2}</value>
+  </data>
+  <data name="fmtIRCReConnect" xml:space="preserve">
+    <value>IRC reConnect: {0}:{1}/{2}</value>
+  </data>
+  <data name="fmtIRCError" xml:space="preserve">
+    <value>IRC Error: {0}</value>
+  </data>
+  <data name="serviceWikiAuthStarted" xml:space="preserve">
+    <value>service: external Wiki Auth started..</value>
+  </data>
+  <data name="serviceWikiStarted" xml:space="preserve">
+    <value>service: HTTP Wiki FS started..</value>
+  </data>
+  <data name="fmtMainError" xml:space="preserve">
+    <value>{0}{1} -&gt; {2}</value>
   </data>
 </root>

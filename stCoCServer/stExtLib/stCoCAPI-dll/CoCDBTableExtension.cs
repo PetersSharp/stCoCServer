@@ -68,4 +68,20 @@ namespace stCoCAPI
             return CoCAPI.GetFlagUrl(args[0] as string, ((args[1] != null) ? (((Int64)args[1] == 1) ? true : false) : false));
         }
     }
+    [SQLiteFunctionAttribute(Name = "COCPASSWORD", Arguments = 2, FuncType = System.Data.SQLite.FunctionType.Scalar)]
+    public class ComputePasswordHashFunction : SQLiteFunction
+    {
+        public static SQLiteFunctionAttribute GetAttribute()
+        {
+            return (SQLiteFunctionAttribute)typeof(WhereSeasonFunction)
+                .GetCustomAttributes(typeof(SQLiteFunctionAttribute), false)
+                .Single();
+        }
+        public override object Invoke(object[] args)
+        {
+            return stCore.stHashString.ToSHA1(
+                (string)((args[0] as string) + (args[1] as string))
+            );
+        }
+    }
 }

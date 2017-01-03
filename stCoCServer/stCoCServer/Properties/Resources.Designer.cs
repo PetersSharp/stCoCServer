@@ -322,6 +322,37 @@ namespace stCoCServer.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на IRC Error: {0}.
+        /// </summary>
+        internal static string fmtIRCError {
+            get {
+                return ResourceManager.GetString("fmtIRCError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на IRC reConnect: {0}:{1}/{2}.
+        /// </summary>
+        internal static string fmtIRCReConnect {
+            get {
+                return ResourceManager.GetString("fmtIRCReConnect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ChanServ REGISTER {0} &quot;Clash of Clans {1}&quot;
+        ///ChanServ SET {0} DESC Clash of Clans {1}
+        ///ChanServ SET {0} URL {2}
+        ///ChanServ SET {0} ENTRYMSG &quot;Clan {1} : {2}&quot;
+        ///.
+        /// </summary>
+        internal static string fmtIrcSetChannel {
+            get {
+                return ResourceManager.GetString("fmtIrcSetChannel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на    error set language &apos;{0}&apos; to channel   .
         /// </summary>
         internal static string fmtLangSetupError {
@@ -345,6 +376,15 @@ namespace stCoCServer.Properties {
         internal static string fmtLangSetupOk {
             get {
                 return ResourceManager.GetString("fmtLangSetupOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на {0}{1} -&gt; {2}.
+        /// </summary>
+        internal static string fmtMainError {
+            get {
+                return ResourceManager.GetString("fmtMainError", resourceCulture);
             }
         }
         
@@ -531,6 +571,15 @@ namespace stCoCServer.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на requested method is not supported.
+        /// </summary>
+        internal static string httpMethodNotSupport {
+            get {
+                return ResourceManager.GetString("httpMethodNotSupport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на HTTP server disabled in configuration.
         /// </summary>
         internal static string httpServerDisabled {
@@ -630,11 +679,11 @@ namespace stCoCServer.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Connected: {0} / Channel: {1}.
+        ///   Ищет локализованную строку, похожую на &lt;p class=&quot;highlight sysuserlist&quot;&gt;&lt;span class=&quot;text-primary irctime&quot;&gt;{0}&lt;/span&gt;&lt;span class=&quot;text-danger ircval&quot;&gt;OnLine: {1}&lt;/span&gt;&lt;/p&gt;.
         /// </summary>
-        internal static string PrnConnected {
+        internal static string ircUserList {
             get {
-                return ResourceManager.GetString("PrnConnected", resourceCulture);
+                return ResourceManager.GetString("ircUserList", resourceCulture);
             }
         }
         
@@ -653,6 +702,24 @@ namespace stCoCServer.Properties {
         internal static string PrnExit {
             get {
                 return ResourceManager.GetString("PrnExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на IRC connected: {0} / channel: {1}.
+        /// </summary>
+        internal static string PrnIrcConnected {
+            get {
+                return ResourceManager.GetString("PrnIrcConnected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на IRC exception: {0} {1} {2}.
+        /// </summary>
+        internal static string PrnIrcException {
+            get {
+                return ResourceManager.GetString("PrnIrcException", resourceCulture);
             }
         }
         
@@ -720,7 +787,7 @@ namespace stCoCServer.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на {0}  is running..  [{1}].
+        ///   Ищет локализованную строку, похожую на {0} is running..  [{1}].
         /// </summary>
         internal static string PrnRun {
             get {
@@ -824,6 +891,24 @@ namespace stCoCServer.Properties {
         internal static string serviceTemplateStarted {
             get {
                 return ResourceManager.GetString("serviceTemplateStarted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на service: external Wiki Auth started...
+        /// </summary>
+        internal static string serviceWikiAuthStarted {
+            get {
+                return ResourceManager.GetString("serviceWikiAuthStarted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на service: HTTP Wiki FS started...
+        /// </summary>
+        internal static string serviceWikiStarted {
+            get {
+                return ResourceManager.GetString("serviceWikiStarted", resourceCulture);
             }
         }
         

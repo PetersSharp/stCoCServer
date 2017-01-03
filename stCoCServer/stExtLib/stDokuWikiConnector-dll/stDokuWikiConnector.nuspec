@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/PetersSharp/DokuWikiConnector/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/PetersSharp/DokuWikiConnector</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>next generation stDokuWikiConnector package.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>DokuWiki NET RPC XML RPC-XML API Connector Wiki</tags>
+  </metadata>
+</package>

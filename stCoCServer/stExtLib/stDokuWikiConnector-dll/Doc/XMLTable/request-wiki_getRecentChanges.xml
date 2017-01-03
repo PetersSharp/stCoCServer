@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<methodCall>
+  <methodName>wiki.getRecentChanges</methodName>
+  <params>
+    <param>
+      <value>
+        <string>1471208725</string>
+      </value>
+    </param>
+  </params>
+</methodCall>

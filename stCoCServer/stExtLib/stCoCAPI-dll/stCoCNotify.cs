@@ -463,6 +463,17 @@ namespace stCoCAPI
                 );
             }
 
+            private bool _EventFilterMemberTag(DataRow row)
+            {
+                if ((this._parent._cocFilterMemberTag == null) || (this._parent._cocFilterMemberTag.Count == 0))
+                {
+                    return false;
+                }
+                return this._parent._cocFilterMemberTag.Contains(
+                    Convert.ToString(row["tag"], CultureInfo.InvariantCulture)
+                );
+            }
+
             private string _EventSseSetupString()
             {
                 DataTable dt = SqliteConvertExtension.MapToDataTable<CoCNotifyEventSetup>();
@@ -795,13 +806,13 @@ namespace stCoCAPI
 
             #region Public method json notify
 
-            public bool SendJsonComplette(CoCNotifyHost host)
+            public bool SendJsonComplette(CoCNotifyHost host, bool isfull)
             {
                 if (!this._SetSseHeader(host, HttpUtil.GetMimeType("", HttpUtil.MimeType.MimeJson)))
                 {
                     return false;
                 }
-                return this._SendPartSse(host, this._data.ToJson(true, false, (this._parent.UpdateNextMilliseconds + 35000)));
+                return this._SendPartSse(host, this._data.ToJson(isfull, false, (this._parent.UpdateNextMilliseconds + 35000)));
             }
 
             #endregion
@@ -982,6 +993,30 @@ namespace stCoCAPI
                                     }
                                 }
                             });
+                            if ((this._parent._isInformerStatic) && (this._parent._cocInformer != null))
+                            {
+                                try
+                                {
+                                    this._parent._cocInformer.CreateClanInformerAll(dt.Rows[0]);
+                                }
+#if DEBUG
+                                catch (Exception e)
+                                {
+                                    if (this._parent.isLogEnable)
+                                    {
+                                        this._parent._ilog.LogError(
+                                            string.Format(
+                                                Properties.Resources.CoCInformerError,
+                                                e.Message
+                                            )
+                                        );
+                                    }
+#else
+                                catch (Exception)
+                                {
+#endif
+                                }
+                            }
                             break;
                         }
                     case CoCEnum.CoCFmtReq.Warlog:
@@ -1000,10 +1035,18 @@ namespace stCoCAPI
                         {
                             foreach (DataRow addedRow in dt.Select(null, null, DataViewRowState.Added))
                             {
+                                if (this._EventFilterMemberTag(addedRow))
+                                {
+                                    continue;
+                                }
                                 this._EventToTable(CoCEnum.EventNotify.MemberNew, "nik", "level", addedRow, true);
                             }
                             foreach (DataRow updateRow in dt.Select(null, null, DataViewRowState.ModifiedCurrent))
                             {
+                                if (this._EventFilterMemberTag(updateRow))
+                                {
+                                    continue;
+                                }
                                 this._notifyTable.ForEach(notify =>
                                 {
                                     if (
@@ -1023,6 +1066,15 @@ namespace stCoCAPI
                                                     if (status == 0)
                                                     {
                                                         this._EventToTable(notify.EventId, "nik", notify.NameField, updateRow, true);
+
+                                                        // stDokuWiki.AuthManager.DokuAuthManager
+                                                        // is enable, delete exiting user
+                                                        if (this._parent._cocDWAuth != null)
+                                                        {
+                                                            this._parent.DokuWikiAuthDel(
+                                                                Convert.ToString(updateRow["nik"], CultureInfo.InvariantCulture)
+                                                            );
+                                                        }
                                                     }
                                                     break;
                                                 }
@@ -1046,6 +1098,16 @@ namespace stCoCAPI
                 {
                     this._rssString = this._EventRssToString();
                     this._EventSseSend(this._DataSseSend);
+
+                    // stDokuWiki.AuthManager.DokuAuthManager
+                    // save user table
+                    if (
+                        (typeId == CoCEnum.CoCFmtReq.Members) &&
+                        (this._parent._cocDWAuth != null)
+                       )
+                    {
+                        this._parent.DokuWikiAuthSave();
+                    }
                 }
             }
             public DataTable EventGetData()
@@ -1114,9 +1176,9 @@ namespace stCoCAPI
         {
             return this._cocNotifier.SendSseStreamComplette(host, evname, evdata);
         }
-        public bool NotifySendJsonComplette(CoCNotifyHost host)
+        public bool NotifySendJsonComplette(CoCNotifyHost host, bool isfull = true)
         {
-            return this._cocNotifier.SendJsonComplette(host);
+            return this._cocNotifier.SendJsonComplette(host, isfull);
         }
         public bool NotifySendRssComplette(CoCNotifyHost host)
         {

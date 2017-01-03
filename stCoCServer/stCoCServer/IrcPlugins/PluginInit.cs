@@ -42,37 +42,30 @@ namespace stCoCServer.plugins
         }
         public void PluginsPrint()
         {
-            Dictionary<string, bool> pluginsFiltred = new Dictionary<string, bool>();
+            List<string> lst = new List<string>();
 
             foreach (KeyValuePair<string, IrcPluginEntry> dic in this._plugins)
             {
-                IrcPluginEntry pe = (IrcPluginEntry)dic.Value;
-                if (!pluginsFiltred.ContainsKey(pe.act.Method.Name))
+                if (!lst.Contains(((IrcPluginEntry)dic.Value).act.Method.Name))
                 {
                     try
                     {
-                        pluginsFiltred.Add(
-                            pe.act.Method.Name,
-                            pe.enable
+                        lst.Add(((IrcPluginEntry)dic.Value).act.Method.Name);
+                        this.Conf.ILog.LogInfo(
+                            string.Format(
+                                "IRC {0}\t- {1}",
+                                ((IrcPluginEntry)dic.Value).act.Method.Name,
+                                ((((IrcPluginEntry)dic.Value).enable) ?
+                                    Properties.Resources.prnYes :
+                                    Properties.Resources.prnNo
+                                )
+                            )
                         );
                     }
                     catch (Exception) { }
                 }
             }
-            foreach (KeyValuePair<string, bool> dic in pluginsFiltred)
-            {
-                this.Conf.ILog.LogInfo(
-                    string.Format(
-                        "IRC {0}\t- {1}",
-                        dic.Key,
-                        ((dic.Value) ?
-                            Properties.Resources.prnYes :
-                            Properties.Resources.prnNo
-                        )
-                    )
-                );
-            }
-            pluginsFiltred.Clear();
+            lst.Clear();
         }
     }
 }

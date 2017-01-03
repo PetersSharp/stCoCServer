@@ -1,0 +1,583 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoji_amazed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emoji-amazed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoji_anger" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emoji-anger.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoji_blank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emoji-blank.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoji_blushing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emoji-blushing.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoji_consoling" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emoji-consoling.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoji_cute" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emoji-cute.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoji_glad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emoji-glad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoji_happy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emoji-happy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoji_helpful" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emoji-helpful.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoji_helpless" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emoji-helpless.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoji_hopeless" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emoji-hopeless.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoji_nervous" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emoji-nervous.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoji_rage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emoji-rage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoji_sad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emoji-sad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoji_sadistic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emoji-sadistic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoji_sadness" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emoji-sadness.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoji_unbelievables" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emoji-unbelievables.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoji_weirdout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emoji-weirdout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoji_whining" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emoji-whining.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoji_wink" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emoji-wink.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fmtChatPrivateNick" xml:space="preserve">
+    <value>Private message to: {0}</value>
+  </data>
+  <data name="fmtChatSelectedNick" xml:space="preserve">
+    <value>Selected Nick: {0}</value>
+  </data>
+  <data name="fmtCheck" xml:space="preserve">
+    <value>Check {0}: {1} {2}..</value>
+  </data>
+  <data name="fmtCoCServer" xml:space="preserve">
+    <value>CoC server: {0} {1}..</value>
+  </data>
+  <data name="fmtEmojiHtml" xml:space="preserve">
+    <value>&lt;i class="emoji {0}"&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/i&gt; </value>
+  </data>
+  <data name="fmtError" xml:space="preserve">
+    <value>Error {0}: {1}</value>
+  </data>
+  <data name="fmtExportPath" xml:space="preserve">
+    <value>Export path set: {0}</value>
+  </data>
+  <data name="fmtListViewGroup" xml:space="preserve">
+    <value>Update {0}, {1} events</value>
+  </data>
+  <data name="fmtNotifyReStart" xml:space="preserve">
+    <value>Restart notify update {0}</value>
+  </data>
+  <data name="fmtNotifyStart" xml:space="preserve">
+    <value>Start notify update {0}</value>
+  </data>
+  <data name="fmtProcessUpdate" xml:space="preserve">
+    <value>Process update: {0} new events, {1} [{2}]</value>
+  </data>
+  <data name="fmtServerFound" xml:space="preserve">
+    <value>Server found: {0}</value>
+  </data>
+  <data name="fmtSettingsError" xml:space="preserve">
+    <value>Settings error: {0}</value>
+  </data>
+  <data name="fmtSettingsOk" xml:space="preserve">
+    <value>Settings {0} successfully!</value>
+  </data>
+  <data name="fmtSetupSerCliMismatch" xml:space="preserve">
+    <value>version mismatch server and client: {0}</value>
+  </data>
+  <data name="fmtText" xml:space="preserve">
+    <value>{0} {1}</value>
+  </data>
+  <data name="ic_cast_connected_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_cast_connected_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_cast_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_cast_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_chat_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_chat_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_chrome_reader_mode_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_chrome_reader_mode_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_comment_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_comment_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_compare_arrows_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_compare_arrows_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_computer_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_computer_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_contacts_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_contacts_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_create_new_folder_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_create_new_folder_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_delete_forever_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_delete_forever_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_error_outline_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_error_outline_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_feedback_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_feedback_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_home_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_home_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_import_contacts_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_import_contacts_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_language_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_language_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_lock_open_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_lock_open_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_lock_outline_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_lock_outline_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_loyalty_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_loyalty_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_perm_data_setting_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_perm_data_setting_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_perm_media_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_perm_media_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_power_settings_new_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_power_settings_new_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_refresh_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_refresh_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_settings_applications_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_settings_applications_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_touch_app_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_touch_app_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_verified_user_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_verified_user_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="insert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\insert.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="paste" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\paste.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reply" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reply.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="select" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="txtCancelled" xml:space="preserve">
+    <value>cancelled</value>
+  </data>
+  <data name="txtChatCancelPrivateMsg" xml:space="preserve">
+    <value>private message to '{0}' canceled</value>
+  </data>
+  <data name="txtChatErrorNickEquals" xml:space="preserve">
+    <value>you can not write a private message to yourself</value>
+  </data>
+  <data name="txtChatErrorNickKick" xml:space="preserve">
+    <value>you can not to kick yourself</value>
+  </data>
+  <data name="txtChatInsert" xml:space="preserve">
+    <value> '{0}' </value>
+  </data>
+  <data name="txtChatIrcArchive" xml:space="preserve">
+    <value>Archive messages, you can look at: </value>
+  </data>
+  <data name="txtChatNotSelectNick" xml:space="preserve">
+    <value>Nick name not selected!</value>
+  </data>
+  <data name="txtChatPrivateHead" xml:space="preserve">
+    <value>You -&amp;gt; {0}</value>
+  </data>
+  <data name="txtChatReply" xml:space="preserve">
+    <value>Reply to {0}, </value>
+  </data>
+  <data name="txtChatSelectNickEmpty" xml:space="preserve">
+    <value>Nick name is empty!</value>
+  </data>
+  <data name="txtChatSelectNickMany" xml:space="preserve">
+    <value>Nick name more on one selected!</value>
+  </data>
+  <data name="txtChatSpamMsg" xml:space="preserve">
+    <value>duplicate or spam message not allowed</value>
+  </data>
+  <data name="txtCheckFailed" xml:space="preserve">
+    <value>check failed</value>
+  </data>
+  <data name="txtCoCGameTag" xml:space="preserve">
+    <value>CoC game Tag</value>
+  </data>
+  <data name="txtCompleted" xml:space="preserve">
+    <value>completed</value>
+  </data>
+  <data name="txtData" xml:space="preserve">
+    <value>data</value>
+  </data>
+  <data name="txtIncomplete" xml:space="preserve">
+    <value>incomplete</value>
+  </data>
+  <data name="txtIncorrect" xml:space="preserve">
+    <value>incorrect</value>
+  </data>
+  <data name="txtIncorrectServerAddr" xml:space="preserve">
+    <value>an incorrect server address</value>
+  </data>
+  <data name="txtIncorrectUserIdTag" xml:space="preserve">
+    <value>an incorrect userId Tag</value>
+  </data>
+  <data name="txtIRCSetupErrorComplette" xml:space="preserve">
+    <value>IRC Chat setup is not completted..</value>
+  </data>
+  <data name="txtIRCSetupErrorPort" xml:space="preserve">
+    <value>IRC port setup is not valid..</value>
+  </data>
+  <data name="txtIsEmpty" xml:space="preserve">
+    <value>is empty</value>
+  </data>
+  <data name="txtMenuNickInsert" xml:space="preserve">
+    <value>Insert name '{0}'</value>
+  </data>
+  <data name="txtMenuNickKick" xml:space="preserve">
+    <value>Kick '{0}' from chanell</value>
+  </data>
+  <data name="txtMenuNickPrivate" xml:space="preserve">
+    <value>Private message to '{0}'</value>
+  </data>
+  <data name="txtMenuNickReply" xml:space="preserve">
+    <value>Reply '{0}'</value>
+  </data>
+  <data name="txtNotCorrect" xml:space="preserve">
+    <value>not correct</value>
+  </data>
+  <data name="txtNotifyChangeSettings" xml:space="preserve">
+    <value>CoC Server change from settings! stop notify update..</value>
+  </data>
+  <data name="txtNotifyCopy" xml:space="preserve">
+    <value>Selected notify copied..</value>
+  </data>
+  <data name="txtNotifyExportEmpty" xml:space="preserve">
+    <value>Not export, Data is empty!</value>
+  </data>
+  <data name="txtNotifyIncomplette" xml:space="preserve">
+    <value>CoC Server not defined in settings! not notify update..</value>
+  </data>
+  <data name="txtNotifyNoCopy" xml:space="preserve">
+    <value>No items selected from notify! not copied..</value>
+  </data>
+  <data name="txtProcessAbort" xml:space="preserve">
+    <value>error running the process. The thread aborted</value>
+  </data>
+  <data name="txtReloading" xml:space="preserve">
+    <value>reloading</value>
+  </data>
+  <data name="txtRequest" xml:space="preserve">
+    <value>request</value>
+  </data>
+  <data name="txtSave" xml:space="preserve">
+    <value>save</value>
+  </data>
+  <data name="txtSetup" xml:space="preserve">
+    <value>setup</value>
+  </data>
+  <data name="txtSetupData" xml:space="preserve">
+    <value>setup data</value>
+  </data>
+  <data name="webChatTemplate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\webChatTemplate.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="txtIRCConnectWait" xml:space="preserve">
+    <value>IRC client not connect to server, please wait.. or press Connect button.</value>
+  </data>
+  <data name="txtIRCAllreadyConnected" xml:space="preserve">
+    <value>IRC server allready connecting.. skip..</value>
+  </data>
+  <data name="txtIRCConnectButton" xml:space="preserve">
+    <value>Connect</value>
+  </data>
+  <data name="txtIRCDisConnectButton" xml:space="preserve">
+    <value>DisConnect</value>
+  </data>
+  <data name="txtIRCNoConnected" xml:space="preserve">
+    <value>IRC client not connect to server, please  press Connect button.</value>
+  </data>
+  <data name="fmtChatDisconnected" xml:space="preserve">
+    <value>Server {0} Disconnected..</value>
+  </data>
+  <data name="attach" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\attach.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="style" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\style.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_invert_colors_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_invert_colors_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="italic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\italic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="strike" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\strike.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="underline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\underline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="color_blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\color-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="color_cyan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\color-cyan.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="color_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\color-green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="color_magenta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\color-magenta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="color_red" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\color-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="color_yellow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\color-yellow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fmtChatBadUrl" xml:space="preserve">
+    <value>Bad Url: '{0}'</value>
+  </data>
+  <data name="fmtChatStyleColor" xml:space="preserve">
+    <value>[color={0}]{1}[/color]</value>
+  </data>
+  <data name="fmtChatStyleImage" xml:space="preserve">
+    <value>{0}[img]{1}[/img] </value>
+  </data>
+  <data name="fmtChatStyleText" xml:space="preserve">
+    <value>[{0}]{1}[/{0}]</value>
+  </data>
+  <data name="fmtChatStyleUrl" xml:space="preserve">
+    <value>{0}[url={1}]{2}[/url] </value>
+  </data>
+  <data name="ic_restore_page_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_restore_page_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_spellcheck_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_spellcheck_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_translate_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_translate_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="color_custom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\color-custom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fmtSpellCount" xml:space="preserve">
+    <value>{0} misspelled word</value>
+  </data>
+  <data name="txtSpellMwnuCancel" xml:space="preserve">
+    <value>-- Cancel --</value>
+  </data>
+  <data name="txtSpellMwnuClose" xml:space="preserve">
+    <value>-- Close --</value>
+  </data>
+  <data name="txtSpellMwnuNoMiss" xml:space="preserve">
+    <value>-- No misspeling --</value>
+  </data>
+  <data name="txtSpellMwnuUnderline" xml:space="preserve">
+    <value>___________________</value>
+  </data>
+  <data name="txtSpellMwnuCancelMiss" xml:space="preserve">
+    <value>-- Cancel misspeling --</value>
+  </data>
+  <data name="txtSpellMwnuReplace" xml:space="preserve">
+    <value>-- select replace --</value>
+  </data>
+  <data name="txtSpellMwnuRestore" xml:space="preserve">
+    <value>-- Restore string --</value>
+  </data>
+  <data name="txtSpellMwnuAddDictionary" xml:space="preserve">
+    <value>-- Add: '</value>
+  </data>
+  <data name="txtSpellStatusEndMiss" xml:space="preserve">
+    <value>Misspeling  end</value>
+  </data>
+  <data name="txtStatusBadWord" xml:space="preserve">
+    <value>Bad words: </value>
+  </data>
+  <data name="txtChatErrorNickEmpty" xml:space="preserve">
+    <value>Nick name not selected</value>
+  </data>
+  <data name="InformerLoading" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\InformerLoading.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InformerLoadingError" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\InformerLoadingError.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="txtInformerCodeCopy" xml:space="preserve">
+    <value>Informer code copied</value>
+  </data>
+  <data name="ic_cancel_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_cancel_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fmtIRCBallonTitle" xml:space="preserve">
+    <value>Chat: {0} {1}</value>
+  </data>
+  <data name="txtIRCForYouMessage" xml:space="preserve">
+    <value>You from -&gt; </value>
+  </data>
+</root>

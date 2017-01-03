@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <struct>
+  <member><name>lastModified</name><value><dateTime.iso8601>2017-01-13T07:54:16+0000</dateTime.iso8601></value></member>
+  <member><name>size</name><value><int>158</int></value></member>
+</struct>
+      </value>
+    </param>
+  </params>
+</methodResponse>

@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("stCoCServer")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Peters Sharp")]
-[assembly: AssemblyProduct("IRC-BotConsole")]
+[assembly: AssemblyProduct("stCoCServer")]
 [assembly: AssemblyCopyright("Copyright © Peters Sharp 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

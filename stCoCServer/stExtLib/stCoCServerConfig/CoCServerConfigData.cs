@@ -3,6 +3,9 @@ using System;
 using stCore;
 using stNet;
 using stNet.Syslog;
+using stDokuWiki;
+using stDokuWiki.WikiEngine;
+using stDokuWiki.Data;
 using System.Collections.Generic;
 
 namespace stCoCServerConfig.CoCServerConfigData
@@ -37,8 +40,6 @@ namespace stCoCServerConfig.CoCServerConfigData
             get { return this._logfile; }
             set { this._logfile = value; }
         }
-        //private IrcCommand dynamic _irccmd = null;
-        //public IrcCommand dynamic IrcCmd
         private dynamic _irccmd = null;
         public dynamic IrcCmd
         {
@@ -56,6 +57,12 @@ namespace stCoCServerConfig.CoCServerConfigData
         {
             get { return this._tmpl; }
             set { this._tmpl = value; }
+        }
+        private stDokuWiki.WikiEngine.WikiFile _wiki = null;
+        public  stDokuWiki.WikiEngine.WikiFile WikiEngine
+        {
+            get { return this._wiki; }
+            set { this._wiki = value; }
         }
         private stGeo.GeoFilter _gf = null;
         public stGeo.GeoFilter Geo
@@ -147,6 +154,7 @@ namespace stCoCServerConfig.CoCServerConfigData
         public OptionItem IRCAdminPassword { get; set; }
         public OptionItem IRCChannel { get; set; }
         public OptionItem IRCNik { get; set; }
+        public OptionItem IRCLanguage { get; set; }
         public OptionItem IRCFloodTimeOut { get; set; }
         public OptionItem IRCSOutDirName { get; set; }
         public OptionItem IRCSOutFileName { get; set; }
@@ -154,8 +162,8 @@ namespace stCoCServerConfig.CoCServerConfigData
         public OptionItem IRCServerMessage { get; set; }
         public OptionItem IRCNoticeMessage { get; set; }
         public OptionItem IRCKickRespawn { get; set; }
+        public OptionItem IRCSetNewChannel { get; set; }
 
-        public OptionItem IRCPluginLanguage { get; set; }
         public OptionItem IRCPluginSayEnable { get; set; }
         public OptionItem IRCPluginClanEnable { get; set; }
         public OptionItem IRCPluginHelpEnable { get; set; }
@@ -181,6 +189,7 @@ namespace stCoCServerConfig.CoCServerConfigData
 
         public OptionItem CLANTag { get; set; }
         public OptionItem CLANAPIKey { get; set; }
+        public OptionItem CLANInformerStaticEnable { get; set; }
 
         public OptionItem SQLDBPath { get; set; }
         public OptionItem SQLDBUri { get; set; }
@@ -190,11 +199,22 @@ namespace stCoCServerConfig.CoCServerConfigData
         public OptionItem WEBRootUri { get; set; }
         public OptionItem WEBRootPort { get; set; }
         public OptionItem WEBLANGDefault { get; set; }
+        public OptionItem WEBCacheEnable { get; set; }
+        public OptionItem WEBFrontEndEnable { get; set; }
+        public OptionItem WEBRequestDebugEnable { get; set; }
+
+        public OptionItem DOKUWikiAuthEnable { get; set; }
+        public OptionItem DOKUWikiRootUrl { get; set; }
+        public OptionItem DOKUWikiRootPath { get; set; }
+        public OptionItem DOKUWikiQuestLogin { get; set; }
+        public OptionItem DOKUWikiQuestPassword { get; set; }
+        public OptionItem DOKUWikiDefaultGroup { get; set; }
 
         public OptionItem LOGRemoteServerAddress { get; set; }
         public OptionItem LOGRemoteServerPort { get; set; }
         public OptionItem LOGRemoteServerEnable { get; set; }
         public OptionItem LOGDuplicateEntry { get; set; }
+        public OptionItem LOGDebug { get; set; }
 
         public OptionItem PrnQuiet { get; set; }
         public OptionItem IsRun { get; set; }

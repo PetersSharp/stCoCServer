@@ -15,7 +15,7 @@
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Documents and Settings\Dom\Мои документы\Visual Studio 2010\Projects\__ST\IRCBoot\Build\stCoCServer\</PublishUrl>
+    <PublishUrl>C:\Documents and Settings\Dom\Мои документы\Visual Studio 2010\Projects\__ST\Build\stCoCServer\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -39,7 +39,7 @@
     <AutorunEnabled>true</AutorunEnabled>
     <TrustUrlParameters>true</TrustUrlParameters>
     <ApplicationRevision>2</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -114,8 +114,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppVersion.tt</DependentUpon>
     </Compile>
+    <Compile Include="CoCAPI\CoCClientSetup.cs" />
+    <Compile Include="CoCAPI\CoCClientSetupData.cs" />
     <Compile Include="CoCAPI\CoCWebSrv.cs" />
     <Compile Include="CoCAPI\CoCWebSrvHandle.cs" />
+    <Compile Include="CoCAPI\CoCWebSrvWiki.cs" />
+    <Compile Include="CoCAPI\CoCWebSrvWikiAuthException.cs" />
+    <Compile Include="CoCAPI\CoCWebSrvWikiErrorPageException.cs" />
+    <Compile Include="CoCAPI\CoCWebSrvWikiHomeException.cs" />
+    <Compile Include="CoCAPI\CoCWebSrvWikiNotImplementPageException.cs" />
+    <Compile Include="CoCAPI\CoCWebSrvWikiSearchException.cs" />
     <Compile Include="CoCServerMainIrc.cs" />
     <Compile Include="IrcPlugins\Plugins\PluginContextClanNotify.cs" />
     <Compile Include="IrcPlugins\Plugins\PluginContextUrlTitle.cs" />
@@ -150,22 +158,33 @@
       <DependentUpon>SharedAssemblyInfoAuto.tt</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Content Include="..\stIrcManager\bin\Release\stIrcManager.exe">
+      <Link>stIrcManager.exe</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\fmtIrcSetChannel.txt" />
+    <Content Include="Resources\ircUserList.txt" />
     <DesignDataWithDesignTimeCreatableTypes Include="data\assets\html\ClanInfo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ClanInfo.html</LastGenOutput>
     </DesignDataWithDesignTimeCreatableTypes>
+    <Content Include="..\stGeoUpdate\bin\Release\ru\stGeoUpdate.resources.dll">
+      <Link>ru\stGeoUpdate.resources.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\stGeoUpdate\bin\Release\stGeoUpdate.application">
       <Link>stGeoUpdate.application</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\stGeoUpdate\bin\Release\stGeoUpdate.exe.config">
-      <Link>stGeoUpdate.exe.config</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\stGeoUpdate\bin\Release\stGeoUpdate.exe.manifest">
       <Link>stGeoUpdate.exe.manifest</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\stIrcManager\bin\Release\stIrcManager.exe.config">
+      <Link>stIrcManager.exe.config</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="app.config" />
     <None Include="AppVersion.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AppVersion.cs</LastGenOutput>
@@ -174,6 +193,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ClanWar.html</LastGenOutput>
     </DesignDataWithDesignTimeCreatableTypes>
+    <Content Include="data\assets\css\socialbuttons.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\assets\fonts\social-icon.eot">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -186,6 +208,14 @@
     <Content Include="data\assets\fonts\social-icon.woff">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="data\assets\html\ClanChat.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ClanChat.html</LastGenOutput>
+    </None>
+    <None Include="data\assets\html\ClanInformer.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ClanInformer.html</LastGenOutput>
+    </None>
     <None Include="data\assets\html\tmplMenuCheckBox.ttinclude" />
     <None Include="data\assets\html\tmplMenuIrc.ttinclude" />
   </ItemGroup>
@@ -201,6 +231,10 @@
     <ProjectReference Include="..\stExtLib\stCore-dll\stCore.csproj">
       <Project>{0569D275-72F8-4A31-B04C-653725F58B72}</Project>
       <Name>stCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\stExtLib\stDokuWikiConnector-dll\stDokuWikiConnector.csproj">
+      <Project>{6A270155-DE22-4BC5-B049-20DFAF61ED0A}</Project>
+      <Name>stDokuWikiConnector</Name>
     </ProjectReference>
     <ProjectReference Include="..\stExtLib\stGeo-dll\stGeo.csproj">
       <Project>{87439401-6949-4502-80BD-4323D063B897}</Project>
@@ -226,7 +260,16 @@
     <Content Include="data\assets\css\jvectormap.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\assets\css\socialbuttons.css">
+    <Content Include="data\assets\html\ClanChat.html">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClanChat.tt</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\assets\html\ClanInformer.html">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClanInformer.tt</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\assets\html\ClanWar.html">
@@ -1717,6 +1760,12 @@
     <Content Include="data\assets\images\flags\64\ZW.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="data\assets\images\informerDefaultBadges.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\assets\images\informerSetupErrorDefault.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\assets\images\rrd\empty.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1750,6 +1799,18 @@
     <Content Include="linux-mono\nginx-front-end.conf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="data\command.irc.set.features">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\command.irc.set.users">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="linux-mono\convert-league.php">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="linux-mono\nginx-front-end-site-exist.conf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\fmtLangSetupHelp.txt" />
     <None Include="Resources\fmtLangSetupError.txt" />
     <None Include="Resources\fmtLangSetupOk.txt" />
@@ -1760,7 +1821,6 @@
     <None Include="Resources\fmtNotifySetupPeriod.txt" />
     <None Include="Resources\fmtNotifySetupAction.txt" />
     <None Include="Resources\fmtNotifySetupHelp.txt" />
-    <None Include="Resources\fmtNotifySetup.txt" />
     <None Include="Resources\fmtWarLastHelp.txt" />
     <None Include="Resources\fmtUrlShortHelp.txt" />
     <None Include="Resources\fmtUpTimeHelp.txt" />
@@ -1783,12 +1843,10 @@
     <None Include="Resources\ircNoticeMessage.txt" />
     <None Include="Resources\ircChannelMessage.txt" />
     <None Include="Resources\ircUserKicked.txt" />
-    <None Include="Resources\resHttpHtmlError.txt" />
     <None Include="..\stExtLib\stSqlite-dll\extlib\System.Data.SQLite.dll.config">
       <Link>System.Data.SQLite.dll.config</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="app.config" />
     <Content Include="data\assets\css\concat.list.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1884,7 +1942,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.ru.resx" />
+    <EmbeddedResource Include="Properties\Resources.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">

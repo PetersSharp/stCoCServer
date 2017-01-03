@@ -1,0 +1,3023 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>stDokuWikiConnector</name>
+    </assembly>
+    <members>
+        <member name="T:stDokuWiki.Connector.RpcXml">
+            <summary>
+            Rpc-Xml DokuWiki connector class
+            </summary>
+            <code>
+            using stDokuWiki;
+            using stDokuWiki.Data;
+            using stDokuWiki.Connector;
+            </code>
+            <summary>
+            DokuWiki Rpc-Xml connector
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.#ctor(System.String,System.String,System.String)">
+            <summary>
+            (class) Rpc-Xml Constructor
+            </summary>
+            <param name="url">DokuWiki base Url</param>
+            <param name="login">you DokuWiki login credentials</param>
+            <param name="passwd">you DokuWiki password credentials</param>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.Get``1(stDokuWiki.Connector.RpcXml.XmlRpcRequest,System.Int32)">
+            <summary>
+            Execute DokuWiki command
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="type"></param>
+            <param name="n"></param>
+            <returns></returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.Get``1(stDokuWiki.Connector.RpcXml.XmlRpcRequest,System.String,System.Int32)">
+            <summary>
+            Execute DokuWiki command
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="type"></param>
+            <param name="val"></param>
+            <param name="n"></param>
+            <returns></returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.Get``1(stDokuWiki.Connector.RpcXml.XmlRpcRequest,System.String[])">
+            <summary>
+            Execute DokuWiki command
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="type"></param>
+            <param name="val"></param>
+            <returns></returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.Get``1(System.String)">
+            <summary>
+            Execute DokuWiki command
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="xmlstr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuAuth(System.String,System.String)">
+            <summary>
+            Uses the provided credentials to execute a login and will set cookies. This can be used to make authenticated requests afterwards.
+            </summary>
+            <param name="login"></param>
+            <param name="passwd"></param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuVersion">
+            <summary>
+            Returns the DokuWiki version of the remote Wiki.
+            </summary>
+            <returns>String</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuXMLRPCAPIVersion">
+            <summary>
+            Returns the XML RPC interface version of the remote Wiki.
+            This is DokuWiki implementation specific and independent of the supported
+            standard API version returned by wiki.getRPCVersionSupported
+            </summary>
+            <returns>Int32</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuRPCVersionSupported">
+            <summary>
+            Returns 2 with the supported RPC API version.
+            </summary>
+            <returns>Int32</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuGetTimeStamp">
+            <summary>
+            Returns the current time at the remote wiki server as Unix timestamp.
+            </summary>
+            <returns>Int32</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuGetDateTime">
+            <summary>
+            Returns the current time at the remote wiki server as DateTime.
+            </summary>
+            <returns>DateTime</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuSearch(System.String)">
+            <summary>
+            Search return associative array with matching pages similar to what is returned by dokuwiki.getPagelist, snippets are provided for the first 15 results.
+            </summary>
+            <param name="query"></param>
+            <returns>class <see cref="T:stDokuWiki.Data.XMLMethodPageList"/>Data.XMLMethodPageList</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuTitle">
+            <summary>
+            Returns the title of the wiki.
+            </summary>
+            <returns>String</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPageList(System.String,System.String)">
+            <summary>
+            Lists all pages within a given namespace.
+            </summary>
+            <example>
+            example foreach all page in namespace "wiki:*"
+            </example>
+            <code>
+               XMLMethodPageList dokuList = xml.DokuPageList("wiki:") as XMLMethodPageList;
+               foreach (var items in dokuList.Params.Param.Value.Array.Data.Value)
+               {
+                   foreach (var item in items.Struct.Member)
+                   {
+                       Console.WriteLine(
+                           item.Name +
+                           ((string.IsNullOrWhiteSpace(item.Value.Int)) ? " " : " [" + item.Value.Int + "] ") +
+                           ((string.IsNullOrWhiteSpace(item.Value.String)) ? "" : item.Value.String)
+                       );
+                   }
+               }
+            </code>
+            <param name="namesspace"></param>
+            <param name="opt"></param>
+            <returns>class <see cref="T:stDokuWiki.Data.XMLMethodPageList"/>Data.XMLMethodPageList</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPageListAll">
+            <summary>
+            Returns a list of all Wiki pages in the remote Wiki.
+            </summary>
+            <example>
+            Return (array) One item for each page, each item containing the following data:
+            id = id of the page.
+            perms = integer denoting the permissions on the page.
+            size = size in bytes.
+            lastModified = dateTime object of last modification date.
+            </example>
+            <returns>class <see cref="T:stDokuWiki.Data.XMLMethodPageListAll"/>Data.XMLMethodPageListAll</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPageAclCheck(System.String)">
+            <summary>
+            Returns the permission of the given wikipage.
+            </summary>
+            <param name="pagename">page name</param>
+            <returns>Int32</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPageGet(System.String,System.Boolean)">
+            <summary>
+            Get DokuWiki raw/html Wiki text for a page.
+            </summary>
+            <remarks>
+            isHtml = false : Returns the raw Wiki text for a page
+            isHtml = true  : Returns the rendered XHTML body of a Wiki page
+            </remarks>
+            <param name="pagename">page name</param>
+            <param name="isHtml">wiki markup/html selector</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPageGetVersion(System.String,System.DateTime,System.Boolean)">
+            <summary>
+            Returns the raw/html Wiki text for a page with DateTime.
+            <see cref="M:stDokuWiki.Connector.RpcXml.DokuPageGet(System.String,System.Boolean)"/>
+            </summary>
+            <param name="pagename">page name</param>
+            <param name="date">DateTime format timestamp</param>
+            <param name="isHtml">return Html content</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPageGetVersion(System.String,System.String,System.Boolean)">
+            <summary>
+            Returns the raw/html Wiki text for a page with Date and Time string.
+            <see cref="M:stDokuWiki.Connector.RpcXml.DokuPageGet(System.String,System.Boolean)"/>
+            </summary>
+            <param name="pagename">page name</param>
+            <param name="date">string format Date and Time</param>
+            <param name="isHtml">return Html content</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPageGetVersion(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Returns the raw/html Wiki text for a page with timestamp.
+            <see cref="M:stDokuWiki.Connector.RpcXml.DokuPageGet(System.String,System.Boolean)"/>
+            </summary>
+            <param name="pagename">page name</param>
+            <param name="timestamp">Unix timestamp (int)</param>
+            <param name="isHtml">return Html content</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPageGetVersions(System.String,System.Int32)">
+            <summary>
+            Returns the available versions of a Wiki page.
+            The number of pages in the result is controlled via the recent configuration setting.
+            The offset can be used to list earlier versions in the history.
+            </summary>
+            <param name="pagename">page name</param>
+            <param name="offset">offset page (int)</param>
+            <returns>class <see cref="T:stDokuWiki.Data.XMLMethodPageGetVersions"/>Data.XMLMethodPageGetVersions</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPageInfo(System.String)">
+            <summary>
+            Returns information about a Wiki page.
+            </summary>
+            <example>
+            Returns (array) an array containing the following data: 
+            name = page name.
+            lastModified = modification date as IXR_Date Object.
+            author = author of the Wiki page.
+            version = page version as timestamp.
+            </example>
+            <param name="pagename"></param>
+            <returns>class <see cref="T:stDokuWiki.Data.XMLMethodPageInfo"/>Data.XMLMethodPageInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPageInfoVersion(System.String,System.DateTime)">
+            <summary>
+            Returns information about a Wiki page with DateTime.
+            <see cref="M:stDokuWiki.Connector.RpcXml.DokuPageInfo(System.String)"/>
+            </summary>
+            <param name="pagename">page name</param>
+            <param name="date">DateTime format timestamp</param>
+            <returns>class <see cref="T:stDokuWiki.Data.XMLMethodPageInfo"/>Data.XMLMethodPageInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPageInfoVersion(System.String,System.String)">
+            <summary>
+            Returns information about a Wiki page with Date and Time string.
+            <see cref="M:stDokuWiki.Connector.RpcXml.DokuPageInfo(System.String)"/>
+            </summary>
+            <param name="pagename">page name</param>
+            <param name="date">string format Date and Time</param>
+            <returns>class <see cref="T:stDokuWiki.Data.XMLMethodPageInfo"/>Data.XMLMethodPageInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPageInfoVersion(System.String,System.Int32)">
+            <summary>
+            Returns information about a Wiki page with timestamp.
+            <see cref="M:stDokuWiki.Connector.RpcXml.DokuPageInfo(System.String)"/>
+            </summary>
+            <param name="pagename">page name</param>
+            <param name="timestamp">Unix timestamp (int)</param>
+            <returns>class <see cref="T:stDokuWiki.Data.XMLMethodPageInfo"/>Data.XMLMethodPageInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPageLinks(System.String)">
+            <summary>
+            Returns a list of all links contained in a Wiki page.
+            </summary>
+            <example>
+            Return (array) each array item holds the following data:
+            type = local/extern
+            page = the wiki page (or the complete URL if extern)
+            href = the complete URL
+            </example>
+            <param name="pagename">page name</param>
+            <returns>class <see cref="T:stDokuWiki.Data.XMLMethodPageLinks"/>Data.XMLMethodPageLinks</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPageLinksBack(System.String)">
+            <summary>
+            Returns a list of backlinks of a Wiki page.
+            See: https://www.dokuwiki.org/backlinks
+            </summary>
+            <param name="pagename">page name</param>
+            <returns>class <see cref="T:stDokuWiki.Data.XMLMethodPageLinksBack"/>Data.XMLMethodPageLinksBack</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPagePut(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Create or update Wiki Page.
+            </summary>
+            <param name="pagename">page name</param>
+            <param name="rawtxt">raw Wiki text</param>
+            <param name="sum">change summary</param>
+            <param name="minor">minor</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPageAppend(System.String,System.String,System.Boolean,System.String,System.Boolean)">
+            <summary>
+            Append text to Wiki Page.
+            </summary>
+            <param name="pagename">page name</param>
+            <param name="rawtxt">wiki markup/html Wiki text</param>
+            <param name="isHtml">wiki markup/html selector</param>
+            <param name="sum">change summary</param>
+            <param name="minor">minor</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPageInsert(System.String,System.String,System.Boolean,System.String,System.Boolean)">
+            <summary>
+            Insert text to Wiki Page.
+            </summary>
+            <param name="pagename">page name</param>
+            <param name="rawtxt">wiki markup/html Wiki text</param>
+            <param name="isHtml">wiki markup/html selector</param>
+            <param name="sum">change summary</param>
+            <param name="minor">minor</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPageClear(System.String)">
+            <summary>
+            Clear all text from Wiki Page.
+            </summary>
+            <param name="pagename">page name</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPageDelete(System.String)">
+            <summary>
+            Delete Wiki Page.
+            </summary>
+            <param name="pagename">page name</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPagesChange(System.DateTime)">
+            <summary>
+            Returns a list of recent changes since given DateTime.
+            </summary>
+            <param name="date">DateTime format timestamp</param>
+            <returns>class <see cref="T:stDokuWiki.Data.XMLMethodPagesRecentChange"/>Data.XMLMethodPagesRecentChange</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPagesChange(System.String)">
+            <summary>
+            Returns a list of recent changes since given Date andTime string.
+            </summary>
+            <param name="date">string format Date and Time</param>
+            <returns>class <see cref="T:stDokuWiki.Data.XMLMethodPagesRecentChange"/>Data.XMLMethodPagesRecentChange</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuPagesChange(System.Int32)">
+            <summary>
+            Returns a list of recent changes since given timestamp.
+            As stated: Only the most recent change for each page is listed,
+            regardless of how many times that page was changed.
+            </summary>
+            <example>
+            Return (array) each array item holds the following data:
+            name = page id
+            lastModified = modification date as UTC timestamp
+            author = author
+            version = page version as timestamp
+            </example>
+            <param name="timestamp">Unix timestamp (int)</param>
+            <returns>class <see cref="T:stDokuWiki.Data.XMLMethodPagesRecentChange"/>Data.XMLMethodPagesRecentChange</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuMediaChange(System.DateTime)">
+            <summary>
+            Returns a list of recent changes since given DateTime.
+            </summary>
+            <param name="date">DateTime format timestamp</param>
+            <returns>class <see cref="T:stDokuWiki.Data.XMLMethodMediaRecentChange"/>Data.XMLMethodMediaRecentChange</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuMediaChange(System.String)">
+            <summary>
+            Returns a list of recent changes since given Date and Time string.
+            </summary>
+            <param name="date">string format Date and Time</param>
+            <returns>class <see cref="T:stDokuWiki.Data.XMLMethodMediaRecentChange"/>Data.XMLMethodMediaRecentChange</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuMediaChange(System.Int32)">
+            <summary>
+            Returns a list of recent changes since given timestamp.
+            As stated: Only the most recent change for each page is listed,
+            regardless of how many times that page was changed.
+            </summary>
+            <example>
+            Return (array) each array item holds the following data:
+            name = page id
+            lastModified = modification date as UTC timestamp
+            author = author
+            version = page version as timestamp
+            perms = media permissions
+            size = media size in bytes
+            </example>
+            <param name="timestamp">Unix timestamp (int)</param>
+            <returns>class <see cref="T:stDokuWiki.Data.XMLMethodMediaRecentChange"/>Data.XMLMethodMediaRecentChange</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuAttachmentList(System.String,System.String)">
+            <summary>
+            Returns a list of media files in a given namespace.
+            </summary>
+            <example>
+            id = media id
+            file = name of the file
+            size = size in bytes
+            mtime = upload date as a timestamp
+            lastModified =  modification date as XML-RPC Date object
+            isimg = true if file is an image, false otherwise
+            writable = true if file is writable, false otherwise
+            perms = permissions of file
+            </example>
+            <returns>class <see cref="T:stDokuWiki.Data.XMLMethodAttachmentList"/>Data.XMLMethodAttachmentList</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuAttachmentInfo(System.String)">
+            <summary>
+            Returns information about a media file.
+            </summary>
+            <example>
+            size = size in bytes
+            lastModified = modification date as XML-RPC Date object
+            </example>
+            <param name="id">Attachment id (file name)</param>
+            <returns>class <see cref="T:stDokuWiki.Data.XMLMethodAttachmentInfo"/>Data.XMLMethodAttachmentInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuAttachmentGet(System.String)">
+            <summary>
+            Returns the object data of a media file.
+            </summary>
+            <param name="id">Attachment id (file name)</param>
+            <returns>the data of the file in byte[] format</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuAttachmentPut(System.String,System.Boolean)">
+            <summary>
+            Uploads a file as a given media id, source as full file path.
+            </summary>
+            <param name="path">full file path</param>
+            <param name="owr"></param>
+            <returns>Bolean</returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuAttachmentPut(System.String,System.Byte[],System.Boolean)">
+            <summary>
+            Uploads a file as a given media id, source as byte array.
+            </summary>
+            <param name="id">media id</param>
+            <param name="obj">byte array</param>
+            <param name="owr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuAttachmentPut(System.String,System.String,System.Boolean)">
+            <summary>
+            Uploads a file as a given media id, source as Base64 encoded.
+            </summary>
+            <param name="id">Attachment id (file name)</param>
+            <param name="base64">source string - Base64 encoded</param>
+            <param name="owr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:stDokuWiki.Connector.RpcXml.DokuAttachmentRemove(System.String)">
+            <summary>
+            Deletes a file. Fails if the file is still referenced from any page in the wiki.
+            </summary>
+            <param name="id">Attachment id (file name)</param>
+            <returns>Bolean</returns>
+        </member>
+        <member name="P:stDokuWiki.Connector.RpcXml.Url">
+            <summary>
+            (String) URL DokuWiki server
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Connector.RpcXml.Login">
+            <summary>
+            (String) Login to DokuWiki server
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Connector.RpcXml.Passwd">
+            <summary>
+            (String) Password to DokuWiki server
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Connector.RpcXml.NameSpaceDefault">
+            <summary>
+            (String) Default DokuWiki Namespace
+            <example>
+            "wiki:"
+            </example>
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.Connector.RpcXml.XmlRpcRequest">
+            <summary>
+            See API https://www.dokuwiki.org/devel:xmlrpc
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.dokuwiki_getPagelist">
+            <summary>
+            Lists all pages within a given namespace.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.dokuwiki_getVersion">
+            <summary>
+            Returns the DokuWiki version of the remote Wiki.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.dokuwiki_getTime">
+            <summary>
+            Returns the current time at the remote wiki server as Unix timestamp.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.dokuwiki_getXMLRPCAPIVersion">
+            <summary>
+            Returns the XML RPC interface version of the remote Wiki.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.dokuwiki_login">
+            <summary>
+            Uses the provided credentials to execute a login and will set cookies.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.dokuwiki_search">
+            <summary>
+            Performs a fulltext search.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.dokuwiki_getTitle">
+            <summary>
+            Returns the title of the wiki.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.dokuwiki_appendPage">
+            <summary>
+            Appends text to a Wiki page.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.dokuwiki_setLocks">
+            <summary>
+            Allows you to lock or unlock a whole bunch of pages at once.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.wiki_getRPCVersionSupported">
+            <summary>
+            Returns number with the supported RPC API version.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.wiki_aclCheck">
+            <summary>
+            Returns the permission of the given Wiki page.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.wiki_getPage">
+            <summary>
+            Returns the raw Wiki text for a page.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.wiki_getPageVersion">
+            <summary>
+            Returns the raw Wiki text for a specific revision of a Wiki page.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.wiki_getPageVersions">
+            <summary>
+            Returns the available versions of a Wiki page.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.wiki_getPageInfo">
+            <summary>
+            Returns information about a Wiki page.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.wiki_getPageInfoVersion">
+            <summary>
+            Returns information about a specific version of a Wiki page.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.wiki_getPageHTML">
+            <summary>
+            Returns the rendered XHTML body of a Wiki page.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.wiki_getPageHTMLVersion">
+            <summary>
+            Returns the rendered HTML of a specific version of a Wiki page.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.wiki_putPage">
+            <summary>
+            Saves a Wiki page.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.wiki_listLinks">
+            <summary>
+            Returns a list of all links contained in a Wiki page.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.wiki_getAllPages">
+            <summary>
+            Returns a list of all Wiki pages in the remote Wiki.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.wiki_getBackLinks">
+            <summary>
+            Returns a list of backlinks of a Wiki page.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.wiki_getRecentChanges">
+            <summary>
+            Returns a list of recent changes since given timestamp.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.wiki_getRecentMediaChanges">
+            <summary>
+            Returns a list of recent changed media since given timestamp.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.wiki_getAttachments">
+            <summary>
+            Returns a list of media files in a given namespace.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.wiki_getAttachment">
+            <summary>
+            Returns the binary data of a media attachments file.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.wiki_getAttachmentInfo">
+            <summary>
+            Returns information about a media attachments file.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.wiki_putAttachment">
+            <summary>
+            Uploads a file as a given media id.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.wiki_deleteAttachment">
+            <summary>
+            Deletes a file. Fails if the file is still referenced from any page in the wiki.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.plugin_acl_addAcl">
+            <summary>
+            Add an ACL rule. Use @groupname instead of user to add an ACL rule for a group.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.Connector.RpcXml.XmlRpcRequest.plugin_acl_delAcl">
+            <summary>
+            Delete any ACL rule matching the given scope and user.
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.Connector.RpcXml.XmlRpcPageAction">
+            <summary>
+            Page Action: Insert, Update, Delete, None
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.WikiEngine.WikiFile">
+            <summary>
+            DokuWiki compatible file engine.
+            Get/Put/Delete/List page and media files.
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFile.wikiLocalPath">
+            <summary>
+            Default Wiki root folder
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFile.wikiLocalPage">
+            <summary>
+            Default Wiki root/pages folder
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFile.wikiLocalMedia">
+            <summary>
+            Default Wiki root/media folder
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFile.wikiLocalAttic">
+            <summary>
+            Default Wiki root/attic folder
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFile.wikiLocalMeta">
+            <summary>
+            Default Wiki root/meta folder
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFile.wikiLocalCache">
+            <summary>
+            Default Wiki root/cache folder
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFile.wikiLocalCacheFind">
+            <summary>
+            Default Wiki root/cache/find folder, store and read find request
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFile.wikiDefaultEmptyNS">
+            <summary>
+            Default Namespace to unknown write namespace
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFile.metaExtension">
+            <summary>
+            Default meta extensions
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFile.atticExtension">
+            <summary>
+            Default attic extensions
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFile.mdExtension">
+            <summary>
+            Default pages extensions
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFile.binExtension">
+            <summary>
+            Default media extensions
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile._WikiFileCacheRead(System.String)">
+            <summary>
+            Read Cache
+            </summary>
+            <param name="cacheid">string Cache ID</param>
+            <returns><see cref="T:stDokuWiki.WikiEngine.WikiFolderInfo"/>WikiEngine.WikiFolderInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile._WikiFileCacheWrite(stDokuWiki.WikiEngine.WikiFolderInfo,System.String)">
+            <summary>
+            Write Cache
+            </summary>
+            <param name="wfi"><see cref="T:stDokuWiki.WikiEngine.WikiFolderInfo"/>WikiEngine.WikiFolderInfo input</param>
+            <param name="cacheid">string Cache ID</param>
+            <returns><see cref="T:stDokuWiki.WikiEngine.WikiFolderInfo"/>WikiEngine.WikiFolderInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile._WikiFileCacheClear">
+            <summary>
+            Clear Cache
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile._WikiFileCacheFilePath(System.String)">
+            <summary>
+            Create Cache path
+            </summary>
+            <param name="cacheid">string Cache ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.RouteTree(System.String,stDokuWiki.WikiEngine.WikiFileMeta)">
+             <summary>
+             Wiki Route tree (Web)
+             return requested resource from wiki file system.
+             </summary>
+             <example>
+             Uri: /wiki/get/pages|attic|media|meta/clan:test1
+             Uri: /wiki/put/pages|attic|media/clan:test1
+             Uri: /wiki/del/pages|attic|media/clan:test1
+             Uri: /wiki/list/pages|attic|media/clan:
+             Uri: /wiki/find/part-of-serch-page-name
+             enum <see cref="T:stDokuWiki.WikiEngine.WikiRequestType"/>WikiEngine.WikiRequestType: get|put|del|list|find
+             enum <see cref="T:stDokuWiki.WikiEngine.WikiFileType"/>WikiEngine.WikiFileType: pages|attic|media|meta
+             </example>
+             <remarks>
+             Example routing Uri:
+             
+             "/wiki/get/pages/clan:test1" OK
+             "/wiki/get/clan:test1" OK
+             "/wiki/clan:test1" -&gt; HomeException
+             "/wiki/clan:" -&gt; HomeException
+             "/wiki/" -&gt; HomeException (redirect)
+            
+             "/wiki/list/pages/clan:" OK
+             "/wiki/list/clan:" OK (default pages)
+             "/wiki/list/" OK (default pages and default namespace)
+             
+             "/wiki/list/media/clan:" OK
+             "/wiki/list/media/" OK (default namespace)
+            
+             "/wiki/find/pages/tes" OK
+             "/wiki/find/media/tes" OK
+             "/wiki/find/attic/tes" OK
+             "/wiki/find/tes" OK (default pages and default namespace)
+             
+             </remarks>
+             <exception cref="T:stDokuWiki.WikiEngine.Exceptions.WikiEngineAuthException">WikiEngineAuthException</exception>
+             <exception cref="T:stDokuWiki.WikiEngine.Exceptions.WikiEngineSearchException">WikiEngineSearchException</exception>
+             <exception cref="T:stDokuWiki.WikiEngine.Exceptions.WikiEngineHomePageException">WikiEngineHomePageException</exception>
+             <exception cref="T:stDokuWiki.WikiEngine.Exceptions.WikiEngineErrorPageException">WikiEngineErrorPageException</exception>
+             <exception cref="T:stDokuWiki.WikiEngine.Exceptions.WikiEngineNotImplementPageException">WikiEngineNotImplementPageException</exception>
+             <param name="url">given raw url requested</param>
+             <param name="wfm"><see cref="T:stDokuWiki.WikiEngine.WikiFileMeta"/>WikiEngine.WikiFileMeta</param>
+             <returns>byte[] from requested source</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile._WikiGetFile(stDokuWiki.WikiEngine.WikiFileType,System.String)">
+            <summary>
+            get page/media/attic/meta
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile._WikiPutFile(stDokuWiki.WikiEngine.WikiFileType,System.String,stDokuWiki.WikiEngine.WikiFileMeta)">
+            <summary>
+            put page/media
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile._WikiGetList(stDokuWiki.WikiEngine.WikiFileType,System.String)">
+            <summary>
+            get page list default ?
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile._WikiFindList(stDokuWiki.WikiEngine.WikiFileType,System.String)">
+            <summary>
+            find pages list
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile._WikiGetHome(System.String)">
+            <summary>
+            get Home location, Exception to load Home page default (html template)
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile._WikiFilesParse(stDokuWiki.WikiEngine.WikiFileType,System.String,System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            internal Uri/Namespace parse
+            </summary>
+            <param name="wft">type enum <see cref="T:stDokuWiki.WikiEngine.WikiFileType"/>WikiEngine.WikiFileType</param>
+            <param name="namesspace">wiki namespace include ':'</param>
+            <param name="file">page/media name (serch patern string)</param>
+            <param name="atticid">Attic ID (Unix Timestamp, Int32)</param>
+            <param name="strong">Bolean, search one is true, search all is false</param>
+            <param name="iswrite">Bolean, flag to write resource</param>
+            <returns><see cref="T:stDokuWiki.WikiEngine.WikiFile.WikiFileParse"/>WikiEngine.WikiFile.WikiFileParse</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.__WikiFilesParse(stDokuWiki.WikiEngine.WikiFile.WikiFileParse)">
+            <summary>
+            internal Uri/Namespace parse
+            </summary>
+            <param name="wfp"></param>
+            <returns><see cref="T:stDokuWiki.WikiEngine.WikiFile.WikiFileParse"/>WikiFile.WikiFileParse</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.__WikiFilesParseMetaExtension(stDokuWiki.WikiEngine.WikiFile.WikiFileParse@,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            Meta append path to specific locations
+            part of __WikiFilesParse
+            </summary>
+            <param name="checkNs"></param>
+            <param name="checkFn"></param>
+            <param name="wfp"></param>
+            <param name="app"></param>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.___WikiFilesParseMetaExtension(System.String,System.String)">
+            <summary>
+            Sub function WikiFilesParseMetaExtension
+            </summary>
+            <param name="src"></param>
+            <param name="app"></param>
+            <returns>String</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.__WikiFilesParseAtticExtension(stDokuWiki.WikiEngine.WikiFile.WikiFileParse@,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            Attic append path to specific locations
+            part of __WikiFilesParse
+            </summary>
+            <param name="wfp"></param>
+            <param name="checkNs"></param>
+            <param name="checkFn"></param>
+            <param name="app"></param>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.__WikiFilesFindFiles(stDokuWiki.WikiEngine.WikiFile.WikiFileParse)">
+            <summary>
+            internal Wiki find files
+            </summary>
+            <param name="wfp"><see cref="T:stDokuWiki.WikiEngine.WikiFile.WikiFileParse"/>WikiFile.WikiFileParse data</param>
+            <returns>WikiFolderInfo data</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.__WikiFilesFindNamespace(stDokuWiki.WikiEngine.WikiFile.WikiFileParse)">
+            <summary>
+            internal find Namespace
+            </summary>
+            <param name="wfp"><see cref="T:stDokuWiki.WikiEngine.WikiFile.WikiFileParse"/>WikiFile.WikiFileParse data</param>
+            <returns><see cref="T:stDokuWiki.WikiEngine.WikiFolderInfo"/>WikiEngine.WikiFolderInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.__WikiFilesFindNamespaceFolder(stDokuWiki.WikiEngine.WikiFolderInfo,System.String)">
+            <summary>
+            internal find Namespace folder, iteration recursive
+            </summary>
+            <param name="wfi">WikiEngine.WikiFolderInfo"/&gt;WikiEngine.WikiFolderInfo input</param>
+            <param name="search">serch patern string</param>
+            <returns><see cref="T:stDokuWiki.WikiEngine.WikiFolderInfo"/>WikiEngine.WikiFolderInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.__WikiFilesFindNamespaceFiles(stDokuWiki.WikiEngine.WikiFolderInfo@,stDokuWiki.WikiEngine.WikiFolderInfo,System.String)">
+            <summary>
+            internal find Namespace folder, iteration recursive
+            </summary>
+            <param name="wfo">ref <see cref="T:stDokuWiki.WikiEngine.WikiFolderInfo"/>WikiEngine.WikiFolderInfo, out data</param>
+            <param name="wfi"><see cref="T:stDokuWiki.WikiEngine.WikiFolderInfo"/>WikiEngine.WikiFolderInfo, input data</param>
+            <param name="key">Start key to search from Dictionary, its directory name</param>
+            <returns>Bolean</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile._WikiFileActionRecursive(stDokuWiki.WikiEngine.WikiFolderInfo,stDokuWiki.WikiEngine.WikiFileAction,System.Action{stDokuWiki.WikiEngine.WikiFileAction})">
+            <summary>
+            Recursive Action, use in:
+            <see cref="M:stDokuWiki.WikiEngine.WikiFile._SetFileLock(stDokuWiki.WikiEngine.WikiData,System.Boolean)"/>
+            </summary>
+            <param name="wfi"><see cref="T:stDokuWiki.WikiEngine.WikiFolderInfo"/></param>
+            <param name="wfa"><see cref="T:stDokuWiki.WikiEngine.WikiFileAction"/></param>
+            <param name="act">Action&lt;WikiEngine.WikiFileAction&gt;</param>
+            <returns>Bolean</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile._WikiFileGetFileInfo(stDokuWiki.WikiEngine.WikiFileType,System.String,System.String)">
+            <summary>
+            Get file information from FS from string
+            </summary>
+            <param name="wft">type enum <see cref="T:stDokuWiki.WikiEngine.WikiFileType"/>WikiEngine.WikiFileType</param>
+            <param name="namesspace">wiki namespace include ':'</param>
+            <param name="file">page/media name (serch patern string)</param>
+            <returns><see cref="T:stDokuWiki.WikiEngine.WikiFileInfo"/>WikiEngine.WikiFileInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile._WikiFileGetFileInfo(stDokuWiki.WikiEngine.WikiFile.WikiFileParse)">
+            <summary>
+            Get file information from FS from WikiEngine.WikiFileParse internal class
+            </summary>
+            <param name="wfp">internal class <see cref="T:stDokuWiki.WikiEngine.WikiFile.WikiFileParse"/>WikiEngine.WikiFile.WikiFileParse</param>
+            <returns><see cref="T:stDokuWiki.WikiEngine.WikiFileInfo"/>WikiEngine.WikiFileInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.__WikiFileGetFileInfoSelect(stDokuWiki.WikiEngine.WikiFile.WikiFileParse)">
+            <summary>
+            part from _WikiFileGetFileInfo(WikiFileParse) internal method
+            </summary>
+            <param name="wfp">internal class <see cref="T:stDokuWiki.WikiEngine.WikiFile.WikiFileParse"/>WikiEngine.WikiFile.WikiFileParse</param>
+            <returns><see cref="T:stDokuWiki.WikiEngine.WikiFileInfo"/>WikiEngine.WikiFileInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile._OnWikiFSChangeWatch(System.Object,System.IO.FileSystemEventArgs)">
+            <summary>
+            CallBack from <see cref="T:System.IO.FileSystemWatcher"/>FileSystemWatcher
+            </summary>
+            <param name="source">object, not used</param>
+            <param name="ev"><see cref="T:System.IO.FileSystemEventArgs"/>FileSystemEventArgs</param>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFile.wikiDefaultSeparator">
+            <summary>
+            Default separator from runing system
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.#ctor(System.String)">
+            <summary>
+            Init DokuWiki compatible file engine.
+            </summary>
+            <code>
+            using stDokuWiki.WikiEngine;
+            using stDokuWiki.WikiEngine.Exceptions;
+            
+            try
+            {
+               WikiFile wf = new WikiFile("data");
+               wf.OnProcessError += (o, e) =&gt;
+               {
+                  Console.WriteLine(
+                    "OnError: "
+                    + Environment.NewLine + " Type:    " + e.ex.GetType().Name
+                    + Environment.NewLine + " Method:  " + e.MethodName
+                    + Environment.NewLine + " Message: " + e.ex.Message
+                  );
+               };
+               wf.OnWikiFSChange += (o, e) =&gt;
+               {
+                  Console.WriteLine("Root namspace count: " + e.Count + ":" + e.WikiFile.CountRootNamspace);
+               };
+            }
+            catch (Exception e)
+            {
+               Console.WriteLine(e.GetType().Name + ": " + e.Message);
+            }
+            </code>
+            <param name="rootPath">Root path to wiki folder</param>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.Finalize">
+            <summary>
+            Destructor class WikiFile
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.GetFileInfo(stDokuWiki.WikiEngine.WikiFileType,System.String)">
+            <summary>
+            Get wiki file <see cref="T:stDokuWiki.WikiEngine.WikiFileInfo"/> iformation
+            </summary>
+            <code>
+              WikiEngine.WikiFileInfo wfi = wf.GetFileInfo(WikiEngine.WikiFileType.FileReadMd,"testns:filepage1");
+              if (wfi != null)
+              {
+                 Console.WriteLine(
+                    " File: " + wfi.FileName +
+                    " LastAccessTime: " + wfi.LastAccessTime +
+                    " LastWriteTime: " + wfi.LastWriteTime
+                 );
+              }
+            </code>
+            <param name="wft">object type: enum <see cref="T:stDokuWiki.WikiEngine.WikiFileType"/>WikiEngine.WikiFileType</param>
+            <param name="namesspace">Wiki name space include page name</param>
+            <returns>WikiEngine.WikiFileInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.GetFileInfoPage(System.String)">
+            <summary>
+            Get wiki page file <see cref="T:stDokuWiki.WikiEngine.WikiFileInfo"/> iformation
+            </summary>
+            <example>Example view code: <see cref="M:stDokuWiki.WikiEngine.WikiFile.GetFileInfo(stDokuWiki.WikiEngine.WikiFileType,System.String)"/>WikiEngine.WikiFile.GetFileInfo()</example>
+            <param name="namesspace">Wiki name space include page name</param>
+            <returns>WikiEngine.WikiFileInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.GetFileInfoMedia(System.String)">
+            <summary>
+            Get wiki media file <see cref="T:stDokuWiki.WikiEngine.WikiFileInfo"/> iformation
+            </summary>
+            <example>Example view code: <see cref="M:stDokuWiki.WikiEngine.WikiFile.GetFileInfo(stDokuWiki.WikiEngine.WikiFileType,System.String)"/>WikiEngine.WikiFile.GetFileInfo()</example>
+            <param name="namesspace">Wiki name space include page name</param>
+            <returns>WikiEngine.WikiFileInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.GetFileInfoAttic(System.String)">
+            <summary>
+            Get wiki attic file <see cref="T:stDokuWiki.WikiEngine.WikiFileInfo"/> iformation
+            </summary>
+            <example>Example view code: <see cref="M:stDokuWiki.WikiEngine.WikiFile.GetFileInfo(stDokuWiki.WikiEngine.WikiFileType,System.String)"/>WikiEngine.WikiFile.GetFileInfo()</example>
+            <param name="namesspace">Wiki name space include page name</param>
+            <returns>WikiEngine.WikiFileInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.GetFile(System.String,stDokuWiki.WikiEngine.WikiFileType)">
+            <summary>
+            Get file content as byte [] from wiki namespace
+            </summary>
+            <param name="namesspace">wiki namespace include ':'</param>
+            <param name="wft">type of request <see cref="T:stDokuWiki.WikiEngine.WikiFileType"/>WikiEngine.WikiFileType</param>
+            <returns>WikiEngine.WikiData</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.GetFileToString(System.String,stDokuWiki.WikiEngine.WikiFileType)">
+            <summary>
+            Get file content as string from wiki namespace
+            </summary>
+            <param name="namesspace">wiki namespace include ':'</param>
+            <param name="wft"><see cref="T:stDokuWiki.WikiEngine.WikiFileType"/>WikiEngine.WikiFileType, return in namespace, is found</param>
+            <returns>WikiEngine.WikiData</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.GetFileFromAttic(System.String,System.Int32)">
+            <summary>
+            See <see cref="M:stDokuWiki.WikiEngine.WikiFile.GetFileFromAttic(System.String,System.String)"/> WikiFile.GetFileFromAttic(string, string)
+            </summary>
+            <param name="namesspace">wiki namespace include ':'</param>
+            <param name="uts">Unix Unix TimeStamp, Int32</param>
+            <returns></returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.GetFileFromAttic(System.String,System.DateTime)">
+            <summary>
+            See <see cref="M:stDokuWiki.WikiEngine.WikiFile.GetFileFromAttic(System.String,System.String)"/> WikiFile.GetFileFromAttic(string, string)
+            </summary>
+            <param name="namesspace">wiki namespace include ':'</param>
+            <param name="dt">DateTime format</param>
+            <returns></returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.GetFileFromAttic(System.String,System.String)">
+            <summary>
+            Get file content from Attic backup (wiki namespace required)
+            </summary>
+            <param name="namesspace">wiki namespace include ':'</param>
+            <param name="stime">string date and time</param>
+            <returns>WikiEngine.WikiData</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.GetFileMeta(System.String)">
+            <summary>
+            Get Meta data from file, return List <see cref="T:stDokuWiki.WikiEngine.WikiMetaChanges"/>WikiEngine.WikiMetaChanges
+            </summary>
+            <param name="namesspace">wiki namespace include ':'</param>
+            <returns>List&lt;WikiEngine.WikiMetaChanges&gt;</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.PutFile(System.String,System.Byte[],stDokuWiki.WikiEngine.WikiFileMeta)">
+            <summary>
+            Put file content to wiki namespace
+            </summary>
+            <param name="namesspace">wiki namespace include ':'</param>
+            <param name="data">byte [] data to wiki file</param>
+            <param name="wfm">Meta data <see cref="T:stDokuWiki.WikiEngine.WikiFileMeta"/>WikiEngine.WikiFileMeta</param>
+            <returns>WikiEngine.WikiData</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.PutFileHtmlText(System.String,System.Byte[],stDokuWiki.WikiEngine.WikiFileMeta)">
+            <summary>
+            Put file content to wiki namespace,
+            input source is HTML fragment, output is Markdown
+            </summary>
+            <param name="namesspace">wiki namespace include ':'</param>
+            <param name="data">byte [] data to wiki file</param>
+            <param name="wfm">Meta data <see cref="T:stDokuWiki.WikiEngine.WikiFileMeta"/>WikiEngine.WikiFileMeta</param>
+            <returns>WikiEngine.WikiData</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.PutFileHtmlDoc(System.String,System.Byte[],stDokuWiki.WikiEngine.WikiFileMeta)">
+            <summary>
+            Put file content to wiki namespace,
+            input source is completed HTML document, output is Markdown
+            </summary>
+            <param name="namesspace">wiki namespace include ':'</param>
+            <param name="data">byte [] data to wiki file</param>
+            <param name="wfm">Meta data <see cref="T:stDokuWiki.WikiEngine.WikiFileMeta"/>WikiEngine.WikiFileMeta</param>
+            <returns>WikiEngine.WikiData</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.GetFileList(stDokuWiki.WikiEngine.WikiFileType,System.String)">
+            <summary>
+            Get file list
+            </summary>
+            <example></example>
+            <code>
+              WikiFolderInfo wfi = wf.GetFileList(WikiEngine.WikiFileType.FileReadMd,"testns:");
+              if (wfi == null)
+              {
+                Console.WriteLine("return empty..");
+                return;
+              }
+              Console.WriteLine(
+                "total directories: " + wfi.Dirs.Count + Environment.NewLine +
+                "total files: " + wfi.Files.Count
+              );
+              foreach (var items in wfi.Files)
+              {
+                 Console.WriteLine(" name space: " + items.Key);
+                 foreach (var item in items.Value)
+                 {
+                    Console.WriteLine("   page/file: " + item.FileName);
+                 }
+              }
+            </code>
+            <param name="wft">object type: enum <see cref="T:stDokuWiki.WikiEngine.WikiFileType"/>WikiEngine.WikiFileType</param>
+            <param name="namesspace">Wiki name space</param>
+            <returns><see cref="T:stDokuWiki.WikiEngine.WikiFolderInfo"/>WikiEngine.WikiFolderInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.GetFileListPages">
+            <summary>
+            Get Root page file list
+            </summary>
+            <example>Example view code: <see cref="M:stDokuWiki.WikiEngine.WikiFile.GetFileList(stDokuWiki.WikiEngine.WikiFileType,System.String)"/>WikiEngine.GetFileList()</example>
+            <returns><see cref="T:stDokuWiki.WikiEngine.WikiFolderInfo"/>WikiEngine.WikiFolderInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.GetFileListMedia">
+            <summary>
+            Get Root media file list
+            </summary>
+            <example>Example view code: <see cref="M:stDokuWiki.WikiEngine.WikiFile.GetFileList(stDokuWiki.WikiEngine.WikiFileType,System.String)"/>WikiEngine.GetFileList()</example>
+            <returns><see cref="T:stDokuWiki.WikiEngine.WikiFolderInfo"/>WikiEngine.WikiFolderInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.GetFileListAttic">
+            <summary>
+            Get Root attic file list
+            </summary>
+            <example>Example view code: <see cref="M:stDokuWiki.WikiEngine.WikiFile.GetFileList(stDokuWiki.WikiEngine.WikiFileType,System.String)"/>WikiEngine.GetFileList()</example>
+            <returns><see cref="T:stDokuWiki.WikiEngine.WikiFolderInfo"/>WikiEngine.WikiFolderInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.FindFiles(stDokuWiki.WikiEngine.WikiFileType,System.String,System.String,System.Boolean)">
+            <summary>
+            Find wiki files, return data:
+            class <see cref="T:stDokuWiki.WikiEngine.WikiFolderInfo"/>WikiFolderInfo
+            class <see cref="T:stDokuWiki.WikiEngine.WikiFileInfo"/>WikiFileInfo
+            for file/page name mask
+            </summary>
+            <code>
+              WikiFolderInfo wfi = wf.FindFiles(WikiEngine.WikiFileType.FileReadMd,"myfilename","mynamespace:");
+              if (wfi == null)
+              {
+                 return;
+              }
+              Console.WriteLine("find pattern: " + wfi.SearchPatern);
+              Console.WriteLine("start name space: " + wfi.NamespacePath);
+              foreach (var items in (Dictionary&lt;string, WikiFolderInfo&gt;)wfi.Dirs)
+              {
+                 Console.WriteLine(" name space: " + items.Key);
+                 foreach (WikiFileInfo item in ((WikiFolderInfo)items.Value).Files)
+                 {
+                    Console.WriteLine("   page/media name: " + item.FileName);
+                 }
+              }
+            </code>
+            <param name="type">object type: enum <see cref="T:stDokuWiki.WikiEngine.WikiFileType"/>WikiEngine.WikiFileType</param>
+            <param name="search">String search pattern</param>
+            <param name="namesspace">String Namespace (optionale)</param>
+            <param name="strong">Bolean, is true search stop is one matching (optionale)</param>
+            <returns>WikiEngine.WikiFolderInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.FindFilesPage(System.String,System.Boolean)">
+            <summary>
+            Find wiki page files <see cref="T:stDokuWiki.WikiEngine.WikiFileInfo"/> for file name mask
+            </summary>
+            <example>Example view code: <see cref="M:stDokuWiki.WikiEngine.WikiFile.FindFiles(stDokuWiki.WikiEngine.WikiFileType,System.String,System.String,System.Boolean)"/>WikiEngine.WikiFile.FindFiles()</example>
+            <param name="search">Wiki page/file name mask</param>
+            <param name="strong">Bolean, strong search if true</param>
+            <returns>WikiEngine.WikiFolderInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.FindFilesMedia(System.String,System.Boolean)">
+            <summary>
+            Get wiki media file <see cref="T:stDokuWiki.WikiEngine.WikiFileInfo"/> media
+            </summary>
+            <example>Example view code: <see cref="M:stDokuWiki.WikiEngine.WikiFile.FindFiles(stDokuWiki.WikiEngine.WikiFileType,System.String,System.String,System.Boolean)"/>WikiEngine.WikiFile.FindFiles()</example>
+            <param name="search">Wiki media/file name mask</param>
+            <param name="strong">Bolean, strong search if true</param>
+            <returns>WikiEngine.WikiFolderInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.FindFilesAttic(System.String,System.Boolean)">
+            <summary>
+            Get wiki attic file <see cref="T:stDokuWiki.WikiEngine.WikiFileInfo"/> iformation
+            </summary>
+            <example>Example view code: <see cref="M:stDokuWiki.WikiEngine.WikiFile.FindFiles(stDokuWiki.WikiEngine.WikiFileType,System.String,System.String,System.Boolean)"/>WikiEngine.WikiFile.FindFiles()</example>
+            <param name="search">Wiki archive/file name mask</param>
+            <param name="strong">Bolean, strong search if true</param>
+            <returns>WikiEngine.WikiFolderInfo</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.LockFilePage(System.String,System.Boolean)">
+            <summary>
+            Lock/Unlock page file
+            See <see cref="M:stDokuWiki.WikiEngine.WikiFile.LockFile(stDokuWiki.WikiEngine.WikiFileType,System.String,System.String,System.Boolean)"/> WikiFile.LockFile(WikiFileType,string,string,bool)
+            </summary>
+            <param name="namesspace">wiki namespace include page name</param>
+            <param name="status">Lock = true, Unlock = false</param>
+            <returns>Bolean, true is succesful</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.LockFileMedia(System.String,System.Boolean)">
+            <summary>
+            Lock/Unlock media file
+            See <see cref="M:stDokuWiki.WikiEngine.WikiFile.LockFile(stDokuWiki.WikiEngine.WikiFileType,System.String,System.String,System.Boolean)"/> WikiFile.LockFile(WikiFileType,string,string,bool)
+            </summary>
+            <param name="namesspace">wiki namespace include media file name</param>
+            <param name="status">Lock = true, Unlock = false</param>
+            <returns>Bolean, true is succesful</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.LockFile(stDokuWiki.WikiEngine.WikiFileType,System.String,System.String,System.Boolean)">
+            <summary>
+            Lock/Unlock file for writing (pages/media)
+            </summary>
+            <param name="type">enum WikiFileType</param>
+            <param name="namesspace">wiki namespace include ':'</param>
+            <param name="fname">file/page/media name or null</param>
+            <param name="status">Lock = true, Unlock = false</param>
+            <returns>Bolean, true is succesful</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile._FilesAction_SetFileLock(stDokuWiki.WikiEngine.WikiFileAction)">
+            <summary>
+             Call Back to _SetFileLock
+            </summary>
+            <param name="wfa">WikiFileAction</param>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.PageToMdString(stDokuWiki.WikiEngine.WikiData,System.Boolean,System.Text.StringBuilder)">
+            <summary>
+            ToString method from <see cref="T:stDokuWiki.WikiEngine.WikiData"/>WikiEngine.WikiData to MarkDown
+            </summary>
+            <param name="wd">Data in WikiEngine.WikiData format</param>
+            <param name="isPageInfo">Bolean print Page information before</param>
+            <param name="sb">StringBuilder instance or null</param>
+            <returns>String or String.Empty</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.ResourceListToMdString(stDokuWiki.WikiEngine.WikiFolderInfo,System.Text.StringBuilder,stDokuWiki.WikiEngine.WikiFileType)">
+            <summary>
+            ToString method from <see cref="T:stDokuWiki.WikiEngine.WikiFolderInfo"/>WikiEngine.WikiFolderInfo to MarkDown
+            Page/Media/Attic List
+            </summary>
+            <param name="wfi"><see cref="T:stDokuWiki.WikiEngine.WikiFolderInfo"/>WikiEngine.WikiFolderInfo input</param>
+            <param name="sb">StringBuilder instance or null</param>
+            <param name="type"><see cref="T:stDokuWiki.WikiEngine.WikiFileType"/>WikiEngine.WikiFileType, if this equals WikiFileType.FileReadAttic, return only date from attic</param>
+            <returns>String or String.Empty</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.MetaListToMdString(System.Collections.Generic.List{stDokuWiki.WikiEngine.WikiMetaChanges},System.Text.StringBuilder)">
+            <summary>
+            ToString method from List&lt;WikiMetaChanges&gt; to MarkDown
+            </summary>
+            <param name="lwmc">Data in List&lt;WikiFileAttic&gt; format</param>
+            <param name="sb">StringBuilder instance or null</param>
+            <returns>String or String.Empty</returns>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.wikiFormat">
+            <summary>
+            DokuWiki Syntax class <see cref="T:stDokuWiki.WikiSyntax.DokuWikiFormat"/>WikiSyntax.DokuWikiFormat
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.RootPath">
+            <summary>
+            Set root path to wiki folder.
+            Create all path if necessary.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.DefaultNameSpace">
+            <summary>
+            Set default Namespace
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.FileExtensionAllow">
+            <summary>
+            Set/Get file Extension Allow to put/get (Upload/Download)
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.CacheDirPath">
+            <summary>
+            Get only CacheDirPath
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.IsFsModify">
+            <summary>
+            (Bolean) is Wiki FS modify
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.isCacheEnable">
+            <summary>
+            Enable/Disable cache result
+            Source is find method result
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.CountRootNamspace">
+            <summary>
+            Root Namspace count (read only)
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.ScanTime">
+            <summary>
+            Last Scaning FS total time is milliseconds. (read only)
+            </summary>
+        </member>
+        <member name="E:stDokuWiki.WikiEngine.WikiFile.OnProcessError">
+            <summary>
+            Event Wiki Error, return <see cref="T:stDokuWiki.WikiEngine.WikiErrorEventArgs"/>WikiEngine.WikiErrorEventArgs
+            </summary>
+        </member>
+        <member name="E:stDokuWiki.WikiEngine.WikiFile.OnWikiFSChange">
+            <summary>
+            Event Wiki File System change <see cref="T:stDokuWiki.WikiEngine.WikiFSChangeEventArgs"/>WikiEngine.WikiFSChangeEventArgs
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFile.WikiFileParse.#ctor(stDokuWiki.WikiEngine.WikiFileType,System.Boolean,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="wft"></param>
+            <param name="strong"></param>
+            <param name="namesspace"></param>
+            <param name="search"></param>
+            <param name="atticid"></param>
+            <param name="iswrite"></param>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.WikiFileParse.FolderType">
+            <summary>
+            enum WikiFileType
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.WikiFileParse.UriPart">
+            <summary>
+            Namespace string array
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.WikiFileParse.NameSpacePatern">
+            <summary>
+            Namespace path string
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.WikiFileParse.SearchPatern">
+            <summary>
+            Search string
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.WikiFileParse.CacheId">
+            <summary>
+            Cache ID string
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.WikiFileParse.AtticId">
+            <summary>
+            Attic ID string (TemeStamp)
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.WikiFileParse.IsStrongSearch">
+            <summary>
+            Search File = true, search Files = false
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.WikiFileParse.IsNameSpaceOnly">
+            <summary>
+            Namespace is only namespace, not file/page
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.WikiFileParse.IsNameSpaceValid">
+            <summary>
+            Namespace is only namespace, not file/page
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.WikiFileParse.IsSearchPaternValid">
+            <summary>
+            Namespace is only namespace, not file/page
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.WikiFileParse.IsWriteOperation">
+            <summary>
+            Flag to write object
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFile.WikiFileParse.FolderInfo">
+            <summary>
+            class WikiFolderInfo
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.RpcXmlException">
+            <summary>
+            RPC-XML/AuthManager error Exception
+            </summary>
+            <code>
+            using stDokuWiki;
+            </code>
+        </member>
+        <member name="F:stDokuWiki.RpcXmlException.errcode">
+            <summary>
+            Exception internal error code
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.RpcXmlException.#ctor(System.String,System.Int32)">
+            <summary>
+            Base RpcXmlException
+            </summary>
+            <param name="message">Exception error message</param>
+            <param name="ecode">Exception error code</param>
+        </member>
+        <member name="M:stDokuWiki.RpcXmlException.#ctor(System.String,System.Int32,System.Exception)">
+            <summary>
+            Custom Exception RpcXmlException
+            </summary>
+            <param name="message">Exception error message</param>
+            <param name="ecode">Exception error code</param>
+            <param name="inner">Exception inner Exception</param>
+        </member>
+        <member name="M:stDokuWiki.RpcXmlException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext,System.Int32)">
+            <summary>
+            Serialization method RpcXmlException
+            </summary>
+            <param name="info">Exception error SerializationInfo</param>
+            <param name="context">Exception error StreamingContext</param>
+            <param name="ecode">Exception error code</param>
+        </member>
+        <member name="T:stDokuWiki.Data.RpcXmlRequestString">
+            <summary>
+            Use in request String DokuWiki Data
+            Enum (XmlRpcRequest): none
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.Data.RpcXmlRequestInt">
+            <summary>
+            Use in request Int DokuWiki Data
+            Enum (XmlRpcRequest): none
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.Data.RpcXmlRequestComposite">
+            <summary>
+            Use in request composite String and Int DokuWiki Data
+            Enum (XmlRpcRequest): none
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.Util.DokuUtil">
+            <summary>
+            Internal utilites Class
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.Util.DokuUtil.GetUnixTimeStamp(System.DateTime)">
+            <summary>
+            Convert DateTime to Unix TimeStamp
+            </summary>
+            <param name="time">Time and Date in DateTime format</param>
+            <returns><see cref="T:System.DateTime"/>DateTime format</returns>
+        </member>
+        <member name="M:stDokuWiki.Util.DokuUtil.GetUnixTimeStamp(System.String)">
+            <summary>
+            Convert String date and time to Unix TimeStamp
+            </summary>
+            <param name="stime">Time and Date in string format</param>
+            <returns>Int32 format</returns>
+        </member>
+        <member name="M:stDokuWiki.Util.DokuUtil.GetDateTimeFromUnixTimeStamp(System.Int32)">
+            <summary>
+            Convert Unix TimeStamp to DateTime
+            </summary>
+            <param name="timestamp">Unix timestamp in int format</param>
+            <returns>DateTime</returns>
+        </member>
+        <member name="M:stDokuWiki.Util.DokuUtil.GetDateTimeFromUnixTimeStampString(System.String)">
+            <summary>
+            Convert Unix TimeStamp string to DateTime
+            </summary>
+            <param name="stime">Unix timestamp in string format</param>
+            <returns>DateTime</returns>
+        </member>
+        <member name="M:stDokuWiki.Util.DokuUtil.AtticCompressFile(System.String,System.String)">
+            <summary>
+            Wiki attic history change create page backup
+            </summary>
+            <param name="ppath">input page path</param>
+            <param name="apath">output attic path</param>
+        </member>
+        <member name="M:stDokuWiki.Util.DokuUtil.AtticDeCompressFile(System.String)">
+            <summary>
+            Wiki attic history change read page backup
+            </summary>
+            <param name="apath">input attic path</param>
+            <returns>decompressed body as byte []</returns>
+        </member>
+        <member name="M:stDokuWiki.Util.DokuUtil.WikiFileTypeToString(stDokuWiki.WikiEngine.WikiFileType)">
+            <summary>
+            map string to type, enum WikiEngine.WikiFileType
+            </summary>
+            <param name="type"><see cref="T:stDokuWiki.WikiEngine.WikiFileType"/>WikiEngine.WikiFileType</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:stDokuWiki.Util.DokuUtil.WikiFileStringToType(stDokuWiki.WikiEngine.WikiRequestType,System.String)">
+            <summary>
+            map string to type, enum WikiEngine.WikiFileType
+            </summary>
+            <param name="type"><see cref="T:stDokuWiki.WikiEngine.WikiRequestType"/>WikiEngine.WikiRequestType</param>
+            <param name="src">String: pages, media, attic, meta</param>
+            <returns><see cref="T:stDokuWiki.WikiEngine.WikiFileType"/>WikiEngine.WikiFileType</returns>
+        </member>
+        <member name="M:stDokuWiki.Util.DokuUtil.WikiFileStringToDefaultType(System.String,System.Boolean)">
+            <summary>
+            map string full Namespace to type, enum WikiEngine.WikiFileType
+            </summary>
+            <param name="src">String: pages, media, attic, meta</param>
+            <param name="rw">Bolean, read = false, write = true</param>
+            <returns><see cref="T:stDokuWiki.WikiEngine.WikiFileType"/>WikiEngine.WikiFileType</returns>
+        </member>
+        <member name="M:stDokuWiki.Util.DokuUtil.WikiFileStringToMethod(System.String)">
+            <summary>
+            map string to action, enum WikiRequestType
+            </summary>
+            <param name="src">String: get, put, del, list, find</param>
+            <returns><see cref="T:stDokuWiki.WikiEngine.WikiRequestType"/>WikiEngine.WikiRequestType</returns>
+        </member>
+        <member name="M:stDokuWiki.Util.DokuUtil.WikiFileExtToString(System.String)">
+            <summary>
+            normalize file extension string
+            </summary>
+            <param name="src">String file extension</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:stDokuWiki.Util.DokuUtil.WikiFileMetaDataMerge(stDokuWiki.WikiEngine.WikiFileMeta,System.Boolean)">
+            <summary>
+            Merge meta data to WikiEngine.WikiMetaChanges
+            </summary>
+            <param name="wfm">WikiEngine.WikiFileMeta</param>
+            <param name="isCreate">Bolean create or update file</param>
+            <returns><see cref="T:stDokuWiki.WikiEngine.WikiMetaChanges"/>WikiEngine.WikiMetaChanges</returns>
+        </member>
+        <member name="M:stDokuWiki.Util.DokuUtil.WikiFilePathRewrite(stDokuWiki.WikiEngine.WikiFileType,System.String,System.String,System.String)">
+            <summary>
+            Rewrite file path, change type
+            </summary>
+            <param name="wft">WikiFileType</param>
+            <param name="path">file path</param>
+            <param name="replace">replace string</param>
+            <param name="append">append string to end</param>
+            <returns></returns>
+        </member>
+        <member name="T:stDokuWiki.Data.XMLMethodGetString">
+            <summary>
+            Use in return String functions
+            Enum (XmlRpcRequest):
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.Data.XMLMethodPageLinks">
+            <summary>
+            Return from function: DokuPageLinks(string PageName)
+            Enum (XmlRpcRequest): wiki_listLinks
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.Data.XMLMethodPageGet">
+            <summary>
+            Use in function: DokuPageGet
+            Enum (XmlRpcRequest): wiki_getPageHTML, wiki_getPage
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.Data.XMLMethodAttachmentList">
+            <summary>
+            Return from DokuAttachmentList(string NameSpace, string Options)
+            Enum (XmlRpcRequest): wiki_getAttachments
+            </summary>
+            <seealso cref="!:https://github.com/PetersSharp/stCoCServer/tree/master/stCoCServer/stExtLib/stDokuWikiConnector-dll/Doc/XMLTable/request-wiki_getAttachments.xml"/>
+            <seealso cref="!:https://github.com/PetersSharp/stCoCServer/tree/master/stCoCServer/stExtLib/stDokuWikiConnector-dll/Doc/XMLTable/response-wiki_getAttachments.xml"/>
+        </member>
+        <member name="T:stDokuWiki.Data.XMLMethodPageAclCheck">
+            <summary>
+            Return from function: DokuPageAclCheck
+            Enum (XmlRpcRequest): wiki_aclCheck
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.Data.XMLMethodAttachmentInfo">
+            <summary>
+            Return from DokuAttachmentInfo(string id)
+            Enum (XmlRpcRequest): wiki_getAttachmentInfo
+            </summary>
+            <seealso cref="!:https://github.com/PetersSharp/stCoCServer/tree/master/stCoCServer/stExtLib/stDokuWikiConnector-dll/Doc/XMLTable/request-wiki_getAttachmentInfo.xml"/>
+            <seealso cref="!:https://github.com/PetersSharp/stCoCServer/tree/master/stCoCServer/stExtLib/stDokuWikiConnector-dll/Doc/XMLTable/response-wiki_getAttachmentInfo.xml"/>
+        </member>
+        <member name="T:stDokuWiki.Data.XMLMethodGetInt">
+            <summary>
+            Use in return int functions: DokuXMLRPCAPIVersion, DokuRPCVersionSupported, DokuDokuGetDateTime
+            Enum (XmlRpcRequest): wiki_getXMLRPCAPIVersion, wiki_getRPCVersionSupported, wiki_getTime
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.WikiEngine.WikiRequestType">
+            <summary>
+            Type Wiki Web Reguest
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiRequestType.None">
+            <summary>
+            None - default
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiRequestType.Get">
+            <summary>
+            Get page/file
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiRequestType.Put">
+            <summary>
+            Put page/file
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiRequestType.Del">
+            <summary>
+            Del page/file
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiRequestType.List">
+            <summary>
+            List page/file
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiRequestType.Find">
+            <summary>
+            Find page/file
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.WikiEngine.WikiFileType">
+            <summary>
+            enum Wiki FS file type
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFileType.None">
+            <summary>
+            None - not set, default
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFileType.FileReadBinary">
+            <summary>
+            Read Media or binary file
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFileType.FileReadMd">
+            <summary>
+            Read Page MarkDown file
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFileType.FileReadAttic">
+            <summary>
+            Read Attic recent changes file
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFileType.FileReadMeta">
+            <summary>
+            Read meta file
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFileType.FileWriteBinary">
+            <summary>
+            Write Media or binary file
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFileType.FileWriteMd">
+            <summary>
+            Write Page MarkDown file
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFileType.FileWriteAttic">
+            <summary>
+            Write Attic recent changes file
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFileType.FileWriteMeta">
+            <summary>
+            Write meta file
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFileType.FileUnknown">
+            <summary>
+            File type Unknown
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiFileType.NameSpace">
+            <summary>
+            File type is NameSpace
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.WikiEngine.WikiFileMeta">
+            <summary>
+            Wiki file Meta class
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFileMeta.#ctor(System.String,System.String,System.Byte[])">
+            <summary>
+            Constructor WikiFileMeta class
+            </summary>
+            <param name="author">Author name</param>
+            <param name="authorip">Author IP</param>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFileMeta.MergeData">
+            <summary>
+            Merge WikiData class
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileMeta.IsAuth">
+            <summary>
+            Is auth users, default false
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileMeta.Author">
+            <summary>
+            Author name
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileMeta.AuthorIp">
+            <summary>
+            Author IP
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileMeta.Data">
+            <summary>
+            Class <see cref="T:stDokuWiki.WikiEngine.WikiData"/>WikiEngine.WikiData
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileMeta.InputContent">
+            <summary>
+            Wiki input file content as byte []
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileMeta.InputContentString">
+            <summary>
+            Wiki input file content as String
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileMeta.IsDataEmpty">
+            <summary>
+            Test empty Data.FileContent (readonly)
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.WikiEngine.WikiData">
+            <summary>
+            Wiki request file class
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiData.MergeWFI(stDokuWiki.WikiEngine.WikiFileInfo,stDokuWiki.WikiEngine.WikiFile.WikiFileParse)">
+            <summary>
+            Merge data WikiFileInfo to WikiData
+            </summary>
+            <param name="wfi">WikiFileInfo</param>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiData.MergeWFT(stDokuWiki.WikiEngine.WikiFile.WikiFileParse,System.String)">
+            <summary>
+            Merge data WikiFile.WikiFileParse to WikiData
+            </summary>
+            <param name="wfp">internal WikiFile.WikiFileParse</param>
+            <param name="path">root path</param>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiData.NameSpace">
+            <summary>
+            Wiki name space
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiData.FilePath">
+            <summary>
+            Wiki full file path
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiData.FileName">
+            <summary>
+            Wiki request file name
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiData.FileExt">
+            <summary>
+            Wiki request file extension
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiData.FileContentString">
+            <summary>
+            Wiki request file content as string
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiData.FileContent">
+            <summary>
+            Wiki request file content as byte []
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiData.ChangeAuthor">
+            <summary>
+            Author to last change
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiData.ChangeIp">
+            <summary>
+            Author IP from change
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiData.ChangeDate">
+            <summary>
+            Change Date and Time
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiData.FileType">
+            <summary>
+            Wiki request file type <see cref="T:stDokuWiki.WikiEngine.WikiFileType"/>WikiEngine.WikiFileType
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiData.IsFileNew">
+            <summary>
+            is file Create mode, not exist
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiData.NsParsed">
+            <summary>
+            class WikiFileParse
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiData.MetaPath">
+            <summary>
+            Wiki meta file path
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiData.AtticPath">
+            <summary>
+            Wiki attic file path
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiData.IsParsed">
+            <summary>
+            Check WikiFileTransfer, empty or no
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.WikiEngine.WikiFolderInfo">
+            <summary>
+            Wiki file system folder
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFolderInfo.#ctor">
+            <summary>
+            Constructor WikiFolderInfo
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFolderInfo.Clone">
+            <summary>
+            Clone this
+            </summary>
+            <returns>(object) WikiFolderInfo</returns>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFolderInfo.Dirs">
+            <summary>
+            Folder data
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFolderInfo.Files">
+            <summary>
+            File data
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFolderInfo.SearchPatern">
+            <summary>
+            Namespace search patern
+            (page,media,attic,meta - file name)
+            return value from _GetFileList()
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFolderInfo.NameSpace">
+            <summary>
+            Full path namespace: main:example:info:text:
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFolderInfo.SearchStrong">
+            <summary>
+            Search Strong
+            if true use Equals, false use Contains
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.WikiEngine.WikiFileInfo">
+            <summary>
+            Wiki file Info class
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFileInfo.Clone">
+            <summary>
+            Clone this
+            </summary>
+            <returns>(object) WikiFileInfo</returns>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileInfo.FileName">
+            <summary>
+            File name
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileInfo.FileExt">
+            <summary>
+            File extension
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileInfo.FilePath">
+            <summary>
+            Full file path
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileInfo.TimeAdd">
+            <summary>
+            Last add to dictionary time
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileInfo.TimeWrite">
+            <summary>
+            Last write time
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileInfo.TimeAccess">
+            <summary>
+            Last access time
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileInfo.FileLock">
+            <summary>
+            Date and time Lock file
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileInfo.FileType">
+            <summary>
+            File type <see cref="T:stDokuWiki.WikiEngine.WikiFileType"/>WikiEngine.WikiFileType
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileInfo.NameSpace">
+            <summary>
+            Full path namespace: main:example:info:text:
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.WikiEngine.WikiFileAction">
+            <summary>
+            Wiki file Action class
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFileAction.#ctor(System.String,System.String,System.Boolean,System.Boolean,System.Text.StringBuilder)">
+            <summary>
+            Constructor WikiFileAction
+            </summary>
+            <param name="namesspace">full Namespace path</param>
+            <param name="search">search string</param>
+            <param name="isallfiles">process all files</param>
+            <param name="status">set status</param>
+            <param name="sb">String Builder instance</param>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFileAction.#ctor(stDokuWiki.WikiEngine.WikiData,System.Boolean,System.Text.StringBuilder)">
+            <summary>
+            Constructor WikiFileAction
+            </summary>
+            <param name="wd">class WikiData</param>
+            <param name="status">set status</param>
+            <param name="sb">String Builder instance</param>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFileAction.#ctor(System.Text.StringBuilder)">
+            <summary>
+            Constructor WikiFileAction
+            create StringBuilder if exist
+            </summary>
+            <param name="sb">String Builder instance</param>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFileAction.#ctor(stDokuWiki.WikiEngine.WikiData,System.Boolean)">
+            <summary>
+            Constructor WikiFileAction
+            </summary>
+            <param name="wd">class WikiData</param>
+            <param name="status">set status</param>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileAction.Key">
+            <summary>
+            Key NameSpace
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileAction.NameSpace">
+            <summary>
+            Full Namespace path
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileAction.Search">
+            <summary>
+            Search patern
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileAction.LastNameSpace">
+            <summary>
+            Last Namespace
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileAction.Status">
+            <summary>
+            Bolean, status to set
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileAction.IsAllFiles">
+            <summary>
+            Bolean, process all files
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileAction.ConutNameSpace">
+            <summary>
+            Count current Namespace
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileAction.ConutFile">
+            <summary>
+            Count current file
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileAction.ConutDirs">
+            <summary>
+            Count current all derictories
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileAction.ConutFiles">
+            <summary>
+            Count current all files
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileAction.FileInfo">
+            <summary>
+            FileInfo class
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileAction.SBuilder">
+            <summary>
+            String Builder instance
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileAction.IsSBuilder">
+            <summary>
+            StringBulder create or exist
+            (return mode)
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.WikiEngine.WikiFileAttic">
+            <summary>
+            Wiki file Attic class
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileAttic.NameSpace">
+            <summary>
+            Root directory name
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileAttic.ShortName">
+            <summary>
+            Page name / short file name
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileAttic.DateTimeStamp">
+            <summary>
+            Unix timestamp
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFileAttic.FileInfo">
+            <summary>
+            FileInfo class
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.WikiEngine.WikiMetaChanges">
+            <summary>
+            Wiki file Meta .changes class
+            </summary>
+        </member>
+        <member name="F:stDokuWiki.WikiEngine.WikiMetaChanges.UnixTimeStamp">
+            <summary>
+            Unix Time stamp
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiMetaChanges.DateTimeStamp">
+            <summary>
+            DateTime Time stamp
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiMetaChanges.AuthorIp">
+            <summary>
+            Author IP
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiMetaChanges.Mode">
+            <summary>
+            Mode: 'C'reate,'E'dit or 'D'elete
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiMetaChanges.NameSpace">
+            <summary>
+            Namespace include page/file name
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiMetaChanges.Author">
+            <summary>
+            Author name
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiMetaChanges.Title">
+            <summary>
+            Short Title, create automaticaly
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiMetaChanges.Size">
+            <summary>
+            Page/File body size
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.WikiEngine.WikiErrorEventArgs">
+            <summary>
+            Event Arguments Wiki Error
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiErrorEventArgs.#ctor(System.Exception,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="ex">Exception <see cref="T:System.Exception"/></param>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiErrorEventArgs.ex">
+            <summary>
+            Exception
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiErrorEventArgs.MethodName">
+            <summary>
+            string method Name (or another string)
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.WikiEngine.WikiFSChangeEventArgs">
+            <summary>
+            Event Wiki File System change
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiFSChangeEventArgs.#ctor(stDokuWiki.WikiEngine.WikiFile,System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="wf">class WikiFile</param>
+            <param name="count">File system total root name spaces</param>
+            <param name="st">Scaning total time msec.</param>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFSChangeEventArgs.ScanTime">
+            <summary>
+            Scaning FS total time
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFSChangeEventArgs.Count">
+            <summary>
+            Last file system total root name spaces
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiFSChangeEventArgs.WikiFile">
+            <summary>
+            Engine instance class WikiFile
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.WikiEngine.WikiSyntaxErrorEventArgs">
+            <summary>
+            Event Arguments WikiSyntax Error
+            </summary>
+        </member>
+        <member name="M:stDokuWiki.WikiEngine.WikiSyntaxErrorEventArgs.#ctor(System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="ex">Exception <see cref="T:System.Exception"/></param>
+        </member>
+        <member name="P:stDokuWiki.WikiEngine.WikiSyntaxErrorEventArgs.ex">
+            <summary>
+            Exception
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Crypt.SplittedHash.Salt">
+            <summary>
+            Actual salt param of the hash, does NOT include the protocol and rounds.
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.Crypt.CryptUtils">
+            <summary>
+            (class) Safe password hashing, compatible PHP crypt() function
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.WikiSyntax.DokuWikiFormat">
+            <summary>
+            Convert DokuWiki format and syntax
+            </summary>
+            <example>
+            using stDokuWiki.WikiSyntax;
+              string htmldoc = "&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;...&lt;/body&gt;&lt;/html&gt;";
+              string htmltxt = "&lt;h3&gt;...&lt;/h3&gt;&lt;br/&gt;&lt;i&gt;...&lt;/i&gt;&lt;br/&gt;";
+              string mdtxt   = "== test header ==\n **bold** text and //italic// and __underline__\n";
+              DokuWikiFormat dwf = new DokuWikiFormat();
+              dwf.OnProcessError += (o, e) =&gt;
+              {
+                 Console.WriteLine(e.ex.GetType().Name + ": " + e.ex.Message);
+              };
+              Console.WriteLine(
+                 dwf.HtmlDocToDokuWiki(htmldoc)
+              );
+              Console.WriteLine(
+                 dwf.HtmlTextToDokuWiki(htmltxt)
+              );
+              Console.WriteLine(
+                 dwf.DokuWikiToHtml(mdtxt)
+              );
+            </example>
+        </member>
+        <member name="M:stDokuWiki.WikiSyntax.DokuWikiFormat.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+            Init DokuWikiFormat constructor
+            </summary>
+            <param name="isToMd">Bolean - enable/disable convert Html to DokuWiki format</param>
+            <param name="isToHtml">Bolean - enable/disable convert DokuWiki to Html format</param>
+        </member>
+        <member name="M:stDokuWiki.WikiSyntax.DokuWikiFormat.HtmlDocToDokuWiki(System.String)">
+            <summary>
+            Html Document to DokuWiki markdown format
+            </summary>
+            <param name="html">Html dokument source</param>
+            <returns>String markdown DokuWiki</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiSyntax.DokuWikiFormat.HtmlTextToDokuWiki(System.String)">
+            <summary>
+            Html text to DokuWiki markdown format
+            </summary>
+            <param name="html">Html text source</param>
+            <returns>String markdown DokuWiki</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiSyntax.DokuWikiFormat.XHtmlToDokuWiki(System.String)">
+            <summary>
+            XHtml to DokuWiki markdown format
+            </summary>
+            <param name="xhtml">XHtml complette source</param>
+            <returns>String markdown DokuWiki</returns>
+        </member>
+        <member name="M:stDokuWiki.WikiSyntax.DokuWikiFormat.DokuWikiToHtml(System.String)">
+            <summary>
+            DokuWiki markdown text to Html format
+            </summary>
+            <param name="mdtext">DokuWiki markdown text source</param>
+            <returns>String Html</returns>
+        </member>
+        <member name="P:stDokuWiki.WikiSyntax.DokuWikiFormat.IsToHtml">
+            <summary>
+            Enable convert DokuWiki markdown format to Html Document
+            (readonly) set in Constructor <see cref="M:stDokuWiki.WikiSyntax.DokuWikiFormat.#ctor(System.Boolean,System.Boolean)"/>
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiSyntax.DokuWikiFormat.IsToMd">
+            <summary>
+            Enable convert Html Document to DokuWiki markdown format
+            (readonly) set in Constructor <see cref="M:stDokuWiki.WikiSyntax.DokuWikiFormat.#ctor(System.Boolean,System.Boolean)"/>
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiSyntax.DokuWikiFormat.ActionToMd">
+            <summary>
+            External action to convert Html -&gt; Md
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.WikiSyntax.DokuWikiFormat.ActionToHtml">
+            <summary>
+            External action to convert Md -&gt; Html
+            </summary>
+        </member>
+        <member name="E:stDokuWiki.WikiSyntax.DokuWikiFormat.OnProcessError">
+            <summary>
+            Event DokuWikiFormat Error, return <see cref="T:stDokuWiki.WikiEngine.WikiSyntaxErrorEventArgs"/>WikiEngine.WikiSyntaxErrorEventArgs
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.Data.DokuAuthUser">
+            <summary>
+            class DokuWiki Auth user ( use from class DokuAuthManager )
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Data.DokuAuthUser.Login">
+            <summary>
+            (String) User Login
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Data.DokuAuthUser.Password">
+            <summary>
+            (String) User Password
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Data.DokuAuthUser.Name">
+            <summary>
+            (String) User real Name, or description
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Data.DokuAuthUser.Email">
+            <summary>
+            (String) User Email
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Data.DokuAuthUser.Group">
+            <summary>
+            (String) User Group, default: "questrpc" 
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Data.DokuAuthUser.PasswdHash">
+            <summary>
+            (String) User MD5 Salted Password Hash,
+            PHP function crypt() compatible
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Data.DokuAuthUser.Tag">
+            <summary>
+            (String) User CoC Tag id
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.Data.XMLMethodPageLinksBack">
+            <summary>
+            Return from function: DokuPageLinksBack(string PageName)
+            Enum (XmlRpcRequest): wiki_getBackLinks
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.Data.XMLMethodPageGetVersions">
+            <summary>
+            Use in function: DokuPageGetVersions(string PageName, Int32 StartOffset)
+            Enum (XmlRpcRequest): wiki_getPageVersions
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.Data.XMLMethodAttachmentGet">
+            <summary>
+            Use in DokuAttachmentGet(string id)
+            Enum (XmlRpcRequest): wiki_getAttachment
+            </summary>
+            <seealso cref="!:https://github.com/PetersSharp/stCoCServer/tree/master/stCoCServer/stExtLib/stDokuWikiConnector-dll/Doc/XMLTable/request-wiki_getAttachment.xml"/>
+            <seealso cref="!:https://github.com/PetersSharp/stCoCServer/tree/master/stCoCServer/stExtLib/stDokuWikiConnector-dll/Doc/XMLTable/response-wiki_getAttachment.xml"/>
+        </member>
+        <member name="T:stDokuWiki.Data.XMLMethodPageListAll">
+            <summary>
+            Return from function: DokuPageListAll()
+            Enum (XmlRpcRequest): wiki_getAllPages
+            </summary>
+            <examle>
+            Warning! Big Data return!
+            </examle>
+            <seealso cref="!:https://github.com/PetersSharp/stCoCServer/tree/master/stCoCServer/stExtLib/stDokuWikiConnector-dll/Doc/XMLTable/request-wiki_getAllPages.xml"/>
+            <seealso cref="!:https://github.com/PetersSharp/stCoCServer/tree/master/stCoCServer/stExtLib/stDokuWikiConnector-dll/Doc/XMLTable/response-wiki_getAllPages.xml"/>
+        </member>
+        <member name="T:stDokuWiki.Properties.ResourceWikiEngine">
+            <summary>
+              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.ResourceManager">
+            <summary>
+              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.Culture">
+            <summary>
+              Перезаписывает свойство CurrentUICulture текущего потока для всех
+              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.fmtErrorAtticIdEmpty">
+            <summary>
+              Ищет локализованную строку, похожую на Attic Id not set -&gt; {0}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.fmtErrorAuthEmpty">
+            <summary>
+              Ищет локализованную строку, похожую на Auth error -&gt; file {0} not change.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.fmtErrorGetResource">
+            <summary>
+              Ищет локализованную строку, похожую на {0} empty, request: {1}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.fmtErrorMapTree">
+            <summary>
+              Ищет локализованную строку, похожую на Map Exception -&gt; {0}: {1} ({2}).
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.fmtErrorMapTreeNameSpace">
+            <summary>
+              Ищет локализованную строку, похожую на {0} -&gt; {1}: not valid name space: {2}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.fmtErrorMapTreePut">
+            <summary>
+              Ищет локализованную строку, похожую на {0} -&gt; {1}: type set is read, not support for this version, name space: {2}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.fmtErrorMetaEmpty">
+            <summary>
+              Ищет локализованную строку, похожую на Meta data is empty -&gt; file {0} not change.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.fmtErrorNSError">
+            <summary>
+              Ищет локализованную строку, похожую на Not update {0} -&gt; incorrect name space: {1}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.fmtErrorSetLock">
+            <summary>
+              Ищет локализованную строку, похожую на Not set file lock -&gt; {0}{1}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.fmtErrorTaskEnd">
+            <summary>
+              Ищет локализованную строку, похожую на {0} -&gt; Task abnormally end, Namespace: {1}, search: {2}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.fmtErrorWikiFileParse">
+            <summary>
+              Ищет локализованную строку, похожую на {0} -&gt; Wiki parse data return empty...
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.fmtFailAtticFormat">
+            <summary>
+              Ищет локализованную строку, похожую на {0}.{1}.{2}.{3}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.fmtFailMeta2Format">
+            <summary>
+              Ищет локализованную строку, похожую на {0}.{1}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.fmtFailMeta3Format">
+            <summary>
+              Ищет локализованную строку, похожую на {0}.{1}.{2}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.ListFormatAttic">
+            <summary>
+              Ищет локализованную строку, похожую на - [[/{0}/get/{1}/{2}{3}|{4}]] - {5}{6}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.ListFormatAtticDate">
+            <summary>
+              Ищет локализованную строку, похожую на [[/{0}/get/{1}/{2}{3}|{4}]] .
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.ListFormatMedia">
+            <summary>
+              Ищет локализованную строку, похожую на - [[/{0}/get/{1}/{2}{3}|{4} ({5})]] - {6}{7}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.ListFormatMetaChanges">
+            <summary>
+              Ищет локализованную строку, похожую на - [[{0}]]({0}) {1} ({2} bytes) &quot;{3}&quot;, {4}{5}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.ListFormatNameSpace">
+            <summary>
+              Ищет локализованную строку, похожую на * ###### [[/{0}/list/{1}/{2}|{3}]]{4}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.ListFormatPage">
+            <summary>
+              Ищет локализованную строку, похожую на - [[/{0}/get/{1}/{2}{3}|{3}]] - {4}{5}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.ListFormatPageStatistic">
+            <summary>
+              Ищет локализованную строку, похожую на {0}{4} &gt; Search: &apos;{1}&apos;, Namespace: {2}, Total pages: {3}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.mdErrorGetList">
+            <summary>
+              Ищет локализованную строку, похожую на #### unsupported Wiki file Type.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.mdErrorSearchEmpty">
+            <summary>
+              Ищет локализованную строку, похожую на &gt; Namespace: {0}, Resource: {1}, Type: {2}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.PageToMdError1">
+            <summary>
+              Ищет локализованную строку, похожую на {0}#### Data empty{0}* * *{0}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.PageToMdError2">
+            <summary>
+              Ищет локализованную строку, похожую на {0}#### Content empty, file {1}{2} ({3}){0}* * *{0}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.PageToMdError3">
+            <summary>
+              Ищет локализованную строку, похожую на {0}#### Binary file {1}{2} ({3}){0}* * *{0}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.PageToMdError4">
+            <summary>
+              Ищет локализованную строку, похожую на {0}#### name: {1}{2} ({3}){0}#### path: &quot;{4}&quot;{0}#### body: {0}* * *{0}{5}{0}* * *{0}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.PutPageMeta">
+            <summary>
+              Ищет локализованную строку, похожую на {1}{0}{2}{0}{3}{0}{4}{0}{5}{0}&quot;{6}&quot;{0}{7}{8}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.SetMetaFormat">
+            <summary>
+              Ищет локализованную строку, похожую на {0}{1}{2}.{3}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.ToMdException">
+            <summary>
+              Ищет локализованную строку, похожую на * * *\\ ###### {0}: {1}\\ * * *.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.txtDisableDokuWikiToHtml">
+            <summary>
+              Ищет локализованную строку, похожую на Engine options DokuWikiToHtml Disabled!.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.txtDisableHtmlToDokuWiki">
+            <summary>
+              Ищет локализованную строку, похожую на Engine options HtmlToDokuWiki Disabled!.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.txtErrorAtticEmpty">
+            <summary>
+              Ищет локализованную строку, похожую на recent archive, resource not found.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.txtErrorFileEmpty">
+            <summary>
+              Ищет локализованную строку, похожую на File Content.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.txtErrorhStringBuilderIsNull">
+            <summary>
+              Ищет локализованную строку, похожую на string Builder instance.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.txtErrorMetaData">
+            <summary>
+              Ищет локализованную строку, похожую на meta Data incorrect.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.txtErrorMetaEmpty">
+            <summary>
+              Ищет локализованную строку, похожую на meta List.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.txtErrorMetaWritePath">
+            <summary>
+              Ищет локализованную строку, похожую на meta write path is empty.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.txtErrorSearchEmpty">
+            <summary>
+              Ищет локализованную строку, похожую на Page/Resource Name.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.txtErrorSearchPaternEmpty">
+            <summary>
+              Ищет локализованную строку, похожую на search pattern is empty...
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.txtErrorWikiContentConvert">
+            <summary>
+              Ищет локализованную строку, похожую на Wiki Content convert.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.txtErrorWikiContentEmpty">
+            <summary>
+              Ищет локализованную строку, похожую на Wiki Content.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.txtErrorWikiDataEmpty">
+            <summary>
+              Ищет локализованную строку, похожую на Wiki Data.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceWikiEngine.txtHomePageTitle">
+            <summary>
+              Ищет локализованную строку, похожую на Wiki Home.
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.AuthManager.DokuAuthManager">
+            <summary>
+            Manager DokuWiki Auth (file: conf/users.auth.php)
+            </summary>
+            <code>
+            using stDokuWiki;
+            using stDokuWiki.Data;
+            using stDokuWiki.AuthManager;
+            </code>
+            <exception cref="T:stDokuWiki.RpcXmlException">RpcXmlException thrown if error internal DokuAuthManager class</exception>
+            <exception cref="T:System.Exception">Exception thrown if other error</exception>
+        </member>
+        <member name="M:stDokuWiki.AuthManager.DokuAuthManager.#ctor(System.String,System.String)">
+            <summary>
+            (class) DokuAuthManager Constructor
+            </summary>
+            <code>
+            try
+            {
+                DokuAuthManager dam = new DokuAuthManager("/path/to/dokuwiki/root/dir","mygroup");
+            }
+            catch (RpcXmlException e)
+            {
+                Console.WriteLine("[" + e.errcode + "] " +e.Message); return;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message); return;
+            }
+            </code>
+            <param name="path">path to DokuWiki root folder</param>
+            <param name="group">default DokuWiki users group</param>
+        </member>
+        <member name="M:stDokuWiki.AuthManager.DokuAuthManager.UserAdd(stDokuWiki.Data.DokuAuthUser)">
+            <summary>
+            (Doku Manager) Add users to auth table (input DokuAuthUser)
+            </summary>
+            <code>
+            dam.UserAdd(
+              new DokuAuthUser() 
+              { 
+                 Login = "userLogin",
+                 Password = "pwd1234",
+                 Name = "Nikolas",
+                 Email = "Nikolas@nomail.com",
+                 Group = "personalGroup"
+              }
+            );
+            dam.AuthSave();
+            </code>
+            <param name="user">Class <see cref="T:stDokuWiki.Data.DokuAuthUser"/>DokuAuthUser</param>
+            <returns>Class <see cref="T:stDokuWiki.Data.DokuAuthUser"/>DokuAuthUser</returns>
+        </member>
+        <member name="M:stDokuWiki.AuthManager.DokuAuthManager.UserAdd(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            (Doku Manager) Add user to auth table (input strings)
+            </summary>
+            <code>
+            dam.UserAdd(
+              "userLogin",
+              "pwd1234",
+              "Nikolas",
+              "personalGroup",
+              "Nikolas@nomail.com"
+            );
+            dam.AuthSave();
+            </code>
+            <param name="login">string DokuWiki user Login</param>
+            <param name="passwd">string DokuWiki user Password</param>
+            <param name="name">string DokuWiki user Name</param>
+            <param name="group">string DokuWiki user Group, null is default</param>
+            <param name="email">string user E-Mail, null is default</param>
+            <returns>Class <see cref="T:stDokuWiki.Data.DokuAuthUser"/>DokuAuthUser</returns>
+        </member>
+        <member name="M:stDokuWiki.AuthManager.DokuAuthManager.UsersAdd(System.Collections.Generic.List{stDokuWiki.Data.DokuAuthUser})">
+            <summary>
+            (Doku Manager) Add users to auth table
+            </summary>
+            <code>
+            List&lt;DokuAuthUser&gt; uadd = new List&lt;DokuAuthUser&gt;()
+            {
+                new DokuAuthUser()
+                { 
+                  Login = "userLogin",
+                  Password = "pwd1234",
+                  Name = "Nikolas",
+                  Email = "Nikolas@nomail.com",
+                  Group = "personalGroup"
+                },
+                new DokuAuthUser() { ... },
+            };
+            dam.UsersAdd(uadd);
+            dam.AuthSave();
+            </code>
+            <param name="userlst"></param>
+        </member>
+        <member name="M:stDokuWiki.AuthManager.DokuAuthManager.UserGet(System.String)">
+            <summary>
+            (Doku Manager) Get user from auth table
+            </summary>
+            <code>
+            DokuAuthUser dau = dam.UserGet("Nikolas");
+            if (dau != null)
+            {
+               Console.WriteLine(
+                  dau.Name + " : " + dau.Email
+               );
+            }
+            </code>
+            <param name="userlogin"></param>
+            <returns>class <see cref="T:stDokuWiki.Data.DokuAuthUser"/>Data.DokuAuthUser</returns>
+        </member>
+        <member name="M:stDokuWiki.AuthManager.DokuAuthManager.UserDelete(System.Collections.Generic.List{stDokuWiki.Data.DokuAuthUser})">
+            <summary>
+            (Doku Manager) Delete user from auth table
+            </summary>
+            <code>
+            List&lt;DokuAuthUser&gt; udel = new List&lt;DokuAuthUser&gt;()
+            {
+                new DokuAuthUser() { Login = "userLogin" },
+                new DokuAuthUser() { ... },
+            };
+            dam.UserDelete(udel);
+            dam.AuthSave();
+            </code>
+            <param name="userlst"></param>
+        </member>
+        <member name="M:stDokuWiki.AuthManager.DokuAuthManager.UserFind(System.String)">
+            <summary>
+            (Doku Manager) Find users where Login or Name contains usermask
+            </summary>
+            <code>
+            List&lt;DokuAuthUser&gt; ldau = dam.UserFind("nikol");
+            if (ldau != null)
+            {
+               foreach (DokuAuthUser dau in idau)
+               {
+                  Console.WriteLine(
+                     dau.Login + " : " + dau.Name + " : " + dau.Email
+                  );
+               }
+            }
+            </code>
+            <param name="usermask">contains user Login or Name</param>
+            <returns>List&lt;DokuAuthUser&gt;</returns>
+        </member>
+        <member name="M:stDokuWiki.AuthManager.DokuAuthManager.UserList">
+            <summary>
+            (Doku Manager) Get all users from auth table
+            </summary>
+            <code>
+            List&lt;DokuAuthUser&gt; ldau = dam.UserList();
+            if (ldau != null)
+            {
+               foreach (DokuAuthUser dau in idau)
+               {
+                  Console.WriteLine(
+                     dau.Login + " : " + dau.Name + " : " + dau.Email
+                  );
+               }
+            }
+            </code>
+            <returns>List&lt;DokuAuthUser&gt;</returns>
+        </member>
+        <member name="M:stDokuWiki.AuthManager.DokuAuthManager.UserSave">
+            <summary>
+            (Doku Manager) Save user auth table
+            </summary>
+            <code>
+            dam.AuthSave();
+            </code>
+        </member>
+        <member name="P:stDokuWiki.AuthManager.DokuAuthManager.DokuWikiPath">
+            <summary>
+            (String) Set DokuWiki local path
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.AuthManager.DokuAuthManager.DokuWikiGroup">
+            <summary>
+            (String) Set DokuWiki users group
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.Data.XMLMethodMediaRecentChange">
+            <summary>
+            Return from function: DokuRecentMediaChanges
+            Enum (XmlRpcRequest): RecentMediaChanges
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.Data.XMLMethodErrorResponse">
+            <summary>
+            Use to check wiki error response
+            Enum (XmlRpcRequest): none
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.Properties.ResourceCodeError">
+            <summary>
+              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.ResourceManager">
+            <summary>
+              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.Culture">
+            <summary>
+              Перезаписывает свойство CurrentUICulture текущего потока для всех
+              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcCreateSummary">
+            <summary>
+              Ищет локализованную строку, похожую на Page {0}: {1}.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError100">
+            <summary>
+              Ищет локализованную строку, похожую на Page errors.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError110">
+            <summary>
+              Ищет локализованную строку, похожую на Page access errors.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError111">
+            <summary>
+              Ищет локализованную строку, похожую на User is not allowed to read the requested page.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError112">
+            <summary>
+              Ищет локализованную строку, похожую на User is not allowed to edit the page.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError113">
+            <summary>
+              Ищет локализованную строку, похожую на Manager permission is required.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError114">
+            <summary>
+              Ищет локализованную строку, похожую на Superuser permission is required.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError120">
+            <summary>
+              Ищет локализованную строку, похожую на Page existence errors.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError121">
+            <summary>
+              Ищет локализованную строку, похожую на The requested page does not exist.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError130">
+            <summary>
+              Ищет локализованную строку, похожую на Page edit errors.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError131">
+            <summary>
+              Ищет локализованную строку, похожую на Empty page id.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError132">
+            <summary>
+              Ищет локализованную строку, похожую на Empty page content.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError133">
+            <summary>
+              Ищет локализованную строку, похожую на Page is locked.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError134">
+            <summary>
+              Ищет локализованную строку, похожую на Positive wordblock check.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError210">
+            <summary>
+              Ищет локализованную строку, похожую на Media access errors.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError211">
+            <summary>
+              Ищет локализованную строку, похожую на User is not allowed to read the requested media.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError212">
+            <summary>
+              Ищет локализованную строку, похожую на User is not allowed to delete media.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError215">
+            <summary>
+              Ищет локализованную строку, похожую на User is not allowed to list media.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError220">
+            <summary>
+              Ищет локализованную строку, похожую на Media existence errors.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError221">
+            <summary>
+              Ищет локализованную строку, похожую на The requested media does not exist.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError230">
+            <summary>
+              Ищет локализованную строку, похожую на Media edit errors.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError231">
+            <summary>
+              Ищет локализованную строку, похожую на Filename not given.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError232">
+            <summary>
+              Ищет локализованную строку, похожую на File is still referenced.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError233">
+            <summary>
+              Ищет локализованную строку, похожую на Could not delete file.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError300">
+            <summary>
+              Ищет локализованную строку, похожую на Search errors.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError310">
+            <summary>
+              Ищет локализованную строку, похожую на Argument errors.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError311">
+            <summary>
+              Ищет локализованную строку, похожую на The provided value is not a valid timestamp.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError320">
+            <summary>
+              Ищет локализованную строку, похожую на Search result errors.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError321">
+            <summary>
+              Ищет локализованную строку, похожую на No changes in specified timeframe.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError401">
+            <summary>
+              Ищет локализованную строку, похожую на Not authorized to call method.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcError403">
+            <summary>
+              Ищет локализованную строку, похожую на Forbidden to call the method.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcErrorExt32600">
+            <summary>
+              Ищет локализованную строку, похожую на Invalid XML-RPC request. Not conforming to specification.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcErrorExt32601">
+            <summary>
+              Ищет локализованную строку, похожую на Requested method does not exist.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcErrorExt32602">
+            <summary>
+              Ищет локализованную строку, похожую на Wrong number of parameters or invalid method parameters.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcErrorExt32603">
+            <summary>
+              Ищет локализованную строку, похожую на Not authorized to call the requested method (No login or invalid login data was given).
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcErrorExt32604">
+            <summary>
+              Ищет локализованную строку, похожую на Forbidden to call the requested method (but a valid login was given).
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcErrorExt32605">
+            <summary>
+              Ищет локализованную строку, похожую на The XML-RPC API has not been enabled in the configuration.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcErrorExt32700">
+            <summary>
+              Ищет локализованную строку, похожую на Parse Error, request not well formed.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcErrorExt32800">
+            <summary>
+              Ищет локализованную строку, похожую на Recursive calls to system.multicall are forbidden.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcErrorExt99999">
+            <summary>
+              Ищет локализованную строку, похожую на Unknown server error.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcErrorInt5000">
+            <summary>
+              Ищет локализованную строку, похожую на Data is empty.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcErrorInt5031">
+            <summary>
+              Ищет локализованную строку, похожую на File not found.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcErrorInt5094">
+            <summary>
+              Ищет локализованную строку, похожую на Data structure error, corrupt table.
+            </summary>
+        </member>
+        <member name="P:stDokuWiki.Properties.ResourceCodeError.rpcErrorIntFormat">
+            <summary>
+              Ищет локализованную строку, похожую на {0} {1} is empty...
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.Data.XMLMethodPagesRecentChange">
+            <summary>
+            Return from function: DokuPagesChange(int TimeStamp || DateTime dateTime || string dateTime)
+            Enum (XmlRpcRequest): wiki_getRecentChanges
+            </summary>
+            <seealso cref="!:https://github.com/PetersSharp/stCoCServer/tree/master/stCoCServer/stExtLib/stDokuWikiConnector-dll/Doc/XMLTable/request-wiki_getRecentChanges.xml"/>
+            <seealso cref="!:https://github.com/PetersSharp/stCoCServer/tree/master/stCoCServer/stExtLib/stDokuWikiConnector-dll/Doc/XMLTable/response-wiki_getRecentChanges.xml"/>
+        </member>
+        <member name="T:stDokuWiki.Data.XMLMethodPageList">
+            <summary>
+            Return from function: DokuPageList(string NamesSpace, string Options)
+            Enum (XmlRpcRequest): dokuwiki_getPagelist
+            </summary>
+            <seealso cref="!:https://github.com/PetersSharp/stCoCServer/tree/master/stCoCServer/stExtLib/stDokuWikiConnector-dll/Doc/XMLTable/request-dokuwiki_getPagelist.xml"/>
+            <seealso cref="!:https://github.com/PetersSharp/stCoCServer/tree/master/stCoCServer/stExtLib/stDokuWikiConnector-dll/Doc/XMLTable/response-dokuwiki_getPagelist.xml"/>
+        </member>
+        <member name="T:stDokuWiki.Data.XMLMethodBool">
+            <summary>
+            Use in return bool function: DokuAuth, 
+            Enum (XmlRpcRequest): none
+            </summary>
+        </member>
+        <member name="T:stDokuWiki.Data.XMLMethodPageInfo">
+            <summary>
+            Use in function: DokuPageInfo(string PageName), DokuPageInfoVerion(string PageName, ...)
+            Enum (XmlRpcRequest): wiki_getPageInfo
+            </summary>
+            <seealso cref="!:https://github.com/PetersSharp/stCoCServer/tree/master/stCoCServer/stExtLib/stDokuWikiConnector-dll/Doc/XMLTable/request-wiki_getPageInfoVersion.xml"/>
+            <seealso cref="!:https://github.com/PetersSharp/stCoCServer/tree/master/stCoCServer/stExtLib/stDokuWikiConnector-dll/Doc/XMLTable/response-wiki_getPageInfoVersion.xml"/>
+        </member>
+    </members>
+</doc>

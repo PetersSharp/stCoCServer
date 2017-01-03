@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9B413037-70EC-453C-9C09-FD65CA706350}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>stCoCClient</RootNamespace>
+    <AssemblyName>stCoCClient</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\stExtLib\stVersion\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Control\IMGInformerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\IMGInformerControl.Designer.cs">
+      <DependentUpon>IMGInformerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\TBSpellControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\TBSpellControl.Designer.cs">
+      <DependentUpon>TBSpellControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Event\ChatEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Event\IRCChatEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Event\NotifyEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Event\SetupEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientForm.Designer.cs">
+      <DependentUpon>ClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Event\TrayNotify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Event\webChatEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformerForm.Designer.cs">
+      <DependentUpon>InformerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Method\ChatUtil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Method\ExportUtil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Method\SetupUtil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ClientForm.resx">
+      <DependentUpon>ClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\IMGInformerControl.resx">
+      <DependentUpon>IMGInformerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\TBSpellControl.resx">
+      <DependentUpon>TBSpellControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformerForm.resx">
+      <DependentUpon>InformerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <Content Include="data\spell\en-US\en-US.aff">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\spell\en-US\en-US.dic">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\spell\ru-RU\ru-RU.aff">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\spell\ru-RU\ru-RU.dic">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Resources\webChatTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>webChatTemplate.html</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\stExtLib\stClient-dll\stClient.csproj">
+      <Project>{03A559EE-B15E-4B4B-AF93-7F20EFE35CAC}</Project>
+      <Name>stClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\stExtLib\stCore-dll\stCore.csproj">
+      <Project>{0569D275-72F8-4A31-B04C-653725F58B72}</Project>
+      <Name>stCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\stExtLib\stCoreUI-dll\stCoreUI.csproj">
+      <Project>{02CA033E-1660-428C-879A-E0A0EE41CC30}</Project>
+      <Name>stCoreUI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_cast_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_cast_connected_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_chat_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_verified_user_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_contacts_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_computer_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_comment_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_compare_arrows_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_loyalty_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_perm_data_setting_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_perm_media_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_refresh_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_settings_applications_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_touch_app_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_chrome_reader_mode_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_error_outline_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_home_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_import_contacts_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_language_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_power_settings_new_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_create_new_folder_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_lock_outline_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_lock_open_white_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emoji-wink.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emoji-amazed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emoji-anger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emoji-blank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emoji-blushing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emoji-consoling.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emoji-cute.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emoji-glad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emoji-happy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emoji-helpful.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emoji-hopeless.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emoji-nervous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emoji-rage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emoji-sad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emoji-sadistic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emoji-sadness.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emoji-unbelievables.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emoji-weirdout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emoji-whining.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\emoji-helpless.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\webChatTemplate.html">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>webChatTemplate.tt</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy.png" />
+    <None Include="Resources\cut.png" />
+    <Content Include="data\spell\en-US\README-en-US.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\spell\ru-RU\README-ru-RU.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\attach.png" />
+    <None Include="Resources\bold.png" />
+    <None Include="Resources\color-yellow.png" />
+    <None Include="Resources\color-blue.png" />
+    <None Include="Resources\color-cyan.png" />
+    <None Include="Resources\color-green.png" />
+    <None Include="Resources\color-magenta.png" />
+    <None Include="Resources\color-red.png" />
+    <None Include="Resources\color-custom.png" />
+    <None Include="Resources\ic_cancel_white_18dp.png" />
+    <Content Include="Resources\ic_delete_forever_white_18dp.png" />
+    <Content Include="Resources\ic_feedback_white_18dp.png" />
+    <None Include="Resources\ic_invert_colors_white_18dp.png" />
+    <None Include="Resources\ic_translate_white_18dp.png" />
+    <None Include="Resources\ic_restore_page_white_18dp.png" />
+    <None Include="Resources\ic_spellcheck_white_18dp.png" />
+    <Content Include="Resources\ic_warning_white_18dp.png" />
+    <None Include="Resources\select.png" />
+    <None Include="Resources\paste.png" />
+    <None Include="Resources\reply.png" />
+    <None Include="Resources\insert.png" />
+    <Content Include="Resources\image.png" />
+    <None Include="Resources\italic.png" />
+    <None Include="Resources\InformerLoading.png" />
+    <None Include="Resources\InformerLoadingError.png" />
+    <Content Include="Resources\league\29000000.png" />
+    <Content Include="Resources\league\29000001.png" />
+    <Content Include="Resources\league\29000002.png" />
+    <Content Include="Resources\league\29000003.png" />
+    <Content Include="Resources\league\29000004.png" />
+    <Content Include="Resources\league\29000005.png" />
+    <Content Include="Resources\league\29000006.png" />
+    <Content Include="Resources\league\29000007.png" />
+    <Content Include="Resources\league\29000008.png" />
+    <Content Include="Resources\league\29000009.png" />
+    <Content Include="Resources\league\29000010.png" />
+    <Content Include="Resources\league\29000011.png" />
+    <Content Include="Resources\league\29000012.png" />
+    <Content Include="Resources\league\29000013.png" />
+    <Content Include="Resources\league\29000014.png" />
+    <Content Include="Resources\league\29000015.png" />
+    <Content Include="Resources\league\29000016.png" />
+    <Content Include="Resources\league\29000017.png" />
+    <Content Include="Resources\league\29000018.png" />
+    <Content Include="Resources\league\29000019.png" />
+    <Content Include="Resources\league\29000020.png" />
+    <Content Include="Resources\league\29000021.png" />
+    <Content Include="Resources\league\29000022.png" />
+    <None Include="Resources\style.png" />
+    <None Include="Resources\underline.png" />
+    <None Include="Resources\strike.png" />
+    <Content Include="Resources\webChatTemplate.css" />
+    <Content Include="Resources\webChatTemplate.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="data\export\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

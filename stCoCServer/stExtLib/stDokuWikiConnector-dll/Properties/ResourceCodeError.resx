@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="rpcCreateSummary" xml:space="preserve">
+    <value>Page {0}: {1}</value>
+  </data>
+  <data name="rpcError100" xml:space="preserve">
+    <value>Page errors</value>
+  </data>
+  <data name="rpcError110" xml:space="preserve">
+    <value>Page access errors</value>
+  </data>
+  <data name="rpcError111" xml:space="preserve">
+    <value>User is not allowed to read the requested page</value>
+  </data>
+  <data name="rpcError112" xml:space="preserve">
+    <value>User is not allowed to edit the page</value>
+  </data>
+  <data name="rpcError113" xml:space="preserve">
+    <value>Manager permission is required</value>
+  </data>
+  <data name="rpcError114" xml:space="preserve">
+    <value>Superuser permission is required</value>
+  </data>
+  <data name="rpcError120" xml:space="preserve">
+    <value>Page existence errors</value>
+  </data>
+  <data name="rpcError121" xml:space="preserve">
+    <value>The requested page does not exist</value>
+  </data>
+  <data name="rpcError130" xml:space="preserve">
+    <value>Page edit errors</value>
+  </data>
+  <data name="rpcError131" xml:space="preserve">
+    <value>Empty page id</value>
+  </data>
+  <data name="rpcError132" xml:space="preserve">
+    <value>Empty page content</value>
+  </data>
+  <data name="rpcError133" xml:space="preserve">
+    <value>Page is locked</value>
+  </data>
+  <data name="rpcError134" xml:space="preserve">
+    <value>Positive wordblock check</value>
+  </data>
+  <data name="rpcError210" xml:space="preserve">
+    <value>Media access errors</value>
+  </data>
+  <data name="rpcError211" xml:space="preserve">
+    <value>User is not allowed to read the requested media</value>
+  </data>
+  <data name="rpcError212" xml:space="preserve">
+    <value>User is not allowed to delete media</value>
+  </data>
+  <data name="rpcError215" xml:space="preserve">
+    <value>User is not allowed to list media</value>
+  </data>
+  <data name="rpcError220" xml:space="preserve">
+    <value>Media existence errors</value>
+  </data>
+  <data name="rpcError221" xml:space="preserve">
+    <value>The requested media does not exist</value>
+  </data>
+  <data name="rpcError230" xml:space="preserve">
+    <value>Media edit errors</value>
+  </data>
+  <data name="rpcError231" xml:space="preserve">
+    <value>Filename not given</value>
+  </data>
+  <data name="rpcError232" xml:space="preserve">
+    <value>File is still referenced</value>
+  </data>
+  <data name="rpcError233" xml:space="preserve">
+    <value>Could not delete file</value>
+  </data>
+  <data name="rpcError300" xml:space="preserve">
+    <value>Search errors</value>
+  </data>
+  <data name="rpcError310" xml:space="preserve">
+    <value>Argument errors</value>
+  </data>
+  <data name="rpcError311" xml:space="preserve">
+    <value>The provided value is not a valid timestamp</value>
+  </data>
+  <data name="rpcError320" xml:space="preserve">
+    <value>Search result errors</value>
+  </data>
+  <data name="rpcError321" xml:space="preserve">
+    <value>No changes in specified timeframe</value>
+  </data>
+  <data name="rpcError401" xml:space="preserve">
+    <value>Not authorized to call method</value>
+  </data>
+  <data name="rpcError403" xml:space="preserve">
+    <value>Forbidden to call the method</value>
+  </data>
+  <data name="rpcErrorExt32600" xml:space="preserve">
+    <value>Invalid XML-RPC request. Not conforming to specification</value>
+  </data>
+  <data name="rpcErrorExt32601" xml:space="preserve">
+    <value>Requested method does not exist</value>
+  </data>
+  <data name="rpcErrorExt32602" xml:space="preserve">
+    <value>Wrong number of parameters or invalid method parameters</value>
+  </data>
+  <data name="rpcErrorExt32603" xml:space="preserve">
+    <value>Not authorized to call the requested method (No login or invalid login data was given)</value>
+  </data>
+  <data name="rpcErrorExt32604" xml:space="preserve">
+    <value>Forbidden to call the requested method (but a valid login was given)</value>
+  </data>
+  <data name="rpcErrorExt32605" xml:space="preserve">
+    <value>The XML-RPC API has not been enabled in the configuration</value>
+  </data>
+  <data name="rpcErrorExt32700" xml:space="preserve">
+    <value>Parse Error, request not well formed</value>
+  </data>
+  <data name="rpcErrorExt32800" xml:space="preserve">
+    <value>Recursive calls to system.multicall are forbidden</value>
+  </data>
+  <data name="rpcErrorExt99999" xml:space="preserve">
+    <value>Unknown server error</value>
+  </data>
+  <data name="rpcErrorInt5000" xml:space="preserve">
+    <value>Data is empty</value>
+  </data>
+  <data name="rpcErrorInt5031" xml:space="preserve">
+    <value>File not found</value>
+  </data>
+  <data name="rpcErrorInt5094" xml:space="preserve">
+    <value>Data structure error, corrupt table</value>
+  </data>
+  <data name="rpcErrorIntFormat" xml:space="preserve">
+    <value>{0} {1} is empty..</value>
+  </data>
+</root>

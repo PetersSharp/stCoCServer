@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="fm2ClanChangeMembers" xml:space="preserve">
+    <value>{1} -&gt; {2}</value>
+  </data>
+  <data name="fmt1ClanChangeLevel" xml:space="preserve">
+    <value>Clan change Level: {5}</value>
+  </data>
+  <data name="fmt1ClanChangeMembers" xml:space="preserve">
+    <value>Clan change Members: {5}</value>
+  </data>
+  <data name="fmt1ClanChangeName" xml:space="preserve">
+    <value>Clan change Name: to {2}</value>
+  </data>
+  <data name="fmt1ClanChangePoints" xml:space="preserve">
+    <value>Clan change Points: {5}</value>
+  </data>
+  <data name="fmt1ClanChangeTrophies" xml:space="preserve">
+    <value>Clan change Trophies: {5}</value>
+  </data>
+  <data name="fmt1ClanChangeType" xml:space="preserve">
+    <value>Clan change Type: {2}</value>
+  </data>
+  <data name="fmt1ClanChangeWarFrequency" xml:space="preserve">
+    <value>Clan change war Frequency: {2}</value>
+  </data>
+  <data name="fmt1ClanChangeWarPublic" xml:space="preserve">
+    <value>Clan change war Public: {2}</value>
+  </data>
+  <data name="fmt1ClanChangeWarSeries" xml:space="preserve">
+    <value>Clan change war Series: {5}</value>
+  </data>
+  <data name="fmt1ClanChangeWarWin" xml:space="preserve">
+    <value>Clan change war Win: {5}</value>
+  </data>
+  <data name="fmt1MemberChangeDonationReceive" xml:space="preserve">
+    <value>{0} change Donation receive: {5}</value>
+  </data>
+  <data name="fmt1MemberChangeDonationSend" xml:space="preserve">
+    <value>{0} change Donation send: {5}</value>
+  </data>
+  <data name="fmt1MemberChangeLeague" xml:space="preserve">
+    <value>{0} change League:  {2}</value>
+  </data>
+  <data name="fmt1MemberChangeLevel" xml:space="preserve">
+    <value>{0} change Level: {5}</value>
+  </data>
+  <data name="fmt1MemberChangeNik" xml:space="preserve">
+    <value>{0} change Nik: to {2}</value>
+  </data>
+  <data name="fmt1MemberChangeRole" xml:space="preserve">
+    <value>{0} change Role: {2}</value>
+  </data>
+  <data name="fmt1MemberChangeTrophies" xml:space="preserve">
+    <value>{0} change Trophies: {5}</value>
+  </data>
+  <data name="fmt1MemberExit" xml:space="preserve">
+    <value>{0} left from clan</value>
+  </data>
+  <data name="fmt1MemberNew" xml:space="preserve">
+    <value>New member: {0}</value>
+  </data>
+  <data name="fmt1WarClanEnd" xml:space="preserve">
+    <value>Clan War {0} ended</value>
+  </data>
+  <data name="fmt2ClanChangeLevel" xml:space="preserve">
+    <value>{1} -&gt; {2}</value>
+  </data>
+  <data name="fmt2ClanChangeMembers" xml:space="preserve">
+    <value>{1} -&gt; {2}</value>
+  </data>
+  <data name="fmt2ClanChangeName" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="fmt2ClanChangePoints" xml:space="preserve">
+    <value>{1} -&gt; {2}</value>
+  </data>
+  <data name="fmt2ClanChangeTrophies" xml:space="preserve">
+    <value>{1} -&gt; {2}</value>
+  </data>
+  <data name="fmt2ClanChangeType" xml:space="preserve">
+    <value>{1} -&gt; {2}</value>
+  </data>
+  <data name="fmt2ClanChangeWarFrequency" xml:space="preserve">
+    <value>{1} -&gt; {2}</value>
+  </data>
+  <data name="fmt2ClanChangeWarPublic" xml:space="preserve">
+    <value>{1} -&gt; {2}</value>
+  </data>
+  <data name="fmt2ClanChangeWarSeries" xml:space="preserve">
+    <value>{1} -&gt; {2}</value>
+  </data>
+  <data name="fmt2ClanChangeWarWin" xml:space="preserve">
+    <value>{1} -&gt; {2}</value>
+  </data>
+  <data name="fmt2MemberChangeDonationReceive" xml:space="preserve">
+    <value>{1} -&gt; {2}</value>
+  </data>
+  <data name="fmt2MemberChangeDonationSend" xml:space="preserve">
+    <value>{1} -&gt; {2}</value>
+  </data>
+  <data name="fmt2MemberChangeLeague" xml:space="preserve">
+    <value>{1} -&gt; {2}</value>
+  </data>
+  <data name="fmt2MemberChangeLevel" xml:space="preserve">
+    <value>{1} -&gt; {2}</value>
+  </data>
+  <data name="fmt2MemberChangeNik" xml:space="preserve">
+    <value>{6}</value>
+  </data>
+  <data name="fmt2MemberChangeRole" xml:space="preserve">
+    <value>{1} -&gt; {2}</value>
+  </data>
+  <data name="fmt2MemberChangeTrophies" xml:space="preserve">
+    <value>{1} -&gt; {2}</value>
+  </data>
+  <data name="fmt2MemberExit" xml:space="preserve">
+    <value>{6}</value>
+  </data>
+  <data name="fmt2MemberNew" xml:space="preserve">
+    <value>{6}</value>
+  </data>
+  <data name="fmt2WarClanEnd" xml:space="preserve">
+    <value>{1} -&gt; {2} {3} {4}</value>
+  </data>
+</root>

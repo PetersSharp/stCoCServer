@@ -1,17 +1,21 @@
 
 (function($) {
 
-    window.cocDateUrl = '';
-    window.cocUserUrl = '';
-    window.cocLocalizeDtUrl  = '';
-    window.cocLocalizeLangUrl = '/assets/js/cocServerLang';
-    window.cocGlobSelector = 'send';
     window.autoLanguage = navigator.language || navigator.userLanguage;
 	   autoLanguage = ((!autoLanguage) ? 'ru' : autoLanguage.toLowerCase());
+    window.cocDateUrl = '';
+    window.cocUserUrl = '';
+    window.cocGitHubUrl = '';
+    window.cocServerSetup = {};
+    window.cocLocalizeLangUrl = '/assets/js/cocServerLang';
+    window.cocLocalizeDtUrl  = '/assets/js/dataTablesLang/lang.' + autoLanguage + '.json';
+    window.cocGlobSelector = 'send';
+    window.cocGlobSetupError = 'Settings setup error';
     window.EnumUpdate = {
          urlIrc: 0,
          urlClan: 1
     };
+
     String.prototype.Format = function()
     {
 	var s = this,
@@ -133,12 +137,31 @@
 		return t;
 	}
     };
-
+    $.fn.CoCInit = function(table) {
+	$.fn.CoCLanguage(table);
+	$.ajax({
+	  url: '/assets/clientsetup.json',
+	  dataType: 'json',
+	  async: false,
+	  data: {},
+	  success: function(data) {
+		cocServerSetup = data[0];
+	  },
+	  error: function(jqxhr, status, exception) {
+		$.fn.ErrorsOn(jqxhr.status, 'Server setup: ' + exception);
+	  },
+	});
+    };
     $.fn.CoCInfo = function() {
 
 	var isMapDataLoaded = false;
 	var cocmap = null;
 
+	if (!cocServerSetup || typeof cocServerSetup.URLClan === 'undefined')
+	{
+	  $.fn.ErrorsOn(500, $.fn.LangFormatData('errorsetup', cocGlobSetupError));
+	  return;
+	}
 	window.updateEmpty = function() {};
 	window.showClanMap = function(coutrySelect) {
 
@@ -205,7 +228,7 @@
 	    $.fn.ErrorsOn(jqxhr.status, exception);
 	    isMapDataLoaded = false;
 	});
-        $.getJSON('/clan/info/', function() {})
+        $.getJSON('/' + cocServerSetup.URLClan + '/info/', function() {})
           .done(function(items) {
 	    if (items.error != 0) {
 		$.fn.ErrorsOn(400, items.msg);
@@ -274,11 +297,15 @@
 	var dt = null;
 	var counter = 1;
         var detailRows = [];
-	cocLocalizeDtUrl  = '/assets/js/dataTablesLang/lang.' + autoLanguage + '.json';
 
+	if (!cocServerSetup || typeof cocServerSetup.URLClan === 'undefined')
+	{
+	     $.fn.ErrorsOn(500, $.fn.LangFormatData('errorsetup', cocGlobSetupError));
+	     return;
+	}
 	window.reloadDataTable = function() {
 	     if (dt != null) {
-		dt.ajax.url('/clan/list/' + cocDateUrl + cocUserUrl).load();
+		dt.ajax.url('/' + cocServerSetup.URLClan + '/list/' + cocDateUrl + cocUserUrl).load();
 	     }
 	};
 	window.insFormatRole = function(role) {
@@ -342,7 +369,7 @@
                 "lengthMenu": [[50, 25, 10, -1], [50, 25, 10, "All"]],
                 "order": [[ 3, "desc" ]],
                 "ajax": {
-                 	url: '/clan/list/' + cocDateUrl + cocUserUrl,
+                 	url: '/' + cocServerSetup.URLClan + '/list/' + cocDateUrl + cocUserUrl,
 			async: true,
                  	dataFilter: function(data) {
                  		var json = jQuery.parseJSON(data);
@@ -365,7 +392,7 @@
                  	"url": cocLocalizeDtUrl
                  },
                  "initComplete": function () {
-                 	$.fn.CoCLanguage("cocclan");
+                 	$.fn.CoCLanguage('cocclan');
                  },
                  "rowCallback": function( row, data ) {
 			$(row).attr('id','rid'+counter);
@@ -444,8 +471,12 @@
 	var dt = null;
 	var counter = 1;
         var detailRows = [];
-	cocLocalizeDtUrl  = '/assets/js/dataTablesLang/lang.' + autoLanguage + '.json';
 
+	if (!cocServerSetup || typeof cocServerSetup.URLClan === 'undefined')
+	{
+	     $.fn.ErrorsOn(500, $.fn.LangFormatData('errorsetup', cocGlobSetupError));
+	     return;
+	}
 	window.resultCoCWarTdStyle = function(res) {
 	     var brStyle = '2px solid ';
              switch(res) {
@@ -484,7 +515,7 @@
                 "lengthMenu": [[100, 50, 25, 10, -1], [100, 50, 25, 10, "All"]],
                 "order": [[ 1, "desc" ]],
                 "ajax": {
-                 	url: '/clan/warlog/',
+                 	url: '/' + cocServerSetup.URLClan + '/warlog/',
 			async: true,
                  	dataFilter: function(data) {
                  		var json = jQuery.parseJSON(data);
@@ -507,7 +538,7 @@
                  	"url": cocLocalizeDtUrl
                  },
                  "initComplete": function () {
-                 	$.fn.CoCLanguage("cocclan");
+                 	$.fn.CoCLanguage('cocclan');
                  },
                  "rowCallback": function( row, data ) {
 			$(row).attr('id','rid'+counter);
@@ -610,63 +641,68 @@
 
     $.fn.CoCDonation = function() {
 
-    var dataArray = [];
-    google.charts.load('current', {packages: ['corechart']});
-    window.reDrawData = function() {
-       google.charts.setOnLoadCallback(drawPieChart);
-    };
-    function drawPieChart() {
-        if ((cocGlobSelector == 'null') || (cocGlobSelector == '')) { return; }
-        var langTag = 'donation' + cocGlobSelector;
-        var pieopt = {
-          'title': $.fn.LangFormatData('donationtitle','Best donation in clan (TOP 5)') + ' - ' + $.fn.LangFormatData(langTag,'?'),
-          'width': (($(document).width()/100)*80),
-          'height': (($(document).height()/100)*65),
-          'pieHole':0.4,
-          'legend':{'position':'left','textStyle':{'color':'#D8B028','fontSize':13,'bold':true}},
-          'titleTextStyle':{'color':'#404040','fontSize':14}
-        };
-        $.getJSON('/clan/donation/' + cocGlobSelector + '/' + cocDateUrl + cocUserUrl, function() {})
-          .done(function(items) {
-	    if (items.error != 0) {
-		$.fn.ErrorsOn(400, items.msg);
-		return;
-	    }
-	    $.fn.ErrorsOff();
-	    dataArray = [];
-            switch(cocGlobSelector) {
-                case 'total':  {
-		    dataArray.push([
-			$.fn.LangFormatData('donationsend','Donation send'),
-                    	$.fn.LangFormatData('donationreceive','Donation receive')
-		    ]);
-		    dataArray.push([
-			$.fn.LangFormatData('donationsend','Donation send'),
-			((typeof items.data[0] !== 'undefined') ? items.data[0].tsend : 0)
-		    ]);
-		    dataArray.push([
-                    	$.fn.LangFormatData('donationreceive','Donation receive'),
-                    	((typeof items.data[0] !== 'undefined') ? items.data[0].treceive : 0)
-		    ]);
-                    break;
-                }
-                default:  {
-		    dataArray.push([
-			$.fn.LangFormatData('th2','nik name'),
-                    	$.fn.LangFormatData('donation' + cocGlobSelector,'Donation ' + cocGlobSelector)
-		    ]);
-		    $.each(items.data, function(idx, val) {
-			dataArray.push([val.nik, val.send ]);
-		    });
-                    break;
-                }
-            }
-            var cdata = new google.visualization.arrayToDataTable(dataArray);
-            var chart = new google.visualization.PieChart(document.getElementById('piechartdiv'));
-            chart.draw(cdata, pieopt);
-        });
-      }
-      reDrawData();
+	if (!cocServerSetup || typeof cocServerSetup.URLClan === 'undefined')
+	{
+	     $.fn.ErrorsOn(500, $.fn.LangFormatData('errorsetup', cocGlobSetupError));
+	     return;
+	}
+	var dataArray = [];
+	google.charts.load('current', {packages: ['corechart']});
+	window.reDrawData = function() {
+	     google.charts.setOnLoadCallback(drawPieChart);
+	};
+	function drawPieChart() {
+        	if ((cocGlobSelector == 'null') || (cocGlobSelector == '')) { return; }
+	        var langTag = 'donation' + cocGlobSelector;
+        	var pieopt = {
+	          'title': $.fn.LangFormatData('donationtitle','Best donation in clan (TOP 5)') + ' - ' + $.fn.LangFormatData(langTag,'?'),
+	          'width': (($(document).width()/100)*80),
+	          'height': (($(document).height()/100)*65),
+	          'pieHole':0.4,
+	          'legend':{'position':'left','textStyle':{'color':'#D8B028','fontSize':13,'bold':true}},
+	          'titleTextStyle':{'color':'#404040','fontSize':14}
+	        };
+	        $.getJSON('/' + cocServerSetup.URLClan + '/donation/' + cocGlobSelector + '/' + cocDateUrl + cocUserUrl, function() {})
+	          .done(function(items) {
+		    if (items.error != 0) {
+			$.fn.ErrorsOn(400, items.msg);
+			return;
+		    }
+		    $.fn.ErrorsOff();
+		    dataArray = [];
+	            switch(cocGlobSelector) {
+	                case 'total':  {
+			    dataArray.push([
+				$.fn.LangFormatData('donationsend','Donation send'),
+	                    	$.fn.LangFormatData('donationreceive','Donation receive')
+			    ]);
+			    dataArray.push([
+				$.fn.LangFormatData('donationsend','Donation send'),
+				((typeof items.data[0] !== 'undefined') ? items.data[0].tsend : 0)
+			    ]);
+			    dataArray.push([
+	                    	$.fn.LangFormatData('donationreceive','Donation receive'),
+	                    	((typeof items.data[0] !== 'undefined') ? items.data[0].treceive : 0)
+			    ]);
+	                    break;
+	                }
+	                default:  {
+			    dataArray.push([
+				$.fn.LangFormatData('th2','nik name'),
+	                    	$.fn.LangFormatData('donation' + cocGlobSelector,'Donation ' + cocGlobSelector)
+			    ]);
+			    $.each(items.data, function(idx, val) {
+				dataArray.push([val.nik, val.send ]);
+			    });
+	                    break;
+	                }
+	            }
+	            var cdata = new google.visualization.arrayToDataTable(dataArray);
+	            var chart = new google.visualization.PieChart(document.getElementById('piechartdiv'));
+	            chart.draw(cdata, pieopt);
+	        });
+	}
+	reDrawData();
     };
 
     $.fn.CoCnotify = function() {
@@ -677,6 +713,11 @@
 	var eventSseSet = null;
 	var eventStorage = 'CoCEventSet';
 
+	if (!cocServerSetup || typeof cocServerSetup.URLNotify === 'undefined')
+	{
+	     $.fn.ErrorsOn(500, $.fn.LangFormatData('errorsetup', cocGlobSetupError));
+	     return;
+	}
 	$.fn.NotifyDataUpdate = function(event, value, isfmt) {
 		var strout = Base64.decode(value);
 		if (isfmt)
@@ -803,12 +844,12 @@
 
 	if (!!window.EventSource) {
 
-		sse = new EventSource('/notify/sse/');
+		sse = new EventSource('/' + cocServerSetup.URLNotify + '/sse/');
 
 	        sse.onopen = function (event) {
 			$.fn.NotifyStatusUpdate(
 				'#cocnotifyinfo',
-				$.fn.LangFormatData('notifyServerOpen','Connection Opened')
+				$.fn.LangFormatData('notifyServerOpen','Connection Opened').Format(cocServerSetup.NotifyUpdateTime)
 			);
 	        };
 	        sse.onerror = function (event) {
@@ -910,4 +951,74 @@
 	);
     };
 
+    $.fn.CoCIrcChat = function() {
+	if (!cocServerSetup || typeof cocServerSetup.IRCServer === 'undefined')
+	{
+	  return;
+	}
+	$(this).html(
+		'<iframe src="https:/' + '/kiwiirc.com/client/' + 
+		cocServerSetup.IRCServer + ':' +
+		cocServerSetup.IRCPort +
+		'/?nick=' + $.fn.CoCInformerRandomNick() + '&theme=relaxed' +
+		cocServerSetup.IRCChannel +
+		'" style="border:0;width:100%;height:100%;"></iframe>'
+	);
+    };
+
+    $.fn.CoCInformerRandomNick = function() {
+	var rand = 0 - 0.5 + Math.random() * (999999 - 0 + 1);
+	return ('Nick' + cocServerSetup.IRCChannel.substring(1) + Math.round(rand)).replace('.','_');
+    };
+
+    $.fn.CoCInformerRandomImage = function() {
+	if (!cocServerSetup || typeof cocServerSetup.URLInformer === 'undefined')
+	{
+	  return '/assets/images/informerSetupErrorDefault.png';
+	}
+	var rand = 0 - 0.5 + Math.random() * (25 - 0 + 1);
+	return '/' + cocServerSetup.URLInformer + '/clan/' + Math.round(rand) + '/';
+    };
+
+    $.fn.GetLatestRelease = function() {
+	var ele = this;
+	if (cocGitHubUrl != '')
+	{
+	        $.getJSON(cocGitHubUrl)
+		  .done(function (release) {
+	            var asset = release.assets[0];
+	            var dCount = 0;
+	            for (var i = 0; i < release.assets.length; i++) {
+	                dCount += release.assets[i].download_count;
+	            }
+	            var oneHour = 60 * 60 * 1000;
+	            var oneDay = 24 * oneHour;
+	            var dateDiff = new Date() - new Date(asset.updated_at);
+	            var tago;
+	            if (dateDiff < oneDay)
+	            {
+	                tago = (dateDiff / oneHour).toFixed(1) + ' ' + $.fn.LangFormatData('ghhoursago', 'hours ago');
+	            }
+	            else
+	            {
+	                tago = (dateDiff / oneDay).toFixed(1) + ' ' + $.fn.LangFormatData('ghdaysago', 'days ago');
+	            }
+	            ele.fadeOut('slow');
+	            ele.html(
+			'<a href="' + asset.browser_download_url + '" target="_blank"> ' +
+			release.name + ' ' +
+			$.fn.LangFormatData('ghupdated', 'updated') + ' ' +
+			tago + '</a></br><li>' +
+			$.fn.LangFormatData('ghdownload', 'downloaded') + ' ' +
+			dCount.toLocaleString() + ' ' +
+			$.fn.LangFormatData('ghtimes', 'times') + ' ' +
+			'<span class="glyphicon glyphicon-refresh"></span></li>'
+		     );
+	            ele.fadeIn("slow");
+		    $('#srvgentitle').html($.fn.LangFormatData('srvgentitle1', 'Update'));
+        	});
+	}
+    }
+
 } (jQuery));
+

@@ -65,7 +65,7 @@
 	string srcJavaScript = 
 	"<script type='text/javascript' charset='utf8'>" +
 	"	$(document).ready(function() {" +
-	"		$.fn.CoCLanguage('cocclan');" +
+	"		$.fn.CoCInit('cocclan');" +
 	"		$('#datecontainer').CoCDatePicker(EnumUpdate.urlClan,'reloadDataTable');" +
 	"		$('#clanlist').CoCList();" +
 	"		$('#filterMembers').change(function() {" +

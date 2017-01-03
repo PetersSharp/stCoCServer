@@ -80,24 +80,23 @@ namespace stCoCAPI
                     id.ToString() + ".rrd"
                 );
             }
-            public static string getRrdImgPath(CoCEnum.EventNotify id, CoCEnum.RrdGrapPeriod pr, string path)
+            public static string getRrdFileImgPath(CoCEnum.EventNotify id, CoCEnum.RrdGrapPeriod pr, string path, string assetspath)
             {
                 return Path.Combine(
                     path,
-                    "assets",
+                    assetspath,
                     "images",
                     "rrd",
                     id.ToString() + "-" + pr.ToString() + ".png"
                 );
             }
-            public static string getRrdBackgroundImgPath(CoCEnum.EventNotify id, string path)
+            public static string getRrdDirImgPath(string path, string assetspath)
             {
                 return Path.Combine(
                     path,
-                    "assets",
+                    assetspath,
                     "images",
-                    "rrd",
-                    id.ToString() + ".png"
+                    "rrd"
                 );
             }
 
@@ -160,6 +159,22 @@ namespace stCoCAPI
                 this._parent = parent;
                 this._startTime = CoCRrdUtil.getUnixTimeStamp(DateTime.Now);
                 this._periodTime = period;
+
+                if (!Directory.Exists(CoCRrdUtil.getRrdDirImgPath(this._parent._rootpath, this._parent._assetspath)))
+                {
+                    try
+                    {
+                        Directory.CreateDirectory(CoCRrdUtil.getRrdDirImgPath(this._parent._rootpath, this._parent._assetspath));
+                    }
+                    catch (Exception e)
+                    {
+                        if (this._parent.isLogEnable)
+                        {
+                            this._parent._ilog.LogError(e.Message);
+                        }
+                        throw e;
+                    }
+                }
             }
             public void Create()
             {
@@ -314,7 +329,7 @@ namespace stCoCAPI
                 {
                     return;
                 }
-                pathImg = CoCRrdUtil.getRrdImgPath(id, pr, this._parent._rootpath);
+                pathImg = CoCRrdUtil.getRrdFileImgPath(id, pr, this._parent._rootpath, this._parent._assetspath);
                 if (string.IsNullOrWhiteSpace(pathImg))
                 {
                     return;

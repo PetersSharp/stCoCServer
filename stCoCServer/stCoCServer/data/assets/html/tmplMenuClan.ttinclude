@@ -2,5 +2,6 @@
             <li><a class="coclink" href="/assets/html/ClanList.html"><span data-localize="navmember">Members</span></a></li>
             <li><a class="coclink" href="/assets/html/ClanDonation.html"><span data-localize="navdonation">Donation</span></a></li>
             <li><a class="coclink" href="/assets/html/ClanWar.html"><span data-localize="navclanwars">CW history</span></a></li>
-            <li><a class="coclink" href="/irclog/"><span data-localize="navirc">IRC Archive</span></a></li>
+            <li><a class="coclink" href="/assets/html/ClanChat.html"><span data-localize="navirc">IRC Chat</span></a></li>
+            <li><a class="coclink" href="/irclog/"><span data-localize="navircarch">IRC Archive</span></a></li>
 	  </ul>

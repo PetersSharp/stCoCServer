@@ -60,6 +60,265 @@ namespace stCoCAPI.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap bgClanTemplate {
+            get {
+                object obj = ResourceManager.GetObject("bgClanTemplate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap bgDefaultBage {
+            get {
+                object obj = ResourceManager.GetObject("bgDefaultBage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap bgDefaultLeague {
+            get {
+                object obj = ResourceManager.GetObject("bgDefaultLeague", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap bgMemberTemplate {
+            get {
+                object obj = ResourceManager.GetObject("bgMemberTemplate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap bgTemplate404Error300x180 {
+            get {
+                object obj = ResourceManager.GetObject("bgTemplate404Error300x180", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap bgTemplate404Error500x100 {
+            get {
+                object obj = ResourceManager.GetObject("bgTemplate404Error500x100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap bgTemplate404MembrsError300x180 {
+            get {
+                object obj = ResourceManager.GetObject("bgTemplate404MembrsError300x180", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap bgTemplate500Error300x180 {
+            get {
+                object obj = ResourceManager.GetObject("bgTemplate500Error300x180", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap bgTemplate500Error500x100 {
+            get {
+                object obj = ResourceManager.GetObject("bgTemplate500Error500x100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap bgTemplate500NoSupportError300x180 {
+            get {
+                object obj = ResourceManager.GetObject("bgTemplate500NoSupportError300x180", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap bgTemplate500NoSupportError500x100 {
+            get {
+                object obj = ResourceManager.GetObject("bgTemplate500NoSupportError500x100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_0 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_1 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_10 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_10", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_11 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_12 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_13 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_13", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_14 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_14", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_15 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_15", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_16 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_17 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_17", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_18 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_18", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_19 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_19", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_2 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_20 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_21 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_22 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_22", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_23 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_23", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_24 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_25 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_25", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_3 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_4 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_5 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_6 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_7 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_8 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ClanTmpl_9 {
+            get {
+                object obj = ResourceManager.GetObject("ClanTmpl_9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Ищет локализованную строку, похожую на Clan ID is empty or not defined.
         /// </summary>
@@ -102,6 +361,15 @@ namespace stCoCAPI.Properties {
         internal static string CoCGetUrlServerError {
             get {
                 return ResourceManager.GetString("CoCGetUrlServerError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на [Informer error]: {0}.
+        /// </summary>
+        internal static string CoCInformerError {
+            get {
+                return ResourceManager.GetString("CoCInformerError", resourceCulture);
             }
         }
         
@@ -651,6 +919,118 @@ namespace stCoCAPI.Properties {
         internal static string fmtRrdMemberChangeDonationSendVlabel {
             get {
                 return ResourceManager.GetString("fmtRrdMemberChangeDonationSendVlabel", resourceCulture);
+            }
+        }
+        
+        internal static System.Drawing.Bitmap MembersTmpl_0 {
+            get {
+                object obj = ResourceManager.GetObject("MembersTmpl_0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap MembersTmpl_1 {
+            get {
+                object obj = ResourceManager.GetObject("MembersTmpl_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap MembersTmpl_10 {
+            get {
+                object obj = ResourceManager.GetObject("MembersTmpl_10", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap MembersTmpl_11 {
+            get {
+                object obj = ResourceManager.GetObject("MembersTmpl_11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap MembersTmpl_12 {
+            get {
+                object obj = ResourceManager.GetObject("MembersTmpl_12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap MembersTmpl_13 {
+            get {
+                object obj = ResourceManager.GetObject("MembersTmpl_13", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap MembersTmpl_14 {
+            get {
+                object obj = ResourceManager.GetObject("MembersTmpl_14", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap MembersTmpl_15 {
+            get {
+                object obj = ResourceManager.GetObject("MembersTmpl_15", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap MembersTmpl_2 {
+            get {
+                object obj = ResourceManager.GetObject("MembersTmpl_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap MembersTmpl_3 {
+            get {
+                object obj = ResourceManager.GetObject("MembersTmpl_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap MembersTmpl_4 {
+            get {
+                object obj = ResourceManager.GetObject("MembersTmpl_4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap MembersTmpl_5 {
+            get {
+                object obj = ResourceManager.GetObject("MembersTmpl_5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap MembersTmpl_6 {
+            get {
+                object obj = ResourceManager.GetObject("MembersTmpl_6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap MembersTmpl_7 {
+            get {
+                object obj = ResourceManager.GetObject("MembersTmpl_7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap MembersTmpl_8 {
+            get {
+                object obj = ResourceManager.GetObject("MembersTmpl_8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap MembersTmpl_9 {
+            get {
+                object obj = ResourceManager.GetObject("MembersTmpl_9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

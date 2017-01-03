@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <string>
+   Text...
+
+{{ :wiki:coc000.png?nolink&amp;900 |}}
+
+   Text...
+
+   * [[wiki:rules|is link]]
+      </value>
+    </param>
+  </params>
+</methodResponse>

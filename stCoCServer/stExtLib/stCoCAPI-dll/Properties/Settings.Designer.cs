@@ -61,7 +61,7 @@ namespace stCoCAPI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("AND tag = \'{0}\'")]
+        [global::System.Configuration.DefaultSettingValueAttribute("AND tag = \'{0}\' LIMIT 1")]
         public string DBSelectMemberTag {
             get {
                 return ((string)(this["DBSelectMemberTag"]));
@@ -169,7 +169,7 @@ namespace stCoCAPI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SELECT * FROM ClanInfo")]
+        [global::System.Configuration.DefaultSettingValueAttribute("SELECT * FROM ClanInfo LIMIT 1")]
         public string DBSysUpdateClanInfo {
             get {
                 return ((string)(this["DBSysUpdateClanInfo"]));
@@ -196,7 +196,7 @@ namespace stCoCAPI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SELECT * FROM clanwar ORDER BY dtend DESC")]
+        [global::System.Configuration.DefaultSettingValueAttribute("SELECT * FROM clanwar ")]
         public string DBSelectWarClan {
             get {
                 return ((string)(this["DBSelectWarClan"]));
@@ -205,7 +205,7 @@ namespace stCoCAPI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("LIMIT 3")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ORDER BY dtend DESC LIMIT 3")]
         public string DBSelectWarLast {
             get {
                 return ((string)(this["DBSelectWarLast"]));
@@ -227,6 +227,18 @@ namespace stCoCAPI.Properties {
         public string NotifyRssMemberLink {
             get {
                 return ((string)(this["NotifyRssMemberLink"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ORDER BY RANDOM() LIMIT 1")]
+        public string DBSelectMemberRand {
+            get {
+                return ((string)(this["DBSelectMemberRand"]));
+            }
+            set {
+                this["DBSelectMemberRand"] = value;
             }
         }
     }

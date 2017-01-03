@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿
 namespace stCoCAPI
 {
     public partial class CoCAPI
@@ -9,7 +6,7 @@ namespace stCoCAPI
         ///<summary>
         ///Clash of Clan main selector
         ///</summary>
-        public static class CoCEnum
+        public static partial class CoCEnum
         {
             #region CoCDB enums
 
@@ -89,7 +86,8 @@ namespace stCoCAPI
                 Locations,
                 ClanRank,
                 Badges,
-                Flags
+                Flags,
+                Auth
             };
             /// <summary>
             /// Clan Badge size type
@@ -100,42 +98,6 @@ namespace stCoCAPI
                 Medium,
                 Large
             };
-
-            #endregion
-
-            #region CoCNotify enums
-
-            public enum EventNotify : int
-            {
-                None,
-                Normal,
-                NoKeepAlive,
-                ServerError,
-                ServerShutDown,
-                All,
-                EventSetup,
-                TestAlive,
-                MemberNew,
-                MemberExit,
-                MemberChangeNik,
-                MemberChangeRole,
-                MemberChangeLevel,
-                MemberChangeLeague,
-                MemberChangeTrophies,
-                MemberChangeDonationSend,
-                MemberChangeDonationReceive,
-                ClanChangeName,
-                ClanChangeType,
-                ClanChangeLevel,
-                ClanChangePoints,
-                ClanChangeMembers,
-                ClanChangeTrophies,
-                ClanChangeWarWin,
-                ClanChangeWarFrequency,
-                ClanChangeWarSeries,
-                ClanChangeWarPublic,
-                WarClanEnd
-            }
 
             #endregion
 

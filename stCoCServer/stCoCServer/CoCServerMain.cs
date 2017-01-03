@@ -1,5 +1,7 @@
 ﻿#if DEBUG
-//#define DEBUG_HTTPResorceLocation
+// #define DEBUG_StackTrace
+// #define DEBUG_ExtendedError
+// #define DEBUG_HTTPResorceLocation
 #endif
 
 using System;
@@ -19,6 +21,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Net;
 using System.Resources;
+using System.Diagnostics;
 
 namespace stCoCServer
 {
@@ -92,6 +95,7 @@ namespace stCoCServer
 
         public static void MainStart(string[] args)
         {
+            const string className = "[Main]: ";
             IMessage iLog = new IMessage() {
                 LogInfo = CoCServerMain.PrnInfo,
                 LogError = CoCServerMain.PrnError,
@@ -106,7 +110,7 @@ namespace stCoCServer
             CoCServerMain.PrnInfo(
                 string.Format(
                     Properties.Resources.PrnRun,
-                    Thread.CurrentThread.Name,
+                    stApp.AppInformation.GetAppVersion(),
                     DateTime.Now
                 )
             );
@@ -234,7 +238,15 @@ namespace stCoCServer
                             CoCServerMain.Conf.Geo.Dispose();
                         }
                         CoCServerMain.Conf.Geo = null;
-                        CoCServerMain.PrnError(e.Message);
+                        CoCServerMain.PrnError(
+                            string.Format(
+                                Properties.Resources.fmtMainError,
+                                className,
+                                e.GetType().Name,
+                                e.Message
+                            )
+                        );
+
                     }
                 }
                 else
@@ -252,9 +264,30 @@ namespace stCoCServer
                     CoCServerMain.Conf.Opt.SYSROOTPath.value,
                     iLog
                 );
+                CoCServerMain.Conf.Api.FilterMemberTag = CoCServerMain.Conf.Opt.SQLDBFilterMemberTag.collection;
                 CoCServerMain.Conf.Api.DefaultLang = CoCServerMain.Conf.Opt.WEBLANGDefault.value;
+                CoCServerMain.Conf.Api.InformerStaticEnable = CoCServerMain.Conf.Opt.CLANInformerStaticEnable.bval;
+                CoCServerMain.Conf.Api.AssetsPath = CoCServerMain.Conf.Opt.IPFLocation[0].value;
+
+                /// Integrate DokuWiki API Auth method
+
+                if (CoCServerMain.Conf.Opt.DOKUWikiAuthEnable.bval)
+                {
+                    CoCServerMain.Conf.Api.DokuWikiAuthInit(
+                        Opt.DOKUWikiRootPath.value,
+                        Opt.DOKUWikiDefaultGroup.value
+                    );
+                    CoCServerMain.PrnInfo(Properties.Resources.serviceWikiAuthStarted);
+                }
+
+                /// CoC Api start
+                 
                 CoCServerMain.Conf.Api.Start(CoCServerMain.Conf.Opt.SQLDBUpdateTime.num);
                 CoCServerMain.PrnInfo(Properties.Resources.serviceCoCApiStarted);
+
+                /// Json Client setup
+
+                stCoCServer.CoCAPI.CoCClientSetup.SaveJsonSetup(CoCServerMain.Conf);
 
                 /// Web server
 
@@ -263,6 +296,7 @@ namespace stCoCServer
                     ((int)CoCServerMain.Conf.Opt.WEBRootPort.num > 0)
                    )
                 {
+                    /// Web server Template
                     CoCServerMain.Conf.HtmlTemplate = new stNet.stWebServerUtil.HtmlTemplate(
                         Path.Combine(
                             CoCServerMain.Conf.Opt.SYSROOTPath.value,
@@ -272,19 +306,72 @@ namespace stCoCServer
                     CoCServerMain.Conf.HtmlTemplate.InsertFileNotFound = Properties.Resources.httpLogNotFound;
                     CoCServerMain.PrnInfo(Properties.Resources.serviceTemplateStarted);
 
+                    /// Web server Wiki Engine
+                    if (
+                        (CoCServerMain.Conf.Opt.IPFLocationEnable.Count > 6) &&
+                        (CoCServerMain.Conf.Opt.IPFLocationEnable[6].bval)
+                       )
+                    {
+                        try
+                        {
+                            CoCServerMain.Conf.WikiEngine = new stDokuWiki.WikiEngine.WikiFile(
+                                ((string.IsNullOrWhiteSpace(CoCServerMain.Conf.Opt.DOKUWikiRootPath.value)) ?
+                                    Path.Combine(
+                                        CoCServerMain.Conf.Opt.SYSROOTPath.value,
+                                        stDokuWiki.WikiEngine.WikiFile.wikiLocalPath
+                                    ) :
+                                    CoCServerMain.Conf.Opt.DOKUWikiRootPath.value
+                                )
+                            );
+                            CoCServerMain.Conf.WikiEngine.OnProcessError += (o, e) =>
+                            {
+                                CoCServerMain.PrnError(
+                                    string.Format(
+                                        Properties.Resources.fmtMainError,
+                                        className,
+                                        e.ex.GetType().Name,
+                                        e.ex.Message
+                                    )
+                                );
+                            };
+                            // external DokuWiki auth disaled
+                            // CoCServerMain.Conf.Opt.DOKUWikiAuthEnable.bval = false;
+                            // TODO: normalize this
+                            CoCServerMain.PrnInfo(Properties.Resources.serviceWikiStarted);
+                        }
+                        catch (Exception e)
+                        {
+                            CoCServerMain.PrnError(
+                                string.Format(
+                                    Properties.Resources.fmtMainError,
+                                    className,
+                                    e.GetType().Name,
+                                    e.Message
+                                )
+                            );
+                            CoCServerMain.Conf.WikiEngine = null;
+                            CoCServerMain.Conf.Opt.IPFLocationEnable[6].bval = false;
+                        }
+                    }
+                    else
+                    {
+                        CoCServerMain.Conf.WikiEngine = null;
+                    }
+
+                    /// Web server Engine
                     CoCServerMain.Conf.HttpSrv = new stWebServer(
                         CoCServerMain.Conf.Opt.WEBRootUri.value,
                         CoCServerMain.Conf.Opt.WEBRootPort.num,
                         iLog
                     );
+                    CoCServerMain.Conf.HttpSrv.wUserData = Conf;
                     CoCServerMain.Conf.HttpSrv.isConcat = true;
                     CoCServerMain.Conf.HttpSrv.isMinify = true;
-                    CoCServerMain.Conf.HttpSrv.wUserData = Conf;
+                    CoCServerMain.Conf.HttpSrv.isFrontEnd = CoCServerMain.Conf.Opt.WEBFrontEndEnable.bval;
                     CoCServerMain.Conf.HttpSrv.DefaultLang = CoCServerMain.Conf.Opt.WEBLANGDefault.value;
-//#if DEBUG
-                    CoCServerMain.Conf.HttpSrv.wBadRequestDebugOut = true;
-//#endif
+                    CoCServerMain.Conf.HttpSrv.wBadRequestDebugOut = CoCServerMain.Conf.Opt.WEBRequestDebugEnable.bval;
 
+                    /// Web server Locations/IPFilter
                     for (int i = 0; i < BuildConfig.numFilters; i++)
                     {
                         stIPFilter ipFilter = null;
@@ -380,8 +467,16 @@ namespace stCoCServer
             }
             catch (Exception e)
             {
-                CoCServerMain.PrnError(e.Message);
-#if DEBUG
+                CoCServerMain.PrnError(
+                    string.Format(
+                        Properties.Resources.fmtMainError,
+                        className,
+                        e.GetType().Name,
+                        e.Message
+                    )
+                );
+
+#if DEBUG_ExtendedError
                 stConsole.WriteHeader(e.ToString());
 #endif
                 if (CoCServerMain.CheckConf)
@@ -504,6 +599,38 @@ namespace stCoCServer
             if ((CoCServerMain.CheckOpt) && (!CoCServerMain.PrnLogFilter(msg)))
             {
                 return;
+            }
+            if (CoCServerMain.Opt.LOGDebug.bval)
+            {
+                if (stRuntime.isRunTime())
+                {
+                    stConsole.WriteHeader(Environment.StackTrace.ToString());
+                }
+                else
+                {
+#if DEBUG_StackTrace
+                    stConsole.WriteHeader(Environment.StackTrace.ToString());
+#endif
+                    StackFrame CallStack = null;
+                    for (int i = 1; i < 10; i++)
+                    {
+                        CallStack = new StackFrame(i, true);
+                        if ((CallStack != null) && (!string.IsNullOrWhiteSpace(CallStack.GetFileName())))
+                        {
+                            msg += string.Format(
+                                "{0}{1}[{2}:{3}]",
+                                Environment.NewLine,
+                                stConsole.GetTabString(2, i),
+                                Path.GetFileName(CallStack.GetFileName()),
+                                CallStack.GetFileLineNumber()
+                            );
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
             }
             stConsole.MessageError(
                 Properties.Resources.PrnError, msg,

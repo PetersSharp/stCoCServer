@@ -279,4 +279,16 @@
   <data name="prnLangCultureError" xml:space="preserve">
     <value>ошибка установки языка, '{0}': {1}</value>
   </data>
+  <data name="PrnIrcPluginContextUrlTitleStart" xml:space="preserve">
+    <value>IRC плагин Название URL активирован..</value>
+  </data>
+  <data name="PrnIrcPluginLoopClanNotifyStart" xml:space="preserve">
+    <value>IRC плагин Уведомлений активирован, время обновлений: {0}</value>
+  </data>
+  <data name="cmdClanNotifyError" xml:space="preserve">
+    <value>[плагин Уведомлений]: {0}</value>
+  </data>
+  <data name="httpMethodNotSupport" xml:space="preserve">
+    <value>запрашиваемый метод не поддерживается</value>
+  </data>
 </root>

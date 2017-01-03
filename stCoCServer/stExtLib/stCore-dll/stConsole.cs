@@ -8,6 +8,7 @@ namespace stCore
     public static class stConsole
     {
         private static object consLock = new Object();
+        private const string asciiline = "-----------------------------------------------------------";
 
         #region Console ASCII progress bar
 
@@ -111,15 +112,44 @@ namespace stCore
 
         #endregion
 
+        #region Get Tab to String
+
+        public static string GetTabString(int start, int end)
+        {
+            string msg = "";
+            for (int i = 0; i < (start + end); i++)
+            {
+                msg += "\t";
+            }
+            return msg;
+        }
+
+        #endregion
+
         #region Console Write method
 
+        /// <summary>
+        /// Write dbug string array to console
+        /// </summary>
+        public static void WriteHeader(string [] msgs)
+        {
+            lock (consLock)
+            {
+                SysConsole.WriteLine(asciiline);
+                foreach (string msg in msgs)
+                {
+                    SysConsole.WriteLine(msg);
+                }
+                SysConsole.WriteLine(asciiline);
+            }
+        }
         public static void WriteHeader(string msg)
         {
             lock (consLock)
             {
-                SysConsole.WriteLine("-----------------------------------------------------------");
+                SysConsole.WriteLine(asciiline);
                 SysConsole.WriteLine(msg);
-                SysConsole.WriteLine("-----------------------------------------------------------");
+                SysConsole.WriteLine(asciiline);
             }
         }
         /// <summary>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<methodCall>
+  <methodName>wiki.getPageInfoVersion</methodName>
+  <params>
+    <param>
+      <value>
+        <string>wiki:rules</string>
+        <int>1471208725</int>
+      </value>
+    </param>
+  </params>
+</methodCall>

@@ -73,7 +73,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="MaxMindUtilCountryBase.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MaxMindUtilCountryBase.cs</LastGenOutput>
@@ -88,6 +87,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.ru.resx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\stCore-dll\stCore.csproj">

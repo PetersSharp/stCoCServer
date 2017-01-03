@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <array><data>
+  <value><struct>
+  <member><name>id</name><value><string>wiki:book:ruleset</string></value></member>
+  <member><name>rev</name><value><int>1486835509</int></value></member>
+  <member><name>mtime</name><value><int>1486835509</int></value></member>
+  <member><name>size</name><value><int>176</int></value></member>
+</struct></value>
+  <value><struct>
+  <member><name>id</name><value><string>wiki:rulesout</string></value></member>
+  <member><name>rev</name><value><int>1472317578</int></value></member>
+  <member><name>mtime</name><value><int>1472317578</int></value></member>
+  <member><name>size</name><value><int>143</int></value></member>
+</struct></value>
+  <value><struct>
+  <member><name>id</name><value><string>wiki:recipeattack</string></value></member>
+  <member><name>rev</name><value><int>1471376547</int></value></member>
+  <member><name>mtime</name><value><int>1471376547</int></value></member>
+  <member><name>size</name><value><int>4926</int></value></member>
+</struct></value>
+  <value><struct>
+  <member><name>id</name><value><string>wiki:rules</string></value></member>
+  <member><name>rev</name><value><int>1471274870</int></value></member>
+  <member><name>mtime</name><value><int>1471274870</int></value></member>
+  <member><name>size</name><value><int>3204</int></value></member>
+</struct></value>
+</data></array>
+      </value>
+    </param>
+  </params>
+</methodResponse>

@@ -15,10 +15,11 @@ namespace stCoCAPI
         }
         private static class CoCMediaSet
         {
-            private static readonly int[] sizeLigue = new int[] { 36, 72, 88 };
+            private static readonly int[] sizeLigue = new int[] { 36, 72, 288 };
             private static readonly int[] sizeBadge = new int[] { 70, 200, 512 };
             private static readonly int[] sizeFlags = new int[] { 16, 16, 64 };
             private static readonly string[] mediaPath = new string[] { "assets", "images" };
+            // mediaPath - TODO: variable parent _assetspath
 
             public static CoCMediaSetInfo GetMediaSet(CoCEnum.CoCFmtReq mediaid)
             {

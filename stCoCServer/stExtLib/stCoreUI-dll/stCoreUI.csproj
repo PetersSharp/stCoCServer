@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{02CA033E-1660-428C-879A-E0A0EE41CC30}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>stCoreUI</RootNamespace>
+    <AssemblyName>stCoreUI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\stVersion\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Control\FlatAlertBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\FlatButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\FlatCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\FlatClose.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\FlatColorPalette.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\FlatColors.cs" />
+    <Compile Include="Control\FlatComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\FlatContextMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ContainerControl\FlatGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\FlatLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\FlatListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\FlatMax.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\FlatMini.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\FlatNumeric.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\FlatProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\FlatRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\FlatStatusBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\FlatStickyButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\FlatTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\FlatTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\FlatToggle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\FlatTrackBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\FlatTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ContainerControl\FormSkin.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EventArgs\ValueChangedEventArgs.cs" />
+    <Compile Include="Helpers.cs" />
+    <Compile Include="Control\FlatListView.cs" />
+    <Compile Include="Method\flatListViewGroup.cs" />
+    <Compile Include="Method\FlatListViewItem.cs" />
+    <Compile Include="Method\flatThreadSafe.cs" />
+    <Compile Include="MouseState.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\stCore-dll\stCore.csproj">
+      <Project>{0569D275-72F8-4A31-B04C-653725F58B72}</Project>
+      <Name>stCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

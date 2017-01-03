@@ -31,7 +31,7 @@ namespace stCoCServer.plugins
             {
                 this._httpUa = HttpUtil.GetHttpUA(Properties.Settings.Default.setCoCHttpClient);
             }
-            this._ci = stNet.stWebServerUtil.HttpUtil.GetHttpClientLanguage(this.Conf.Opt.IRCPluginLanguage.value, null);
+            this._ci = stNet.stWebServerUtil.HttpUtil.GetHttpClientLanguage(this.Conf.Opt.IRCLanguage.value, null);
 
             this.PluginsInit();
         }

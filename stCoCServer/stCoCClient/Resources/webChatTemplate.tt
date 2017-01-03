@@ -1,0 +1,114 @@
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Drawing" #>
+<#@ assembly name="System.Windows.Forms" #>
+<#@ assembly name="EnvDte" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Drawing" #>
+<#@ template hostspecific="true" language="C#" #>
+<#@ output extension=".html" encoding="utf-8" #>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<style>
+
+<#@ include file="webChatTemplate.css" #>
+<#
+	IServiceProvider serviceProvider = this.Host as IServiceProvider;
+	EnvDTE.DTE dte = serviceProvider.GetService(typeof(EnvDTE.DTE)) as EnvDTE.DTE;
+	if (dte == null)
+	{
+		throw new ArgumentNullException("DTE not found, no VS studio environment?");
+	}
+	string SolutionPath = System.IO.Path.GetDirectoryName(dte.Solution.FullName);
+	string ResourcesPath  = System.IO.Path.Combine(
+		SolutionPath,
+		"stCoCClient",
+		"Resources"
+	);
+
+	/// System.Windows.Forms.MessageBox.Show(ResourcesPath);
+
+	foreach(string fn in Directory.GetFiles(ResourcesPath))
+	{
+		string className = String.Empty;
+		string imgBase64 = String.Empty;
+
+		/// System.Windows.Forms.MessageBox.Show(fn);
+
+		if (fn.Contains("emoji-"))
+		{
+			string [] fp = Path.GetFileNameWithoutExtension(fn).Split(new char[] { '-' });
+			if (fp.Length < 2)
+			{
+				continue;
+			}
+			className = fp[1];
+			using (Image image = Image.FromFile(fn))
+			{                 
+				using (MemoryStream m = new MemoryStream())
+				{
+					image.Save(m, image.RawFormat);
+		            imgBase64 = Convert.ToBase64String(m.ToArray());
+				}                  
+			}
+		}
+		else
+		{
+			continue;
+		}
+#>
+i.emoji.<#= className #> {
+    background-image: url('data:image/png;base64,<#= imgBase64 #>');
+}
+<#
+	}
+	
+	ResourcesPath  = System.IO.Path.Combine(
+		ResourcesPath,
+		"league"
+	);
+
+	/// System.Windows.Forms.MessageBox.Show(ResourcesPath);
+
+	foreach(string fn in Directory.GetFiles(ResourcesPath))
+	{
+		string className = String.Empty;
+		string imgBase64 = String.Empty;
+
+		/// System.Windows.Forms.MessageBox.Show(fn);
+
+		if (fn.Contains(".png"))
+		{
+			className = "league" + Path.GetFileNameWithoutExtension(fn);
+			using (Image image = Image.FromFile(fn))
+			{                 
+				using (MemoryStream m = new MemoryStream())
+				{
+					image.Save(m, image.RawFormat);
+		            imgBase64 = Convert.ToBase64String(m.ToArray());
+				}                  
+			}
+		}
+		else
+		{
+			continue;
+		}
+#>
+img.<#= className #> {
+    background-image: url('data:image/png;base64,<#= imgBase64 #>');
+}
+<#
+	}
+#>
+</style>
+<script type="text/javascript" charset="utf8">
+
+<#@ include file="webChatTemplate.js" #>
+
+</script>
+</head>
+<body></body>
+</html>

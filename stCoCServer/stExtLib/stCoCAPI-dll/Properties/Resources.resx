@@ -352,4 +352,166 @@
   <data name="RrdBgMemberChangeDonationSend" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RrdBgMemberChangeDonationSend.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="CoCInformerError" xml:space="preserve">
+    <value>[Informer error]: {0}</value>
+  </data>
+  <data name="MembersTmpl_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MembersTmpl_0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MembersTmpl_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MembersTmpl_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MembersTmpl_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MembersTmpl_10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MembersTmpl_11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MembersTmpl_11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MembersTmpl_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MembersTmpl_12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MembersTmpl_13" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MembersTmpl_13.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MembersTmpl_14" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MembersTmpl_14.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MembersTmpl_15" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MembersTmpl_15.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MembersTmpl_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MembersTmpl_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MembersTmpl_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MembersTmpl_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MembersTmpl_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MembersTmpl_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MembersTmpl_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MembersTmpl_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MembersTmpl_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MembersTmpl_6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MembersTmpl_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MembersTmpl_7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MembersTmpl_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MembersTmpl_8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MembersTmpl_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MembersTmpl_9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgTemplate404Error300x180" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgTemplate404Error300x180.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgTemplate404Error500x100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgTemplate404Error500x100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgTemplate500Error300x180" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgTemplate500Error300x180.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgTemplate500Error500x100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgTemplate500Error500x100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_13" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_13.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_14" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_14.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_15" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_15.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_17" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_17.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_18" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_18.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_19" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_19.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_22" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_23" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_23.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_25" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_25.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ClanTmpl_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ClanTmpl_9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgTemplate404MembrsError300x180" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgTemplate404MembrsError300x180.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgTemplate500NoSupportError300x180" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgTemplate500NoSupportError300x180.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgTemplate500NoSupportError500x100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgTemplate500NoSupportError500x100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgDefaultLeague" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgDefaultLeague.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgClanTemplate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgClanTemplate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgMemberTemplate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgMemberTemplate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgDefaultBage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\informerDefaultBadges.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<methodCall>
+  <methodName>dokuwiki.getPagelist</methodName>
+  <params>
+    <param>
+      <value>
+        <string>wiki:</string>
+      </value>
+    </param>
+    <param>
+      <value />
+    </param>
+  </params>
+</methodCall>

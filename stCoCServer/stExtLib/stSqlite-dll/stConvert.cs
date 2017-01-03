@@ -10,9 +10,24 @@ using System.Text.RegularExpressions;
 using stCore;
 using System.Diagnostics;
 
+#if STCLIENTBUILD
+using stBase = stClient;
+using stConvertExt = stClient.ClientConvertExtension;
+
+namespace stClient
+
+#else
+using stBase = stSqlite;
+using stConvertExt = stSqlite.SqliteConvertExtension;
+
 namespace stSqlite
+#endif
 {
+#if STCLIENTBUILD
+    public static class ClientConvertExtension
+#else
     public static class SqliteConvertExtension
+#endif
     {
         private const string _emptySource = "{\"error\":1,\"msg\":\"request return empty table\"}";
         private const string _addSource = "{{\"error\":0,\"msg\":\"\",\"recordsTotal\":{0},\"recordsFiltered\":{0},\"displayLength\":{1},\"nextupdate\":{2},\"data\":[";
@@ -72,7 +87,7 @@ namespace stSqlite
                 catch (Exception e)
                 {
                     throw new ConvertExtensionException(
-                        stSqlite.ConvertExtensionException.ConvertErrorType.ConvertErrorToDataTable,
+                        stBase.ConvertExtensionException.ConvertErrorType.ConvertErrorToDataTable,
                         "Columns",
                         e.Message
                     );
@@ -88,7 +103,7 @@ namespace stSqlite
                 catch (Exception e)
                 {
                     throw new ConvertExtensionException(
-                        stSqlite.ConvertExtensionException.ConvertErrorType.ConvertErrorToDataTable,
+                        stBase.ConvertExtensionException.ConvertErrorType.ConvertErrorToDataTable,
                         "PrimaryKey",
                         e.Message
                     );
@@ -117,13 +132,14 @@ namespace stSqlite
                     if (attr != null)
                     {
                         sb.AppendFormat(
-                            "{0} {1}{2}{3}{4}",
+                            "{0} {1}{2}{3}{4}{5}",
                             prop.Name,
                             ((attr.FieldSQL != null) ? attr.FieldSQL :
-                                ((attr.FieldType != null) ? SqliteConvertExtension.TablePropertyMapSqlType(attr.FieldType) :
-                                    SqliteConvertExtension.TablePropertyMapSqlType(prop.PropertyType))),
+                                ((attr.FieldType != null) ? stConvertExt.TablePropertyMapSqlType(attr.FieldType) :
+                                    stConvertExt.TablePropertyMapSqlType(prop.PropertyType))),
                             ((attr.FieldUnique) ? " UNIQUE" : ""),
                             ((attr.FieldPrimaryKey) ? " PRIMARY KEY" : ""),
+                            ((attr.FieldAutoIncrement) ? " AUTOINCREMENT" : ""),
                             (((Props.Length - 1) > cnt) ? ", " : "")
                         );
                     }
@@ -131,7 +147,7 @@ namespace stSqlite
                 catch (Exception e)
                 {
                     throw new ConvertExtensionException(
-                        stSqlite.ConvertExtensionException.ConvertErrorType.ConvertErrorToDataTable,
+                        stBase.ConvertExtensionException.ConvertErrorType.ConvertErrorToDataTable,
                         "SQL Create Table",
                         e.Message
                     );
@@ -185,11 +201,11 @@ namespace stSqlite
         public static DataTable JsonToDataTable<T>(this string jString, bool skipNoMap = false, bool scanAllRows = true) where T : class, new()
         {
             T dataclass = new T();
-            stSqlite.TablePropertyMapMethod tpmm = dataclass as stSqlite.TablePropertyMapMethod;
+            stBase.TablePropertyMapMethod tpmm = dataclass as stBase.TablePropertyMapMethod;
             if (tpmm == null)
             {
                 throw new ConvertExtensionException(
-                    stSqlite.ConvertExtensionException.ConvertErrorType.ConvertErrorBadInheritClass,
+                    stBase.ConvertExtensionException.ConvertErrorType.ConvertErrorBadInheritClass,
                     dataclass.ToString()
                 );
             }
@@ -202,7 +218,7 @@ namespace stSqlite
             if (jsonParts.Length == 0)
             {
                 throw new ConvertExtensionException(
-                    stSqlite.ConvertExtensionException.ConvertErrorType.ConvertErrorUndefined,
+                    stBase.ConvertExtensionException.ConvertErrorType.ConvertErrorUndefined,
                     Properties.Resources.ConvertErrorJsonArray + " : " + dataclass.ToString()
                 );
             }
@@ -223,13 +239,13 @@ namespace stSqlite
                         string n = rowData.Substring(0, idx - 1).Replace("\"", "");
                         if (!dt.Columns.Contains(n))
                         {
-                            stSqlite.TablePropertyMapAttribute res = tpmm.findAttr(n, true);
+                            stBase.TablePropertyMapAttribute res = tpmm.findAttr(n, true);
                             if (res != null)
                             {
                                 dt.Columns.Add(res.FieldName, res.FieldType);
                                 dt.Columns[res.FieldName].Unique = res.FieldUnique;
                                 dt.Columns[res.FieldName].DefaultValue =
-                                    SqliteConvertExtension.ColumnsPropertyTypeDefaultValue(res.FieldType);
+                                    stConvertExt.ColumnsPropertyTypeDefaultValue(res.FieldType);
                                 if (res.FieldPrimaryKey)
                                 {
                                     colKey.Add(dt.Columns[res.FieldName]);
@@ -244,7 +260,7 @@ namespace stSqlite
                     catch (Exception e)
                     {
                         throw new ConvertExtensionException(
-                            stSqlite.ConvertExtensionException.ConvertErrorType.ConvertErrorToDataTable,
+                            stBase.ConvertExtensionException.ConvertErrorType.ConvertErrorToDataTable,
                             rowData,
                             e.Message
                         );
@@ -262,7 +278,7 @@ namespace stSqlite
                 catch (Exception e)
                 {
                     throw new ConvertExtensionException(
-                        stSqlite.ConvertExtensionException.ConvertErrorType.ConvertErrorToDataTable,
+                        stBase.ConvertExtensionException.ConvertErrorType.ConvertErrorToDataTable,
                         "PrimaryKey",
                         e.Message
                     );
@@ -279,7 +295,7 @@ namespace stSqlite
                         int idx = rowData.IndexOf(":");
                         string n = rowData.Substring(0, idx - 1).Replace("\"", "");
                         string v = rowData.Substring(idx + 1).Replace("\"", "");
-                        stSqlite.TablePropertyMapAttribute res = tpmm.findAttr(n, true);
+                        stBase.TablePropertyMapAttribute res = tpmm.findAttr(n, true);
                         if (res != null)
                         {
                             if ((!scanAllRows) && (!dt.Columns.Contains(res.FieldName)))
@@ -316,7 +332,7 @@ namespace stSqlite
                 catch (Exception e)
                 {
                     throw new ConvertExtensionException(
-                        stSqlite.ConvertExtensionException.ConvertErrorType.ConvertErrorToDataTable,
+                        stBase.ConvertExtensionException.ConvertErrorType.ConvertErrorToDataTable,
                         "Add Rows",
                         e.Message
                     );
@@ -338,7 +354,7 @@ namespace stSqlite
             if (jsonParts.Length == 0)
             {
                 throw new ConvertExtensionException(
-                    stSqlite.ConvertExtensionException.ConvertErrorType.ConvertErrorUndefined,
+                    stBase.ConvertExtensionException.ConvertErrorType.ConvertErrorUndefined,
                     Properties.Resources.ConvertErrorJsonArray
                 );
             }
@@ -356,16 +372,16 @@ namespace stSqlite
                         string v = rowData.Substring(idx + 1);
                         if (!dt.Columns.Contains(n))
                         {
-                            Type t = SqliteConvertExtension._jsonType(v);
+                            Type t = stConvertExt._jsonType(v);
                             dt.Columns.Add(n, t);
-                            dt.Columns[n].DefaultValue = SqliteConvertExtension.ColumnsPropertyTypeDefaultValue(t);
+                            dt.Columns[n].DefaultValue = stConvertExt.ColumnsPropertyTypeDefaultValue(t);
 
                         }
                     }
                     catch (Exception e)
                     {
                         throw new ConvertExtensionException(
-                            stSqlite.ConvertExtensionException.ConvertErrorType.ConvertErrorToDataTable,
+                            stBase.ConvertExtensionException.ConvertErrorType.ConvertErrorToDataTable,
                             rowData,
                             e.Message
                         );
@@ -402,7 +418,7 @@ namespace stSqlite
                 catch (Exception e)
                 {
                     throw new ConvertExtensionException(
-                        stSqlite.ConvertExtensionException.ConvertErrorType.ConvertErrorToDataTable,
+                        stBase.ConvertExtensionException.ConvertErrorType.ConvertErrorToDataTable,
                         "Add Rows",
                         e.Message
                     );
@@ -428,7 +444,7 @@ namespace stSqlite
                 if (isStruct)
                 {
                     jString.AppendFormat(
-                        SqliteConvertExtension._addSource,
+                        stConvertExt._addSource,
                         dtbl.Rows.Count,
                         ((dtbl.Rows.Count > 50) ? 50 : dtbl.Rows.Count),
                         updateNextMilliseconds
@@ -443,7 +459,7 @@ namespace stSqlite
                     jString.Append("{");
                     for (int j = 0; j < dtbl.Columns.Count; j++)
                     {
-                        SqliteConvertExtension._jsonFormat(
+                        stConvertExt._jsonFormat(
                             ref jString,
                             dtbl.Columns[j].ColumnName,
                             Convert.ToString(dtbl.Rows[i][j], CultureInfo.InvariantCulture),
@@ -471,7 +487,7 @@ namespace stSqlite
             }
             else
             {
-                jString.Append(SqliteConvertExtension._emptySource);
+                jString.Append(stConvertExt._emptySource);
             }
             if ((isDispose) && (dtbl != null))
             {
@@ -492,7 +508,7 @@ namespace stSqlite
                 jString.Append("{");
                 for (int j = 0; j < dr.Table.Columns.Count; j++)
                 {
-                    SqliteConvertExtension._jsonFormat(
+                    stConvertExt._jsonFormat(
                         ref jString,
                         dr.Table.Columns[j].ColumnName,
                         Convert.ToString(dr[j], CultureInfo.InvariantCulture),
@@ -504,7 +520,7 @@ namespace stSqlite
             }
             else
             {
-                jString.Append(SqliteConvertExtension._emptySource);
+                jString.Append(stConvertExt._emptySource);
             }
             return jString.ToString();
         }
@@ -523,7 +539,7 @@ namespace stSqlite
                 jString.Append("{");
                 foreach (DataTable table in dset.Tables)
                 {
-                    jString.Append("\"" + table.TableName + "\":" + SqliteConvertExtension.ToJson(table, false, false));
+                    jString.Append("\"" + table.TableName + "\":" + stConvertExt.ToJson(table, false, false));
                     if (dset.Tables.Count > i++)
                     {
                         jString.Append(",");
@@ -537,12 +553,12 @@ namespace stSqlite
             }
             else
             {
-                jString.Append(SqliteConvertExtension._emptySource);
+                jString.Append(stConvertExt._emptySource);
             }
             return jString.ToString();
         }
         ///<summary>
-        ///<see cref="System.Collections.Generic.IList<T>"/> to JSON format .ToJson(IList<T>, string, bool)
+        ///<see cref="System.Collections.Generic.IList{T}"/> to JSON format .ToJson(IList&lt;T&gt;, string, bool)
         ///</summary>
         ///<param name="list">IList request data</param>
         ///<param name="JsonName">Json object name</param>
@@ -568,11 +584,18 @@ namespace stSqlite
 
                     for (int j = 0; j < pi.Length; j++)
                     {
-                        SqliteConvertExtension._jsonFormat(
+                        Object pobj = pi[j].GetValue(list[i], null);
+                        stConvertExt._jsonFormat(
                             ref jString,
                             pi[j].Name.ToString(),
-                            Convert.ToString(pi[j].GetValue(list[i], null), CultureInfo.InvariantCulture),
-                            pi[j].GetValue(list[i], null).GetType(),
+                            ((pobj == null) ?
+                                "" :
+                                Convert.ToString(pobj, CultureInfo.InvariantCulture)
+                            ),
+                            ((pobj == null) ?
+                                typeof(String) :
+                                pobj.GetType()
+                            ),
                             ((j < (pi.Length - 1)) ? true : false)
                         );
                     }
@@ -590,7 +613,7 @@ namespace stSqlite
             }
             else
             {
-                jString.Append(SqliteConvertExtension._emptySource);
+                jString.Append(stConvertExt._emptySource);
             }
             return jString.ToString();
         }
@@ -608,24 +631,24 @@ namespace stSqlite
                 PropertyInfo[] propertyInfo = jObject.GetType().GetProperties();
                 for (int i = 0; i < propertyInfo.Length; i++)
                 {
-                    jString.Append("\"" + SqliteConvertExtension._jsonS2J(propertyInfo[i].Name) + "\":");
+                    jString.Append("\"" + stConvertExt._jsonS2J(propertyInfo[i].Name) + "\":");
                     object objectValue = propertyInfo[i].GetGetMethod().Invoke(jObject, null);
 
                     if (objectValue is DateTime || objectValue is Guid || objectValue is TimeSpan)
                     {
-                        jString.Append("'" + objectValue.ToString() + "'");
+                        jString.Append("\"" + objectValue.ToString() + "\"");
                     }
                     else if (objectValue is string)
                     {
-                        jString.Append("'" + SqliteConvertExtension.ToJson(objectValue.ToString(), false) + "'");
+                        jString.Append("\"" + stConvertExt.ToJson(objectValue.ToString(), false) + "\"");
                     }
                     else if (objectValue is IEnumerable)
                     {
-                        jString.Append(SqliteConvertExtension.ToJson((IEnumerable)objectValue, false));
+                        jString.Append(stConvertExt.ToJson((IEnumerable)objectValue, false));
                     }
                     else
                     {
-                        jString.Append(SqliteConvertExtension.ToJson(objectValue.ToString(), false));
+                        jString.Append(stConvertExt.ToJson(objectValue.ToString(), false));
                     }
                     if ((propertyInfo.Length - 1) > i)
                     {
@@ -640,12 +663,12 @@ namespace stSqlite
             }
             else
             {
-                jString.Append(SqliteConvertExtension._emptySource);
+                jString.Append(stConvertExt._emptySource);
             }
             return jString.ToString();
         }
         ///<summary>
-        ///<see cref="System.Collections.IEnumerable"/> to JSON format .ToJson(IList<T>, string, bool)
+        ///<see cref="System.Collections.IEnumerable"/> to JSON format .ToJson(IEnumerable object, bool, bool)
         ///</summary>
         ///<param name="jObject">IEnumerable Object request data</param>
         ///<param name="isArray">return Json as array format</param>
@@ -662,7 +685,7 @@ namespace stSqlite
                 foreach (object item in ijObject)
                 {
                     IEnumerator enumerator = ijObject.GetEnumerator();
-                    jString.Append(SqliteConvertExtension.ToJson(item, false));
+                    jString.Append(stConvertExt.ToJson(item, false));
                     if (enumerator.MoveNext())
                     {
                         jString.Append(",");
@@ -678,7 +701,7 @@ namespace stSqlite
             }
             else
             {
-                jString.Append(SqliteConvertExtension._emptySource);
+                jString.Append(stConvertExt._emptySource);
             }
             return jString.ToString();
         }
@@ -760,7 +783,7 @@ namespace stSqlite
 
             if (type == typeof(string))
             {
-                str = SqliteConvertExtension._jsonS2J(val as String);
+                str = stConvertExt._jsonS2J(val as String);
             }
             else if (type == typeof(bool))
             {
@@ -790,7 +813,7 @@ namespace stSqlite
             }
             else if ((type == typeof(DateTime)) || (type != typeof(string)))
             {
-                str = val.ToString();
+                str = Convert.ToString(val, CultureInfo.InvariantCulture);
             }
             sb.AppendFormat(
                 CultureInfo.InvariantCulture,

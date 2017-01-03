@@ -6,7 +6,7 @@
 	<meta name="generator" content="<#= this.headerGenrate #>"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="robots" content="noindex,nofollow"/>
-	<meta name="keywords" content="War,Wariors,Donation,CoC,Clash,Clan,Clans,RU"/>
+	<meta name="keywords" content="War,Wariors,Donation,CoC,Clash,Clan,Clans,Coalitions"/>
 	
 	<title data-localize="<#= this.titleId #>"><#= this.titleText #></title>
 
@@ -39,7 +39,7 @@
     <div class="pos-f-t">
       <div class="collapse" id="navbar-header">
         <div class="container-fluid bg-light p-a-1" style="background-color:rgb(241, 241, 241);">
-	  <a class="navbar-brand coclink" href="/assets/html/ClanInfo.html"><span data-localize="navclan">Clan</span> "RU"</a>
+	  <a class="navbar-brand coclink" href="/assets/html/ClanInfo.html"><span data-localize="navclan">Clan</span> "Коалиция"</a>
 
           <#= this.headerMenu #>
 

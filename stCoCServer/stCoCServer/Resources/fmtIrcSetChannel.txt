@@ -1,0 +1,4 @@
+﻿ChanServ REGISTER {0} "Clash of Clans {1}"
+ChanServ SET {0} DESC Clash of Clans {1}
+ChanServ SET {0} URL {2}
+ChanServ SET {0} ENTRYMSG "Clan {1} : {2}"

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<methodCall>
+  <methodName>dokuwiki.login</methodName>
+  <params>
+    <param>
+      <value>
+        <string>quest</string>
+      </value>
+    </param>
+    <param>
+      <value>
+        <string>quest</string>
+      </value>
+    </param>
+  </params>
+</methodCall>

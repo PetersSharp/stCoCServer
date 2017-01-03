@@ -1,0 +1,204 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="stCoCClient.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MemberNew" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MemberExit" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MemberChangeNik" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MemberChangeRole" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MemberChangeLevel" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MemberChangeLeague" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MemberChangeTrophies" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MemberChangeDonationSend" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MemberChangeDonationReceive" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ClanChangeName" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ClanChangeType" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ClanChangeLevel" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ClanChangePoints" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ClanChangeMembers" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ClanChangeTrophies" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ClanChangeWarWin" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ClanChangeWarFrequency" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ClanChangeWarSeries" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ClanChangeWarPublic" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="WarClanEnd" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IRCServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IRCPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IRCChannel" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IRCNik" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IRCPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IRCKickRespawn" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="IRCServerMessage" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="IRCNoticeMessage" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="IRCPrivateMessage" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="USRCoCServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="USRCoCTag" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="USRInformerId" Type="System.Int64" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="USRWikiHome" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IRCLanguage" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="USRNotifyUpdateTime" Type="System.Int64" Scope="User">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="USRUrl" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string /&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="USRServerVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="URLServerSetup" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{0}assets/clientsetup.json?{1}</Value>
+    </Setting>
+    <Setting Name="URLUserSetup" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{0}clan/player/{1}/</Value>
+    </Setting>
+    <Setting Name="URLNotifySetup" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{0}{1}/json/?{2}</Value>
+    </Setting>
+    <Setting Name="TSMIMultiselect" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="TSMIScroll" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="USRTimerNotifyInterval" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="URLMemberSetup" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{0}{1}/list/?{2}</Value>
+    </Setting>
+    <Setting Name="TSMINotifyGroup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ExportHtmlTableStart" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;div style="overflow-x:auto;"&gt;&lt;table border="1" cellspacing="1" cellpadding="2"&gt;</Value>
+    </Setting>
+    <Setting Name="ExportHtmlTableTh" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;tr&gt;&lt;th colspan="{0}" align="{1}" bgcolor="{2}"&gt;{3}&lt;/th&gt;&lt;/tr&gt;</Value>
+    </Setting>
+    <Setting Name="ExportHtmlTableEnd" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;/table&gt;&lt;/div&gt;</Value>
+    </Setting>
+    <Setting Name="ExportHtmlTableColumnFormat" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;th bgcolor="{0}" width="{1}" align="{2}"&gt;{3}&lt;/th&gt;</Value>
+    </Setting>
+    <Setting Name="ExportHtmlTableTr" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;{0}tr&gt;</Value>
+    </Setting>
+    <Setting Name="ExportHtmlTableTd" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;td align="{0}"&gt;{1}&lt;/td&gt;</Value>
+    </Setting>
+    <Setting Name="ExportHtmlTableStyle" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;style&gt;
+table { border-collapse: collapse; width: 900%;}
+th, td { border-bottom: 1px solid #ddd; }
+tr:hover { background-color: #f5f5f5; }
+th { background-color: #4CAF50; color: white; }
+&lt;/style&gt;
+</Value>
+    </Setting>
+    <Setting Name="ExportPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ExportHtmlTableGroupColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#DADADA</Value>
+    </Setting>
+    <Setting Name="ExportHtmlTableColumnColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#C0C0C0</Value>
+    </Setting>
+    <Setting Name="ChatFilterHtml" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">&lt;.*?&gt;|&amp;nbsp;|&amp;zwnj;|&amp;raquo;|&amp;laquo;</Value>
+    </Setting>
+    <Setting Name="URLIrcArchive" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{0}/{1}/{2}/</Value>
+    </Setting>
+    <Setting Name="IRCChatHistory" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="IRCChatEmojiEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IRCChatBBCodeEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="YandexServiceKeyTranslation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">trnsl.1.1.20170205T092429Z.d94b9696b7a04814.a73de092de64950b3295feb05de2b0dfb9f8229e</Value>
+    </Setting>
+    <Setting Name="YandexServiceKeyPredictate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">pdct.1.1.20170205T092623Z.f0c083fed983e67d.1ac4e3f996d2a66f6dbbf28f0fd08234e3b21621</Value>
+    </Setting>
+    <Setting Name="URLServerInformer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">{0}{1}/player/{2}/{3}/?{4}</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

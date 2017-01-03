@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <array><data>
+  <value><struct>
+  <member><name>id</name><value><string>playground:coc00.png</string></value></member>
+  <member><name>file</name><value><string>coc00.png</string></value></member>
+  <member><name>size</name><value><int>158</int></value></member>
+  <member><name>mtime</name><value><int>1484294056</int></value></member>
+  <member><name>writable</name><value><boolean>1</boolean></value></member>
+  <member><name>isimg</name><value><boolean>1</boolean></value></member>
+  <member><name>perms</name><value><int>16</int></value></member>
+  <member><name>lastModified</name><value><dateTime.iso8601>2017-01-13T07:54:16+0000</dateTime.iso8601></value></member>
+</struct></value>
+  <value><struct>
+  <member><name>id</name><value><string>playground:coc01.png</string></value></member>
+  <member><name>file</name><value><string>coc01.png</string></value></member>
+  <member><name>size</name><value><int>41229</int></value></member>
+  <member><name>mtime</name><value><int>1470101140</int></value></member>
+  <member><name>writable</name><value><boolean>1</boolean></value></member>
+  <member><name>isimg</name><value><boolean>1</boolean></value></member>
+  <member><name>perms</name><value><int>16</int></value></member>
+  <member><name>lastModified</name><value><dateTime.iso8601>2016-08-02T01:25:40+0000</dateTime.iso8601></value></member>
+</struct></value>
+  <value><struct>
+  <member><name>id</name><value><string>playground:coc02.png</string></value></member>
+  <member><name>file</name><value><string>coc02.png</string></value></member>
+  <member><name>size</name><value><int>216629</int></value></member>
+  <member><name>mtime</name><value><int>1474218866</int></value></member>
+  <member><name>writable</name><value><boolean>1</boolean></value></member>
+  <member><name>isimg</name><value><boolean>1</boolean></value></member>
+  <member><name>perms</name><value><int>16</int></value></member>
+  <member><name>lastModified</name><value><dateTime.iso8601>2016-09-18T17:14:26+0000</dateTime.iso8601></value></member>
+</struct></value>
+  <value><struct>
+  <member><name>id</name><value><string>playground:img_20160812_215833_1.jpg</string></value></member>
+  <member><name>file</name><value><string>img_20160812_215833_1.jpg</string></value></member>
+  <member><name>size</name><value><int>51286</int></value></member>
+  <member><name>mtime</name><value><int>1471199793</int></value></member>
+  <member><name>writable</name><value><boolean>1</boolean></value></member>
+  <member><name>isimg</name><value><boolean>1</boolean></value></member>
+  <member><name>perms</name><value><int>16</int></value></member>
+  <member><name>lastModified</name><value><dateTime.iso8601>2016-08-14T18:36:33+0000</dateTime.iso8601></value></member>
+</struct></value>
+</data></array>
+      </value>
+    </param>
+  </params>
+</methodResponse>

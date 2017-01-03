@@ -171,9 +171,6 @@
   <data name="templateFileNotFound" xml:space="preserve">
     <value>Template file not found: {0}</value>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value>Template file not found: {0}</value>
-  </data>
   <data name="templateAppendObjEmpty" xml:space="preserve">
     <value>Template append object is empty</value>
   </data>
@@ -303,5 +300,11 @@
   </data>
   <data name="httpMinifyChanged" xml:space="preserve">
     <value>Minify detect file {0}: {1}, rebuild..</value>
+  </data>
+  <data name="IRCCommandFileExec" xml:space="preserve">
+    <value>exec IRC command from: </value>
+  </data>
+  <data name="IRCCommandFileNotFound" xml:space="preserve">
+    <value>exec IRC command, path not found: </value>
   </data>
 </root>

@@ -469,3 +469,27 @@ tr.cocselect td.cocmember {
     filter: alpha(opacity=50);
     opacity: .5;
 }
+#srvgen {
+    color: #337AB7;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#srvgen:hover {
+    text-decoration: underline;
+}
+.informer-items-right {
+    width: 100px;
+    height: 100px;
+    background-position: right center;
+    background-repeat: no-repeat;
+    margin: 5px;
+    overflow: hidden;
+    display: -webkit-inline-box;
+    display: inline-block;
+    cursor: pointer;
+}
+#ircchat {
+    width: 90%;
+    height: 80%;
+}

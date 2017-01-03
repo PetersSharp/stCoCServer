@@ -17,8 +17,10 @@ namespace stNet
             public RSSReader(string url)
             {
                 XDocument feed = XDocument.Load(url, LoadOptions.PreserveWhitespace);
-                StringWriter writer = new UTF8StringWriter();
-                feed.Save(writer, SaveOptions.OmitDuplicateNamespaces);
+                using (StringWriter writer = new UTF8StringWriter())
+		{
+	           feed.Save(writer, SaveOptions.OmitDuplicateNamespaces);
+		}
                 this._Feeds = from item in feed.Element("rss").Element("channel").Elements("item")
                               select new RSSFeedItem
                               {

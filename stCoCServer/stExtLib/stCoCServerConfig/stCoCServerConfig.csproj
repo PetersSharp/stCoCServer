@@ -30,6 +30,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>stCoCServer_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -63,6 +69,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="stCoCServer_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\stCoCAPI-dll\stCoCAPI.csproj">
@@ -72,6 +79,10 @@
     <ProjectReference Include="..\stCore-dll\stCore.csproj">
       <Project>{0569D275-72F8-4A31-B04C-653725F58B72}</Project>
       <Name>stCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\stDokuWikiConnector-dll\stDokuWikiConnector.csproj">
+      <Project>{6A270155-DE22-4BC5-B049-20DFAF61ED0A}</Project>
+      <Name>stDokuWikiConnector</Name>
     </ProjectReference>
     <ProjectReference Include="..\stGeo-dll\stGeo.csproj">
       <Project>{87439401-6949-4502-80BD-4323D063B897}</Project>
@@ -91,6 +102,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.ru.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -25,6 +25,8 @@
 	   <span id="piesort3" data-action="ratio" data-localize="donationratio">Ratio</span>&nbsp;|&nbsp;
 	   <span id="piesort4" data-action="total" data-localize="donationtotal">Total</span>
 	</div>
+	<br/>
+	<center>
 	<div id="statCarousel" class="carousel slide" data-ride="carousel">
 	  <ol class="carousel-indicators">
 	    <li data-target="#statCarousel" data-slide-to="0" class="active"></li>
@@ -54,6 +56,7 @@
 	    <span class="sr-only">Next</span>
 	  </a>
 	</div>
+	</center>
 
 <#@ include file="tmplFooter.ttinclude" #>
 <#+
@@ -68,7 +71,7 @@
 	"<script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>" +
 	"<script type='text/javascript' charset='utf8'>" +
 	"	$(document).ready(function() {" +
-	"		$.fn.CoCLanguage('cocclan');" +
+	"		$.fn.CoCInit('cocclan');" +
 	"		$('#datecontainer').CoCDatePicker(EnumUpdate.urlClan,'reDrawData');" +
 	"		$('#piechartdiv').CoCDonation();" +
 	"		$(document).on( 'click', \"span[id^='piesort']\", function(event) {" +

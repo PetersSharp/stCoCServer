@@ -27,7 +27,7 @@
 		  font-weight: bold;
 		}}
 		.http-error .error-desc {{
-		  font-size: 12px;
+		  font-size: 16px;
 		  color: #647788;
 		}}
 		.http-error .m-b-10 {{

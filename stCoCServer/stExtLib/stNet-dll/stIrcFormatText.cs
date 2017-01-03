@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+#if STCLIENTBUILD
+namespace stClient
+
+#else
+
 namespace stNet
+#endif
 {
     public static class IrcFormatText
     {

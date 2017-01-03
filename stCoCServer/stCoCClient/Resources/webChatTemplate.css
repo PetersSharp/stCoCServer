@@ -1,0 +1,96 @@
+body {
+    background:#2D2F31;
+}
+a, a:visited {
+    color: #DEB887;
+}
+a:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.speech {
+    position: relative;
+    width: 80%;
+    height: auto;
+    text-align: left;
+    line-height: 15px;
+    padding: 5px 0px 8px 15px;
+    margin: 5px 0px 5px 0px;
+    color: #fff;
+    font-family: "Segoe UI";
+    font-size: 10pt;
+    background-color: #2D2F31;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+.uid {
+    font-weight: bold;
+    color: #00C000;
+    font-size: 12pt;
+}
+.uid a,
+.uid a:visited {
+    font-weight: bold;
+    color: #A3F149;
+    text-decoration: none;
+}
+.uid a:hover {
+    font-weight: bold;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.ptime {
+    font-weight: normal;
+    color: #DDDDDD;
+    padding-left: 10px;
+    font-size: 8pt;
+}
+.msguser {
+    border: 1px solid #5E981A;
+}
+.msgmy {
+    border: 1px solid #FFFFFF;
+}
+.msgpriv {
+    border: 1px solid #FF9800;
+}
+.msgsys {
+    display: inline-block;
+    position: relative;
+    padding-left: 5px;
+    margin: 0px 0px 0px 0px;
+    font-family: "Segoe UI";
+    font-size: 10pt;
+    min-width: 100%;
+}
+.msgnotice {
+    color: #C94ED4;
+}
+.msgserver {
+    color: #808080;
+}
+.msghistory {
+    color: #23A86D;
+    padding-left: 5px;
+    text-decoration: underline;
+    font-family: "Segoe UI";
+    font-size: 10pt;
+}
+.msghistory a,
+.msghistory a:visited {
+    color: #23A86D;
+}
+.msghistory a:hover {
+    color: #FFFFFF;
+}
+i.emoji {
+    width: 16px;
+    height: 16px;
+}

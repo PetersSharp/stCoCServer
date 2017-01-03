@@ -1,0 +1,7 @@
+# Script to set channel features
+# rename command.irc.set.features to command.irc
+#
+ChanServ REGISTER #channel "Clash of Clans XXXXX"
+ChanServ SET #channel DESC Clash of Clans XXXXX description
+ChanServ SET #channel URL http://ClanXXXXX.site.ru
+ChanServ SET #channel ENTRYMSG "XXXXX clan: http://ClanXXXXX.site.ru/"
