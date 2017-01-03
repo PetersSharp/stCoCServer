@@ -531,6 +531,15 @@ namespace stCoCServer.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на requested method is not supported.
+        /// </summary>
+        internal static string httpMethodNotSupport {
+            get {
+                return ResourceManager.GetString("httpMethodNotSupport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на HTTP server disabled in configuration.
         /// </summary>
         internal static string httpServerDisabled {
@@ -720,7 +729,7 @@ namespace stCoCServer.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на {0}  is running..  [{1}].
+        ///   Ищет локализованную строку, похожую на {0} is running..  [{1}].
         /// </summary>
         internal static string PrnRun {
             get {

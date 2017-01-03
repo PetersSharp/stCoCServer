@@ -1,4 +1,11 @@
-﻿using System;
+﻿#if DEBUG
+// #define DEBUG_PrintWebRequest
+// #define DEBUG_PrintJson
+// #define DEBUG_PrintDataTable
+// #define DEBUG_PrintImageInfo
+#endif
+
+using System;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -9,20 +16,19 @@ using stCoCAPI;
 using stCore;
 using System.Collections.Generic;
 using System.Threading;
+using System.Data;
 
 namespace stCoCServer.CoCAPI
 {
     public static class CoCWebSrv
     {
-        
-        #region File WebRquest
 
-        public static void FileWebRquest(string url, object ctx, object udata)
+        #region File WebRequest
+
+        public static void FileWebRequest(string url, object ctx, object udata)
         {
             stCoCServerConfig.CoCServerConfigData.Configuration conf = udata as stCoCServerConfig.CoCServerConfigData.Configuration;
             HttpListenerContext context = ctx as HttpListenerContext;
-
-            stConsole.WriteHeader("FileWebRquest: " + context.Request.HttpMethod);
 
             if (
                 (udata == null) ||
@@ -34,6 +40,8 @@ namespace stCoCServer.CoCAPI
             }
 
             byte[] msg = null;
+            long   msgsize = 0;
+            string modify = String.Empty;
             string filePath = conf.Opt.SYSROOTPath.value;
 
             if (url.Contains("?"))
@@ -69,6 +77,26 @@ namespace stCoCServer.CoCAPI
             try
             {
                 msg = File.ReadAllBytes(filePath);
+                switch (context.Request.HttpMethod)
+                {
+                    case "HEAD":
+                        {
+                            FileInfo fi = new FileInfo(filePath);
+                            modify = fi.LastWriteTimeUtc.ToLongDateString();
+                            break;
+                        }
+                    case "GET":
+                        {
+                            msg = File.ReadAllBytes(filePath);
+                            msgsize = msg.Length;
+                            modify = File.GetLastWriteTimeUtc(filePath).ToLongDateString();
+                            break;
+                        }
+                    default:
+                        {
+                            throw new ArgumentOutOfRangeException(Properties.Resources.httpMethodNotSupport);
+                        }
+                }
             }
             catch (Exception e)
             {
@@ -90,14 +118,15 @@ namespace stCoCServer.CoCAPI
                                Path.GetFileName(filePath)
                             )
                 );
-                context.Response.ContentLength64 = msg.Length;
+                context.Response.AddHeader(conf.HttpSrv.httpLastModified, modify);
+                context.Response.ContentLength64 = msgsize;
                 context.Response.OutputStream.Write(msg, 0, msg.Length);
                 context.Response.OutputStream.Close();
             }
 #if DEBUG
             catch (Exception e)
             {
-                conf.ILog.LogError("[File Web Rquest]: " + e.Message);
+                conf.ILog.LogError("[File Web Request]: " + e.Message);
 #else
             catch (Exception)
             {
@@ -110,12 +139,12 @@ namespace stCoCServer.CoCAPI
         
         #endregion
 
-        #region Template WebRquest
+        #region Template WebRequest
 
-        public static void TemplateWebRquest(string url, object ctx, object udata)
+        public static void TemplateWebRequest(string url, object ctx, object udata)
         {
             byte[] msg;
-            string filePath;
+            string filePath, cacheid;
             stCoCServerConfig.CoCServerConfigData.Configuration conf = udata as stCoCServerConfig.CoCServerConfigData.Configuration;
             HttpListenerContext context = ctx as HttpListenerContext;
 
@@ -161,70 +190,88 @@ namespace stCoCServer.CoCAPI
                     cdate.ToString("dd")
                 };
             }
-
             try
             {
-                filePath = conf.LogDump.GetFilePath(urlPart[4], urlPart[3], urlPart[2]);
+                cacheid = @"irc" + urlPart[4] + urlPart[3] + urlPart[2];
 
-                if (!File.Exists(filePath))
+                if (
+                    (!conf.Opt.WEBCacheEnable.bval) ||
+                    (!stCore.stCache.GetCacheObject<byte[]>(cacheid, out msg))
+                   )
                 {
-                    string title = string.Format(
-                        Properties.Resources.httpLogNotFound,
-                        urlPart[2],
-                        urlPart[3],
-                        urlPart[4]
-                    );
-                    msg = Encoding.UTF8.GetBytes(
-                            conf.HtmlTemplate.Render(
-                                new
-                                {
-                                    LANG = conf.Opt.SYSLANGConsole.value.ToLower(),
-                                    TITLE = title,
-                                    INSERTHTMLDATA = title,
-                                    TOPMENU = string.Format(
-                                        Properties.Resources.ircLogArchive,
-                                        conf.Opt.IRCChannel.value
-                                    ),
-                                    DATE = DateTime.Now.ToString(),
-                                    GENERATOR = conf.HttpSrv.wUserAgent,
-                                    DATEY = urlPart[2],
-                                    DATEM = urlPart[3],
-                                    DATED = urlPart[4]
-                                },
-                                "IrcLogTemplate.html",
-                                filePath
-                            )
-                    );
-                    context.Response.StatusCode = (int)HttpStatusCode.NotFound;
+                    filePath = conf.LogDump.GetFilePath(urlPart[4], urlPart[3], urlPart[2]);
+
+                    if (!File.Exists(filePath))
+                    {
+                        string title = string.Format(
+                            Properties.Resources.httpLogNotFound,
+                            urlPart[2],
+                            urlPart[3],
+                            urlPart[4]
+                        );
+                        msg = Encoding.UTF8.GetBytes(
+                                conf.HtmlTemplate.Render(
+                                    new
+                                    {
+                                        LANG = conf.Opt.SYSLANGConsole.value.ToLower(),
+                                        TITLE = title,
+                                        INSERTHTMLDATA = title,
+                                        TOPMENU = string.Format(
+                                            Properties.Resources.ircLogArchive,
+                                            conf.Opt.IRCChannel.value
+                                        ),
+                                        DATE = DateTime.Now.ToString(),
+                                        GENERATOR = conf.HttpSrv.wUserAgent,
+                                        DATEY = urlPart[2],
+                                        DATEM = urlPart[3],
+                                        DATED = urlPart[4]
+                                    },
+                                    "IrcLogTemplate.html",
+                                    filePath
+                                )
+                        );
+                        context.Response.StatusCode = (int)HttpStatusCode.NotFound;
+                    }
+                    else
+                    {
+                        msg = Encoding.UTF8.GetBytes(
+                                conf.HtmlTemplate.Render(
+                                    new
+                                    {
+                                        LANG = conf.Opt.SYSLANGConsole.value.ToLower(),
+                                        TITLE = string.Format(
+                                            Properties.Resources.httpDateLogTitle,
+                                            urlPart[2],
+                                            urlPart[3],
+                                            urlPart[4]
+                                        ),
+                                        TOPMENU = string.Format(
+                                            Properties.Resources.ircLogArchive,
+                                            conf.Opt.IRCChannel.value
+                                        ),
+                                        DATE = DateTime.Now.ToString(),
+                                        GENERATOR = conf.HttpSrv.wUserAgent,
+                                        DATEY = urlPart[2],
+                                        DATEM = urlPart[3],
+                                        DATED = urlPart[4]
+                                    },
+                                    "IrcLogTemplate.html",
+                                    filePath
+                                )
+                        );
+                        if (conf.Opt.WEBCacheEnable.bval)
+                        {
+                            stCore.stCache.SetCacheObject<byte[]>(cacheid, msg, DateTime.Now.AddHours(6));
+                        }
+                        context.Response.StatusCode = (int)HttpStatusCode.OK;
+                    }
                 }
                 else
                 {
-                    msg = Encoding.UTF8.GetBytes(
-                            conf.HtmlTemplate.Render(
-                                new
-                                {
-                                    LANG = conf.Opt.SYSLANGConsole.value.ToLower(),
-                                    TITLE = string.Format(
-                                        Properties.Resources.httpDateLogTitle,
-                                        urlPart[2],
-                                        urlPart[3],
-                                        urlPart[4]
-                                    ),
-                                    TOPMENU = string.Format(
-                                        Properties.Resources.ircLogArchive,
-                                        conf.Opt.IRCChannel.value
-                                    ),
-                                    DATE = DateTime.Now.ToString(),
-                                    GENERATOR = conf.HttpSrv.wUserAgent,
-                                    DATEY = urlPart[2],
-                                    DATEM = urlPart[3],
-                                    DATED = urlPart[4]
-                                },
-                                "IrcLogTemplate.html",
-                                filePath
-                            )
-                    );
                     context.Response.StatusCode = (int)HttpStatusCode.OK;
+#if DEBUG_isCached
+                    stConsole.WriteHeader("IRC LOG content is cached: " + cacheid + " : " + msg.Length.ToString());
+#endif
                 }
             }
             catch (Exception e)
@@ -239,6 +286,14 @@ namespace stCoCServer.CoCAPI
             }
             try
             {
+                if (context.Response.StatusCode == (int)HttpStatusCode.OK)
+                {
+                    context.Response.AddHeader(conf.HttpSrv.httpCacheControl, "max-age=2629000, public");
+                }
+                else
+                {
+                    context.Response.AddHeader(conf.HttpSrv.httpCacheControl, "no-cache");
+                }
                 context.Response.AddHeader(conf.HttpSrv.httpContentType, HttpUtil.GetMimeType("", HttpUtil.MimeType.MimeHtml));
                 context.Response.ContentLength64 = msg.Length;
                 context.Response.OutputStream.Write(msg, 0, msg.Length);
@@ -247,7 +302,7 @@ namespace stCoCServer.CoCAPI
 #if DEBUG
             catch (Exception e)
             {
-                conf.ILog.LogError("[Template Web Rquest]: " + e.Message);
+                conf.ILog.LogError("[Template Web Request]: " + e.Message);
 #else
             catch (Exception)
             {
@@ -260,9 +315,9 @@ namespace stCoCServer.CoCAPI
 
         #endregion
 
-        #region Json GET WebRquest
+        #region Json GET WebRequest
 
-        public static void JsonWebRquest(string url, object ctx, object udata)
+        public static void JsonWebRequest(string url, object ctx, object udata)
         {
             byte[] msg;
             stCoCServerConfig.CoCServerConfigData.Configuration conf = udata as stCoCServerConfig.CoCServerConfigData.Configuration;
@@ -314,15 +369,15 @@ namespace stCoCServer.CoCAPI
                     throw new ArgumentException(HttpStatusCode.BadRequest.ToString());
                 }
 
-#if DEBUG_PrintWebRquest
-                stConsole.WriteHeader("JsonWebRquest -> URL: (" + url + ") Query: (" + query + ")");
+#if DEBUG_PrintWebRequest
+                stConsole.WriteHeader("JsonWebRequest -> URL: (" + url + ") Query: (" + query + ")");
 #endif
                 msg = Encoding.UTF8.GetBytes(
                     conf.Api.QueryData(query).ToJson(true, true)
                 );
 
 #if DEBUG_PrintJson
-                stConsole.WriteHeader("JsonWebRquest -> JSON: " + Encoding.UTF8.GetString(msg));
+                stConsole.WriteHeader("JsonWebRequest -> JSON: " + Encoding.UTF8.GetString(msg));
 #endif
             }
             catch (Exception e)
@@ -341,7 +396,7 @@ namespace stCoCServer.CoCAPI
 #if DEBUG
             catch (Exception e)
             {
-                conf.ILog.LogError("[Json Web Rquest]: " + e.Message);
+                conf.ILog.LogError("[Json Web Request]: " + e.Message);
 #else
             catch (Exception)
             {
@@ -353,9 +408,9 @@ namespace stCoCServer.CoCAPI
         }
         #endregion
 
-        #region SSE/RSS/Json notify WebRquest
+        #region SSE/RSS/Json notify WebRequest
 
-        public static void SseWebRquest(string url, object ctx, object udata)
+        public static void SseWebRequest(string url, object ctx, object udata)
         {
             stCoCServerConfig.CoCServerConfigData.Configuration conf = udata as stCoCServerConfig.CoCServerConfigData.Configuration;
             HttpListenerContext context = ctx as HttpListenerContext;
@@ -463,6 +518,181 @@ namespace stCoCServer.CoCAPI
 
         #endregion
 
+        #region Informer WebRequest
+
+        public static void InformerWebRequest(string url, object ctx, object udata)
+        {
+            stCoCServerConfig.CoCServerConfigData.Configuration conf = udata as stCoCServerConfig.CoCServerConfigData.Configuration;
+            HttpListenerContext context = ctx as HttpListenerContext;
+            stCoCAPI.CoCAPI.CoCEnum.CoCFmtReq reqtype = stCoCAPI.CoCAPI.CoCEnum.CoCFmtReq.None;
+
+            if (
+                (udata == null) ||
+                (conf.HttpSrv == null)
+               )
+            {
+                context.Response.Abort();
+                return;
+            }
+            if (
+                (conf.Api == null) ||
+                (!conf.Api.DBCheck())
+               )
+            {
+                CoCWebSrv._ErrorHtmlDefault(
+                    conf,
+                    HttpStatusCode.InternalServerError,
+                    String.Empty,
+                    context
+                );
+                return;
+            }
+
+            Int32 idx = 0, resize = 2;
+            byte[] msg = null;
+            string[] urlPart = url.Split('/');
+            urlPart = urlPart.Skip(1).Concat(urlPart.Take(1)).ToArray();
+            Array.Resize(ref urlPart, urlPart.Length - 1);
+            string memberId = "";
+
+            try
+            {
+                if (urlPart.Length < 3)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                if (!Int32.TryParse(urlPart[2], out idx))
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                switch (urlPart[1])
+                {
+                    case "info":
+                    case "clan":
+                        {
+                            reqtype = stCoCAPI.CoCAPI.CoCEnum.CoCFmtReq.Clan;
+                            if (urlPart.Length != 4)
+                            {
+                                throw new ArgumentOutOfRangeException();
+                            }
+                            break;
+                        }
+                    case "player":
+                    case "member":
+                        {
+                            reqtype = stCoCAPI.CoCAPI.CoCEnum.CoCFmtReq.Members;
+                            if (urlPart.Length != 5)
+                            {
+                                throw new ArgumentOutOfRangeException();
+                            }
+                            if (urlPart[3].Equals("random"))
+                            {
+                                urlPart[1] = urlPart[3];
+                                resize = 3;
+                            }
+                            else
+                            {
+                                if ((urlPart[3].Length > 10) || (urlPart[3].Length < 9))
+                                {
+                                    throw new ArgumentOutOfRangeException();
+                                }
+                                urlPart[2] = urlPart[3];
+                            }
+                            memberId = urlPart[3];
+                            break;
+                        }
+                    default:
+                        {
+                            throw new ArgumentOutOfRangeException();
+                        }
+                }
+                Array.Resize(ref urlPart, urlPart.Length - resize);
+            }
+            catch (Exception)
+            {
+                stConsole.WriteHeader("InformerWebRequest -> BadRequestRaw: 0");
+                conf.HttpSrv.BadRequestRaw(conf.Api.InformerImageError(reqtype), context, (int)HttpStatusCode.BadRequest);
+                return;
+            }
+            try
+            {
+                stCoCAPI.CoCAPI.CoCEnum.ClanTypeReq cReq = stCoCAPI.CoCAPI.CoCEnum.ClanTypeReq.None;
+                string query = string.Empty;
+                try
+                {
+                    query = conf.Api.GetQueryString(urlPart, ref cReq, conf.Opt.SQLDBFilterMemberTag.collection, conf.ILog.LogError);
+                    if (
+                        (cReq == stCoCAPI.CoCAPI.CoCEnum.ClanTypeReq.None) ||
+                        (string.IsNullOrWhiteSpace(query))
+                       )
+                    {
+                        throw new ArgumentNullException();
+                    }
+                }
+                catch (Exception)
+                {
+                    throw new ArgumentException();
+                }
+
+#if DEBUG_PrintWebRequest
+                stConsole.WriteHeader("InformerWebRequest -> URL: (" + url + ") Query: (" + query + ")");
+#endif
+                DataTable dt = conf.Api.QueryData(query);
+                if ((dt == null) || (dt.Rows.Count == 0))
+                {
+                    throw new ArgumentNullException();
+                }
+#if DEBUG_PrintJson
+                stConsole.WriteHeader("InformerWebRequest -> JSON: " + dt.ToJson(false, false));
+#endif
+#if DEBUG_PrintDataTable
+                dt.DataTableToPrint();
+#endif
+                msg = conf.Api.InformerImageGet(dt.Rows[0], reqtype, idx, memberId, conf.Opt.WEBCacheEnable.bval);
+
+#if DEBUG_PrintImageInfo
+                stConsole.WriteHeader("InformerWebRequest -> ImageInfo: " + msg.Length);
+#endif
+            }
+            catch (Exception)
+            {
+                byte[] bb = conf.Api.InformerImageError(stCoCAPI.CoCAPI.CoCEnum.CoCFmtReq.Auth);
+                stConsole.WriteHeader("InformerWebRequest -> BadRequestRaw: 1: " + bb.Length.ToString());
+                conf.HttpSrv.BadRequestRaw(conf.Api.InformerImageError(stCoCAPI.CoCAPI.CoCEnum.CoCFmtReq.Auth), context, (int)HttpStatusCode.InternalServerError);
+                return;
+            }
+            try
+            {
+#if DEBUG_NoCache
+                context.Response.AddHeader(conf.HttpSrv.httpCacheControl, "no-cache");
+                context.Response.AddHeader(conf.HttpSrv.httpAccelBuffering, "no");
+#else
+                context.Response.AddHeader(conf.HttpSrv.httpCacheControl, "max-age=" + conf.Api.UpdateNextSeconds.ToString() + ", public");
+                context.Response.AddHeader(conf.HttpSrv.httpAccelBuffering, "yes");
+                context.Response.AddHeader(conf.HttpSrv.httpLastModified, conf.Api.UpdateLastTime.ToString("R"));
+#endif
+                context.Response.AddHeader(conf.HttpSrv.httpContentType, HttpUtil.GetMimeType("", HttpUtil.MimeType.MimePng));
+                context.Response.AddHeader(conf.HttpSrv.httpAccessControlAllowOrigin, "*");
+                context.Response.ContentLength64 = msg.Length;
+                context.Response.OutputStream.Write(msg, 0, msg.Length);
+                context.Response.OutputStream.Close();
+            }
+#if DEBUG
+            catch (Exception e)
+            {
+                conf.ILog.LogError("[Informer Web Request]: " + e.Message);
+#else
+            catch (Exception)
+            {
+#endif
+                context.Response.Abort();
+                return;
+            }
+            context.Response.Close();
+        }
+
+        #endregion
+
         #region Error user format response
 
         private static void _ErrorHtmlDefault(
@@ -484,9 +714,9 @@ namespace stCoCServer.CoCAPI
                         @"/assets/html/ClanInfo.html"
                     )
                 ),
-                HttpUtil.MimeType.MimeHtml,
                 context,
-                (int)code
+                (int)code,
+                HttpUtil.MimeType.MimeHtml
             );
         }
 

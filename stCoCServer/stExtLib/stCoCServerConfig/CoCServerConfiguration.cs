@@ -9,7 +9,7 @@ namespace stCoCServerConfig.CoCServerConfiguration
 {
     public static class BuildConfig
     {
-        public static int numFilters = 5;
+        public static int numFilters = 6;
         private const string tagFilters = @"IPF";
         private const string nameFilters = @"IpFilter";
         private const string ircNikDefault = @"clanNik";
@@ -99,6 +99,7 @@ namespace stCoCServerConfig.CoCServerConfiguration
                 SYSTMPLPath = new CoCServerConfigData.OptionItem(String.Empty, "template", "-m"),
                 CLANTag = new CoCServerConfigData.OptionItem(String.Empty, "tag", "-t"),
                 CLANAPIKey = new CoCServerConfigData.OptionItem(String.Empty, "key", "-k"),
+                CLANInformerStaticEnable = new CoCServerConfigData.OptionItem(true, String.Empty, String.Empty),
                 SQLDBPath = new CoCServerConfigData.OptionItem(String.Empty, "dbname", "-b"),
                 SQLDBUri = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
                 SQLDBUpdateTime = new CoCServerConfigData.OptionItem(String.Empty, "dbupdate", "-u"),
@@ -108,10 +109,13 @@ namespace stCoCServerConfig.CoCServerConfiguration
                 WEBRootUri = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
                 WEBRootPort = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
                 WEBLANGDefault = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
+                WEBCacheEnable = new CoCServerConfigData.OptionItem(true, String.Empty, String.Empty),
+                WEBRequestDebugEnable = new CoCServerConfigData.OptionItem(false, String.Empty, String.Empty),
                 LOGRemoteServerEnable = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
                 LOGRemoteServerPort = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
                 LOGRemoteServerAddress = new CoCServerConfigData.OptionItem(String.Empty, String.Empty, String.Empty),
                 LOGDuplicateEntry = new CoCServerConfigData.OptionItem(true, String.Empty, String.Empty),
+                LOGDebug = new CoCServerConfigData.OptionItem(false, String.Empty, String.Empty),
                 PrnQuiet = new CoCServerConfigData.OptionItem(false, "quiet", "-q"),
                 IsRun = new CoCServerConfigData.OptionItem(true, String.Empty, String.Empty)
             };
@@ -236,6 +240,7 @@ namespace stCoCServerConfig.CoCServerConfiguration
             );
             Opt.CLANTag.value = ((string.IsNullOrWhiteSpace(Opt.CLANTag.value)) ? String.Empty : Opt.CLANTag.value);
             Opt.CLANAPIKey.value = ((string.IsNullOrWhiteSpace(Opt.CLANAPIKey.value)) ? String.Empty : Opt.CLANAPIKey.value);
+            Opt.CLANInformerStaticEnable.bval = ((string.IsNullOrWhiteSpace(Opt.CLANInformerStaticEnable.value)) ? Properties.Settings.Default.CLANInformerStaticEnable : BuildConfig._GetBoolConfig(Opt.CLANInformerStaticEnable.value));
 
             Opt.SQLDBPath.value = ((string.IsNullOrWhiteSpace(Opt.SQLDBPath.value)) ? Properties.Settings.Default.SQLDBPath : Opt.SQLDBPath.value);
             Opt.SQLDBUri.value = ((string.IsNullOrWhiteSpace(Opt.SQLDBUri.value)) ? Properties.Settings.Default.SQLDBUri : Opt.SQLDBUri.value);
@@ -245,6 +250,8 @@ namespace stCoCServerConfig.CoCServerConfiguration
             Opt.WEBRootUri.value = ((string.IsNullOrWhiteSpace(Opt.WEBRootUri.value)) ? Properties.Settings.Default.WEBRootUri : Opt.WEBRootUri.value);
             Opt.WEBRootPort.num = ((string.IsNullOrWhiteSpace(Opt.WEBRootPort.value)) ? Properties.Settings.Default.WEBRootPort : BuildConfig._GetIntConfig(Opt.WEBRootPort.value));
             Opt.WEBLANGDefault.value = ((string.IsNullOrWhiteSpace(Opt.WEBLANGDefault.value)) ? Opt.SYSLANGConsole.value : Opt.WEBLANGDefault.value);
+            Opt.WEBCacheEnable.bval = ((string.IsNullOrWhiteSpace(Opt.WEBCacheEnable.value)) ? Properties.Settings.Default.WEBCacheEnable : BuildConfig._GetBoolConfig(Opt.WEBCacheEnable.value));
+            Opt.WEBRequestDebugEnable.bval = ((string.IsNullOrWhiteSpace(Opt.WEBRequestDebugEnable.value)) ? Properties.Settings.Default.WEBRequestDebugEnable : BuildConfig._GetBoolConfig(Opt.WEBRequestDebugEnable.value));
 
             if (
                 (!string.IsNullOrWhiteSpace(Opt.LOGRemoteServerEnable.value)) &&
@@ -260,6 +267,7 @@ namespace stCoCServerConfig.CoCServerConfiguration
                 Opt.LOGRemoteServerEnable.bval = Properties.Settings.Default.LOGRemoteServerEnable;
             }
             Opt.LOGDuplicateEntry.bval = ((string.IsNullOrWhiteSpace(Opt.LOGDuplicateEntry.value)) ? Properties.Settings.Default.LOGDuplicateEntry : BuildConfig._GetBoolConfig(Opt.LOGDuplicateEntry.value));
+            Opt.LOGDebug.bval = ((string.IsNullOrWhiteSpace(Opt.LOGDebug.value)) ? Properties.Settings.Default.LOGDebug : BuildConfig._GetBoolConfig(Opt.LOGDebug.value));
 
             for (int i = 0; i < BuildConfig.numFilters; i++)
             {
@@ -280,7 +288,7 @@ namespace stCoCServerConfig.CoCServerConfiguration
                 Opt.IPFType[i].value = ((string.IsNullOrWhiteSpace(Opt.IPFType[i].value)) ?
                     ((Properties.Settings.Default.IPFType.Count > i) ?
                         Properties.Settings.Default.IPFType[i] :
-                        stNet.WebHandleTypes.FileWebRquest.ToString()) : 
+                        stNet.WebHandleTypes.FileWebRequest.ToString()) : 
                     Opt.IPFType[i].value
                 );
                 Opt.IPFIsIpBlackList[i].bval = BuildConfig._GetBoolConfig(Opt.IPFIsIpBlackList[i].value);

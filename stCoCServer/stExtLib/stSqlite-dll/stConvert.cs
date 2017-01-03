@@ -117,13 +117,14 @@ namespace stSqlite
                     if (attr != null)
                     {
                         sb.AppendFormat(
-                            "{0} {1}{2}{3}{4}",
+                            "{0} {1}{2}{3}{4}{5}",
                             prop.Name,
                             ((attr.FieldSQL != null) ? attr.FieldSQL :
                                 ((attr.FieldType != null) ? SqliteConvertExtension.TablePropertyMapSqlType(attr.FieldType) :
                                     SqliteConvertExtension.TablePropertyMapSqlType(prop.PropertyType))),
                             ((attr.FieldUnique) ? " UNIQUE" : ""),
                             ((attr.FieldPrimaryKey) ? " PRIMARY KEY" : ""),
+                            ((attr.FieldAutoIncrement) ? " AUTOINCREMENT" : ""),
                             (((Props.Length - 1) > cnt) ? ", " : "")
                         );
                     }

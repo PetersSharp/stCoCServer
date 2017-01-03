@@ -569,41 +569,49 @@ namespace stNet
                     }
                 case "353": // member list
                     {
-                        var channel = ircData[4];
-                        var userList = JoinArray(ircData, 5).Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-                        Fire_UpdateUsers(new UpdateUsersEventArgs(channel, userList));
+                        if (ircData.Length >= 5)
+                        {
+                            var channel = ircData[4];
+                            var userList = JoinArray(ircData, 5).Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                            Fire_UpdateUsers(new UpdateUsersEventArgs(channel, userList));
+                        }
                         break;
                     }
                 case "433":
                     {
-                        var takenNick = ircData[3];
-
-                        // notify user
-                        Fire_NickTaken(takenNick);
-
-                        // try alt nick if it's the first time 
-                        if (takenNick == _altNick)
+                        if (ircData.Length >= 4)
                         {
-                            var rand = new Random();
-                            var randomNick = "Guest" + rand.Next(0, 9) + rand.Next(0, 9) + rand.Next(0, 9);
-                            Send("NICK " + randomNick);
-                            Send("USER " + randomNick + " 0 * :" + randomNick);
-                            _nick = randomNick;
-                        }
-                        else
-                        {
-                            Send("NICK " + _altNick);
-                            Send("USER " + _altNick + " 0 * :" + _altNick);
-                            _nick = _altNick;
+                            var takenNick = ircData[3];
+
+                            // notify user
+                            Fire_NickTaken(takenNick);
+
+                            // try alt nick if it's the first time 
+                            if (takenNick == _altNick)
+                            {
+                                var rand = new Random();
+                                var randomNick = "Guest" + rand.Next(0, 9) + rand.Next(0, 9) + rand.Next(0, 9);
+                                Send("NICK " + randomNick);
+                                Send("USER " + randomNick + " 0 * :" + randomNick);
+                                _nick = randomNick;
+                            }
+                            else
+                            {
+                                Send("NICK " + _altNick);
+                                Send("USER " + _altNick + " 0 * :" + _altNick);
+                                _nick = _altNick;
+                            }
                         }
                         break;
                     }
                 case "JOIN": // someone joined
                     {
-                        var channel = ircData[2];
-                        var user = ircData[0].Substring(1, ircData[0].IndexOf("!", StringComparison.Ordinal) - 1);
-                        Fire_UserJoined(new UserJoinedEventArgs(channel, user));
+                        if (ircData.Length >= 3)
+                        {
+                            var channel = ircData[2];
+                            var user = ircData[0].Substring(1, ircData[0].IndexOf("!", StringComparison.Ordinal) - 1);
+                            Fire_UserJoined(new UserJoinedEventArgs(channel, user));
+                        }
                         break;
                     }
                 case "MODE": // MODE was set
@@ -615,23 +623,23 @@ namespace stNet
                         Console.WriteLine("3: " + ircData[3]);
                         Console.WriteLine("4: " + ircData[3]);
                          */
-                        var channel = ircData[2];
-                        if (!channel.Equals(this.Nick))
+                        if (ircData.Length >= 5)
                         {
-                            string from;
-                            if (ircData[0].Contains("!"))
+                            string from, channel = ircData[2];
+                            if (
+                                (!string.IsNullOrWhiteSpace(channel)) && 
+                                (!channel.Equals(this.Nick))
+                               )
                             {
-                                from = ircData[0].Substring(1, ircData[0].IndexOf("!", StringComparison.Ordinal) - 1);
-                            }
-                            else
-                            {
-                                from = ircData[0].Substring(1);
-                            }
-                            if (ircData.Length >= 5)
-                            {
-                                var to = ircData[4];
-                                var mode = ircData[3];
-                                Fire_ChannelModeSet(new ModeSetEventArgs(channel, from, to, mode));
+                                if (ircData[0].Contains("!"))
+                                {
+                                    from = ircData[0].Substring(1, ircData[0].IndexOf("!", StringComparison.Ordinal) - 1);
+                                }
+                                else
+                                {
+                                    from = ircData[0].Substring(1);
+                                }
+                                Fire_ChannelModeSet(new ModeSetEventArgs(channel, from, ircData[4], ircData[3]));
                             }
                         }
 
@@ -640,106 +648,118 @@ namespace stNet
                     }
                 case "KICK": // some kicked command
                     {
-                        var channel = ircData[2];
-                        var user = ircData[0].Substring(1, ircData[0].IndexOf("!", StringComparison.Ordinal) - 1);
-                        string message = ((ircData.Length >= 6) ? JoinArray(ircData, 5) : String.Empty);
+                        if (ircData.Length >= 3)
+                        {
+                            var channel = ircData[2];
+                            var user = ircData[0].Substring(1, ircData[0].IndexOf("!", StringComparison.Ordinal) - 1);
+                            string message = ((ircData.Length >= 6) ? JoinArray(ircData, 5) : String.Empty);
 
-                        Fire_UserKick(
-                            new UserKickEventArgs(
-                                channel,
-                                user,
-                                message
-                            )
-                        );
-                        if ((!this._kickrespawn) || (!this._nick.Equals(ircData[3])))
-                        {
-                            break;
-                        }
-                        if (this.iLog != null)
-                        {
-                            this.iLog.LogInfo(
-                                string.Format(
-                                    IrcClient.clasName,
-                                    "KICKED: " + channel + " from user '" + user + "'" +
-                                    ((string.IsNullOrWhiteSpace(message)) ? "" : " -> '" + JoinArray(ircData, 5) + "'")
+                            Fire_UserKick(
+                                new UserKickEventArgs(
+                                    channel,
+                                    user,
+                                    message
                                 )
                             );
-                        }
-                        stTimerWait tw = new stTimerWait();
-                        lock (tw)
-                        {
-                            tw.timer = new Timer((cbo) =>
+                            if ((!this._kickrespawn) || (!this._nick.Equals(ircData[3])))
                             {
-                                this.JoinChannel(this._ircchannel);
-                                this.SendMessage(
-                                    channel,
+                                break;
+                            }
+                            if (this.iLog != null)
+                            {
+                                this.iLog.LogInfo(
                                     string.Format(
-                                        Properties.Resources.IRCKickMessage,
-                                        user
+                                        IrcClient.clasName,
+                                        "KICKED: " + channel + " from user '" + user + "'" +
+                                        ((string.IsNullOrWhiteSpace(message)) ? "" : " -> '" + JoinArray(ircData, 5) + "'")
                                     )
                                 );
-                                lock (cbo)
+                            }
+                            stTimerWait tw = new stTimerWait();
+                            lock (tw)
+                            {
+                                tw.timer = new Timer((cbo) =>
                                 {
-                                    ((stTimerWait)cbo).Dispose();
-                                }
-                            }, tw, 1000, -1);
+                                    this.JoinChannel(this._ircchannel);
+                                    this.SendMessage(
+                                        channel,
+                                        string.Format(
+                                            Properties.Resources.IRCKickMessage,
+                                            user
+                                        )
+                                    );
+                                    lock (cbo)
+                                    {
+                                        ((stTimerWait)cbo).Dispose();
+                                    }
+                                }, tw, 1000, -1);
+                            }
                         }
                         break;
                     }
                 case "NICK": // someone changed their nick
                     {
-                        var oldNick = ircData[0].Substring(1, ircData[0].IndexOf("!", StringComparison.Ordinal) - 1);
-                        var newNick = JoinArray(ircData, 3);
-
-                        Fire_NickChanged(new UserNickChangedEventArgs(oldNick, newNick));
+                        if (ircData.Length >= 3)
+                        {
+                            var oldNick = ircData[0].Substring(1, ircData[0].IndexOf("!", StringComparison.Ordinal) - 1);
+                            var newNick = JoinArray(ircData, 3);
+                            Fire_NickChanged(new UserNickChangedEventArgs(oldNick, newNick));
+                        }
                         break;
                     }
                 case "NOTICE": // someone sent a notice
                     {
-                        var from = ircData[0];
-                        var message = JoinArray(ircData, 3);
-                        if (from.Contains("!"))
+                        if (ircData.Length >= 3)
                         {
-                            from = from.Substring(1, ircData[0].IndexOf('!') - 1);
-                            Fire_NoticeMessage(new NoticeMessageEventArgs(from, message));
-                        }
-                        else
-                        {
-                            Fire_NoticeMessage(new NoticeMessageEventArgs(_server, message));
+                            var from = ircData[0];
+                            var message = JoinArray(ircData, 3);
+                            if (from.Contains("!"))
+                            {
+                                from = from.Substring(1, ircData[0].IndexOf('!') - 1);
+                                Fire_NoticeMessage(new NoticeMessageEventArgs(from, message));
+                            }
+                            else
+                            {
+                                Fire_NoticeMessage(new NoticeMessageEventArgs(_server, message));
+                            }
                         }
                         break;
                     }
                 case "PRIVMSG": // message was sent to the channel or as private
                     {
-                        var from = ircData[0].Substring(1, ircData[0].IndexOf('!') - 1);
-                        var to = ircData[2];
-                        var message = JoinArray(ircData, 3);
+                        if (ircData.Length >= 3)
+                        {
+                            var from = ircData[0].Substring(1, ircData[0].IndexOf('!') - 1);
+                            var to = ircData[2];
+                            var message = JoinArray(ircData, 3);
 
-                        // if it's a private message
-                        if (String.Equals(to, _nick, StringComparison.CurrentCultureIgnoreCase))
-                        {
-                            Fire_PrivateMessage(new PrivateMessageEventArgs(from, message));
-                        }
-                        else
-                        {
-                            Fire_ChannelMessage(new ChannelMessageEventArgs(to, from, message));
+                            // if it's a private message
+                            if (String.Equals(to, _nick, StringComparison.CurrentCultureIgnoreCase))
+                            {
+                                Fire_PrivateMessage(new PrivateMessageEventArgs(from, message));
+                            }
+                            else
+                            {
+                                Fire_ChannelMessage(new ChannelMessageEventArgs(to, from, message));
+                            }
                         }
                         break;
                     }
                 case "PART":
                 case "QUIT":// someone left
                     {
-                        var channel = ircData[2];
-                        var user = ircData[0].Substring(1, data.IndexOf("!") - 1);
-
-                        Fire_UserLeft(new UserLeftEventArgs(channel, user));
-                        Send("NAMES " + ircData[2]);
+                        if (ircData.Length >= 3)
+                        {
+                            var channel = ircData[2];
+                            var user = ircData[0].Substring(1, data.IndexOf("!") - 1);
+                            Fire_UserLeft(new UserLeftEventArgs(channel, user));
+                            Send("NAMES " + ircData[2]);
+                        }
                         break;
                     }
                 default:
                     {
                         // still using this while debugging
-
                         if (ircData.Length > 3)
                         {
                             Fire_ServerMesssage(JoinArray(ircData, 3));

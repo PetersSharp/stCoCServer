@@ -4,18 +4,37 @@ using System;
 
 namespace stCoCAPI
 {
+    public class ClanMemberAuth : TablePropertyMapMethod
+    {
+        [TablePropertyMapAttribute("tag", typeof(System.String), true, false, true, "MapFilterTag")]
+        public string tag { get; set; }
+
+        [TablePropertyMapAttribute("passwd", "STRING")]
+        public string passwd { get; set; }
+
+        /// <summary>
+        /// <see cref="stCoCAPI.CoCAPI.CoCDataUtils.MapFilterTag"/>
+        /// </summary>
+        public static string MapFilterTag(string src)
+        {
+            return stCoCAPI.CoCAPI.CoCDataUtils.MapFilterTag(src);
+        }
+    }
     public class ClanMember : TablePropertyMapMethod
     {
-        [TablePropertyMapAttribute("status", "INTEGER", null)]
+        [TablePropertyMapAttribute("idx", "INTEGER", true, true)]
+        public int idx { get; set; }
+
+        [TablePropertyMapAttribute("status", "INTEGER")]
         public int status { get; set; }
 
-        [TablePropertyMapAttribute("syear", "INTEGER", null)]
+        [TablePropertyMapAttribute("syear", "INTEGER")]
         public int year { get; set; }
 
-        [TablePropertyMapAttribute("smonth", "INTEGER", null)]
+        [TablePropertyMapAttribute("smonth", "INTEGER")]
         public int season { get; set; }
 
-        [TablePropertyMapAttribute("tag", typeof(System.String), true, "MapFilterTag")]
+        [TablePropertyMapAttribute("tag", typeof(System.String), "MapFilterTag")]
         public string tag { get; set; }
 
         [TablePropertyMapAttribute("name")]
@@ -48,16 +67,16 @@ namespace stCoCAPI
         [TablePropertyMapAttribute("offset", typeof(System.Double))]
         public double ratio { get; set; }
 
-        [TablePropertyMapAttribute("note", "STRING", null)]
+        [TablePropertyMapAttribute("note", "STRING")]
         public string note { get; set; }
 
-        [TablePropertyMapAttribute("warstatus", "STRING", null)]
+        [TablePropertyMapAttribute("warstatus", "STRING")]
         public string warstatus { get; set; }
 
-        [TablePropertyMapAttribute("dtin", "DATETIME", null)]
+        [TablePropertyMapAttribute("dtin", "DATETIME")]
         public string dtin { get; set; }
 
-        [TablePropertyMapAttribute("dtout", "DATETIME", null)]
+        [TablePropertyMapAttribute("dtout", "DATETIME")]
         public string dtout { get; set; }
 
         /// <summary>
@@ -89,7 +108,7 @@ namespace stCoCAPI
     }
     public class ClanInfo : TablePropertyMapMethod
     {
-        [TablePropertyMapAttribute("tag", typeof(System.String), true, "MapFilterTag")]
+        [TablePropertyMapAttribute("tag", typeof(System.String), true, false, true, "MapFilterTag")]
         public string tag { get; set; }
 
         [TablePropertyMapAttribute("name", typeof(System.String))]
@@ -101,13 +120,13 @@ namespace stCoCAPI
         [TablePropertyMapAttribute("description", typeof(System.String))]
         public string desc { get; set; }
 
-        [TablePropertyMapAttribute("locid", "INTEGER", null)]
+        [TablePropertyMapAttribute("locid", "INTEGER")]
         public int locid { get; set; }
 
-        [TablePropertyMapAttribute("locname", "STRING", null)]
+        [TablePropertyMapAttribute("locname", typeof(System.String))]
         public string locname { get; set; }
 
-        [TablePropertyMapAttribute("locctry", "STRING", null)]
+        [TablePropertyMapAttribute("locctry", typeof(System.String))]
         public string locctry { get; set; }
 
         [TablePropertyMapAttribute("clanLevel")]
@@ -137,7 +156,7 @@ namespace stCoCAPI
         [TablePropertyMapAttribute("small", typeof(System.String), "MapFilterImageIco")]
         public string ico { get; set; }
 
-        [TablePropertyMapAttribute("dtup", "DATETIME", null)]
+        [TablePropertyMapAttribute("dtup", "DATETIME")]
         public string dtup { get; set; }
 
         /// <summary>
@@ -176,7 +195,7 @@ namespace stCoCAPI
     }
     public class WarLog : TablePropertyMapMethod
     {
-        [TablePropertyMapAttribute("endTime", typeof(System.String), "DATETIME", true, true, "MapFilterDateTime")]
+        [TablePropertyMapAttribute("endTime", typeof(System.String), "DATETIME", true, false, true, "MapFilterDateTime")]
         public string dtend { get; set; }
 
         [TablePropertyMapAttribute("result", typeof(System.String))]
@@ -264,7 +283,7 @@ namespace stCoCAPI
     }
     public class AllLeague : TablePropertyMapMethod
     {
-        [TablePropertyMapAttribute("id", typeof(System.Int32), true, true)]
+        [TablePropertyMapAttribute("id", typeof(System.Int32), true, false, true)]
         public int id { get; set; }
 
         [TablePropertyMapAttribute("name", typeof(System.String))]
@@ -303,7 +322,7 @@ namespace stCoCAPI
     }
     public class AllLocations : TablePropertyMapMethod
     {
-        [TablePropertyMapAttribute("id", typeof(System.Int32), true, true)]
+        [TablePropertyMapAttribute("id", typeof(System.Int32), true, false, true)]
         public int id { get; set; }
 
         [TablePropertyMapAttribute("name", typeof(System.String))]
@@ -399,11 +418,20 @@ namespace stCoCAPI
             "COCBADGEICO(WarLog.ico) as opico " +
             "FROM WarLog " +
             "INNER JOIN ClanInfo ON ClanInfo.tag = WarLog.ctag;";
+        const string ViewClanMemberAuth =
+            "CREATE VIEW clanmembersauth AS SELECT " +
+            "ClanMember.season AS season, " +
+            "ClanMember.nik AS nik, " +
+            "ClanMember.tag AS tag, " +
+            "ClanMemberAuth.passwd AS passwd " +
+            "FROM ClanMember " +
+            "INNER JOIN ClanMemberAuth ON ClanMemberAuth.tag = ClanMember.tag;";
 
         public static readonly string[] AllView = new string[] {
+            SQLViewRequest.ViewWarLog,
             SQLViewRequest.ViewClanInfo,
             SQLViewRequest.ViewClanMember,
-            SQLViewRequest.ViewWarLog
+            SQLViewRequest.ViewClanMemberAuth
         };
 
     }

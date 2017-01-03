@@ -75,6 +75,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="stCoCAPI.cs" />
+    <Compile Include="stCoCInformer.cs" />
     <Compile Include="stCoCNotify.cs" />
     <Compile Include="stCoCNotiyData.cs" />
     <Compile Include="stCoCRrd.cs" />
@@ -120,6 +121,165 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\RrdBgMemberChangeDonationSend.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MembersTmpl_15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MembersTmpl_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MembersTmpl_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MembersTmpl_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MembersTmpl_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MembersTmpl_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MembersTmpl_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MembersTmpl_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MembersTmpl_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MembersTmpl_8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MembersTmpl_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MembersTmpl_10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MembersTmpl_11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MembersTmpl_12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MembersTmpl_13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MembersTmpl_14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bgClanTemplate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bgTemplate500Error500x100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bgTemplate404Error300x180.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bgTemplate404Error500x100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bgTemplate500Error300x180.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bgMemberTemplate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bgClanTemplate8bpp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bgMemberTemplate8bpp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_23.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ClanTmpl_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bgTemplate404MembrsError300x180.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bgTemplate500NoSupportError500x100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bgTemplate500NoSupportError300x180.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

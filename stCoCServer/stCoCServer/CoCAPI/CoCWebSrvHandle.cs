@@ -4,31 +4,36 @@ namespace stCoCServer.CoCAPI
 {
     public static class CoCWebSrvHandleSettings
     {
-        private const string constFileWebRquest = "FileWebRquest";
-        private const string constTemplateWebRquest = "TemplateWebRquest";
-        private const string constJsonWebRquest = "JsonWebRquest";
-        private const string constServerSentEventWebRquest = "ServerSentEventWebRquest";
+        private const string constFileWebRequest = "FileWebRequest";
+        private const string constTemplateWebRequest = "TemplateWebRequest";
+        private const string constJsonWebRequest = "JsonWebRequest";
+        private const string constServerSentEventWebRequest = "ServerSentEventWebRequest";
+        private const string constInformerWebRequest = "InformerWebRequest";
 
         public static Action<string, object, object> HttpHandleAction(stNet.WebHandleTypes htype)
         {
             switch (htype)
             {
                 default:
-                case stNet.WebHandleTypes.FileWebRquest:
+                case stNet.WebHandleTypes.FileWebRequest:
                     {
-                        return CoCWebSrv.FileWebRquest;
+                        return CoCWebSrv.FileWebRequest;
                     }
-                case stNet.WebHandleTypes.TemplateWebRquest:
+                case stNet.WebHandleTypes.TemplateWebRequest:
                     {
-                        return CoCWebSrv.TemplateWebRquest;
+                        return CoCWebSrv.TemplateWebRequest;
                     }
-                case stNet.WebHandleTypes.JsonWebRquest:
+                case stNet.WebHandleTypes.JsonWebRequest:
                     {
-                        return CoCWebSrv.JsonWebRquest;
+                        return CoCWebSrv.JsonWebRequest;
                     }
-                case stNet.WebHandleTypes.ServerSentEventWebRquest:
+                case stNet.WebHandleTypes.ServerSentEventWebRequest:
                     {
-                        return CoCWebSrv.SseWebRquest;
+                        return CoCWebSrv.SseWebRequest;
+                    }
+                case stNet.WebHandleTypes.InformerWebRequest:
+                    {
+                        return CoCWebSrv.InformerWebRequest;
                     }
             }
         }
@@ -37,21 +42,25 @@ namespace stCoCServer.CoCAPI
             switch (stype)
             {
                 default:
-                case constFileWebRquest:
+                case constFileWebRequest:
                     {
-                        return CoCWebSrv.FileWebRquest;
+                        return CoCWebSrv.FileWebRequest;
                     }
-                case constTemplateWebRquest:
+                case constTemplateWebRequest:
                     {
-                        return CoCWebSrv.TemplateWebRquest;
+                        return CoCWebSrv.TemplateWebRequest;
                     }
-                case constJsonWebRquest:
+                case constJsonWebRequest:
                     {
-                        return CoCWebSrv.JsonWebRquest;
+                        return CoCWebSrv.JsonWebRequest;
                     }
-                case constServerSentEventWebRquest:
+                case constServerSentEventWebRequest:
                     {
-                        return CoCWebSrv.SseWebRquest;
+                        return CoCWebSrv.SseWebRequest;
+                    }
+                case constInformerWebRequest:
+                    {
+                        return CoCWebSrv.InformerWebRequest;
                     }
             }
         }
@@ -60,19 +69,23 @@ namespace stCoCServer.CoCAPI
             switch (htype)
             {
                 default:
-                case stNet.WebHandleTypes.FileWebRquest:
+                case stNet.WebHandleTypes.FileWebRequest:
                     {
                         return true;
                     }
-                case stNet.WebHandleTypes.TemplateWebRquest:
+                case stNet.WebHandleTypes.TemplateWebRequest:
                     {
                         return false;
                     }
-                case stNet.WebHandleTypes.JsonWebRquest:
+                case stNet.WebHandleTypes.JsonWebRequest:
                     {
                         return false;
                     }
-                case stNet.WebHandleTypes.ServerSentEventWebRquest:
+                case stNet.WebHandleTypes.ServerSentEventWebRequest:
+                    {
+                        return false;
+                    }
+                case stNet.WebHandleTypes.InformerWebRequest:
                     {
                         return false;
                     }
@@ -83,19 +96,23 @@ namespace stCoCServer.CoCAPI
             switch (stype)
             {
                 default:
-                case constFileWebRquest:
+                case constFileWebRequest:
                     {
                         return true;
                     }
-                case constTemplateWebRquest:
+                case constTemplateWebRequest:
                     {
                         return false;
                     }
-                case constJsonWebRquest:
+                case constJsonWebRequest:
                     {
                         return false;
                     }
-                case constServerSentEventWebRquest:
+                case constServerSentEventWebRequest:
+                    {
+                        return false;
+                    }
+                case constInformerWebRequest:
                     {
                         return false;
                     }
@@ -106,21 +123,25 @@ namespace stCoCServer.CoCAPI
             switch (stype)
             {
                 default:
-                case constFileWebRquest:
+                case constFileWebRequest:
                     {
-                        return stNet.WebHandleTypes.FileWebRquest;
+                        return stNet.WebHandleTypes.FileWebRequest;
                     }
-                case constTemplateWebRquest:
+                case constTemplateWebRequest:
                     {
-                        return stNet.WebHandleTypes.TemplateWebRquest;
+                        return stNet.WebHandleTypes.TemplateWebRequest;
                     }
-                case constJsonWebRquest:
+                case constJsonWebRequest:
                     {
-                        return stNet.WebHandleTypes.JsonWebRquest;
+                        return stNet.WebHandleTypes.JsonWebRequest;
                     }
-                case constServerSentEventWebRquest:
+                case constServerSentEventWebRequest:
                     {
-                        return stNet.WebHandleTypes.ServerSentEventWebRquest;
+                        return stNet.WebHandleTypes.ServerSentEventWebRequest;
+                    }
+                case constInformerWebRequest:
+                    {
+                        return stNet.WebHandleTypes.InformerWebRequest;
                     }
             }
         }

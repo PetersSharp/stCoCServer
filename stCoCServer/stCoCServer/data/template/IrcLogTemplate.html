@@ -23,7 +23,7 @@
     	<!--
 		// Генератор: Microsoft.VisualStudio.TextTemplating.VSHost.TextTemplatingService
 		// Темплейт: {{GENERATOR}}
-		// Время генерации: 12/28/2016 20:09:54
+		// Время генерации: 01/13/2017 23:36:29
 		// Language to DataTables: https://datatables.net/plug-ins/i18n/
     	-->
 	<style>
@@ -102,22 +102,50 @@
 
 	{{INSERTHTMLDATA}}
 
-
         </div>
       </div>
     </div>
-	
+
+    <div style="min-height:80px"></div>
     <div class="navbar navbar-default bg-faded navbar-fixed-bottom">
 	<div class="container">
-		<p class="navbar-text pull-left"><span data-localize="notifyname">Notify</span>:&nbsp;<a href="/notify/rss/" target="_blank">RSS</a>&nbsp;|&nbsp;<a href="/notify/json/" target="_blank">JSON</a></p>
-		<p class="navbar-text pull-left"><span data-localize="srvgen">Generated</span>:&nbsp;<a href="#" target="_blank"><span id="srvgen">stCoCServer v.1.0.1.362</span></a></p>
+		<p class="navbar-text pull-left">
+			<span data-localize="notifyname">Notify</span>:&nbsp;
+			<a href="/notify/rss/" target="_blank">RSS</a>&nbsp;|&nbsp;
+			<a href="/notify/json/" target="_blank">JSON</a>&nbsp;|&nbsp;
+			<a href="/assets/html/ClanInformer.html" target="_blank">INF</a>
+		</p>
+		<p class="navbar-text pull-left"><span data-localize="srvgentitle0" id="srvgentitle">Generated</span>:&nbsp;<span id="srvgen">stCoCServer v.1.0.1.378</span></p>
 		<p class="navbar-text pull-right">
 			<span class="glyphicon glyphicon-calendar"></span>&nbsp;
 			<span data-localize="srvdate">Date</span>: <span id="srvdate">{{DATE}}</span>
+		</p>
+		<p class="navbar-text pull-right">
+			<span id="socialb"></span>
 		</p>
 	</div>
    </div>
 
 </body>
 </html>
+
+<script type='text/javascript' charset='utf8'>
+	$(document).ready(function() {
+		var thishtml =  $(this);
+		cocGitHubUrl = 'https://api.github.com/repos/PetersSharp/stCoCServer/releases/latest';
+		new SocialButtons({
+			services: ['vkontakte', 'googleplus', 'odnoklassniki', 'lj', 'moimir', 'twitter'],
+			id: 'socialb',
+			counter: false,
+			buttonSize: 'small',
+			components: ['icon'],
+			url: $(location).attr('href'),
+			title: thishtml.attr('title'),
+			image: $(location).attr('href') + $.fn.CoCInformerRandomImage()
+		});
+		$('#srvgen').on('click', function() {
+			$(this).GetLatestRelease();
+		});
+	});
+</script>
 

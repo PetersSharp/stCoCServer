@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="generator" content="stCoCServer v.1.0.1.362"/>
+	<meta name="generator" content="stCoCServer v.1.0.1.378"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="robots" content="noindex,nofollow"/>
 	<meta name="keywords" content="War,Wariors,Donation,CoC,Clash,Clan,Clans,RU"/>
@@ -22,8 +22,8 @@
 	<![endif]-->
     	<!--
 		// Генератор: Microsoft.VisualStudio.TextTemplating.VSHost.TextTemplatingService
-		// Темплейт: stCoCServer v.1.0.1.362
-		// Время генерации: 12/28/2016 20:09:54
+		// Темплейт: stCoCServer v.1.0.1.378
+		// Время генерации: 01/13/2017 23:36:29
 		// Language to DataTables: https://datatables.net/plug-ins/i18n/
     	-->
 	<style>
@@ -94,6 +94,8 @@
 	   <span id="piesort3" data-action="ratio" data-localize="donationratio">Ratio</span>&nbsp;|&nbsp;
 	   <span id="piesort4" data-action="total" data-localize="donationtotal">Total</span>
 	</div>
+	<br/>
+	<center>
 	<div id="statCarousel" class="carousel slide" data-ride="carousel">
 	  <ol class="carousel-indicators">
 	    <li data-target="#statCarousel" data-slide-to="0" class="active"></li>
@@ -123,23 +125,52 @@
 	    <span class="sr-only">Next</span>
 	  </a>
 	</div>
-
+	</center>
 
         </div>
       </div>
     </div>
-	
+
+    <div style="min-height:80px"></div>
     <div class="navbar navbar-default bg-faded navbar-fixed-bottom">
 	<div class="container">
-		<p class="navbar-text pull-left"><span data-localize="notifyname">Notify</span>:&nbsp;<a href="/notify/rss/" target="_blank">RSS</a>&nbsp;|&nbsp;<a href="/notify/json/" target="_blank">JSON</a></p>
-		<p class="navbar-text pull-left"><span data-localize="srvgen">Generated</span>:&nbsp;<a href="#" target="_blank"><span id="srvgen">stCoCServer v.1.0.1.362</span></a></p>
+		<p class="navbar-text pull-left">
+			<span data-localize="notifyname">Notify</span>:&nbsp;
+			<a href="/notify/rss/" target="_blank">RSS</a>&nbsp;|&nbsp;
+			<a href="/notify/json/" target="_blank">JSON</a>&nbsp;|&nbsp;
+			<a href="/assets/html/ClanInformer.html" target="_blank">INF</a>
+		</p>
+		<p class="navbar-text pull-left"><span data-localize="srvgentitle0" id="srvgentitle">Generated</span>:&nbsp;<span id="srvgen">stCoCServer v.1.0.1.378</span></p>
 		<p class="navbar-text pull-right">
 			<span class="glyphicon glyphicon-calendar"></span>&nbsp;
-			<span data-localize="srvdate">Date</span>: <span id="srvdate">2016.12.28</span>
+			<span data-localize="srvdate">Date</span>: <span id="srvdate">2017.01.13</span>
+		</p>
+		<p class="navbar-text pull-right">
+			<span id="socialb"></span>
 		</p>
 	</div>
    </div>
 
 </body>
 </html>
+
+<script type='text/javascript' charset='utf8'>
+	$(document).ready(function() {
+		var thishtml =  $(this);
+		cocGitHubUrl = 'https://api.github.com/repos/PetersSharp/stCoCServer/releases/latest';
+		new SocialButtons({
+			services: ['vkontakte', 'googleplus', 'odnoklassniki', 'lj', 'moimir', 'twitter'],
+			id: 'socialb',
+			counter: false,
+			buttonSize: 'small',
+			components: ['icon'],
+			url: $(location).attr('href'),
+			title: thishtml.attr('title'),
+			image: $(location).attr('href') + $.fn.CoCInformerRandomImage()
+		});
+		$('#srvgen').on('click', function() {
+			$(this).GetLatestRelease();
+		});
+	});
+</script>
 

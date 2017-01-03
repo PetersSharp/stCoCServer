@@ -126,4 +126,31 @@
   <data name="GeoNotSupport" xml:space="preserve">
     <value>данные опции не поддерживаются в текущей версии</value>
   </data>
+  <data name="GeoBaseEmpty" xml:space="preserve">
+    <value>Записей в Geo базе не найдено</value>
+  </data>
+  <data name="GeoBaseLoad" xml:space="preserve">
+    <value>Загрузка Geo базы: {0}, пожалуйста, подождите..</value>
+  </data>
+  <data name="GeoBaseReLoadEnd" xml:space="preserve">
+    <value>Geo базе успешно перезагружена</value>
+  </data>
+  <data name="GeoBaseReLoadStart" xml:space="preserve">
+    <value>Обновление Geo базы {0}, пожалуйста, подождите..</value>
+  </data>
+  <data name="GeoMaxMindFileNotFound" xml:space="preserve">
+    <value>Geo база - источник MaxMind: файл не найден {0}</value>
+  </data>
+  <data name="GeoMaxMindListEmpty" xml:space="preserve">
+    <value>Geo база MaxMind - пустой список данных  '{0}'</value>
+  </data>
+  <data name="GeoPbASN" xml:space="preserve">
+    <value>     Синтаксический анализ данных GEO ASN:</value>
+  </data>
+  <data name="GeoPbMerge" xml:space="preserve">
+    <value>     Слияние данных ГЕО:</value>
+  </data>
+  <data name="GeoPbCountry" xml:space="preserve">
+    <value>     Анализировать данные страны GEO:</value>
+  </data>
 </root>

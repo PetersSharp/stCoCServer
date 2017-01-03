@@ -181,6 +181,7 @@ namespace stCoCServer
             };
             CoCServerMain.Conf.Irc.OnExceptionThrown += (o, e) =>
             {
+                stCore.stConsole.WriteHeader("IRC OnExceptionThrown");
                 CoCServerMain.PrnError(e.Exception.Message);
             };
 

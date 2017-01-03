@@ -463,6 +463,17 @@ namespace stCoCAPI
                 );
             }
 
+            private bool _EventFilterMemberTag(DataRow row)
+            {
+                if ((this._parent._cocFilterMemberTag == null) || (this._parent._cocFilterMemberTag.Count == 0))
+                {
+                    return false;
+                }
+                return this._parent._cocFilterMemberTag.Contains(
+                    Convert.ToString(row["tag"], CultureInfo.InvariantCulture)
+                );
+            }
+
             private string _EventSseSetupString()
             {
                 DataTable dt = SqliteConvertExtension.MapToDataTable<CoCNotifyEventSetup>();
@@ -982,6 +993,30 @@ namespace stCoCAPI
                                     }
                                 }
                             });
+                            if ((this._parent._isInformerStatic) && (this._parent._cocInformer != null))
+                            {
+                                try
+                                {
+                                    this._parent._cocInformer.CreateClanInformerAll(dt.Rows[0]);
+                                }
+#if DEBUG
+                                catch (Exception e)
+                                {
+                                    if (this._parent.isLogEnable)
+                                    {
+                                        this._parent._ilog.LogError(
+                                            string.Format(
+                                                Properties.Resources.CoCInformerError,
+                                                e.Message
+                                            )
+                                        );
+                                    }
+#else
+                                catch (Exception)
+                                {
+#endif
+                                }
+                            }
                             break;
                         }
                     case CoCEnum.CoCFmtReq.Warlog:
@@ -1000,10 +1035,18 @@ namespace stCoCAPI
                         {
                             foreach (DataRow addedRow in dt.Select(null, null, DataViewRowState.Added))
                             {
+                                if (this._EventFilterMemberTag(addedRow))
+                                {
+                                    continue;
+                                }
                                 this._EventToTable(CoCEnum.EventNotify.MemberNew, "nik", "level", addedRow, true);
                             }
                             foreach (DataRow updateRow in dt.Select(null, null, DataViewRowState.ModifiedCurrent))
                             {
+                                if (this._EventFilterMemberTag(updateRow))
+                                {
+                                    continue;
+                                }
                                 this._notifyTable.ForEach(notify =>
                                 {
                                     if (

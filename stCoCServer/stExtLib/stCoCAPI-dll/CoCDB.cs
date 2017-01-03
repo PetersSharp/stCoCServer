@@ -150,7 +150,7 @@ namespace stCoCAPI
                                     CoCDB.thisClass
                                 );
                             }
-                            if (cmd[1].Equals("info"))
+                            if ((cmd[1].Equals("info")) || (cmd[1].Equals("clan")))
                             {
                                 cReq = stCoCAPI.CoCAPI.CoCEnum.ClanTypeReq.Info;
                                 query = Properties.Settings.Default.DBSelectClanInfo;
@@ -199,7 +199,21 @@ namespace stCoCAPI
                                 }, " ",
                                 LogError);
                             }
-                            else if (cmd[1].Equals("player"))
+                            else if (cmd[1].Equals("random"))
+                            {
+                                cReq = stCoCAPI.CoCAPI.CoCEnum.ClanTypeReq.Player;
+                                query = CreateString.Build(
+                                    new string[] {
+                                    string.Format(
+                                        Properties.Settings.Default.DBSelectMember, 1
+                                    ),
+                                    CoCSeason.GetSeasonDateDB(idx, cmd),
+                                    CoCDB._GetHideTagSelect(hide),
+                                    Properties.Settings.Default.DBSelectMemberRand
+                                }, " ",
+                                LogError);
+                            }
+                            else if ((cmd[1].Equals("player")) || (cmd[1].Equals("member")))
                             {
                                 if (cmd.Length == 2)
                                 {
@@ -220,6 +234,7 @@ namespace stCoCAPI
                                         Properties.Settings.Default.DBSelectMember, 1
                                     ),
                                     CoCSeason.GetSeasonDateDB(idx, cmd),
+                                    CoCDB._GetHideTagSelect(hide),
                                     // add
                                     string.Format(
                                         Properties.Settings.Default.DBSelectMemberTag,

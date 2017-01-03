@@ -89,7 +89,8 @@ namespace stCoCAPI
                 Locations,
                 ClanRank,
                 Badges,
-                Flags
+                Flags,
+                Auth
             };
             /// <summary>
             /// Clan Badge size type

@@ -26,7 +26,9 @@ namespace stCoCAPI
             private readonly object _lock = new object();
             private const string _jsondir = "jsonin";
             private const string _jsonext = ".json";
-            
+
+            #region Handle Map
+
             private class CoCInstance
             {
                 public Action<stCoCAPI.CoCAPI.CoCEnum.CoCFmtReq, string> Update = null;
@@ -41,6 +43,7 @@ namespace stCoCAPI
                 { stCoCAPI.CoCAPI.CoCEnum.CoCFmtReq.Leagues, null },
                 { stCoCAPI.CoCAPI.CoCEnum.CoCFmtReq.Locations, null },
                 { stCoCAPI.CoCAPI.CoCEnum.CoCFmtReq.Warlog, null },
+                { stCoCAPI.CoCAPI.CoCEnum.CoCFmtReq.Auth, null },
                 { stCoCAPI.CoCAPI.CoCEnum.CoCFmtReq.None, null }
             };
 
@@ -76,7 +79,17 @@ namespace stCoCAPI
                         Update = this._updateWarlog,
                         Create = SqliteConvertExtension.MapToSQLCreateTable<WarLog>
                     };
+                this._handleMap[stCoCAPI.CoCAPI.CoCEnum.CoCFmtReq.Auth] =
+                    new CoCInstance()
+                    {
+                        Update = null,
+                        Create = SqliteConvertExtension.MapToSQLCreateTable<ClanMemberAuth>
+                    };
             }
+
+            #endregion
+
+            #region Constructor/Destructor
 
             public CoCProcess(CoCAPI api)
             {
@@ -104,16 +117,18 @@ namespace stCoCAPI
             }
             private void _curlClear()
             {
-                if (_ccl != null)
+                if (this._ccl != null)
                 {
                     try
                     {
-                        _ccl.Dispose();
+                        this._ccl.Dispose();
                     }
                     catch (Exception) { }
-                    _ccl = null;
+                    this._ccl = null;
                 }
             }
+
+            #endregion
 
             public void CheckTable()
             {
@@ -213,6 +228,7 @@ namespace stCoCAPI
                                 throw e;
                             }
                             handl.Value.Update(handl.Key, jsonOut);
+                            jsonOut = String.Empty;
                         }
                     }
                     this._parent._cocRrd.UpdateRrd();

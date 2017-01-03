@@ -1,5 +1,7 @@
 ﻿#if DEBUG
-//#define DEBUG_HTTPResorceLocation
+// #define DEBUG_StackTrace
+// #define DEBUG_ExtendedError
+// #define DEBUG_HTTPResorceLocation
 #endif
 
 using System;
@@ -19,6 +21,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Net;
 using System.Resources;
+using System.Diagnostics;
 
 namespace stCoCServer
 {
@@ -106,7 +109,7 @@ namespace stCoCServer
             CoCServerMain.PrnInfo(
                 string.Format(
                     Properties.Resources.PrnRun,
-                    Thread.CurrentThread.Name,
+                    stApp.AppInformation.GetAppVersion(),
                     DateTime.Now
                 )
             );
@@ -252,7 +255,9 @@ namespace stCoCServer
                     CoCServerMain.Conf.Opt.SYSROOTPath.value,
                     iLog
                 );
+                CoCServerMain.Conf.Api.FilterMemberTag = CoCServerMain.Conf.Opt.SQLDBFilterMemberTag.collection;
                 CoCServerMain.Conf.Api.DefaultLang = CoCServerMain.Conf.Opt.WEBLANGDefault.value;
+                CoCServerMain.Conf.Api.InformerStaticEnable = CoCServerMain.Conf.Opt.CLANInformerStaticEnable.bval;
                 CoCServerMain.Conf.Api.Start(CoCServerMain.Conf.Opt.SQLDBUpdateTime.num);
                 CoCServerMain.PrnInfo(Properties.Resources.serviceCoCApiStarted);
 
@@ -281,9 +286,7 @@ namespace stCoCServer
                     CoCServerMain.Conf.HttpSrv.isMinify = true;
                     CoCServerMain.Conf.HttpSrv.wUserData = Conf;
                     CoCServerMain.Conf.HttpSrv.DefaultLang = CoCServerMain.Conf.Opt.WEBLANGDefault.value;
-//#if DEBUG
-                    CoCServerMain.Conf.HttpSrv.wBadRequestDebugOut = true;
-//#endif
+                    CoCServerMain.Conf.HttpSrv.wBadRequestDebugOut = CoCServerMain.Conf.Opt.WEBRequestDebugEnable.bval;
 
                     for (int i = 0; i < BuildConfig.numFilters; i++)
                     {
@@ -381,7 +384,7 @@ namespace stCoCServer
             catch (Exception e)
             {
                 CoCServerMain.PrnError(e.Message);
-#if DEBUG
+#if DEBUG_ExtendedError
                 stConsole.WriteHeader(e.ToString());
 #endif
                 if (CoCServerMain.CheckConf)
@@ -504,6 +507,38 @@ namespace stCoCServer
             if ((CoCServerMain.CheckOpt) && (!CoCServerMain.PrnLogFilter(msg)))
             {
                 return;
+            }
+            if (CoCServerMain.Opt.LOGDebug.bval)
+            {
+                if (stRuntime.isRunTime())
+                {
+                    stConsole.WriteHeader(Environment.StackTrace.ToString());
+                }
+                else
+                {
+#if DEBUG_StackTrace
+                    stConsole.WriteHeader(Environment.StackTrace.ToString());
+#endif
+                    StackFrame CallStack = null;
+                    for (int i = 1; i < 10; i++)
+                    {
+                        CallStack = new StackFrame(i, true);
+                        if ((CallStack != null) && (!string.IsNullOrWhiteSpace(CallStack.GetFileName())))
+                        {
+                            msg += string.Format(
+                                "{0}{1}[{2}:{3}]",
+                                Environment.NewLine,
+                                stConsole.GetTabString(2, i),
+                                Path.GetFileName(CallStack.GetFileName()),
+                                CallStack.GetFileLineNumber()
+                            );
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
             }
             stConsole.MessageError(
                 Properties.Resources.PrnError, msg,

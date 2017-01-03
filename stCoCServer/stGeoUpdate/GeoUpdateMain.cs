@@ -9,7 +9,7 @@ using System.Globalization;
 
 namespace stGeoUpdate
 {
-    class Program
+    class GeoUpdateMain
     {
         private static string rootAppPath = String.Empty;
         private static bool downloadComplete = false;
@@ -24,7 +24,7 @@ namespace stGeoUpdate
             stGeo.GeoFilter _geof = null;
             stCore.IniConfig.IniFile _iniFile = null;
             stCore.IMessage _iLog = null;
-            Program.rootAppPath = stCore.IOBaseAssembly.BaseDataDir();
+            GeoUpdateMain.rootAppPath = stCore.IOBaseAssembly.BaseDataDir();
 
             Thread.CurrentThread.Name = stCore.IOBaseAssembly.BaseName(Assembly.GetExecutingAssembly());
 
@@ -33,10 +33,10 @@ namespace stGeoUpdate
                new CommandLine.Switch("geodir", val => _geoPath = string.Join("", val), "-d"),
                new CommandLine.Switch("clear",  val => _isRemove = true, "-c"),
                new CommandLine.Switch("create", val => _isCreate = true, "-a"),
-               new CommandLine.Switch("quiet",  val => Program.isQuiet = true, "-q")
+               new CommandLine.Switch("quiet",  val => GeoUpdateMain.isQuiet = true, "-q")
             );
 
-            if (Program.isQuiet)
+            if (GeoUpdateMain.isQuiet)
             {
                 _iLog = new IMessage();
             }
@@ -44,8 +44,8 @@ namespace stGeoUpdate
             {
                 _iLog = new IMessage()
                 {
-                    LogInfo = Program.PrnInfo,
-                    LogError = Program.PrnError,
+                    LogInfo = GeoUpdateMain.PrnInfo,
+                    LogError = GeoUpdateMain.PrnError,
                     ProgressBar = stConsole.ProgressTxt
                 };
                 string AppDesc = IOBaseAssembly.BaseDescription(Assembly.GetExecutingAssembly());
@@ -67,7 +67,7 @@ namespace stGeoUpdate
                     try
                     {
                         string iniPath =  Path.Combine(
-                                Program.rootAppPath,
+                                GeoUpdateMain.rootAppPath,
                                 "stCoCServer.ini"
                         );
                         if (!File.Exists(iniPath))
@@ -114,7 +114,7 @@ namespace stGeoUpdate
                     catch (Exception e)
                     {
                         _geoPath = Path.Combine(
-                                Program.rootAppPath,
+                                GeoUpdateMain.rootAppPath,
                                 "geo"
                         );
                         if (!Directory.Exists(_geoPath))
@@ -143,7 +143,7 @@ namespace stGeoUpdate
                     }
                 }
 
-                string[] allFiles = Program.MakeFileList(_geoPath);
+                string[] allFiles = GeoUpdateMain.MakeFileList(_geoPath);
 
                 if (_isRemove)
                 {
@@ -160,7 +160,7 @@ namespace stGeoUpdate
                     (!File.Exists(allFiles[1]))
                    )
                 {
-                    if (!Program.GetUrlToFile(
+                    if (!GeoUpdateMain.GetUrlToFile(
                             stGeo.MaxMindUtil.MaxMindDownloadASNURL,
                             stGeo.MaxMindUtil.GetASNZipFileName,
                             _geoPath,
@@ -175,7 +175,7 @@ namespace stGeoUpdate
                     (!File.Exists(allFiles[3]))
                    )
                 {
-                    if (!Program.GetUrlToFile(
+                    if (!GeoUpdateMain.GetUrlToFile(
                             stGeo.MaxMindUtil.MaxMindDownloadCountryURL,
                             stGeo.MaxMindUtil.GetCountryZipFileName,
                             _geoPath,
@@ -200,11 +200,11 @@ namespace stGeoUpdate
 
                 if (!_geof.InitBase(_geoPath, false, stConsole.GetCursorAlign(2)))
                 {
-                    Program.PrnError(Properties.Resources.GeoClassInitError);
+                    GeoUpdateMain.PrnError(Properties.Resources.GeoClassInitError);
                 }
                 else
                 {
-                    Program.PrnInfo(
+                    GeoUpdateMain.PrnInfo(
                         string.Format(
                             Properties.Resources.GeoComplette,
                             _geoPath
@@ -214,7 +214,7 @@ namespace stGeoUpdate
             }
             catch (Exception e)
             {
-                Program.PrnError(e.Message);
+                GeoUpdateMain.PrnError(e.Message);
             }
             finally
             {
@@ -239,7 +239,7 @@ namespace stGeoUpdate
                 }
                 catch (Exception e)
                 {
-                    Program.PrnError(e.Message);
+                    GeoUpdateMain.PrnError(e.Message);
                 }
             }
 
@@ -298,7 +298,7 @@ namespace stGeoUpdate
                     path,
                     file
                 );
-            Program.downloadComplete = false;
+            GeoUpdateMain.downloadComplete = false;
             var cursor = stConsole.WriteGetPosition(
                 string.Format(
                     Properties.Resources.GeoFileDownload,
@@ -318,10 +318,10 @@ namespace stGeoUpdate
                 };
                 wcl.DownloadFileCompleted += (s, e) =>
                 {
-                    Program.downloadComplete = true;
+                    GeoUpdateMain.downloadComplete = true;
                 };
                 wcl.DownloadFileAsync(new Uri(url + file), geoPath, null);
-                while (!Program.downloadComplete)
+                while (!GeoUpdateMain.downloadComplete)
                 {
                     Thread.Sleep(1000);
                 }
@@ -330,7 +330,7 @@ namespace stGeoUpdate
             }
             catch (Exception e)
             {
-                Program.PrnError(e.Message);
+                GeoUpdateMain.PrnError(e.Message);
                 if (!File.Exists(geoPath))
                 {
                     File.Delete(geoPath);
@@ -352,11 +352,11 @@ namespace stGeoUpdate
 
         public static void PrnInfo(string msg)
         {
-            stConsole.MessageInfo(Properties.Resources.PrnOK, msg, ((!Program.isQuiet) ? true : false));
+            stConsole.MessageInfo(Properties.Resources.PrnOK, msg, ((!GeoUpdateMain.isQuiet) ? true : false));
         }
         public static void PrnError(string msg)
         {
-            stConsole.MessageError(Properties.Resources.PrnError, msg, ((!Program.isQuiet) ? true : false));
+            stConsole.MessageError(Properties.Resources.PrnError, msg, ((!GeoUpdateMain.isQuiet) ? true : false));
         }
 
     #endregion

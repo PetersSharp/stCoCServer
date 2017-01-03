@@ -330,4 +330,19 @@
   <data name="fmtRrdClanChangeWarWinMin" xml:space="preserve">
     <value>Выигранные войны на начало периода: @0@r</value>
   </data>
+  <data name="fmtNotifyRssItemTitle" xml:space="preserve">
+    <value>{0} {1}</value>
+  </data>
+  <data name="CoCNotifyDisposeError" xml:space="preserve">
+    <value>Уведомления - отладка, клиенты: {0}/удаленные: {1}</value>
+  </data>
+  <data name="CoCNotifyProcessDebug" xml:space="preserve">
+    <value>Уведомления - отладка, последний IP: {0}, {1} - {2}</value>
+  </data>
+  <data name="CoCNotifyProcessError" xml:space="preserve">
+    <value>Уведомления - отладка, {0} ошибка: {1} - {2}</value>
+  </data>
+  <data name="CoCInformerError" xml:space="preserve">
+    <value>[Ошибка Информера]: {0}</value>
+  </data>
 </root>

@@ -124,7 +124,7 @@
     <value>source is not Json array</value>
   </data>
   <data name="ConvertErrorToDataTable" xml:space="preserve">
-    <value>errorp parsing Column name : {0} ({1})</value>
+    <value>error parsing Column name : {0} ({1})</value>
   </data>
   <data name="DBFunctionEmptyAttribute" xml:space="preserve">
     <value>SQLiteFunction doesn't have SQLiteFunctionAttribute</value>

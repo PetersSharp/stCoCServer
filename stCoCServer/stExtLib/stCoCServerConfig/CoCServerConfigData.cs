@@ -181,6 +181,7 @@ namespace stCoCServerConfig.CoCServerConfigData
 
         public OptionItem CLANTag { get; set; }
         public OptionItem CLANAPIKey { get; set; }
+        public OptionItem CLANInformerStaticEnable { get; set; }
 
         public OptionItem SQLDBPath { get; set; }
         public OptionItem SQLDBUri { get; set; }
@@ -190,11 +191,14 @@ namespace stCoCServerConfig.CoCServerConfigData
         public OptionItem WEBRootUri { get; set; }
         public OptionItem WEBRootPort { get; set; }
         public OptionItem WEBLANGDefault { get; set; }
+        public OptionItem WEBCacheEnable { get; set; }
+        public OptionItem WEBRequestDebugEnable { get; set; }
 
         public OptionItem LOGRemoteServerAddress { get; set; }
         public OptionItem LOGRemoteServerPort { get; set; }
         public OptionItem LOGRemoteServerEnable { get; set; }
         public OptionItem LOGDuplicateEntry { get; set; }
+        public OptionItem LOGDebug { get; set; }
 
         public OptionItem PrnQuiet { get; set; }
         public OptionItem IsRun { get; set; }

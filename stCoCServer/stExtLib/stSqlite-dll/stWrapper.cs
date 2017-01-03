@@ -175,7 +175,17 @@ namespace stSqlite
             }
             catch (Exception e)
             {
-                throw new ArgumentException(e.Message);
+#if DEBUG
+                throw new ArgumentException(
+                    thisClass +
+                    e.Message +
+                    Environment.NewLine +
+                    stCore.stConsole.GetTabString(3, 0) +
+                    "[" + query + "]"
+                );
+#else
+                throw e;
+#endif
             }
             finally
             {
@@ -198,7 +208,17 @@ namespace stSqlite
             }
             catch (Exception e)
             {
-                throw new ArgumentException(thisClass + e.Message);
+#if DEBUG
+                throw new ArgumentException(
+                    thisClass +
+                    e.Message +
+                    Environment.NewLine +
+                    stCore.stConsole.GetTabString(3, 0) +
+                    "[" + query + "]"
+                );
+#else
+                throw e;
+#endif
             }
             finally
             {
@@ -226,7 +246,17 @@ namespace stSqlite
             }
             catch (Exception e)
             {
-                throw new ArgumentException(thisClass + e.Message);
+#if DEBUG
+                throw new ArgumentException(
+                    thisClass +
+                    e.Message +
+                    Environment.NewLine +
+                    stCore.stConsole.GetTabString(3, 0) +
+                    "[" + query + "]"
+                );
+#else
+                throw e;
+#endif
             }
             finally
             {
@@ -249,7 +279,17 @@ namespace stSqlite
             }
             catch (Exception e)
             {
-                throw new ArgumentException(thisClass + e.Message);
+#if DEBUG
+                throw new ArgumentException(
+                    thisClass +
+                    e.Message +
+                    Environment.NewLine +
+                    stCore.stConsole.GetTabString(3, 0) +
+                    "[" + query + "]"
+                );
+#else
+                throw e;
+#endif
             }
             finally
             {
@@ -283,14 +323,22 @@ namespace stSqlite
             {
                 adp = new SQLiteDataAdapter(query, this._dbConn);
                 bcmd = new SQLiteCommandBuilder(adp);
-                // adp.Fill(dTable);
-                // this.dbConn.Open();
                 adp.Update(dTable);
                 return true;
             }
             catch (Exception e)
             {
-                throw new ArgumentException(e.Message);
+#if DEBUG
+                throw new ArgumentException(
+                    thisClass +
+                    e.Message +
+                    Environment.NewLine +
+                    stCore.stConsole.GetTabString(3, 0) +
+                    "[" + query + "]"
+                );
+#else
+                throw e;
+#endif
             }
             finally
             {
@@ -351,7 +399,17 @@ namespace stSqlite
             }
             catch (Exception e)
             {
-                throw new ArgumentException(thisClass + e.Message);
+#if DEBUG
+                throw new ArgumentException(
+                    thisClass +
+                    e.Message +
+                    Environment.NewLine +
+                    stCore.stConsole.GetTabString(3, 0) +
+                    "[" + tableName + "]"
+                );
+#else
+                throw e;
+#endif
             }
         }
         /// <summary>
@@ -399,7 +457,17 @@ namespace stSqlite
             }
             catch (Exception e)
             {
-                throw new ArgumentException(thisClass + e.Message);
+#if DEBUG
+                throw new ArgumentException(
+                    thisClass +
+                    e.Message +
+                    Environment.NewLine +
+                    stCore.stConsole.GetTabString(3, 0) +
+                    "[" + tableName + "]"
+                );
+#else
+                throw e;
+#endif
             }
             finally
             {
@@ -438,7 +506,17 @@ namespace stSqlite
             }
             catch (Exception e)
             {
-                throw new ArgumentException(thisClass + e.Message);
+#if DEBUG
+                throw new ArgumentException(
+                    thisClass +
+                    e.Message +
+                    Environment.NewLine +
+                    stCore.stConsole.GetTabString(3, 0) +
+                    "[" + tableName + " & " + where + "]"
+                );
+#else
+                throw e;
+#endif
             }
         }
         /// <summary>
@@ -467,7 +545,17 @@ namespace stSqlite
             }
             catch (Exception e)
             {
-                throw new ArgumentException(thisClass + e.Message);
+#if DEBUG
+                throw new ArgumentException(
+                    thisClass +
+                    e.Message +
+                    Environment.NewLine +
+                    stCore.stConsole.GetTabString(3, 0) +
+                    "[" + tableName + "]"
+                );
+#else
+                throw e;
+#endif
             }
         }
         /// <summary>
@@ -492,7 +580,11 @@ namespace stSqlite
             }
             catch (Exception e)
             {
+#if DEBUG
                 throw new ArgumentException(thisClass + e.Message);
+#else
+                throw e;
+#endif
             }
         }
         public bool Check()

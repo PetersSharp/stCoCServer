@@ -34,10 +34,11 @@ namespace stNet
     public enum WebHandleTypes : int
     {
         None,
-        FileWebRquest,
-        TemplateWebRquest,
-        JsonWebRquest,
-        ServerSentEventWebRquest
+        FileWebRequest,
+        TemplateWebRequest,
+        JsonWebRequest,
+        ServerSentEventWebRequest,
+        InformerWebRequest
     }
 
     ///<summary>
@@ -70,8 +71,12 @@ namespace stNet
             set { this._isBootstrapHtml = value; }
         }
 
+        private const string _httpLastModified = @"Last-Modified";
         private const string _httpContentType = @"Content-Type";
         private const string _httpContentDisposition = @"Content-Disposition";
+        private const string _httpCacheControl = @"Cache-Control";
+        private const string _httpAccelBuffering = @"X-Accel-Buffering";
+        private const string _httpAccessControlAllowOrigin = @"Access-Control-Allow-Origin";
 
         private CultureInfo _ci = null;
         public string DefaultLang
@@ -81,6 +86,10 @@ namespace stNet
                 this._ci = stNet.stWebServerUtil.HttpUtil.GetHttpClientLanguage(value, null);
             }
         }
+        public string httpLastModified
+        {
+            get { return _httpLastModified; }
+        }
         public string httpContentType
         {
             get { return _httpContentType; }
@@ -88,6 +97,18 @@ namespace stNet
         public string httpContentDisposition
         {
             get { return _httpContentDisposition; }
+        }
+        public string httpCacheControl
+        {
+            get { return _httpCacheControl; }
+        }
+        public string httpAccelBuffering
+        {
+            get { return _httpAccelBuffering; }
+        }
+        public string httpAccessControlAllowOrigin
+        {
+            get { return _httpAccessControlAllowOrigin; }
         }
 
         private bool _isDisposed = false;
@@ -557,8 +578,8 @@ namespace stNet
                         {
                             default:
                             case WebHandleTypes.None:
-                            case WebHandleTypes.TemplateWebRquest:
-                            case WebHandleTypes.FileWebRquest:
+                            case WebHandleTypes.TemplateWebRequest:
+                            case WebHandleTypes.FileWebRequest:
                                 {
                                     this.BadRequestHtml(
                                         respTxt,
@@ -567,7 +588,7 @@ namespace stNet
                                     );
                                     break;
                                 }
-                            case WebHandleTypes.JsonWebRquest:
+                            case WebHandleTypes.JsonWebRequest:
                                 {
                                     this.BadRequestJson(
                                         respTxt,
@@ -585,10 +606,14 @@ namespace stNet
                 this._iLog.LogError(Properties.Resources.httpListenerExceptionOnReq + e.Message);
             }
         }
-        public void BadRequestRaw(byte[] reason, HttpUtil.MimeType mtype, HttpListenerContext context, int err)
+        public void BadRequestRaw(byte[] raw, HttpListenerContext context, int err, HttpUtil.MimeType mtype = HttpUtil.MimeType.MimePng)
         {
             context.Response.AddHeader(this.httpContentType, HttpUtil.GetMimeType("", mtype));
-            this._BadRequest(reason, context, err);
+            this._BadRequest(
+                raw,
+                context,
+                err
+            );
         }
         public void BadRequestHtml(string reason, HttpListenerContext context, int err)
         {
@@ -653,7 +678,7 @@ namespace stNet
         {
             byte[] msg;
 
-            if (this._BadRequestDebugOut)
+            if ((this._BadRequestDebugOut) && (reason == null))
             {
                 msg = Encoding.UTF8.GetBytes(stNet.stWebServerUtil.HttpUtil.ObjectDump((HttpListenerRequest)context.Request));
             }
@@ -673,6 +698,8 @@ namespace stNet
             }
             try
             {
+                context.Response.AddHeader(this.httpCacheControl, "no-cache");
+                context.Response.AddHeader(this.httpAccelBuffering, "no");
                 context.Response.StatusCode = err;
                 context.Response.ContentLength64 = msg.Length;
                 context.Response.OutputStream.Write(msg, 0, msg.Length);

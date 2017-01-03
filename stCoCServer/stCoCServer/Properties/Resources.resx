@@ -136,7 +136,7 @@
     <value>Exited gracefully..</value>
   </data>
   <data name="PrnRun" xml:space="preserve">
-    <value>{0}  is running..  [{1}]</value>
+    <value>{0} is running..  [{1}]</value>
   </data>
   <data name="cmdNotConnect" xml:space="preserve">
     <value>[CMD Parser]: irc client not connected..</value>
@@ -372,5 +372,8 @@
   </data>
   <data name="fmtLangSetupOk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fmtLangSetupOk.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="httpMethodNotSupport" xml:space="preserve">
+    <value>requested method is not supported</value>
   </data>
 </root>
